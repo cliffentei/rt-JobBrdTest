@@ -5,6 +5,9 @@ document.addEventListener("DOMContentLoaded", function () {
   let prop = { searchTerm: "" };
   let clone = { searchTerm: "" };
 
+  const increaseBtn = document.querySelector("#increase");
+  const decreaseBtn = document.querySelector("#decrease");
+
   //   let prop = { searchTerm: "" };
   fetchAllData(prop);
 
@@ -128,9 +131,28 @@ document.addEventListener("DOMContentLoaded", function () {
       .then((response) => response.json())
       .then((data) => {
         console.log(url);
-        console.log(data.records.length);
         if (data.offset && !offsetArray[offset + 1]) {
           offsetArray.push(data.offset);
+        }
+
+        if (offset === 0 && offsetArray.length > 1) {
+          decreaseBtn.classList.add("hide");
+          increaseBtn.classList.remove("hide");
+        } else if (
+          offsetArray[offset + 1] !== undefined &&
+          offsetArray[offset - 1] !== undefined
+        ) {
+          decreaseBtn.classList.remove("hide");
+          increaseBtn.classList.remove("hide");
+        } else if (
+          offsetArray[offset - 1] !== undefined &&
+          offsetArray[offset + 1] === undefined
+        ) {
+          decreaseBtn.classList.remove("hide");
+          increaseBtn.classList.add("hide");
+        } else {
+          decreaseBtn.classList.add("hide");
+          increaseBtn.classList.add("hide");
         }
         let htmlString = "";
         data.records.forEach((e) => {
@@ -196,6 +218,6 @@ document.addEventListener("DOMContentLoaded", function () {
     fetchAllData(prop);
   }
 
-  document.querySelector("#increase").addEventListener("click", increase);
-  document.querySelector("#decrease").addEventListener("click", decrease);
+  increaseBtn.addEventListener("click", increase);
+  decreaseBtn.addEventListener("click", decrease);
 });

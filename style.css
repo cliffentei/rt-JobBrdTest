@@ -184,3 +184,15 @@
 #search-button:hover {
     background-color: #0056b3;
 }
+
+/* #increase {
+    display: block;
+}
+
+#decrease {
+    display: block;
+} */
+
+.hide {
+    display: none;
+}

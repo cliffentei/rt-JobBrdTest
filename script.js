@@ -11,25 +11,25 @@ document.addEventListener("DOMContentLoaded", function () {
     //   let prop = { searchTerm: "" };
     fetchAllData(prop);
   
-    //   function buttons(input) {
-    //     if (!input) return "";
-    //     const regex = /\[APPLY\]\((.*?)\)/g;
-    //     const matches = [];
-    //     let match;
-    //     while ((match = regex.exec(input)) !== null) {
-    //       matches.push(match[1]);
-    //     }
-    //     let b = "";
-    //     if (matches.length === 1) {
-    //       return `<a href="${matches[0]}" target="_blank"><button>Apply</button></a>`;
-    //     }
-    //     for (let i = 0; i < matches.length; i++) {
-    //       b += `<a href="${matches[i]}" target="_blank"><button>Apply (${
-    //         i + 1
-    //       })</button></a>`;
-    //     }
-    //     return b;
-    //   }
+      function buttons(input) {
+        if (!input) return "";
+        const regex = /\[APPLY\]\((.*?)\)/g;
+        const matches = [];
+        let match;
+        while ((match = regex.exec(input)) !== null) {
+          matches.push(match[1]);
+        }
+        let b = "";
+        if (matches.length === 1) {
+          return `<a href="${matches[0]}" target="_blank"><button class='apply-btn'>Apply</button></a>`;
+        }
+        for (let i = 0; i < matches.length; i++) {
+          b += `<a href="${matches[i]}" target="_blank"><button class='apply-btn'>Apply (${
+            i + 1
+          })</button></a>`;
+        }
+        return b;
+      }
   
     function fields(input) {
       if (!input) return "";
@@ -43,30 +43,39 @@ document.addEventListener("DOMContentLoaded", function () {
     function openModal(jobDetails) {
       const modal = document.getElementById("myModal");
       const modalContent = modal.querySelector(".modal-content");
+      console.log(jobDetails)
       modalContent.innerHTML = "";
       modalContent.innerHTML = `
               <div class="modal-header">
-                  <span class="close">&times;</span>
-                  <h2 style='margin:5px;'>${jobDetails["Job Title"]}</h2>
+              <div style='display: flex; justify-content: space-between; width: 100%; align-items: center'>                  
+                  <h2 class='modal-title'>${jobDetails["Job Title"]}</h2>
+                  <span style='font-size: 50px; margin: 0 0 0 auto;' class="close">&times;</span>
+                  </div>
                   <hr/>
               </div>
               <div class="modal-body">
-                  <p><strong>Company/Org:</strong> ${
+                  <h3><strong>Company/Org: </strong> <br><span style='font-size: 15px; font-weight: normal'>${
                     jobDetails["Company/Org"]
-                  }</p>
-                  <p><strong>Experience Level:</strong> ${
-                    jobDetails["Experience Level"]
-                  }</p>
+                  }</span></h3>
+                  <h3><strong>Experience Level: </strong> <br><span style='font-size: 15px; font-weight: normal'>${
+                    jobDetails["Experience Level"].join(", ")
+                  }</span></h3>
+                  <h3><strong>Salary: </strong> <br><span style='font-size: 15px; font-weight: normal'>${
+                    jobDetails["Salary copy"] || 'No Salary Listed'
+                  }</span></h3>
                   <div>
-                      <p style='font-weight: bold; '>Fields:</p>
+                      <p style='font-weight: bold; margin: 0;'>Fields:</p>
                       <div style='margin-top: 3px' class='outer-field-div'>${
                         fields(jobDetails["Field"]) || ""
                       }</div>
                   </div>
+                  <div class='apply-div'>
+                    ${buttons(jobDetails['Link to Apply']) || ''}
+                  </div>
               </div>
               `;
   
-      modal.style.display = "block";
+      modal.style.display = "flex";
   
       const closeBtn = modal.querySelector(".close");
       closeBtn.onclick = function () {
@@ -174,6 +183,11 @@ document.addEventListener("DOMContentLoaded", function () {
                                   }</p>
                                   <p class='salary'>${
                                     e.fields["Salary copy"] || "No Salary Listed"
+                                  }</p>
+                                  <p class='region'>${
+                                    e.fields["Region"]
+                                      ? e.fields["Region"].join(", ")
+                                      : "N/A"
                                   }</p>
                                   </div>
                                   <div class='info-div'>

@@ -3,7 +3,9 @@ document.addEventListener("DOMContentLoaded", function () {
   let offsetArray = [""];
 
   let prop = { searchTerm: "" };
+  let clone = { searchTerm: "" };
 
+  //   let prop = { searchTerm: "" };
   fetchAllData(prop);
 
   //   function buttons(input) {
@@ -88,10 +90,15 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     if (prop.searchTerm !== "") {
+      if (JSON.stringify(prop) !== JSON.stringify(clone)) {
+        offset = 0;
+        offsetArray = [""];
+      }
       const searchTerms = prop.searchTerm.toLowerCase().split(" ");
       const searchConditions = searchTerms.map(
         (term) => `SEARCH("${term}", {Concat})`
       );
+      clone = JSON.parse(JSON.stringify(prop));
 
       if (searchConditions.length === 1) {
         url += searchConditions[0] + ")";
@@ -103,6 +110,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     url += `&offset=`;
+
+    console.log(offset, offsetArray);
 
     if (offsetArray[offset]) {
       url += offsetArray[offset];
@@ -118,6 +127,8 @@ document.addEventListener("DOMContentLoaded", function () {
     })
       .then((response) => response.json())
       .then((data) => {
+        console.log(url);
+        console.log(data.records.length);
         if (data.offset && !offsetArray[offset + 1]) {
           offsetArray.push(data.offset);
         }

@@ -2,32 +2,61 @@ document.addEventListener("DOMContentLoaded", function () {
   const dropdownData = {
     dropdown1: ["Hi", "Luis", "Oshaun"],
     // dropdown2: ["Hola", "Saida", "India"],
-    dropdown2: ["Remote", "United States", "Europe", "United Kingdom", "Africa", "Asia", "Canada", "South America", "Central America", "Middle East", "Australia/New Zealand"],
+    dropdown2: [
+      "Remote",
+      "United States",
+      "Europe",
+      "United Kingdom",
+      "Africa",
+      "Asia",
+      "Canada",
+      "South America",
+      "Central America",
+      "Middle East",
+      "Australia/New Zealand",
+    ],
     dropdown3: ["Yes", "No"],
-    dropdown4: ["5-6 Years", "3-4 Years", "Executive/Director", "0-2 Years", "Early Career", "Mid-Senior", "10+ Years", "7-9 Years", "PostDoc/Fellowship/Residency", "Academia", "Ph.D.", "Internship", "Volunteer", "Grant/Award", "15+ Years"],
+    dropdown4: [
+      "Internship",
+      "Volunteer",
+      "0-2 Years",
+      "3-4 Years",
+      "5-6 Years",
+      "7-9 Years",
+      "10+ Years",
+      "15+ Years",
+      "Early Career",
+      "Mid-Senior",
+      "PostDoc/Fellowship/Residency",
+      "Ph.D.",
+      "Grant/Award",
+      "Academia",
+      "Executive/Director",
+    ],
     dropdown5: [], // To be populated from fetched data
     dropdown6: ["Part-Time", "Full-Time", "Contract/Term"],
   };
 
-  const apiKey = 'patNamJqXdDlueUxM.6e6e7f9efc1e8ab27056891e8f3c51c97bf2f994036cc554fb9618143bc58c31'
+  const apiKey =
+    "patNamJqXdDlueUxM.6e6e7f9efc1e8ab27056891e8f3c51c97bf2f994036cc554fb9618143bc58c31";
   // const tableName = 'Table 1';
-  const columnName = 'Field';
+  const columnName = "Field";
 
   const endpoint = `https://api.airtable.com/v0/apprdsx9uO4l5FieL/Table%201?fields%5B%5D=${columnName}`;
   const uniqueValues = new Set();
 
-  const companyNameColumn = 'Company/Org';
+  const companyNameColumn = "Company/Org";
   const companyEndpoint = `https://api.airtable.com/v0/apprdsx9uO4l5FieL/Table%201?fields%5B%5D=${companyNameColumn}`;
   const companyUniqueValues = new Set();
 
   fetch(companyEndpoint, {
     headers: {
-      Authorization: `Bearer ${apiKey}`
-    }
+      Authorization: `Bearer ${apiKey}`,
+    },
   })
-    .then(response => response.json())
-    .then(data => {
-      data.records.forEach(record => {
+    .then((response) => response.json())
+    .then((data) => {
+      data.records.forEach((record) => {
         const value = record.fields[companyNameColumn];
         if (value !== undefined) {
           companyUniqueValues.add(value);
@@ -35,19 +64,19 @@ document.addEventListener("DOMContentLoaded", function () {
       });
 
       const companyUniqueArray = Array.from(companyUniqueValues);
-      dropdownData['dropdown1'] = companyUniqueArray;
+      dropdownData["dropdown1"] = companyUniqueArray;
 
       // After fetching and populating 'Company/Org' data, now fetch 'Field' data
       fetch(endpoint, {
         headers: {
-          Authorization: `Bearer ${apiKey}`
-        }
+          Authorization: `Bearer ${apiKey}`,
+        },
       })
-        .then(response => response.json())
-        .then(data => {
+        .then((response) => response.json())
+        .then((data) => {
           const fieldUniqueValues = new Set();
 
-          data.records.forEach(record => {
+          data.records.forEach((record) => {
             const value = record.fields[columnName];
             if (value !== undefined) {
               fieldUniqueValues.add(...value);
@@ -55,23 +84,23 @@ document.addEventListener("DOMContentLoaded", function () {
           });
 
           const fieldUniqueArray = Array.from(fieldUniqueValues);
-          dropdownData['dropdown5'] = fieldUniqueArray;
+          dropdownData["dropdown5"] = fieldUniqueArray;
 
           renderDropdowns();
         })
-        .catch(error => console.error('Error fetching data:', error));
+        .catch((error) => console.error("Error fetching data:", error));
     })
-    .catch(error => console.error('Error fetching data:', error));
+    .catch((error) => console.error("Error fetching data:", error));
 
   function renderDropdowns() {
     const dropdowns = document.querySelectorAll(".dropdown");
 
-    dropdowns.forEach(dropdown => {
+    dropdowns.forEach((dropdown) => {
       const dropdownButton = dropdown.querySelector(".dropdown-button");
       const dropdownMenu = dropdown.querySelector(".dropdown-menu");
       const dropdownId = dropdown.id;
 
-      dropdownData[dropdownId].forEach(optionText => {
+      dropdownData[dropdownId].forEach((optionText) => {
         const optionElement = document.createElement("div");
         optionElement.classList.add("dropdown-option");
         optionElement.innerHTML = `
@@ -80,7 +109,9 @@ document.addEventListener("DOMContentLoaded", function () {
         `;
         dropdownMenu.appendChild(optionElement);
 
-        const checkbox = optionElement.querySelector(".dropdown-option-checkbox");
+        const checkbox = optionElement.querySelector(
+          ".dropdown-option-checkbox"
+        );
         checkbox.addEventListener("click", function (event) {
           event.stopPropagation();
           updateButtonState();
@@ -102,42 +133,51 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function updateButtonState() {
-    const selectedOptions = document.querySelectorAll(".dropdown-option.selected");
-    selectedOptions.forEach(option => {
+    const selectedOptions = document.querySelectorAll(
+      ".dropdown-option.selected"
+    );
+    selectedOptions.forEach((option) => {
       option.querySelector(".dropdown-option-checkbox").checked = true;
     });
 
     const dropdownButtons = document.querySelectorAll(".dropdown-button");
-    dropdownButtons.forEach(button => {
+    dropdownButtons.forEach((button) => {
       const dropdownMenu = button.nextElementSibling;
-      button.classList.toggle("selected", dropdownMenu.querySelector(".dropdown-option.selected"));
+      button.classList.toggle(
+        "selected",
+        dropdownMenu.querySelector(".dropdown-option.selected")
+      );
     });
     displaySelectedOptions();
   }
 
   function displaySelectedOptions() {
-    const selectedOptions = [];
+    const selectedOptions = {
+      dropdown1: [],
+      dropdown2: [],
+      dropdown3: [],
+      dropdown4: [],
+      dropdown5: [],
+      dropdown6: [],
+    };
 
     const dropdowns = document.querySelectorAll(".dropdown");
 
-    dropdowns.forEach(dropdown => {
+    dropdowns.forEach((dropdown) => {
       const dropdownId = dropdown.id;
-      const selectedOptionElements = dropdown.querySelectorAll(".dropdown-option.selected");
+      const selectedOptionElements = dropdown.querySelectorAll(
+        ".dropdown-option.selected"
+      );
 
-      selectedOptionElements.forEach(optionElement => {
+      selectedOptionElements.forEach((optionElement) => {
         const optionText = optionElement.querySelector("span").textContent;
-        selectedOptions.push({
-          dropdownId: dropdownId,
-          option: optionText
-        });
+        selectedOptions[dropdownId].push(optionText);
       });
     });
 
-    console.log("Selected Options:", selectedOptions);
+    // console.log("Selected Options:", selectedOptions);
+    // urlCreator();
   }
-
-
-
 
   let offset = 0;
   let offsetArray = [""];
@@ -164,8 +204,11 @@ document.addEventListener("DOMContentLoaded", function () {
       return `<a href="${matches[0]}" target="_blank"><button class='apply-btn'>Apply</button></a>`;
     }
     for (let i = 0; i < matches.length; i++) {
-      b += `<a href="${matches[i]}" target="_blank"><button class='apply-btn'>Apply (${i + 1
-        })</button></a>`;
+      b += `<a href="${
+        matches[i]
+      }" target="_blank"><button class='apply-btn'>Apply (${
+        i + 1
+      })</button></a>`;
     }
     return b;
   }
@@ -182,7 +225,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function openModal(jobDetails) {
     const modal = document.getElementById("myModal");
     const modalContent = modal.querySelector(".modal-content");
-    console.log(jobDetails)
+    console.log(jobDetails);
     modalContent.innerHTML = "";
     modalContent.innerHTML = `
               <div class="modal-header">
@@ -193,25 +236,33 @@ document.addEventListener("DOMContentLoaded", function () {
                   <hr/>
               </div>
                   <div class="modal-body">
-                      <h3>${jobDetails["Region"]
-        ? `<strong>Location:</strong> <br> <span style='font-size: 15px; font-weight: normal'>${jobDetails["Region"].join(", ")}</span>`
-        : "N/A"
-      }</h3>
-                  <h3><strong>Company/Org: </strong> <br><span style='font-size: 15px; font-weight: normal'>${jobDetails["Company/Org"]
-      }</span></h3>
-                  <h3><strong>Experience Level: </strong> <br><span style='font-size: 15px; font-weight: normal'>${jobDetails["Experience Level"].join(", ")
-      }</span></h3>
-                  <h3><strong>Salary: </strong> <br><span style='font-size: 15px; font-weight: normal'>${jobDetails["Salary copy"] || 'No Salary Listed'
-      }</span></h3>
-                  <h3><strong>Deadline: </strong> <br><span style='font-size: 15px; font-weight: normal'>${jobDetails["Closing Date"] || 'No Deadline Listed'
-      }</span></h3>
+                      <h3>${
+                        jobDetails["Region"]
+                          ? `<strong>Location:</strong> <br> <span style='font-size: 15px; font-weight: normal'>${jobDetails[
+                              "Region"
+                            ].join(", ")}</span>`
+                          : "N/A"
+                      }</h3>
+                  <h3><strong>Company/Org: </strong> <br><span style='font-size: 15px; font-weight: normal'>${
+                    jobDetails["Company/Org"]
+                  }</span></h3>
+                  <h3><strong>Experience Level: </strong> <br><span style='font-size: 15px; font-weight: normal'>${jobDetails[
+                    "Experience Level"
+                  ].join(", ")}</span></h3>
+                  <h3><strong>Salary: </strong> <br><span style='font-size: 15px; font-weight: normal'>${
+                    jobDetails["Salary copy"] || "No Salary Listed"
+                  }</span></h3>
+                  <h3><strong>Deadline: </strong> <br><span style='font-size: 15px; font-weight: normal'>${
+                    jobDetails["Closing Date"] || "No Deadline Listed"
+                  }</span></h3>
                   <div>
                       <p style='font-weight: bold; margin: 0;'>Fields:</p>
-                      <div style='margin-top: 3px' class='outer-field-div'>${fields(jobDetails["Field"]) || ""
-      }</div>
+                      <div style='margin-top: 3px' class='outer-field-div'>${
+                        fields(jobDetails["Field"]) || ""
+                      }</div>
                   </div>
                   <div class='apply-div'>
-                    ${buttons(jobDetails['Link to Apply']) || ''}
+                    ${buttons(jobDetails["Link to Apply"]) || ""}
                   </div>
               </div>
               `;
@@ -235,6 +286,47 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  function urlCreator() {
+    const baseUrl = "https://api.airtable.com/v0/apprdsx9uO4l5FieL/Table%201?";
+    const pageSize = "pageSize=100";
+    let filterFunction = "filterByFormula=";
+    const filters = [];
+    const dropdownName = {
+      dropdown1: "Company/Org",
+      dropdown2: "Region",
+      dropdown3: "Visa sponsorship",
+      dropdown4: "Experience Level",
+      dropdown5: "Field",
+      dropdown6: "Type",
+    };
+
+    const s = {
+      dropdown1: ["TikTok", "OpenAI"],
+      dropdown2: ["Asia", "United States"],
+      dropdown3: ["Yes"],
+      dropdown4: ["7-9 Years"],
+      dropdown5: [],
+      dropdown6: [],
+    };
+
+    for (const f in s) {
+      if (s[f].length) {
+        filters.push(
+          `OR(${s[f].map((e) => `{${dropdownName[f]}}='${e}'`).join(",")})`
+        );
+      }
+    }
+
+    console.log(filters);
+
+    filterFunction += `${encodeURIComponent("AND(" + filters.join(",") + ")")}`;
+    console.log(
+      "API Endpoint: " + baseUrl + [pageSize, filterFunction].join("&")
+    );
+    return baseUrl + [pageSize, filterFunction].join("&");
+  }
+  urlCreator();
+
   function fetchAllData(prop) {
     let url = `https://api.airtable.com/v0/apprdsx9uO4l5FieL/Table%201?view=Responsible%20Tech%20Job%20Board&maxRecords=500&pageSize=100&filterByFormula=AND(`;
     if (document.getElementById("toDelete")) {
@@ -247,28 +339,37 @@ document.addEventListener("DOMContentLoaded", function () {
       dropdown3: "Visa",
       dropdown4: "Experience",
       dropdown5: "Field",
-      dropdown6: "Type"
-    }
-    const selectedOptions = [];
+      dropdown6: "Type",
+    };
+    const selectedOptions = {
+      dropdown1: [],
+      dropdown2: [],
+      dropdown3: [],
+      dropdown4: [],
+      dropdown5: [],
+      dropdown6: [],
+    };
 
     const dropdowns = document.querySelectorAll(".dropdown");
 
-    dropdowns.forEach(dropdown => {
+    dropdowns.forEach((dropdown) => {
       const dropdownId = dropdown.id;
-      const selectedOptionElements = dropdown.querySelectorAll(".dropdown-option.selected");
+      const selectedOptionElements = dropdown.querySelectorAll(
+        ".dropdown-option.selected"
+      );
 
-      selectedOptionElements.forEach(optionElement => {
+      selectedOptionElements.forEach((optionElement) => {
         const optionText = optionElement.querySelector("span").textContent;
-        selectedOptions.push({
-          dropdownId: dropdownId,
-          option: optionText
-        });
+        // selectedOptions.push({
+        //   dropdownId: dropdownId,
+        //   option: optionText,
+        // });
+        // if()
+        selectedOptions[dropdownId].push(optionText);
       });
     });
 
-    console.log("Selected Options:", selectedOptions);
-
-    
+    // console.log("Selected Options:", selectedOptions);
 
     if (prop.searchTerm !== "") {
       if (JSON.stringify(prop) !== JSON.stringify(clone)) {
@@ -342,35 +443,43 @@ document.addEventListener("DOMContentLoaded", function () {
         data.records.forEach((e) => {
           htmlString += `<div class='job-card'>
                                   <div>
-                                  <p class='job-title'>${e.fields["Job Title"]
-            }</p>
+                                  <p class='job-title'>${
+                                    e.fields["Job Title"]
+                                  }</p>
                                   <hr/>
-                                  <p class='job-type'>${e.fields["Type"]
-              ? e.fields["Type"].join(", ")
-              : "N/A"
-            }</p>
-                                  <p class='salary'>${e.fields["Salary copy"] || "No Salary Listed"
-            }</p>
-                                  <p class='region'>${e.fields["Region"]
-              ? e.fields["Region"].join(", ")
-              : "N/A"
-            }</p>
+                                  <p class='job-type'>${
+                                    e.fields["Type"]
+                                      ? e.fields["Type"].join(", ")
+                                      : "N/A"
+                                  }</p>
+                                  <p class='salary'>${
+                                    e.fields["Salary copy"] ||
+                                    "No Salary Listed"
+                                  }</p>
+                                  <p class='region'>${
+                                    e.fields["Region"]
+                                      ? e.fields["Region"].join(", ")
+                                      : "N/A"
+                                  }</p>
                                   </div>
                                   <div class='info-div'>
                                       <div>
                                           <p class='list-title'>Location: </p>
-                                          <p style='margin: 0 0 8px 30px; width: 50%'>${e.fields["Location"]
-            }</p>
+                                          <p style='margin: 0 0 8px 30px; width: 50%'>${
+                                            e.fields["Location"]
+                                          }</p>
                                       </div>
                                       <div>
                                           <p class='list-title'>Company: </p>
-                                          <p style='margin: 0 0 8px 30px; width: 50%'>${e.fields["Company/Org"]
-            }</p>
+                                          <p style='margin: 0 0 8px 30px; width: 50%'>${
+                                            e.fields["Company/Org"]
+                                          }</p>
                                       </div>
                                       <div>
                                           <p class='list-title'>Experience Level: </p>
-                                          <p style='margin: 0 0 8px 30px; width: 50%'>${e.fields["Experience Level"]
-            }</p>
+                                          <p style='margin: 0 0 8px 30px; width: 50%'>${
+                                            e.fields["Experience Level"]
+                                          }</p>
                                       </div>
                                   </div>
                                   <div class="read-more">

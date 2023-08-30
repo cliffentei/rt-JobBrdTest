@@ -1,9 +1,9 @@
 document.addEventListener("DOMContentLoaded", function () {
   const dropdownData = {
-    dropdown1: ["Hi", "Luis", "Oshaun"],
+    dropdown1: [],
     // dropdown2: ["Hola", "Saida", "India"],
     dropdown2: ["Remote", "United States", "Europe", "United Kingdom", "Africa", "Asia", "Canada", "South America", "Central America", "Middle East", "Australia/New Zealand"],
-    dropdown3: ["Yes", "No"],
+    dropdown3: ["Yes", "No", "In some cases"],
     dropdown4: ["5-6 Years", "3-4 Years", "Executive/Director", "0-2 Years", "Early Career", "Mid-Senior", "10+ Years", "7-9 Years", "PostDoc/Fellowship/Residency", "Academia", "Ph.D.", "Internship", "Volunteer", "Grant/Award", "15+ Years"],
     dropdown5: [], // To be populated from fetched data
     dropdown6: ["Part-Time", "Full-Time", "Contract/Term"],
@@ -244,7 +244,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const dropdownName = {
       dropdown1: "Company/Org",
       dropdown2: "Region",
-      dropdown3: "Visa",
+      dropdown3: "Visa sponsorship",
       dropdown4: "Experience",
       dropdown5: "Field",
       dropdown6: "Type"

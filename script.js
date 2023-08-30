@@ -148,47 +148,34 @@ document.addEventListener("DOMContentLoaded", function () {
         dropdownMenu.querySelector(".dropdown-option.selected")
       );
     });
-    displaySelectedOptions();
-  }
-
-  function displaySelectedOptions() {
-    const selectedOptions = {
-      dropdown1: [],
-      dropdown2: [],
-      dropdown3: [],
-      dropdown4: [],
-      dropdown5: [],
-      dropdown6: [],
-    };
-
-    const dropdowns = document.querySelectorAll(".dropdown");
-
-    dropdowns.forEach((dropdown) => {
-      const dropdownId = dropdown.id;
-      const selectedOptionElements = dropdown.querySelectorAll(
-        ".dropdown-option.selected"
-      );
-
-      selectedOptionElements.forEach((optionElement) => {
-        const optionText = optionElement.querySelector("span").textContent;
-        selectedOptions[dropdownId].push(optionText);
-      });
-    });
-
-    // console.log("Selected Options:", selectedOptions);
-    // urlCreator();
+    // fetchAllData();
   }
 
   let offset = 0;
   let offsetArray = [""];
 
-  let prop = { searchTerm: "" };
-  let clone = { searchTerm: "" };
+  let prop = {
+    dropdown1: [],
+    dropdown2: [],
+    dropdown3: [],
+    dropdown4: [],
+    dropdown5: [],
+    dropdown6: [],
+    searchTerm: "",
+  };
+  let clone = {
+    dropdown1: [],
+    dropdown2: [],
+    dropdown3: [],
+    dropdown4: [],
+    dropdown5: [],
+    dropdown6: [],
+    searchTerm: "",
+  };
 
   const increaseBtn = document.querySelector("#increase");
   const decreaseBtn = document.querySelector("#decrease");
 
-  //   let prop = { searchTerm: "" };
   fetchAllData(prop);
 
   function buttons(input) {
@@ -280,13 +267,13 @@ document.addEventListener("DOMContentLoaded", function () {
   if (searchForm) {
     searchForm.addEventListener("submit", function (event) {
       event.preventDefault();
-      const searchInput = document.getElementById("search-input").value;
-      prop.searchTerm = searchInput;
-      fetchAllData(prop);
+      // const searchInput = document.getElementById("search-input").value;
+      // prop.searchTerm = searchInput;
+      fetchAllData();
     });
   }
 
-  function urlCreator() {
+  function urlCreator(s) {
     const baseUrl = "https://api.airtable.com/v0/apprdsx9uO4l5FieL/Table%201?";
     const pageSize = "pageSize=100";
     let filterFunction = "filterByFormula=";
@@ -300,47 +287,27 @@ document.addEventListener("DOMContentLoaded", function () {
       dropdown6: "Type",
     };
 
-    const s = {
-      dropdown1: ["TikTok", "OpenAI"],
-      dropdown2: ["Asia", "United States"],
-      dropdown3: ["Yes"],
-      dropdown4: ["7-9 Years"],
-      dropdown5: [],
-      dropdown6: [],
-    };
-
     for (const f in s) {
-      if (s[f].length) {
+      if (f === "searchInput") {
+        const searchTerms = s[f].toLowerCase().split(" ");
+        const searchConditions = searchTerms.map(
+          (term) => `SEARCH("${term}", {Concat})`
+        );
+        filters.push(`AND(${searchConditions.join(",")})`);
+      } else if (s[f].length) {
         filters.push(
-          `OR(${s[f].map((e) => `{${dropdownName[f]}}='${e}'`).join(",")})`
+          `OR(${s[f]
+            .map((e) => `SEARCH('${e}', {${dropdownName[f]}})`)
+            .join(",")})`
         );
       }
     }
 
-    console.log(filters);
-
     filterFunction += `${encodeURIComponent("AND(" + filters.join(",") + ")")}`;
-    console.log(
-      "API Endpoint: " + baseUrl + [pageSize, filterFunction].join("&")
-    );
     return baseUrl + [pageSize, filterFunction].join("&");
   }
-  urlCreator();
 
-  function fetchAllData(prop) {
-    let url = `https://api.airtable.com/v0/apprdsx9uO4l5FieL/Table%201?view=Responsible%20Tech%20Job%20Board&maxRecords=500&pageSize=100&filterByFormula=AND(`;
-    if (document.getElementById("toDelete")) {
-      document.getElementById("toDelete").remove();
-    }
-
-    const dropdownName = {
-      dropdown1: "Company/Org",
-      dropdown2: "Region",
-      dropdown3: "Visa",
-      dropdown4: "Experience",
-      dropdown5: "Field",
-      dropdown6: "Type",
-    };
+  function fetchAllData() {
     const selectedOptions = {
       dropdown1: [],
       dropdown2: [],
@@ -348,7 +315,10 @@ document.addEventListener("DOMContentLoaded", function () {
       dropdown4: [],
       dropdown5: [],
       dropdown6: [],
+      searchInput: "",
     };
+
+    selectedOptions.searchInput = document.getElementById("search-input").value;
 
     const dropdowns = document.querySelectorAll(".dropdown");
 
@@ -360,47 +330,49 @@ document.addEventListener("DOMContentLoaded", function () {
 
       selectedOptionElements.forEach((optionElement) => {
         const optionText = optionElement.querySelector("span").textContent;
-        // selectedOptions.push({
-        //   dropdownId: dropdownId,
-        //   option: optionText,
-        // });
-        // if()
         selectedOptions[dropdownId].push(optionText);
       });
     });
 
+    let url = urlCreator(selectedOptions);
+    if (document.getElementById("toDelete")) {
+      document.getElementById("toDelete").remove();
+    }
+
     // console.log("Selected Options:", selectedOptions);
 
-    if (prop.searchTerm !== "") {
-      if (JSON.stringify(prop) !== JSON.stringify(clone)) {
-        offset = 0;
-        offsetArray = [""];
-      }
-      const searchTerms = prop.searchTerm.toLowerCase().split(" ");
-      const searchConditions = searchTerms.map(
-        (term) => `SEARCH("${term}", {Concat})`
-      );
-      clone = JSON.parse(JSON.stringify(prop));
+    // if (prop.searchTerm !== "") {
+    //   if (JSON.stringify(prop) !== JSON.stringify(clone)) {
+    //     offset = 0;
+    //     offsetArray = [""];
+    //   }
+    //   const searchTerms = prop.searchTerm.toLowerCase().split(" ");
+    //   const searchConditions = searchTerms.map(
+    //     (term) => `SEARCH("${term}", {Concat})`
+    //   );
+    //   clone = JSON.parse(JSON.stringify(prop));
 
-      if (searchConditions.length === 1) {
-        url += searchConditions[0] + ")";
-      } else {
-        url += `AND(${searchConditions.join(",")}))`;
-      }
-    } else {
-      url += `)`;
-    }
+    //   if (searchConditions.length === 1) {
+    //     url += searchConditions[0] + ")";
+    //   } else {
+    //     url += `AND(${searchConditions.join(",")}))`;
+    //   }
+    // } else {
+    //   url += `)`;
+    // }
 
-    url += `&offset=`;
+    console.log(url);
 
-    console.log(offset, offsetArray);
+    // url += `&offset=`;
 
-    if (offsetArray[offset]) {
-      url += offsetArray[offset];
-    } else if (offset >= offsetArray.length) {
-      url += offsetArray[offsetArray.length - 1];
-      offset = offsetArray.length - 1;
-    }
+    // console.log(offset, offsetArray);
+
+    // if (offsetArray[offset]) {
+    //   url += offsetArray[offset];
+    // } else if (offset >= offsetArray.length) {
+    //   url += offsetArray[offsetArray.length - 1];
+    //   offset = offsetArray.length - 1;
+    // }
 
     fetch(url, {
       headers: {

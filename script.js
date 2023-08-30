@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
   const dropdownData = {
-    dropdown1: ["Hi", "Luis", "Oshaun"],
+    dropdown1: [],
     // dropdown2: ["Hola", "Saida", "India"],
     dropdown2: [
       "Remote",

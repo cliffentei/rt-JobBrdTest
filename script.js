@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
       "Middle East",
       "Australia/New Zealand",
     ],
-    dropdown3: ["Yes", "No"],
+    dropdown3: ["Yes", "No", "In some cases"],
     dropdown4: [
       "Internship",
       "Volunteer",
@@ -127,6 +127,47 @@ document.addEventListener("DOMContentLoaded", function () {
       dropdownButton.addEventListener("click", function () {
         dropdownMenu.classList.toggle("active");
       });
+      const dropdownButtons = document.querySelectorAll(".dropdown-button");
+
+      dropdownButtons.forEach((button) => {
+        button.addEventListener("click", function () {
+          const dropdownMenus = document.querySelectorAll(".dropdown-menu");
+          const clickedMenu = button.nextElementSibling;
+
+          dropdownMenus.forEach((menu) => {
+            if (menu !== clickedMenu) {
+              menu.classList.remove("active");
+            }
+          });
+
+          clickedMenu.classList.toggle("active");
+        });
+      });
+
+      document.addEventListener("click", function (event) {
+        const dropdownMenus = document.querySelectorAll(".dropdown-menu");
+        const dropdownButtons = document.querySelectorAll(".dropdown-button");
+
+        let isInsideDropdown = false;
+
+        dropdownMenus.forEach((dropdownMenu) => {
+          if (dropdownMenu.contains(event.target)) {
+            isInsideDropdown = true;
+          }
+        });
+
+        dropdownButtons.forEach((dropdownButton) => {
+          if (dropdownButton.contains(event.target)) {
+            isInsideDropdown = true;
+          }
+        });
+
+        if (!isInsideDropdown) {
+          dropdownMenus.forEach((dropdownMenu) => {
+            dropdownMenu.classList.remove("active");
+          });
+        }
+      });
 
       updateButtonState();
     });
@@ -148,6 +189,31 @@ document.addEventListener("DOMContentLoaded", function () {
         dropdownMenu.querySelector(".dropdown-option.selected")
       );
     });
+    document.addEventListener("click", function (event) {
+      const dropdownMenus = document.querySelectorAll(".dropdown-menu");
+      const dropdownButtons = document.querySelectorAll(".dropdown-button");
+
+      let isInsideDropdown = false;
+
+      dropdownMenus.forEach((dropdownMenu) => {
+        if (dropdownMenu.contains(event.target)) {
+          isInsideDropdown = true;
+        }
+      });
+
+      dropdownButtons.forEach((dropdownButton) => {
+        if (dropdownButton.contains(event.target)) {
+          isInsideDropdown = true;
+        }
+      });
+
+      if (!isInsideDropdown) {
+        dropdownMenus.forEach((dropdownMenu) => {
+          dropdownMenu.classList.remove("active");
+        });
+      }
+    });
+
     // fetchAllData();
   }
 
@@ -191,11 +257,9 @@ document.addEventListener("DOMContentLoaded", function () {
       return `<a href="${matches[0]}" target="_blank"><button class='apply-btn'>Apply</button></a>`;
     }
     for (let i = 0; i < matches.length; i++) {
-      b += `<a href="${
-        matches[i]
-      }" target="_blank"><button class='apply-btn'>Apply (${
-        i + 1
-      })</button></a>`;
+      b += `<a href="${matches[i]
+        }" target="_blank"><button class='apply-btn'>Apply (${i + 1
+        })</button></a>`;
     }
     return b;
   }
@@ -223,30 +287,25 @@ document.addEventListener("DOMContentLoaded", function () {
                   <hr/>
               </div>
                   <div class="modal-body">
-                      <h3>${
-                        jobDetails["Region"]
-                          ? `<strong>Location:</strong> <br> <span style='font-size: 15px; font-weight: normal'>${jobDetails[
-                              "Region"
-                            ].join(", ")}</span>`
-                          : "N/A"
-                      }</h3>
-                  <h3><strong>Company/Org: </strong> <br><span style='font-size: 15px; font-weight: normal'>${
-                    jobDetails["Company/Org"]
-                  }</span></h3>
+                      <h3>${jobDetails["Region"]
+        ? `<strong>Location:</strong> <br> <span style='font-size: 15px; font-weight: normal'>${jobDetails[
+          "Region"
+        ].join(", ")}</span>`
+        : "N/A"
+      }</h3>
+                  <h3><strong>Company/Org: </strong> <br><span style='font-size: 15px; font-weight: normal'>${jobDetails["Company/Org"]
+      }</span></h3>
                   <h3><strong>Experience Level: </strong> <br><span style='font-size: 15px; font-weight: normal'>${jobDetails[
-                    "Experience Level"
-                  ].join(", ")}</span></h3>
-                  <h3><strong>Salary: </strong> <br><span style='font-size: 15px; font-weight: normal'>${
-                    jobDetails["Salary copy"] || "No Salary Listed"
-                  }</span></h3>
-                  <h3><strong>Deadline: </strong> <br><span style='font-size: 15px; font-weight: normal'>${
-                    jobDetails["Closing Date"] || "No Deadline Listed"
-                  }</span></h3>
+        "Experience Level"
+      ].join(", ")}</span></h3>
+                  <h3><strong>Salary: </strong> <br><span style='font-size: 15px; font-weight: normal'>${jobDetails["Salary copy"] || "No Salary Listed"
+      }</span></h3>
+                  <h3><strong>Deadline: </strong> <br><span style='font-size: 15px; font-weight: normal'>${jobDetails["Closing Date"] || "No Deadline Listed"
+      }</span></h3>
                   <div>
                       <p style='font-weight: bold; margin: 0;'>Fields:</p>
-                      <div style='margin-top: 3px' class='outer-field-div'>${
-                        fields(jobDetails["Field"]) || ""
-                      }</div>
+                      <div style='margin-top: 3px' class='outer-field-div'>${fields(jobDetails["Field"]) || ""
+      }</div>
                   </div>
                   <div class='apply-div'>
                     ${buttons(jobDetails["Link to Apply"]) || ""}
@@ -415,43 +474,36 @@ document.addEventListener("DOMContentLoaded", function () {
         data.records.forEach((e) => {
           htmlString += `<div class='job-card'>
                                   <div>
-                                  <p class='job-title'>${
-                                    e.fields["Job Title"]
-                                  }</p>
+                                  <p class='job-title'>${e.fields["Job Title"]
+            }</p>
                                   <hr/>
-                                  <p class='job-type'>${
-                                    e.fields["Type"]
-                                      ? e.fields["Type"].join(", ")
-                                      : "N/A"
-                                  }</p>
-                                  <p class='salary'>${
-                                    e.fields["Salary copy"] ||
-                                    "No Salary Listed"
-                                  }</p>
-                                  <p class='region'>${
-                                    e.fields["Region"]
-                                      ? e.fields["Region"].join(", ")
-                                      : "N/A"
-                                  }</p>
+                                  <p class='job-type'>${e.fields["Type"]
+              ? e.fields["Type"].join(", ")
+              : "N/A"
+            }</p>
+                                  <p class='salary'>${e.fields["Salary copy"] ||
+            "No Salary Listed"
+            }</p>
+                                  <p class='region'>${e.fields["Region"]
+              ? e.fields["Region"].join(", ")
+              : "N/A"
+            }</p>
                                   </div>
                                   <div class='info-div'>
                                       <div>
                                           <p class='list-title'>Location: </p>
-                                          <p style='margin: 0 0 8px 30px; width: 50%'>${
-                                            e.fields["Location"]
-                                          }</p>
+                                          <p style='margin: 0 0 8px 30px; width: 50%'>${e.fields["Location"]
+            }</p>
                                       </div>
                                       <div>
                                           <p class='list-title'>Company: </p>
-                                          <p style='margin: 0 0 8px 30px; width: 50%'>${
-                                            e.fields["Company/Org"]
-                                          }</p>
+                                          <p style='margin: 0 0 8px 30px; width: 50%'>${e.fields["Company/Org"]
+            }</p>
                                       </div>
                                       <div>
                                           <p class='list-title'>Experience Level: </p>
-                                          <p style='margin: 0 0 8px 30px; width: 50%'>${
-                                            e.fields["Experience Level"]
-                                          }</p>
+                                          <p style='margin: 0 0 8px 30px; width: 50%'>${e.fields["Experience Level"]
+            }</p>
                                       </div>
                                   </div>
                                   <div class="read-more">

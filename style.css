@@ -332,6 +332,8 @@
     position: relative;
     transition: all .1s ease-in;
     user-select: none;
+    display: flex;
+    align-items: center;
 }
 
 .dropdown-menu {
@@ -365,6 +367,7 @@
 
   .dropdown-option-checkbox {
     margin-right: 10px;
+    pointer-events: none;
   }
 
   .selected {

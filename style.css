@@ -314,9 +314,8 @@
     display: flex;
     width: fit-content;
     margin: 20px auto 0 auto;
-    max-width: 100vw;
+    max-width: 90vw;
     overflow-x: auto;
-    padding-right: 20px;
 }
 
 .dropdown {

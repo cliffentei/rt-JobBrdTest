@@ -1,9 +1,13 @@
-.card-button {
+ /* body{
+    background-color: #fdf9f2;
+ } */
+
+ .card-button {
     display: inline-block;
     background-color: #007bff;
     color: #fff;
     border: none;
-    border-radius: 4px;
+    border-radius: 20px;
     padding: 8px 12px;
     cursor: pointer;
     font-size: 1rem;
@@ -197,18 +201,18 @@
 #search-input {
     padding: 10px;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    /* border-radius: 50px; */
     outline: none;
     width: 50vw;
 }
 
 #search-button {
     padding: 10px 20px;
-    margin-left: 10px;
-    background-color: #007bff;
+    margin-left: -82px;
+    background-color: black;
     color: white;
     border: none;
-    border-radius: 4px;
+    /* border-radius: 50px; */
     cursor: pointer;
 }
 
@@ -216,10 +220,10 @@
     display: flex;
     justify-content: center;
 }
-
+/* 
 #search-button:hover {
     background-color: #0056b3;
-}
+} */
 
 /* #increase {
     display: block;
@@ -323,19 +327,47 @@
     margin-right: 20px;
 }
 
-.dropdown-button {
+/* .dropdown-button {
     background-color: white;
     color: black;
-    padding: 10px 20px;
+    padding: 6px 20px;
     font-size: 16px;
     border: .1px solid rgb(208, 207, 207);
-    border-radius: 4px;
+    border-radius: 50px;
     cursor: pointer;
     position: relative;
     transition: all .1s ease-in;
     user-select: none;
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    white-space: nowrap;
+} */
+
+.dropdown-button{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    user-select: none;
+    border: .5px solid black;
+    padding: 13px 15px;
+    cursor: pointer;
+    background-size: 100% 200%;
+    background-image: linear-gradient(to top, black 50%, rgba(0,0,0,0) 50%);
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.dropdown-button:hover {
+    background-position: 0 +100%;
+    color: white;
+}
+
+.dropdown-button svg{
+    transition: all 0.3s ease;
+}
+.dropdown-button:hover svg{
+    filter: invert(1)
 }
 
 .dropdown-menu {
@@ -378,7 +410,7 @@
   }
 
   .dropdown-button.selected {
-    background-color: rgb(82, 82, 82);
+    background-color: black;
     color: white;
     
   }

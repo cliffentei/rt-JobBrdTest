@@ -418,3 +418,13 @@
   .dropdown-button.selected svg{
     filter: invert(1);
   }
+
+  @media screen and (max-width: 650px) {
+    .dropdown-button:hover {
+        background-position: 0 0;
+        color: black;
+    }
+    .dropdown-button:hover svg{
+        filter: invert(0)
+    }
+  }

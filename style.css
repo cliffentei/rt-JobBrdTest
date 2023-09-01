@@ -362,6 +362,22 @@
     background-position: 0 +100%;
     color: white;
 }
+.btn-div:hover{
+    background-position: 0 +100%;
+    color: white;
+}
+.btn-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70px;
+    user-select: none;
+    border: 0.5px solid black;
+    padding: 13px 15px;
+    background-size: 100% 200%;
+    background-image: linear-gradient(to top, black 50%, rgba(0,0,0,0) 50%);
+    transition: all 0.3s ease;
+}
 
 .dropdown-button svg{
     transition: all 0.3s ease;
@@ -412,7 +428,6 @@
   .dropdown-button.selected {
     background-color: black;
     color: white;
-    
   }
 
   .dropdown-button.selected svg{

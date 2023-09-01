@@ -598,7 +598,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                 </div>
                                <div class="visa-div" style="display:flex;">
                                     <p class="visa-label" style="font-weight: 700; margin-right:3px;">Visa Sponsorship: </p>
-                                  <span style="background-color: rgb(255,190,0, .3); padding:4px;">${e.fields["Visa sponsorship"]}</span>
+                                  <span style="background-color: rgb(255,190,0, .3); padding:4px;">${e.fields["Visa Sponsorship"]? e.fields["Visa Sponsorship"].join(", ") : "N/A"}</span>
                                </div>
                             </div>
                     </div>

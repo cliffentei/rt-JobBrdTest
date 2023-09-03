@@ -321,8 +321,8 @@ document.addEventListener("DOMContentLoaded", function () {
       searchTerm: "",
     };
   
-    const increaseBtn = document.querySelector("#increase");
-    const decreaseBtn = document.querySelector("#decrease");
+    const increaseBtn = document.querySelector(".increase");
+    const decreaseBtn = document.querySelector(".decrease");
   
     fetchAllData(prop);
   
@@ -528,29 +528,31 @@ document.addEventListener("DOMContentLoaded", function () {
           }
   
           if (offset === 0 && offsetArray.length > 1) {
-            decreaseBtn.classList.remove("hide");
-            increaseBtn.classList.remove("hide");
-            decreaseBtn.classList.add("hide");
-            increaseBtn.classList.remove("hide");
+            decreaseBtn.classList.remove("show");
+            increaseBtn.classList.remove("show");
+            decreaseBtn.classList.remove("show");
+            increaseBtn.classList.add("show");
           } else if (
             offsetArray[offset + 1] !== undefined &&
             offsetArray[offset - 1] !== undefined
           ) {
-            decreaseBtn.classList.remove("hide");
-            increaseBtn.classList.remove("hide");
+            decreaseBtn.classList.remove("show");
+            increaseBtn.classList.remove("show");
+            decreaseBtn.classList.add("show");
+            increaseBtn.classList.add("show");
           } else if (
             offsetArray[offset - 1] !== undefined &&
             offsetArray[offset + 1] === undefined
           ) {
-            decreaseBtn.classList.remove("hide");
-            increaseBtn.classList.remove("hide");
-            decreaseBtn.classList.remove("hide");
-            increaseBtn.classList.add("hide");
+            decreaseBtn.classList.remove("show");
+            increaseBtn.classList.remove("show");
+            decreaseBtn.classList.add("show");
+            increaseBtn.classList.remove("show");
           } else {
-            decreaseBtn.classList.remove("hide");
-            increaseBtn.classList.remove("hide");
-            decreaseBtn.classList.add("hide");
-            increaseBtn.classList.add("hide");
+            decreaseBtn.classList.remove("show");
+            increaseBtn.classList.remove("show");
+            decreaseBtn.classList.remove("show");
+            increaseBtn.classList.remove("show");
           }
           let htmlString = "";
           data.records.forEach((e) => {

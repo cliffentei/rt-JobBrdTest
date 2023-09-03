@@ -228,14 +228,12 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     let b = "";
     if (matches.length === 1) {
-      return `<a href="${matches[0]}" target="_blank"><button class='apply-btn'>Apply</button></a>`;
+      return `<a href="${matches[0]}" target="_blank" style='text-decoration: none;'><div class='apply-btn'><p>Apply<p></div></a>`;
     }
     for (let i = 0; i < matches.length; i++) {
-      b += `<a href="${
-        matches[i]
-      }" target="_blank"><button class='apply-btn'>Apply (${
-        i + 1
-      })</button></a>`;
+      b += `<a href="${matches[i]
+        }" target="_blank" style='text-decoration: none;'><div class='apply-btn'>Apply (${i + 1
+        })</div></a>`;
     }
     return b;
   }
@@ -263,30 +261,25 @@ document.addEventListener("DOMContentLoaded", function () {
                   <hr/>
               </div>
                   <div class="modal-body">
-                      <h3>${
-                        jobDetails["Region"]
-                          ? `<strong>Location:</strong> <br> <span style='font-size: 15px; font-weight: normal'>${jobDetails[
-                              "Region"
-                            ].join(", ")}</span>`
-                          : "N/A"
-                      }</h3>
-                  <h3><strong>Company/Org: </strong> <br><span style='font-size: 15px; font-weight: normal'>${
-                    jobDetails["Company/Org"]
-                  }</span></h3>
+                      <h3>${jobDetails["Region"]
+        ? `<strong>Location:</strong> <br> <span style='font-size: 15px; font-weight: normal'>${jobDetails[
+          "Region"
+        ].join(", ")}</span>`
+        : "N/A"
+      }</h3>
+                  <h3><strong>Company/Org: </strong> <br><span style='font-size: 15px; font-weight: normal'>${jobDetails["Company/Org"]
+      }</span></h3>
                   <h3><strong>Experience Level: </strong> <br><span style='font-size: 15px; font-weight: normal'>${jobDetails[
-                    "Experience Level"
-                  ].join(", ")}</span></h3>
-                  <h3><strong>Salary: </strong> <br><span style='font-size: 15px; font-weight: normal'>${
-                    jobDetails["Salary copy"] || "No Salary Listed"
-                  }</span></h3>
-                  <h3><strong>Deadline: </strong> <br><span style='font-size: 15px; font-weight: normal'>${
-                    jobDetails["Closing Date"] || "No Deadline Listed"
-                  }</span></h3>
+        "Experience Level"
+      ].join(", ")}</span></h3>
+                  <h3><strong>Salary: </strong> <br><span style='font-size: 15px; font-weight: normal'>${jobDetails["Salary copy"] || "No Salary Listed"
+      }</span></h3>
+                  <h3><strong>Deadline: </strong> <br><span style='font-size: 15px; font-weight: normal'>${jobDetails["Closing Date"] || "No Deadline Listed"
+      }</span></h3>
                   <div>
                       <p style='font-weight: bold; margin: 0;'>Fields:</p>
-                      <div style='margin-top: 3px' class='outer-field-div'>${
-                        fields(jobDetails["Field"]) || ""
-                      }</div>
+                      <div style='margin-top: 3px' class='outer-field-div'>${fields(jobDetails["Field"]) || ""
+      }</div>
                   </div>
                   <div class='apply-div'>
                     ${buttons(jobDetails["Link to Apply"]) || ""}
@@ -307,8 +300,8 @@ document.addEventListener("DOMContentLoaded", function () {
   let globalUrl = "";
   let offsetKey = "&offset=";
 
-  const increaseBtn = document.querySelector("#increase");
-  const decreaseBtn = document.querySelector("#decrease");
+  const increaseBtn = document.querySelector(".increase");
+  const decreaseBtn = document.querySelector(".decrease");
 
   fetchAllData();
 
@@ -410,78 +403,102 @@ document.addEventListener("DOMContentLoaded", function () {
           if (data.offset && !offsetArray[offset + 1]) {
             offsetArray.push(data.offset);
           }
+          if (data.offset && !offsetArray[offset + 1]) {
+            offsetArray.push(data.offset);
+          }
+
           if (offset === 0 && offsetArray.length > 1) {
-            decreaseBtn.classList.remove("hide");
-            increaseBtn.classList.remove("hide");
-            decreaseBtn.classList.add("hide");
-            increaseBtn.classList.remove("hide");
+            decreaseBtn.classList.remove("show");
+            increaseBtn.classList.remove("show");
+            decreaseBtn.classList.remove("show");
+            increaseBtn.classList.add("show");
           } else if (
             offsetArray[offset + 1] !== undefined &&
             offsetArray[offset - 1] !== undefined
           ) {
-            decreaseBtn.classList.remove("hide");
-            increaseBtn.classList.remove("hide");
+            decreaseBtn.classList.remove("show");
+            increaseBtn.classList.remove("show");
+            decreaseBtn.classList.add("show");
+            increaseBtn.classList.add("show");
           } else if (
             offsetArray[offset - 1] !== undefined &&
             offsetArray[offset + 1] === undefined
           ) {
-            decreaseBtn.classList.remove("hide");
-            increaseBtn.classList.remove("hide");
-            decreaseBtn.classList.remove("hide");
-            increaseBtn.classList.add("hide");
+            decreaseBtn.classList.remove("show");
+            increaseBtn.classList.remove("show");
+            decreaseBtn.classList.add("show");
+            increaseBtn.classList.remove("show");
           } else {
-            decreaseBtn.classList.remove("hide");
-            increaseBtn.classList.remove("hide");
-            decreaseBtn.classList.add("hide");
-            increaseBtn.classList.add("hide");
+            decreaseBtn.classList.remove("show");
+            increaseBtn.classList.remove("show");
+            decreaseBtn.classList.remove("show");
+            increaseBtn.classList.remove("show");
           }
           let htmlString = "";
           data.records.forEach((e) => {
-            htmlString += `<div class='job-card'>
-                                  <div>
-                                  <p class='job-title'>${
-                                    e.fields["Job Title"]
-                                  }</p>
-                                  <hr/>
-                                  <p class='job-type'>${
-                                    e.fields["Type"]
-                                      ? e.fields["Type"].join(", ")
-                                      : "N/A"
-                                  }</p>
-                                  <p class='salary'>${
-                                    e.fields["Salary copy"] ||
-                                    "No Salary Listed"
-                                  }</p>
-                                  <p class='region'>${
-                                    e.fields["Region"]
-                                      ? e.fields["Region"].join(", ")
-                                      : "N/A"
-                                  }</p>
-                                  </div>
-                                  <div class='info-div'>
-                                      <div>
-                                          <p class='list-title'>Location: </p>
-                                          <p style='margin: 0 0 8px 30px; width: 50%'>${
-                                            e.fields["Location"]
-                                          }</p>
-                                      </div>
-                                      <div>
-                                          <p class='list-title'>Company: </p>
-                                          <p style='margin: 0 0 8px 30px; width: 50%'>${
-                                            e.fields["Company/Org"]
-                                          }</p>
-                                      </div>
-                                      <div>
-                                          <p class='list-title'>Experience Level: </p>
-                                          <p style='margin: 0 0 8px 30px; width: 50%'>${
-                                            e.fields["Experience Level"]
-                                          }</p>
-                                      </div>
-                                  </div>
-                                  <div class="read-more">
-                                      <button class="read-more-button">Read More</button>
-                                  </div>
-                              </div>`;
+            console.log(e)
+            htmlString += `<div class="job-listing-card"">          
+                                                  
+                          <div class='card-header'>
+                            <p style="font-family: 'Caprasimo', cursive; font-size:35px;">${e.fields["Job Title"]}</p>
+                            <p>${e.fields["Date Added"]}</p> 
+                          </div>
+                        <div class="job-spec-div">
+                        <div class="job-spec">
+                            <h3>Company/Org:</h3>
+                            <p>${e.fields["Company/Org"]}</p>
+                        </div>
+                        <div class='vertical-hr'></div>
+                        <div class="job-spec">
+                            <h3>Location:</h3>
+                            <p>${e.fields["Location"]}</p>
+                        </div>
+                        <div class='vertical-hr'></div>
+                        <div class="job-spec">        
+                            <h3>Type:</h3>
+                            <p class='job-type'>${e.fields["Type"] ? e.fields["Type"].join(", ") : "N/A"}</p>                          
+                        </div>
+                    </div>            
+                    <div class="job-desc-div" style="width: 100%">
+                        <div class="job-req-holder" style="padding-bottom: 10px;">
+                        <div class="exp-sal-div" style="display:flex; justify-content: space-between; flex-wrap: wrap; padding-bottom: 5px;">                                     
+                        <h3 style="font-weight:700;margin-right:3px;">Department/Team: 
+                        <span style='font-size: 16px; font-weight: normal'>${e.fields["Department/Team"] || 'No Team Listed'}</span>
+                        </h3>                                                          
+                                <h3>Salary: <span style='font-size: 16px; font-weight: normal'>${e.fields["Salary copy"] || "No Salary Listed"}</span></h3>
+                             
+                            </div>
+                            <div class="exp-sal-div" style="display:flex; justify-content: space-between; flex-wrap: wrap; padding-bottom: 5px;">                                     
+                                <h3 style="font-weight:700;margin-right:3px;">Experience Level: 
+                                  <span style='font-size: 16px; font-weight: normal'>${e.fields["Experience Level"].join(', ')}</span>
+                               </h3>                                                                                          
+                                    <h3 class="visa-label" style="font-weight: 700; margin-right:3px;">Visa Sponsorship: 
+                                  <span style='font-size: 16px; font-weight: normal'>${e.fields["VISA sponsorship"] ? e.fields["VISA sponsorship"].join(', ') : "N/A"}</span>
+                                  </h3>
+                            </div>
+                            <div class="reg-visa-div" style="display: flex; justify-content:space-between; flex-wrap: wrap;">
+                                    <h3 class="region-label" style="font-weight: 700; margin-right:3px;">Region: 
+                                    <span style='font-size: 16px; font-weight: normal'>${e.fields["Region"] ? e.fields["Region"].join(", ") : "N/A"}</span>
+                                    </h3>
+                                    <h3>Closing Date: <span style='font-size: 16px; font-weight: normal'>${e.fields["Closing Date"]}</span></h3>
+                            </div>
+                    </div>
+        </div>
+        
+                    <div class="job-field-div" style="padding-bottom: 10px;">
+                        <div class="field-label">
+                            <h3>Field(s): </h3>
+                        </div>
+                        <div class="tag-field">                           
+                            ${fields(e.fields["Field"]) || ""}                           
+                        </div>
+                    </div>
+                      <div style="display:flex; justify-content: center;">
+                    <div class='apply-div'>
+                      ${buttons(e.fields["Link to Apply"]) || ""}
+                    </div>
+          </div>
+        </div>`;
           });
           htmlString =
             '<div id="toDelete" class="card-holder">' + htmlString + "</div>";

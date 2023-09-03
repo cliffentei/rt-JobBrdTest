@@ -462,32 +462,32 @@ document.addEventListener("DOMContentLoaded", function () {
                     <div class="job-desc-div" style="width: 100%">
                         <div class="job-req-holder" style="padding-bottom: 10px;">
                         <div class="exp-sal-div" style="display:flex; justify-content: space-between; flex-wrap: wrap; padding-bottom: 5px;">                                     
-                        <h3 style="font-weight:700;margin-right:3px;">Department/Team: 
+                        <h4>Department/Team: 
                         <span style='font-size: 16px; font-weight: normal'>${e.fields["Department/Team"] || 'No Team Listed'}</span>
-                        </h3>                                                          
-                                <h3>Salary: <span style='font-size: 16px; font-weight: normal'>${e.fields["Salary copy"] || "No Salary Listed"}</span></h3>
+                        </h4>                                                          
+                                <h4>Salary: <span style='font-size: 16px; font-weight: normal'>${e.fields["Salary copy"] || "No Salary Listed"}</span></h4>
                              
                             </div>
                             <div class="exp-sal-div" style="display:flex; justify-content: space-between; flex-wrap: wrap; padding-bottom: 5px;">                                     
-                                <h3 style="font-weight:700;margin-right:3px;">Experience Level: 
+                                <h4>Experience Level: 
                                   <span style='font-size: 16px; font-weight: normal'>${e.fields["Experience Level"].join(', ')}</span>
-                               </h3>                                                                                          
-                                    <h3 class="visa-label" style="font-weight: 700; margin-right:3px;">Visa Sponsorship: 
+                               </h4>                                                                                          
+                                    <h4 class="visa-label">Visa Sponsorship: 
                                   <span style='font-size: 16px; font-weight: normal'>${e.fields["VISA sponsorship"] ? e.fields["VISA sponsorship"].join(', ') : "N/A"}</span>
-                                  </h3>
+                                  </h4>
                             </div>
                             <div class="reg-visa-div" style="display: flex; justify-content:space-between; flex-wrap: wrap;">
-                                    <h3 class="region-label" style="font-weight: 700; margin-right:3px;">Region: 
+                                    <h4 class="region-label">Region: 
                                     <span style='font-size: 16px; font-weight: normal'>${e.fields["Region"] ? e.fields["Region"].join(", ") : "N/A"}</span>
-                                    </h3>
-                                    <h3>Closing Date: <span style='font-size: 16px; font-weight: normal'>${e.fields["Closing Date"]}</span></h3>
+                                    </h4>
+                                    <h4>Closing Date: <span style='font-size: 16px; font-weight: normal'>${e.fields["Closing Date"]}</span></h4>
                             </div>
                     </div>
         </div>
         
                     <div class="job-field-div" style="padding-bottom: 10px;">
                         <div class="field-label">
-                            <h3>Field(s): </h3>
+                            <h4>Field(s): </h4>
                         </div>
                         <div class="tag-field">                           
                             ${fields(e.fields["Field"]) || ""}                           

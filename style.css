@@ -487,6 +487,9 @@
     .dropdown-button.selected:hover svg {
         filter: invert(1);
     }
+    #search-input {
+        width: 80vw;
+    }
  }
 
  @media screen and (max-width: 910px) {

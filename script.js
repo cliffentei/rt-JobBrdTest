@@ -378,8 +378,9 @@ document.addEventListener("DOMContentLoaded", function () {
           ) {
             decreaseBtn.classList.remove("show");
             increaseBtn.classList.remove("show");
-            decreaseBtn.classList.add("show");
             increaseBtn.classList.remove("show");
+            decreaseBtn.classList.add("show");
+            
           } else {
             decreaseBtn.classList.remove("show");
             increaseBtn.classList.remove("show");
@@ -422,7 +423,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             </div>
                             <div class="exp-sal-div" style="display:flex; justify-content: space-between; flex-wrap: wrap; padding-bottom: 5px;">                                     
                                 <h4>Experience Level: 
-                                  <span style='font-size: 16px; font-weight: normal'>${e.fields["Experience Level"].join(', ')}</span>
+                                  <span style='font-size: 16px; font-weight: normal'>${e.fields["Experience Level"] && e.fields["Experience Level"].length ? e.fields["Experience Level"].join(', '): e.fields["Experience Level"]? e.fields["Experience Level"]: 'No Experience Listed'}</span>
                                </h4>                                                                                          
                                     <h4 class="visa-label">Visa Sponsorship: 
                                   <span style='font-size: 16px; font-weight: normal'>${e.fields["VISA sponsorship"] ? e.fields["VISA sponsorship"].join(', ') : "N/A"}</span>

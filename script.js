@@ -418,12 +418,12 @@ document.addEventListener("DOMContentLoaded", function () {
                         <h4>Department/Team: 
                         <span style='font-size: 16px; font-weight: normal'>${e.fields["Department/Team"] || 'No Team Listed'}</span>
                         </h4>                                                          
-                                <h4>Salary: <span style='font-size: 16px; font-weight: normal'>${e.fields["Salary copy"] || "No Salary Listed"}</span></h4>
+                                <h4>Salary: <span style='font-size: 16px; font-weight: normal'>${e.fields["Salary"] || "No Salary Listed"}</span></h4>
                              
                             </div>
                             <div class="exp-sal-div" style="display:flex; justify-content: space-between; flex-wrap: wrap; padding-bottom: 5px;">                                     
                                 <h4>Experience Level: 
-                                  <span style='font-size: 16px; font-weight: normal'>${e.fields["Experience Level"] && e.fields["Experience Level"].length ? e.fields["Experience Level"].join(', '): e.fields["Experience Level"]? e.fields["Experience Level"]: 'No Experience Listed'}</span>
+                                  <span style='font-size: 16px; font-weight: normal'>${e.fields["Experience Level"].join(', ')}</span>
                                </h4>                                                                                          
                                     <h4 class="visa-label">Visa Sponsorship: 
                                   <span style='font-size: 16px; font-weight: normal'>${e.fields["VISA sponsorship"] ? e.fields["VISA sponsorship"].join(', ') : "N/A"}</span>
@@ -434,6 +434,12 @@ document.addEventListener("DOMContentLoaded", function () {
                                     <span style='font-size: 16px; font-weight: normal'>${e.fields["Region"] ? e.fields["Region"].join(", ") : "N/A"}</span>
                                     </h4>
                                     <h4>Closing Date: <span style='font-size: 16px; font-weight: normal'>${e.fields["Closing Date"]}</span></h4>
+                            </div>
+                            <div class="min-max-div" style="display: flex; justify-content:space-between; flex-wrap: wrap;">
+                                    <h4 class="min-sal-label">Minimum Salary: 
+                                    <span style='font-size: 16px; font-weight: normal'>${e.fields["Min Salary (USD)"] ? e.fields["Min Salary (USD)"] : "No Salary Listed"}</span>
+                                    </h4>
+                                    <h4>Maximum Salary: <span style='font-size: 16px; font-weight: normal'>${e.fields["Max Salary (USD)"] ? e.fields["Max Salary (USD)"] : "No Salary Listed"}</span></h4>
                             </div>
                     </div>
         </div>

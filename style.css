@@ -56,7 +56,7 @@
      margin: 0;
  }
 
- .field-label h3{
+ .field-label h4{
     margin-bottom: 7px;
  }
 
@@ -135,7 +135,7 @@
      display: flex;
      flex-wrap: wrap;
      justify-content: space-evenly;
-     padding: 20px;
+     /* padding: 20px; */
  }
 
  #search-input {
@@ -462,6 +462,10 @@
      flex-wrap: wrap;
  }
 
+ .job-req-holder h4{
+    margin: 6px 0;
+ }
+
  /* JOB CARD END */
 
  @media screen and (max-width: 650px) {
@@ -473,6 +477,16 @@
      .dropdown-button:hover svg {
          filter: invert(0)
      }
+     .job-listing-card {
+        width: 90%;
+     }
+     .dropdown-button.selected:hover {
+        background-color: black;
+        color: white;
+    }
+    .dropdown-button.selected:hover svg {
+        filter: invert(1);
+    }
  }
 
  @media screen and (max-width: 910px) {

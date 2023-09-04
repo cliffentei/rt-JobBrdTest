@@ -247,54 +247,6 @@ document.addEventListener("DOMContentLoaded", function () {
     return b;
   }
 
-  function openModal(jobDetails) {
-    const modal = document.getElementById("myModal");
-    const modalContent = modal.querySelector(".modal-content");
-    console.log(jobDetails);
-    modalContent.innerHTML = "";
-    modalContent.innerHTML = `
-              <div class="modal-header">
-              <div style='display: flex; justify-content: space-between; width: 100%; align-items: center'>                  
-                  <h2 class='modal-title'>${jobDetails["Job Title"]}</h2>
-                  <span style='font-size: 50px; margin: 0 0 0 auto;' class="close">&times;</span>
-                  </div>
-                  <hr/>
-              </div>
-                  <div class="modal-body">
-                      <h3>${jobDetails["Region"]
-        ? `<strong>Location:</strong> <br> <span style='font-size: 15px; font-weight: normal'>${jobDetails[
-          "Region"
-        ].join(", ")}</span>`
-        : "N/A"
-      }</h3>
-                  <h3><strong>Company/Org: </strong> <br><span style='font-size: 15px; font-weight: normal'>${jobDetails["Company/Org"]
-      }</span></h3>
-                  <h3><strong>Experience Level: </strong> <br><span style='font-size: 15px; font-weight: normal'>${jobDetails[
-        "Experience Level"
-      ].join(", ")}</span></h3>
-                  <h3><strong>Salary: </strong> <br><span style='font-size: 15px; font-weight: normal'>${jobDetails["Salary copy"] || "No Salary Listed"
-      }</span></h3>
-                  <h3><strong>Deadline: </strong> <br><span style='font-size: 15px; font-weight: normal'>${jobDetails["Closing Date"] || "No Deadline Listed"
-      }</span></h3>
-                  <div>
-                      <p style='font-weight: bold; margin: 0;'>Fields:</p>
-                      <div style='margin-top: 3px' class='outer-field-div'>${fields(jobDetails["Field"]) || ""
-      }</div>
-                  </div>
-                  <div class='apply-div'>
-                    ${buttons(jobDetails["Link to Apply"]) || ""}
-                  </div>
-              </div>
-              `;
-
-    modal.style.display = "flex";
-
-    const closeBtn = modal.querySelector(".close");
-    closeBtn.onclick = function () {
-      modal.style.display = "none";
-    };
-  }
-
   let offset = 0;
   let offsetArray = [""];
   let globalUrl = "";
@@ -507,13 +459,6 @@ document.addEventListener("DOMContentLoaded", function () {
           const parsedElement = parsedHtml.querySelector("div");
           const targetElement = document.getElementById("targetElement");
           targetElement.appendChild(parsedElement);
-          const readMoreButtons =
-            document.querySelectorAll(".read-more-button");
-          readMoreButtons.forEach((button, index) => {
-            button.addEventListener("click", () => {
-              openModal(data.records[index].fields);
-            });
-          });
         })
         .catch((error) => console.error("Error fetching data:", error));
     }

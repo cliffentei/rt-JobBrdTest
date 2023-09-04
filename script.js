@@ -32,7 +32,77 @@ document.addEventListener("DOMContentLoaded", function () {
       "Academia",
       "Executive/Director",
     ],
-    dropdown5: [], // To be populated from fetched data
+    dropdown5: [
+      "Academic or Professor",
+      "Accessibility",
+      "Advocacy",
+      "AI Governance",
+      "Business Analytics",
+      "Business Development",
+      "Communications",
+      "Community Management",
+      "Consulting",
+      "Customer Success",
+      "Cybersecurity",
+      "Data Governance",
+      "Data Justice",
+      "Data Privacy",
+      "Data Science / Data Analysis",
+      "Developer",
+      "DevOps",
+      "Digital Campaigning",
+      "Digital Citizenship",
+      "Digital Divide",
+      "Digital Ethics",
+      "Digital Governance",
+      "Digital Rights",
+      "Digital Wellbeing",
+      "Disinformation",
+      "Diversity, Equity, & Inclusion",
+      "Event Planning",
+      "Finance",
+      "Financial Fairness",
+      "Grant Management",
+      "Healthy Digital Spaces",
+      "Human Computation",
+      "Human Computer Interaction",
+      "Human Resources / Recruiting",
+      "Human Rights",
+      "Human-Centered Design",
+      "Instructional Design/Curriculum Development",
+      "Journalism",
+      "Language specialty",
+      "Leadership",
+      "Machine Learning",
+      "Marketing",
+      "MLOps",
+      "Nonprofit Development",
+      "Online Safety",
+      "Open Source",
+      "Operations",
+      "Partnerships/Relationships",
+      "Portfolio Development",
+      "Portfolio Management",
+      "Practice Development",
+      "Product",
+      "Production",
+      "Program or Project Management",
+      "Programming",
+      "Public Interest Technology",
+      "Research",
+      "Responsible AI",
+      "Risk & Compliance",
+      "Sales",
+      "Social Impact",
+      "Software Engineering",
+      "Strategy",
+      "Systems Developer",
+      "Tech & Democracy",
+      "Tech Policy/Law",
+      "Trust & Safety",
+      "UX Design / UX Research",
+      "Youth Wellbeing",
+    ],
     dropdown6: ["Part-Time", "Full-Time", "Contract/Term"],
   };
 
@@ -48,7 +118,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const companyEndpoint = `https://api.airtable.com/v0/apprdsx9uO4l5FieL/Table%201?fields%5B%5D=${companyNameColumn}`;
   const companyUniqueValues = new Set();
 
-  async function dsajk() {
+  async function fetchCompanies() {
     fetch(companyEndpoint, {
       headers: {
         Authorization: `Bearer ${apiKey}`,
@@ -65,33 +135,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const companyUniqueArray = Array.from(companyUniqueValues);
         dropdownData["dropdown1"] = companyUniqueArray;
-
-        fetch(endpoint, {
-          headers: {
-            Authorization: `Bearer ${apiKey}`,
-          },
-        })
-          .then((response) => response.json())
-          .then((data) => {
-            const fieldUniqueValues = new Set();
-
-            data.records.forEach((record) => {
-              const value = record.fields[columnName];
-              if (value !== undefined) {
-                fieldUniqueValues.add(...value);
-              }
-            });
-
-            const fieldUniqueArray = Array.from(fieldUniqueValues);
-            dropdownData["dropdown5"] = fieldUniqueArray;
-
-            renderDropdowns();
-          })
-          .catch((error) => console.error("Error fetching data:", error));
+        renderDropdowns();
       })
       .catch((error) => console.error("Error fetching data:", error));
   }
-  dsajk();
+  fetchCompanies();
 
   function renderDropdowns() {
     const dropdowns = document.querySelectorAll(".dropdown");
@@ -118,10 +166,12 @@ document.addEventListener("DOMContentLoaded", function () {
           updateButtonState();
         });
 
-        optionElement.addEventListener("click", function () {
+        optionElement.addEventListener("click", function (event) {
           checkbox.checked = !checkbox.checked;
           optionElement.classList.toggle("selected");
           updateButtonState();
+          event.preventDefault();
+          fetchAllData();
         });
       });
 
@@ -214,8 +264,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
       }
     });
-
-    // fetchAllData();
   }
 
   function buttons(input) {
@@ -231,9 +279,11 @@ document.addEventListener("DOMContentLoaded", function () {
       return `<a href="${matches[0]}" target="_blank" style='text-decoration: none;'><div class='apply-btn'><p>Apply<p></div></a>`;
     }
     for (let i = 0; i < matches.length; i++) {
-      b += `<a href="${matches[i]
-        }" target="_blank" style='text-decoration: none;'><div class='apply-btn'>Apply (${i + 1
-        })</div></a>`;
+      b += `<a href="${
+        matches[i]
+      }" target="_blank" style='text-decoration: none;'><div class='apply-btn'>Apply (${
+        i + 1
+      })</div></a>`;
     }
     return b;
   }
@@ -257,11 +307,29 @@ document.addEventListener("DOMContentLoaded", function () {
 
   fetchAllData();
 
-  const searchForm = document.getElementById("search-form");
+  const searchInput = document.getElementById("search-input");
 
-  searchForm.addEventListener("submit", function (event) {
+  searchInput.addEventListener("input", function (event) {
     event.preventDefault();
     fetchAllData();
+  });
+
+  // const checkboxInputs = document.querySelectorAll(".dropdown-option-checkbox");
+
+  // checkboxInputs.forEach(function (checkboxInput) {
+  // checkboxInput.addEventListener("input", function () {
+  //   fetchAllData();
+  // });
+  // });
+
+  const dropdownOptions = document.querySelectorAll(".dropdown-option");
+  dropdownOptions.forEach((option) => {
+    option.addEventListener("click", () => {
+      // const checkbox = option.querySelector(".dropdown-option-checkbox");
+      // const isChecked = checkbox.checked;
+      // const optionText = option.querySelector("span").textContent;
+      console.log(`Option`);
+    });
   });
 
   function urlCreator(s) {
@@ -326,6 +394,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     let url = urlCreator(selectedOptions);
+    console.log(url);
     let newOffset = "&offset=" + offsetArray[offset];
     if (document.getElementById("toDelete")) {
       document.getElementById("toDelete").remove();
@@ -341,8 +410,6 @@ document.addEventListener("DOMContentLoaded", function () {
       setCards(url + newOffset);
       offsetKey = newOffset;
     }
-
-    console.log(globalUrl, offsetKey);
 
     async function setCards(newUrl) {
       fetch(newUrl, {
@@ -380,7 +447,6 @@ document.addEventListener("DOMContentLoaded", function () {
             increaseBtn.classList.remove("show");
             increaseBtn.classList.remove("show");
             decreaseBtn.classList.add("show");
-            
           } else {
             decreaseBtn.classList.remove("show");
             increaseBtn.classList.remove("show");
@@ -389,11 +455,12 @@ document.addEventListener("DOMContentLoaded", function () {
           }
           let htmlString = "";
           data.records.forEach((e) => {
-            console.log(e)
             htmlString += `<div class="job-listing-card"">          
                                                   
                           <div class='card-header'>
-                            <p style="font-family: 'Caprasimo', cursive; font-size:35px;">${e.fields["Job Title"]}</p>
+                            <p style="font-family: 'Caprasimo', cursive; font-size:35px;">${
+                              e.fields["Job Title"]
+                            }</p>
                             <p>${e.fields["Date Added"]}</p> 
                           </div>
                         <div class="job-spec-div">
@@ -409,31 +476,56 @@ document.addEventListener("DOMContentLoaded", function () {
                         <div class='vertical-hr'></div>
                         <div class="job-spec">        
                             <h3>Type:</h3>
-                            <p class='job-type'>${e.fields["Type"] ? e.fields["Type"].join(", ") : "N/A"}</p>                          
+                            <p class='job-type'>${
+                              e.fields["Type"]
+                                ? e.fields["Type"].join(", ")
+                                : "N/A"
+                            }</p>                          
                         </div>
                     </div>            
                     <div class="job-desc-div" style="width: 100%">
                         <div class="job-req-holder" style="padding-bottom: 10px;">
                         <div class="exp-sal-div" style="display:flex; justify-content: space-between; flex-wrap: wrap; padding-bottom: 5px;">                                     
                         <h4>Department/Team: 
-                        <span style='font-size: 16px; font-weight: normal'>${e.fields["Department/Team"] || 'No Team Listed'}</span>
+                        <span style='font-size: 16px; font-weight: normal'>${
+                          e.fields["Department/Team"] || "No Team Listed"
+                        }</span>
                         </h4>                                                          
-                                <h4>Salary: <span style='font-size: 16px; font-weight: normal'>${e.fields["Salary copy"] || "No Salary Listed"}</span></h4>
+                                <h4>Salary: <span style='font-size: 16px; font-weight: normal'>${
+                                  e.fields["Salary copy"] || "No Salary Listed"
+                                }</span></h4>
                              
                             </div>
                             <div class="exp-sal-div" style="display:flex; justify-content: space-between; flex-wrap: wrap; padding-bottom: 5px;">                                     
                                 <h4>Experience Level: 
-                                  <span style='font-size: 16px; font-weight: normal'>${e.fields["Experience Level"] && e.fields["Experience Level"].length ? e.fields["Experience Level"].join(', '): e.fields["Experience Level"]? e.fields["Experience Level"]: 'No Experience Listed'}</span>
+                                  <span style='font-size: 16px; font-weight: normal'>${
+                                    e.fields["Experience Level"] &&
+                                    e.fields["Experience Level"].length
+                                      ? e.fields["Experience Level"].join(", ")
+                                      : e.fields["Experience Level"]
+                                      ? e.fields["Experience Level"]
+                                      : "No Experience Listed"
+                                  }</span>
                                </h4>                                                                                          
                                     <h4 class="visa-label">Visa Sponsorship: 
-                                  <span style='font-size: 16px; font-weight: normal'>${e.fields["VISA sponsorship"] ? e.fields["VISA sponsorship"].join(', ') : "N/A"}</span>
+                                  <span style='font-size: 16px; font-weight: normal'>${
+                                    e.fields["VISA sponsorship"]
+                                      ? e.fields["VISA sponsorship"].join(", ")
+                                      : "N/A"
+                                  }</span>
                                   </h4>
                             </div>
                             <div class="reg-visa-div" style="display: flex; justify-content:space-between; flex-wrap: wrap;">
                                     <h4 class="region-label">Region: 
-                                    <span style='font-size: 16px; font-weight: normal'>${e.fields["Region"] ? e.fields["Region"].join(", ") : "N/A"}</span>
+                                    <span style='font-size: 16px; font-weight: normal'>${
+                                      e.fields["Region"]
+                                        ? e.fields["Region"].join(", ")
+                                        : "N/A"
+                                    }</span>
                                     </h4>
-                                    <h4>Closing Date: <span style='font-size: 16px; font-weight: normal'>${e.fields["Closing Date"]}</span></h4>
+                                    <h4>Closing Date: <span style='font-size: 16px; font-weight: normal'>${
+                                      e.fields["Closing Date"]
+                                    }</span></h4>
                             </div>
                     </div>
         </div>
@@ -443,7 +535,9 @@ document.addEventListener("DOMContentLoaded", function () {
                             <h4>Field(s): </h4>
                         </div>
                         <div class="tag-field">                           
-                            ${fields(e.fields["Field"]) || ""}                           
+                            ${
+                              fields(e.fields["Field"]) || ""
+                            }                           
                         </div>
                     </div>
                       <div style="display:flex; justify-content: center;">

@@ -117,7 +117,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const companyEndpoint = `https://api.airtable.com/v0/apprdsx9uO4l5FieL/Table%201?fields%5B%5D=${companyNameColumn}`;
   const companyUniqueValues = new Set();
   let timeoutId;
-  const dotSpinner = document.querySelector(".dot-spinner");
+  const dotSpinner = document.querySelector(".newtons-cradle");
 
   async function fetchCompanies() {
     fetch(companyEndpoint, {

@@ -108,7 +108,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const apiKey =
     "patNamJqXdDlueUxM.6e6e7f9efc1e8ab27056891e8f3c51c97bf2f994036cc554fb9618143bc58c31";
-  // const tableName = 'Table 1';
   const columnName = "Field";
 
   const endpoint = `https://api.airtable.com/v0/apprdsx9uO4l5FieL/Table%201?fields%5B%5D=${columnName}`;
@@ -117,6 +116,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const companyNameColumn = "Company/Org";
   const companyEndpoint = `https://api.airtable.com/v0/apprdsx9uO4l5FieL/Table%201?fields%5B%5D=${companyNameColumn}`;
   const companyUniqueValues = new Set();
+  let timeoutId;
+  const dotSpinner = document.querySelector(".dot-spinner");
 
   async function fetchCompanies() {
     fetch(companyEndpoint, {
@@ -171,7 +172,14 @@ document.addEventListener("DOMContentLoaded", function () {
           optionElement.classList.toggle("selected");
           updateButtonState();
           event.preventDefault();
-          fetchAllData();
+          const deleteMe = document.getElementById("toDelete");
+          if (deleteMe) deleteMe.remove();
+          clearTimeout(timeoutId);
+          dotSpinner.classList.remove("hidden");
+          timeoutId = setTimeout(() => {
+            fetchAllData();
+            dotSpinner.classList.add("hidden");
+          }, 1000);
         });
       });
 
@@ -311,25 +319,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
   searchInput.addEventListener("input", function (event) {
     event.preventDefault();
-    fetchAllData();
-  });
-
-  // const checkboxInputs = document.querySelectorAll(".dropdown-option-checkbox");
-
-  // checkboxInputs.forEach(function (checkboxInput) {
-  // checkboxInput.addEventListener("input", function () {
-  //   fetchAllData();
-  // });
-  // });
-
-  const dropdownOptions = document.querySelectorAll(".dropdown-option");
-  dropdownOptions.forEach((option) => {
-    option.addEventListener("click", () => {
-      // const checkbox = option.querySelector(".dropdown-option-checkbox");
-      // const isChecked = checkbox.checked;
-      // const optionText = option.querySelector("span").textContent;
-      console.log(`Option`);
-    });
+    const deleteMe = document.getElementById("toDelete");
+    if (deleteMe) deleteMe.remove();
+    clearTimeout(timeoutId);
+    dotSpinner.classList.remove("hidden");
+    timeoutId = setTimeout(() => {
+      fetchAllData();
+      dotSpinner.classList.add("hidden");
+    }, 1000);
   });
 
   function urlCreator(s) {
@@ -400,7 +397,7 @@ document.addEventListener("DOMContentLoaded", function () {
       document.getElementById("toDelete").remove();
     }
 
-    if (url !== globalUrl) {
+    if (url !== globalUrl || (url === globalUrl && offsetKey === newOffset)) {
       offset = 0;
       offsetArray = [""];
       setCards(url);
@@ -454,8 +451,9 @@ document.addEventListener("DOMContentLoaded", function () {
             increaseBtn.classList.remove("show");
           }
           let htmlString = "";
-          data.records.forEach((e) => {
-            htmlString += `<div class="job-listing-card"">          
+          if (data.records.length > 0) {
+            data.records.forEach((e) => {
+              htmlString += `<div class="job-listing-card"">          
                                                   
                           <div class='card-header'>
                             <p style="font-family: 'Caprasimo', cursive; font-size:35px;">${
@@ -546,7 +544,10 @@ document.addEventListener("DOMContentLoaded", function () {
                     </div>
           </div>
         </div>`;
-          });
+            });
+          } else {
+            htmlString += `<h1 class="title">No Results Found</h1>`;
+          }
           htmlString =
             '<div id="toDelete" class="card-holder">' + htmlString + "</div>";
           const parser = new DOMParser();

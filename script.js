@@ -484,19 +484,19 @@ document.addEventListener("DOMContentLoaded", function () {
                     <div class="job-desc-div" style="width: 100%">
                         <div class="job-req-holder" style="padding-bottom: 10px;">
                         <div class="exp-sal-div" style="display:flex; justify-content: space-between; flex-wrap: wrap; padding-bottom: 5px;">                                     
-                        <h4>Department/Team: 
-                        <span style='font-size: 16px; font-weight: normal'>${
+                        <p style='font-size: 25px; font-weight: bold'>Department/Team: 
+                        <span style='font-size: 25px; font-weight: normal'>${
                           e.fields["Department/Team"] || "No Team Listed"
                         }</span>
-                        </h4>                                                          
-                                <h4>Salary: <span style='font-size: 16px; font-weight: normal'>${
+                        </p>                                                          
+                                <p style='font-size: 25px; font-weight: bold'>Salary: <span style='font-size: 25px; font-weight: normal'>${
                                   e.fields["Salary"] || "No Salary Listed"
-                                }</span></h4>
+                                }</span></p>
                              
                             </div>
                             <div class="exp-sal-div" style="display:flex; justify-content: space-between; flex-wrap: wrap; padding-bottom: 5px;">                                     
-                                <h4>Experience Level: 
-                                  <span style='font-size: 16px; font-weight: normal'>${
+                                <p style='font-size: 25px; font-weight: bold'>Experience Level: 
+                                  <span style='font-size: 25px; font-weight: normal'>${
                                     e.fields["Experience Level"] &&
                                     e.fields["Experience Level"].length
                                       ? e.fields["Experience Level"].join(", ")
@@ -504,40 +504,40 @@ document.addEventListener("DOMContentLoaded", function () {
                                       ? e.fields["Experience Level"]
                                       : "No Experience Listed"
                                   }</span>
-                               </h4>                                                                                          
-                                    <h4 class="visa-label">Visa Sponsorship: 
-                                  <span style='font-size: 16px; font-weight: normal'>${
+                               </p>                                                                                          
+                                    <p style='font-size: 25px; font-weight: bold' class="visa-label">Visa Sponsorship: 
+                                  <span style='font-size: 25px; font-weight: normal'>${
                                     e.fields["VISA sponsorship"]
                                       ? e.fields["VISA sponsorship"].join(", ")
                                       : "N/A"
                                   }</span>
-                                  </h4>
+                                  </p>
                             </div>
                             <div class="reg-visa-div" style="display: flex; justify-content:space-between; flex-wrap: wrap;">
-                                    <h4 class="region-label">Region: 
-                                    <span style='font-size: 16px; font-weight: normal'>${
+                                    <p style='font-size: 25px; font-weight: bold' class="region-label">Region: 
+                                    <span style='font-size: 25px; font-weight: normal'>${
                                       e.fields["Region"]
                                         ? e.fields["Region"].join(", ")
                                         : "N/A"
                                     }</span>
-                                    </h4>
-                                    <h4>Closing Date: <span style='font-size: 16px; font-weight: normal'>${
+                                    </p>
+                                    <p style='font-size: 25px; font-weight: bold'>Closing Date: <span style='font-size: 25px; font-weight: normal'>${
                                       e.fields["Closing Date"]
-                                    }</span></h4>
+                                    }</span></p>
                             </div>
                             <div class="min-max-div" style="display: flex; justify-content:space-between; flex-wrap: wrap;">
-                                    <h4 class="min-sal-label">Minimum Salary: 
-                                    <span style='font-size: 16px; font-weight: normal'>${
+                                    <p style='font-size: 25px; font-weight: bold' class="min-sal-label">Minimum Salary: 
+                                    <span style='font-size: 25px; font-weight: normal'>${
                                       e.fields["Min Salary (USD)"]
                                         ? e.fields["Min Salary (USD)"]
-                                        : "No Salary Listed"
+                                        : "No Minimum Listed"
                                     }</span>
-                                    </h4>
-                                    <h4>Maximum Salary: <span style='font-size: 16px; font-weight: normal'>${
+                                    </p>
+                                    <p style='font-size: 25px; font-weight: bold'>Maximum Salary: <span style='font-size: 25px; font-weight: normal'>${
                                       e.fields["Max Salary (USD)"]
                                         ? e.fields["Max Salary (USD)"]
-                                        : "No Salary Listed"
-                                    }</span></h4>
+                                        : "No Maximum Listed"
+                                    }</span></p>
                             </div>
                     </div>
         </div>

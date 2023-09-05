@@ -473,6 +473,13 @@ document.addEventListener("DOMContentLoaded", function () {
                             }</p>
                             <p>${e.fields["Created"]}</p> 
                           </div>
+                          <div class="job-field-div" style="padding-bottom: 10px;">
+                          <div class="tag-field">                           
+                              ${
+                                fields(e.fields["Field"]) || ""
+                              }                           
+                          </div>
+                      </div>
                         <div class="job-spec-div">
                         <div class="job-spec">
                             <h3>Company/Org:</h3>
@@ -506,6 +513,20 @@ document.addEventListener("DOMContentLoaded", function () {
                                 }</span></p>
                              
                             </div>
+                            <div class="min-max-div" style="display: flex; justify-content:space-between; flex-wrap: wrap;">
+                                    <p style='font-size: 25px; font-weight: bold' class="min-sal-label">Minimum Salary: 
+                                    <span style='font-size: 25px; font-weight: normal'>${
+                                      e.fields["Min Salary (USD)"]
+                                        ? e.fields["Min Salary (USD)"]
+                                        : "No Minimum Listed"
+                                    }</span>
+                                    </p>
+                                    <p style='font-size: 25px; font-weight: bold'>Maximum Salary: <span style='font-size: 25px; font-weight: normal'>${
+                                      e.fields["Max Salary (USD)"]
+                                        ? e.fields["Max Salary (USD)"]
+                                        : "No Maximum Listed"
+                                    }</span></p>
+                            </div>
                             <div class="exp-sal-div" style="display:flex; justify-content: space-between; flex-wrap: wrap; padding-bottom: 5px;">                                     
                                 <p style='font-size: 25px; font-weight: bold'>Experience Level: 
                                   <span style='font-size: 25px; font-weight: normal'>${
@@ -537,33 +558,10 @@ document.addEventListener("DOMContentLoaded", function () {
                                       e.fields["Closing Date"]
                                     }</span></p>
                             </div>
-                            <div class="min-max-div" style="display: flex; justify-content:space-between; flex-wrap: wrap;">
-                                    <p style='font-size: 25px; font-weight: bold' class="min-sal-label">Minimum Salary: 
-                                    <span style='font-size: 25px; font-weight: normal'>${
-                                      e.fields["Min Salary (USD)"]
-                                        ? e.fields["Min Salary (USD)"]
-                                        : "No Minimum Listed"
-                                    }</span>
-                                    </p>
-                                    <p style='font-size: 25px; font-weight: bold'>Maximum Salary: <span style='font-size: 25px; font-weight: normal'>${
-                                      e.fields["Max Salary (USD)"]
-                                        ? e.fields["Max Salary (USD)"]
-                                        : "No Maximum Listed"
-                                    }</span></p>
-                            </div>
+                            
                     </div>
         </div>
-        
-                    <div class="job-field-div" style="padding-bottom: 10px;">
-                        <div class="field-label">
-                            <h4>Field(s): </h4>
-                        </div>
-                        <div class="tag-field">                           
-                            ${
-                              fields(e.fields["Field"]) || ""
-                            }                           
-                        </div>
-                    </div>
+      
                       <div style="display:flex; justify-content: center;">
                     <div class='apply-div'>
                       ${buttons(e.fields["Link to Apply"]) || ""}

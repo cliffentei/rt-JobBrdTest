@@ -337,7 +337,13 @@ document.addEventListener("DOMContentLoaded", function () {
   const increaseBtn = document.querySelector(".increase");
   const decreaseBtn = document.querySelector(".decrease");
 
-  fetchAllData();
+  clearTimeout(timeoutId);
+  dotSpinner.classList.remove("hidden");
+  timeoutId = setTimeout(() => {
+    fetchAllData();
+    dotSpinner.classList.add("hidden");
+  }, 1000);
+  // fetchAllData();
 
   const searchInput = document.getElementById("search-input");
 

@@ -196,6 +196,10 @@ document.addEventListener("DOMContentLoaded", function () {
           optionElement.classList.toggle("selected");
           updateButtonState();
           event.preventDefault();
+          decreaseBtn.classList.remove("show");
+          decreaseBtn2.classList.remove("show");
+          increaseBtn.classList.remove("show");
+          increaseBtn2.classList.remove("show");
           const deleteMe = document.getElementById("toDelete");
           if (deleteMe) deleteMe.remove();
           clearTimeout(timeoutId);
@@ -353,6 +357,10 @@ document.addEventListener("DOMContentLoaded", function () {
     const deleteMe = document.getElementById("toDelete");
     if (deleteMe) deleteMe.remove();
     clearTimeout(timeoutId);
+    decreaseBtn.classList.remove("show");
+    decreaseBtn2.classList.remove("show");
+    increaseBtn.classList.remove("show");
+    increaseBtn2.classList.remove("show");
     dotSpinner.classList.remove("hidden");
     timeoutId = setTimeout(() => {
       fetchAllData();
@@ -515,7 +523,7 @@ document.addEventListener("DOMContentLoaded", function () {
           let htmlString = "";
           if (data.records.length > 0) {
             data.records.forEach((e) => {
-              htmlString += `<div class="job-listing-card"">          
+              htmlString += `<div class="job-listing-card loading-effect">          
                                                   
                           <div class='card-header'>
                             <p style="font-family: 'Caprasimo', cursive; font-size:35px;">${

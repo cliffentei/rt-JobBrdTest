@@ -162,7 +162,8 @@
         padding: 5px; 
         display: flex;
         align-items: center;
-        cursor: pointer; 
+        cursor: pointer;
+        max-width: 50vw;
      }
      
      .search-icon {
@@ -543,6 +544,10 @@
 
            #search-input {
                width: 80vw;
+           }
+
+           .search-bar-container {
+                max-width: 80vw;
            }
        }
 

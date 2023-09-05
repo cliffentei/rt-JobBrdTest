@@ -207,7 +207,9 @@
 } */
 
        .increase,
-       .decrease {
+       .decrease, 
+       .increase2, 
+       .decrease2 {
            display: none;
            align-items: center;
            border: .5px solid black;
@@ -222,7 +224,9 @@
        }
 
        .increase p,
-       .decrease p {
+       .decrease p, 
+       .increase2 p, 
+       .decrease2 p {
            padding: 5px 5px;
            margin: 0;
        }
@@ -351,7 +355,9 @@
 
        .dropdown-button:hover,
        .increase:hover,
-       .decrease:hover {
+       .decrease:hover, 
+       .increase2:hover,
+       .decrease2:hover {
            background-position: 0 +100%;
            color: white;
        }
@@ -376,13 +382,17 @@
 
        .dropdown-button svg,
        .increase svg,
-       .decrease svg {
+       .decrease svg,
+       .increase2 svg,
+       .decrease2 svg {
            transition: all 0.3s ease;
        }
 
        .dropdown-button:hover svg,
        .increase:hover svg,
-       .decrease:hover svg {
+       .decrease:hover svg,
+       .increase2:hover svg,
+       .decrease2:hover svg {
            filter: invert(1)
        }
 

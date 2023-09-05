@@ -335,7 +335,9 @@ document.addEventListener("DOMContentLoaded", function () {
   let offsetKey = "&offset=";
 
   const increaseBtn = document.querySelector(".increase");
+  const increaseBtn2 = document.querySelector(".increase2");
   const decreaseBtn = document.querySelector(".decrease");
+  const decreaseBtn2 = document.querySelector(".decrease2");
 
   clearTimeout(timeoutId);
   dotSpinner.classList.remove("hidden");
@@ -343,7 +345,6 @@ document.addEventListener("DOMContentLoaded", function () {
     fetchAllData();
     dotSpinner.classList.add("hidden");
   }, 1000);
-  // fetchAllData();
 
   const searchInput = document.getElementById("search-input");
 
@@ -470,30 +471,46 @@ document.addEventListener("DOMContentLoaded", function () {
 
           if (offset === 0 && offsetArray.length > 1) {
             decreaseBtn.classList.remove("show");
+            decreaseBtn2.classList.remove("show");
             increaseBtn.classList.remove("show");
+            increaseBtn2.classList.remove("show");
             decreaseBtn.classList.remove("show");
+            decreaseBtn2.classList.remove("show");
             increaseBtn.classList.add("show");
+            increaseBtn2.classList.add("show");
           } else if (
             offsetArray[offset + 1] !== undefined &&
             offsetArray[offset - 1] !== undefined
           ) {
             decreaseBtn.classList.remove("show");
+            decreaseBtn2.classList.remove("show");
             increaseBtn.classList.remove("show");
+            increaseBtn2.classList.remove("show");
             decreaseBtn.classList.add("show");
+            decreaseBtn2.classList.add("show");
             increaseBtn.classList.add("show");
+            increaseBtn2.classList.add("show");
           } else if (
             offsetArray[offset - 1] !== undefined &&
             offsetArray[offset + 1] === undefined
           ) {
             decreaseBtn.classList.remove("show");
+            decreaseBtn2.classList.remove("show");
             increaseBtn.classList.remove("show");
+            increaseBtn2.classList.remove("show");
             increaseBtn.classList.remove("show");
+            increaseBtn2.classList.remove("show");
             decreaseBtn.classList.add("show");
+            decreaseBtn2.classList.add("show");
           } else {
             decreaseBtn.classList.remove("show");
+            decreaseBtn2.classList.remove("show");
             increaseBtn.classList.remove("show");
+            increaseBtn2.classList.remove("show");
             decreaseBtn.classList.remove("show");
+            decreaseBtn2.classList.remove("show");
             increaseBtn.classList.remove("show");
+            increaseBtn2.classList.remove("show");
           }
           let htmlString = "";
           if (data.records.length > 0) {
@@ -621,7 +638,9 @@ document.addEventListener("DOMContentLoaded", function () {
     offset++;
     document.getElementById("toDelete").remove();
     decreaseBtn.classList.remove("show");
+    decreaseBtn2.classList.remove("show");
     increaseBtn.classList.remove("show");
+    increaseBtn2.classList.remove("show");
     clearTimeout(timeoutId);
     dotSpinner.classList.remove("hidden");
     timeoutId = setTimeout(() => {
@@ -634,7 +653,9 @@ document.addEventListener("DOMContentLoaded", function () {
     if (offset > 0) offset--;
     document.getElementById("toDelete").remove();
     decreaseBtn.classList.remove("show");
+    decreaseBtn2.classList.remove("show");
     increaseBtn.classList.remove("show");
+    increaseBtn2.classList.remove("show");
     clearTimeout(timeoutId);
     dotSpinner.classList.remove("hidden");
     timeoutId = setTimeout(() => {
@@ -644,5 +665,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   increaseBtn.addEventListener("click", increase);
+  increaseBtn2.addEventListener("click", increase);
   decreaseBtn.addEventListener("click", decrease);
+  decreaseBtn2.addEventListener("click", decrease);
 });

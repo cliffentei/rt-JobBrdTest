@@ -3,6 +3,28 @@ document.addEventListener("DOMContentLoaded", function () {
   document.getElementsByClassName("search-container")[0].addEventListener("click", function() {
     document.getElementById("search-input").focus(); // Focus on the input when the container is clicked
  });
+
+ const searchInputs = document.getElementById("search-input");
+const clearIcon = document.querySelector(".clear-icon");
+
+// Add an event listener to the input for keyup events
+searchInputs.addEventListener("keyup", function() {
+   const inputValue = this.value.trim(); // Get the trimmed input value
+
+   // Toggle the clear icon's visibility based on the input value
+   if (inputValue.length > 0) {
+      clearIcon.style.display = "block";
+   } else {
+      clearIcon.style.display = "none";
+   }
+});
+
+// Add an event listener to the clear icon to clear the input when clicked
+clearIcon.addEventListener("click", function() {
+  searchInputs.value = ""; // Clear the input value
+   clearIcon.style.display = "none"; // Hide the clear icon
+   fetchAllData();
+});
   const dropdownData = {
     dropdown1: [],
     dropdown2: [

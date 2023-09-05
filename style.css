@@ -142,6 +142,19 @@
         margin: 5px;
        }
 
+    .clear-icon {
+        
+        cursor: pointer;
+        width: 20px; /* Adjust the width of the clear icon as needed */
+        height: 20px; /* Adjust the height of the clear icon as needed */
+        fill: #000; /* Set the color of the clear icon */
+    }
+
+    /* .hidden-x{
+        visibility: hidden;
+        pointer-events: none;
+    } */
+
        .search-bar-container {
         position: relative;
         background: #fff;

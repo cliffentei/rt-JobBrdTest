@@ -1,4 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
+
+  document.getElementsByClassName("search-container")[0].addEventListener("click", function() {
+    document.getElementById("search-input").focus(); // Focus on the input when the container is clicked
+ });
   const dropdownData = {
     dropdown1: [],
     dropdown2: [

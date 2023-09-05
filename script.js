@@ -1,30 +1,28 @@
 document.addEventListener("DOMContentLoaded", function () {
+  document
+    .getElementsByClassName("search-container")[0]
+    .addEventListener("click", function () {
+      document.getElementById("search-input").focus(); // Focus on the input when the container is clicked
+    });
 
-  document.getElementsByClassName("search-container")[0].addEventListener("click", function() {
-    document.getElementById("search-input").focus(); // Focus on the input when the container is clicked
- });
+  const searchInputs = document.getElementById("search-input");
+  const clearIcon = document.querySelector(".clear-icon");
 
- const searchInputs = document.getElementById("search-input");
-const clearIcon = document.querySelector(".clear-icon");
+  searchInputs.addEventListener("keyup", function () {
+    const inputValue = this.value.trim();
 
-// Add an event listener to the input for keyup events
-searchInputs.addEventListener("keyup", function() {
-   const inputValue = this.value.trim(); // Get the trimmed input value
-
-   // Toggle the clear icon's visibility based on the input value
-   if (inputValue.length > 0) {
+    if (inputValue.length > 0) {
       clearIcon.style.display = "block";
-   } else {
+    } else {
       clearIcon.style.display = "none";
-   }
-});
+    }
+  });
 
-// Add an event listener to the clear icon to clear the input when clicked
-clearIcon.addEventListener("click", function() {
-  searchInputs.value = ""; // Clear the input value
-   clearIcon.style.display = "none"; // Hide the clear icon
-   fetchAllData();
-});
+  clearIcon.addEventListener("click", function () {
+    searchInputs.value = "";
+    clearIcon.style.display = "none";
+    fetchAllData();
+  });
   const dropdownData = {
     dropdown1: [],
     dropdown2: [
@@ -447,11 +445,14 @@ clearIcon.addEventListener("click", function() {
             const dateB = new Date(b.fields.Created);
             return dateB - dateA;
           });
-      
+
           data.records.forEach((record) => {
             const createdDate = new Date(record.fields.Created);
             const options = { year: "numeric", month: "long", day: "numeric" };
-            const formattedDate = createdDate.toLocaleDateString(undefined, options);
+            const formattedDate = createdDate.toLocaleDateString(
+              undefined,
+              options
+            );
             record.fields.Created = formattedDate;
           });
           if (data.offset && !offsetArray[offset + 1]) {
@@ -613,13 +614,27 @@ clearIcon.addEventListener("click", function() {
   function increase() {
     offset++;
     document.getElementById("toDelete").remove();
-    fetchAllData();
+    decreaseBtn.classList.remove("show");
+    increaseBtn.classList.remove("show");
+    clearTimeout(timeoutId);
+    dotSpinner.classList.remove("hidden");
+    timeoutId = setTimeout(() => {
+      fetchAllData();
+      dotSpinner.classList.add("hidden");
+    }, 1000);
   }
 
   function decrease() {
     if (offset > 0) offset--;
     document.getElementById("toDelete").remove();
-    fetchAllData();
+    decreaseBtn.classList.remove("show");
+    increaseBtn.classList.remove("show");
+    clearTimeout(timeoutId);
+    dotSpinner.classList.remove("hidden");
+    timeoutId = setTimeout(() => {
+      fetchAllData();
+      dotSpinner.classList.add("hidden");
+    }, 1000);
   }
 
   increaseBtn.addEventListener("click", increase);

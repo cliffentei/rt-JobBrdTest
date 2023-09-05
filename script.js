@@ -416,6 +416,18 @@ document.addEventListener("DOMContentLoaded", function () {
       })
         .then((response) => response.json())
         .then((data) => {
+          data.records.sort((a, b) => {
+            const dateA = new Date(a.fields.Created);
+            const dateB = new Date(b.fields.Created);
+            return dateB - dateA;
+          });
+      
+          data.records.forEach((record) => {
+            const createdDate = new Date(record.fields.Created);
+            const options = { year: "numeric", month: "long", day: "numeric" };
+            const formattedDate = createdDate.toLocaleDateString(undefined, options);
+            record.fields.Created = formattedDate;
+          });
           if (data.offset && !offsetArray[offset + 1]) {
             offsetArray.push(data.offset);
           }
@@ -459,7 +471,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             <p style="font-family: 'Caprasimo', cursive; font-size:35px;">${
                               e.fields["Job Title"]
                             }</p>
-                            <p>${e.fields["Date Added"]}</p> 
+                            <p>${e.fields["Created"]}</p> 
                           </div>
                         <div class="job-spec-div">
                         <div class="job-spec">

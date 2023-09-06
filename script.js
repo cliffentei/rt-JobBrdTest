@@ -12,20 +12,15 @@ document.addEventListener("DOMContentLoaded", function () {
     if (typeof salary !== 'number') {
       return "No Salary Listed";
     }
-    
-    // Convert the number to a string
+
     const salaryString = salary.toString();
   
-    // Split the string into two parts: the integer part and the decimal part (if any)
     const [integerPart, decimalPart] = salaryString.split('.');
   
-    // Format the integer part with commas
     const formattedIntegerPart = integerPart.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   
-    // Concatenate the dollar sign and the formatted integer part
     let formattedSalary = '$' + formattedIntegerPart;
   
-    // If there's a decimal part, add it back to the formatted salary
     if (decimalPart) {
       formattedSalary += '.' + decimalPart;
     }
@@ -600,14 +595,16 @@ document.addEventListener("DOMContentLoaded", function () {
                              
                             </div>
                             <div class="min-max-div" style="display: flex; justify-content:space-between; flex-wrap: wrap;">
+                            <p style='font-size: 25px; font-weight: bold' class="visa-label">Visa Sponsorship: 
+                            <span style='font-size: 25px; font-weight: normal'>${
+                              e.fields["VISA sponsorship"]
+                                ? e.fields["VISA sponsorship"].join(", ")
+                                : "N/A"
+                            }</span>
+                            </p>
                               <p style='font-size: 20px; font-weight: bold' class="min-sal-label">Minimum Salary: 
                                 <span style='font-size: 20px; font-weight: normal'>
                                   ${minSalaryFormatted}
-                                </span>
-                              </p>
-                              <p style='font-size: 20px; font-weight: bold' class="max-sal-label">Maximum Salary: 
-                                <span style='font-size: 20px; font-weight: normal'>
-                                  ${maxSalaryFormatted}
                                 </span>
                               </p>
                             </div>
@@ -621,14 +618,12 @@ document.addEventListener("DOMContentLoaded", function () {
                                       ? e.fields["Experience Level"]
                                       : "No Experience Listed"
                                   }</span>
-                               </p>                                                                                          
-                                    <p style='font-size: 25px; font-weight: bold' class="visa-label">Visa Sponsorship: 
-                                  <span style='font-size: 25px; font-weight: normal'>${
-                                    e.fields["VISA sponsorship"]
-                                      ? e.fields["VISA sponsorship"].join(", ")
-                                      : "N/A"
-                                  }</span>
-                                  </p>
+                               </p>
+                               <p style='font-size: 20px; font-weight: bold' class="max-sal-label">Maximum Salary: 
+                                <span style='font-size: 20px; font-weight: normal'>
+                                  ${maxSalaryFormatted}
+                                </span>
+                              </p>                                                                                          
                             </div>
                             <div class="reg-visa-div" style="display: flex; justify-content:space-between; flex-wrap: wrap;">
                                     <p style='font-size: 25px; font-weight: bold' class="region-label">Region: 

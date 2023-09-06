@@ -412,6 +412,10 @@
 
        }
 
+       .col-text {
+        font-size: 20px;
+       }
+
        .dropdown-menu.active {
            display: block;
        }

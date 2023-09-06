@@ -2,11 +2,36 @@ document.addEventListener("DOMContentLoaded", function () {
   document
     .getElementsByClassName("search-bar-container")[0]
     .addEventListener("click", function () {
-      document.getElementById("search-input").focus(); // Focus on the input when the container is clicked
+      document.getElementById("search-input").focus();
     });
 
   const searchInputs = document.getElementById("search-input");
   const clearIcon = document.querySelector(".clear-icon");
+
+  function formatSalary(salary) {
+    if (typeof salary !== 'number') {
+      return "No Salary Listed";
+    }
+    
+    // Convert the number to a string
+    const salaryString = salary.toString();
+  
+    // Split the string into two parts: the integer part and the decimal part (if any)
+    const [integerPart, decimalPart] = salaryString.split('.');
+  
+    // Format the integer part with commas
+    const formattedIntegerPart = integerPart.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  
+    // Concatenate the dollar sign and the formatted integer part
+    let formattedSalary = '$' + formattedIntegerPart;
+  
+    // If there's a decimal part, add it back to the formatted salary
+    if (decimalPart) {
+      formattedSalary += '.' + decimalPart;
+    }
+  
+    return formattedSalary;
+  }  
 
   searchInputs.addEventListener("keyup", function () {
     const inputValue = this.value.trim();
@@ -523,13 +548,16 @@ document.addEventListener("DOMContentLoaded", function () {
           let htmlString = "";
           if (data.records.length > 0) {
             data.records.forEach((e) => {
+              const minSalaryFormatted = formatSalary(e.fields["Min Salary (USD)"]);
+              const maxSalaryFormatted = formatSalary(e.fields["Max Salary (USD)"]);
+
               htmlString += `<div class="job-listing-card loading-effect">          
                                                   
                           <div class='card-header'>
                             <p style="font-family: 'Caprasimo', cursive; font-size:35px;">${
                               e.fields["Job Title"]
                             }</p>
-                            <p>${e.fields["Created"]}</p> 
+                            <p style="font-size: 20px;">Date Posted: ${e.fields["Created"]}</p> 
                           </div>
                           <div class="job-field-div" style="padding-bottom: 10px;">
                           <div class="tag-field">                           
@@ -572,18 +600,16 @@ document.addEventListener("DOMContentLoaded", function () {
                              
                             </div>
                             <div class="min-max-div" style="display: flex; justify-content:space-between; flex-wrap: wrap;">
-                                    <p style='font-size: 25px; font-weight: bold' class="min-sal-label">Minimum Salary: 
-                                    <span style='font-size: 25px; font-weight: normal'>${
-                                      e.fields["Min Salary (USD)"]
-                                        ? e.fields["Min Salary (USD)"]
-                                        : "No Minimum Listed"
-                                    }</span>
-                                    </p>
-                                    <p style='font-size: 25px; font-weight: bold'>Maximum Salary: <span style='font-size: 25px; font-weight: normal'>${
-                                      e.fields["Max Salary (USD)"]
-                                        ? e.fields["Max Salary (USD)"]
-                                        : "No Maximum Listed"
-                                    }</span></p>
+                              <p style='font-size: 20px; font-weight: bold' class="min-sal-label">Minimum Salary: 
+                                <span style='font-size: 20px; font-weight: normal'>
+                                  ${minSalaryFormatted}
+                                </span>
+                              </p>
+                              <p style='font-size: 20px; font-weight: bold' class="max-sal-label">Maximum Salary: 
+                                <span style='font-size: 20px; font-weight: normal'>
+                                  ${maxSalaryFormatted}
+                                </span>
+                              </p>
                             </div>
                             <div class="exp-sal-div" style="display:flex; justify-content: space-between; flex-wrap: wrap; padding-bottom: 5px;">                                     
                                 <p style='font-size: 25px; font-weight: bold'>Experience Level: 

@@ -602,8 +602,8 @@ document.addEventListener("DOMContentLoaded", function () {
                                 : "N/A"
                             }</span>
                             </p>
-                              <p style='font-size: 20px; font-weight: bold' class="min-sal-label">Minimum Salary: 
-                                <span style='font-size: 20px; font-weight: normal'>
+                              <p style='font-size: 25px; font-weight: bold' class="min-sal-label">Minimum Salary: 
+                                <span style='font-size: 25px; font-weight: normal'>
                                   ${minSalaryFormatted}
                                 </span>
                               </p>
@@ -619,8 +619,8 @@ document.addEventListener("DOMContentLoaded", function () {
                                       : "No Experience Listed"
                                   }</span>
                                </p>
-                               <p style='font-size: 20px; font-weight: bold' class="max-sal-label">Maximum Salary: 
-                                <span style='font-size: 20px; font-weight: normal'>
+                               <p style='font-size: 25px; font-weight: bold' class="max-sal-label">Maximum Salary: 
+                                <span style='font-size: 25px; font-weight: normal'>
                                   ${maxSalaryFormatted}
                                 </span>
                               </p>                                                                                          

@@ -713,5 +713,13 @@ transform: translate(0, -8px);
     padding: 15px;
     border-radius: 15px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    margin: 15px 10px;
+    margin: 25px 10px;
+    transition: all 0.15s ease-in-out;
+    min-height: 20vh;
+}
+
+.grid-card:hover {
+    cursor: pointer;
+    transform: scale(1.03);
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
 }

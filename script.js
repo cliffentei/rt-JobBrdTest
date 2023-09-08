@@ -563,17 +563,17 @@ document.addEventListener("DOMContentLoaded", function () {
                       </div>
                         <div class="job-spec-div">
                         <div class="job-spec">
-                            <h3>Company/Org:</h3>
-                            <p>${e.fields["Company/Org"]}</p>
+                            <p class="job-spec-title">Company/Org:</p>
+                            <p class='job-type'>${e.fields["Company/Org"]}</p>
                         </div>
                         <div class='vertical-hr'></div>
                         <div class="job-spec">
-                            <h3>Location:</h3>
-                            <p>${e.fields["Location"]}</p>
+                            <p class="job-spec-title">Location:</p>
+                            <p class='job-type'>${e.fields["Location"]}</p>
                         </div>
                         <div class='vertical-hr'></div>
                         <div class="job-spec">        
-                            <h3>Type:</h3>
+                            <p class="job-spec-title">Type:</p>
                             <p class='job-type'>${
                               e.fields["Type"]
                                 ? e.fields["Type"].join(", ")

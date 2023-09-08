@@ -581,7 +581,7 @@ document.addEventListener("DOMContentLoaded", function () {
               //                             e.fields["Salary"] ||
               //                             "No Salary Listed"
               //                           }</span></p>
-                                      
+
               //               </div>
               //               <div class="min-max-div" style="display: flex; justify-content:space-between; flex-wrap: wrap;">
               //                   <p style='font-size: 25px; font-weight: bold' class="visa-label">Visa Sponsorship:
@@ -644,7 +644,7 @@ document.addEventListener("DOMContentLoaded", function () {
               htmlString += `
                 <div class='grid-card'>
                 <p>${e.fields["Job Title"]}</p>
-                  <button class='apply-btn'>Read More</button>
+                  <button class='apply-btn read-more-button'>Read More</button>
                 </div>
               `;
             });
@@ -658,9 +658,161 @@ document.addEventListener("DOMContentLoaded", function () {
           const parsedElement = parsedHtml.querySelector("div");
           const targetElement = document.getElementById("targetElement");
           targetElement.appendChild(parsedElement);
+          const readMoreButtons =
+            document.querySelectorAll(".read-more-button");
+          readMoreButtons.forEach((button, index) => {
+            button.addEventListener("click", () => {
+              openModal(data.records[index].fields); // Pass the job details to your openModal function
+            });
+          });
         })
         .catch((error) => console.error("Error fetching data:", error));
     }
+  }
+
+  function openModal(e) {
+    const modal = document.getElementById("myModal");
+    const modalContent = modal.querySelector(".modal-content");
+    console.log(e);
+    modalContent.innerHTML = "";
+    modalContent.innerHTML = `
+    <span style='font-size: 50px; margin: 0 0 0 auto;' class="close">&times;</span>
+                    <div class='card-header'>
+                        <p style="font-family: 'Caprasimo', cursive; font-size:35px;">${
+                          e["Job Title"]
+                        }</p>
+                        <p style="font-size: 20px;">Date Posted: ${
+                          e["Created"]
+                        }</p>
+                    </div>
+                    <div class="job-field-div" style="padding-bottom: 10px;">
+                        <div class="tag-field">
+                            ${fields(e["Field"]) || ""}
+                        </div>
+                    </div>
+                    <div class="job-spec-div">
+                        <div class="job-spec">
+                            <p class="job-spec-title">Company/Org:</p>
+                            <p class='job-type'>${e["Company/Org"]}</p>
+                        </div>
+                        <div class='vertical-hr'></div>
+                        <div class="job-spec">
+                            <p class="job-spec-title">Location:</p>
+                            <p class='job-type'>${e["Location"]}</p>
+                        </div>
+                        <div class='vertical-hr'></div>
+                        <div class="job-spec">
+                            <p class="job-spec-title">Type:</p>
+                            <p class='job-type'>${
+                              e["Type"] ? e["Type"].join(", ") : "N/A"
+                            }</p>
+                        </div>
+                    </div>
+                    <div class="job-desc-div" style="width: 100%">
+                        <div class="job-req-holder" style="padding-bottom: 10px;">
+                            <div class="exp-sal-div"
+                                style="display:flex; justify-content: space-between; flex-wrap: wrap; padding-bottom: 5px;">
+                                <p style='font-size: 25px; font-weight: bold'>Department/Team:
+                                    <span style='font-size: 25px; font-weight: normal'>${
+                                      e["Department/Team"] || "No Team Listed"
+                                    }</span>
+                                </p>
+                                <p style='font-size: 25px; font-weight: bold'>Salary: <span
+                                        style='font-size: 25px; font-weight: normal'>${
+                                          e["Salary"] || "No Salary Listed"
+                                        }</span></p>
+
+                            </div>
+                            <div class="min-max-div" style="display: flex; justify-content:space-between; flex-wrap: wrap;">
+                                <p style='font-size: 25px; font-weight: bold' class="visa-label">Visa Sponsorship:
+                                    <span style='font-size: 25px; font-weight: normal'>${
+                                      e["VISA sponsorship"]
+                                        ? e["VISA sponsorship"].join(", ")
+                                        : "N/A"
+                                    }</span>
+                                </p>
+                                <p style='font-size: 25px; font-weight: bold' class="min-sal-label">Minimum Salary:
+                                    <span style='font-size: 25px; font-weight: normal'>
+                                        ${"ds" || minSalaryFormatted}
+                                    </span>
+                                </p>
+                            </div>
+                            <div class="exp-sal-div"
+                                style="display:flex; justify-content: space-between; flex-wrap: wrap; padding-bottom: 5px;">
+                                <p style='font-size: 25px; font-weight: bold'>Experience Level:
+                                    <span style='font-size: 25px; font-weight: normal'>${
+                                      e["Experience Level"] &&
+                                      e["Experience Level"].length
+                                        ? e["Experience Level"].join(", ")
+                                        : e["Experience Level"]
+                                        ? e["Experience Level"]
+                                        : "No Experience Listed"
+                                    }</span>
+                                </p>
+                                <p style='font-size: 25px; font-weight: bold' class="max-sal-label">Maximum Salary:
+                                    <span style='font-size: 25px; font-weight: normal'>
+                                        ${"ds" || maxSalaryFormatted}
+                                    </span>
+                                </p>
+                            </div>
+                            <div class="reg-visa-div" style="display: flex; justify-content:space-between; flex-wrap: wrap;">
+                                <p style='font-size: 25px; font-weight: bold' class="region-label">Region:
+                                    <span style='font-size: 25px; font-weight: normal'>${
+                                      e["Region"]
+                                        ? e["Region"].join(", ")
+                                        : "N/A"
+                                    }</span>
+                                </p>
+                                <p style='font-size: 25px; font-weight: bold'>Closing Date: <span
+                                        style='font-size: 25px; font-weight: normal'>${
+                                          e["Closing Date"]
+                                        }</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="display:flex; justify-content: center;">
+                        <div class='apply-div'>
+                            ${buttons(e["Link to Apply"]) || ""}
+                        </div>
+                    </div>
+                
+              `;
+    // modalContent.innerHTML = `
+    //           <div class="modal-header">
+    //           <div style='display: flex; justify-content: space-between; width: 100%; align-items: center'>
+    //               <h2 class='modal-title'>${jobDetails["Job Title"]}</h2>
+    //               <span style='font-size: 50px; margin: 0 0 0 auto;' class="close">&times;</span>
+    //               </div>
+    //               <hr/>
+    //           </div>
+    //           <div class="modal-body">
+    //               <h3><strong>Company/Org: </strong> <br><span style='font-size: 15px; font-weight: normal'>${
+    //                 jobDetails["Company/Org"]
+    //               }</span></h3>
+    //               <h3><strong>Experience Level: </strong> <br><span style='font-size: 15px; font-weight: normal'>${jobDetails[
+    //                 "Experience Level"
+    //               ].join(", ")}</span></h3>
+    //               <h3><strong>Salary: </strong> <br><span style='font-size: 15px; font-weight: normal'>${
+    //                 jobDetails["Salary copy"] || "No Salary Listed"
+    //               }</span></h3>
+    //               <div>
+    //                   <p style='font-weight: bold; margin: 0;'>Fields:</p>
+    //                   <div style='margin-top: 3px' class='outer-field-div'>${
+    //                     fields(jobDetails["Field"]) || ""
+    //                   }</div>
+    //               </div>
+    //               <div class='apply-div'>
+    //                 ${buttons(jobDetails["Link to Apply"]) || ""}
+    //               </div>
+    //           </div>
+    //           `;
+
+    modal.style.display = "flex";
+
+    const closeBtn = modal.querySelector(".close");
+    closeBtn.onclick = function () {
+      modal.style.display = "none";
+    };
   }
 
   function increase() {

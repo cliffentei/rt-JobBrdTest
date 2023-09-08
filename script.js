@@ -374,7 +374,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function urlCreator(s) {
     const baseUrl = "https://api.airtable.com/v0/apprdsx9uO4l5FieL/Table%201?";
-    const pageSize = "pageSize=5";
+    const pageSize = "pageSize=100";
     let filterFunction = "filterByFormula=";
     const filters = [];
     const dropdownName = {
@@ -531,114 +531,120 @@ document.addEventListener("DOMContentLoaded", function () {
               const maxSalaryFormatted = formatSalary(
                 e.fields["Max Salary (USD)"]
               );
-              htmlString += `
-                <div class="job-listing-card loading-effect">
-                    <div class='card-header'>
-                        <p style="font-family: 'Caprasimo', cursive; font-size:35px;">${
-                          e.fields["Job Title"]
-                        }</p>
-                        <p style="font-size: 20px;">Date Posted: ${
-                          e.fields["Created"]
-                        }</p>
-                    </div>
-                    <div class="job-field-div" style="padding-bottom: 10px;">
-                        <div class="tag-field">
-                            ${fields(e.fields["Field"]) || ""}
-                        </div>
-                    </div>
-                    <div class="job-spec-div">
-                        <div class="job-spec">
-                            <p class="job-spec-title">Company/Org:</p>
-                            <p class='job-type'>${e.fields["Company/Org"]}</p>
-                        </div>
-                        <div class='vertical-hr'></div>
-                        <div class="job-spec">
-                            <p class="job-spec-title">Location:</p>
-                            <p class='job-type'>${e.fields["Location"]}</p>
-                        </div>
-                        <div class='vertical-hr'></div>
-                        <div class="job-spec">
-                            <p class="job-spec-title">Type:</p>
-                            <p class='job-type'>${
-                              e.fields["Type"]
-                                ? e.fields["Type"].join(", ")
-                                : "N/A"
-                            }</p>
-                        </div>
-                    </div>
-                    <div class="job-desc-div" style="width: 100%">
-                        <div class="job-req-holder" style="padding-bottom: 10px;">
-                            <div class="exp-sal-div"
-                                style="display:flex; justify-content: space-between; flex-wrap: wrap; padding-bottom: 5px;">
-                                <p style='font-size: 25px; font-weight: bold'>Department/Team:
-                                    <span style='font-size: 25px; font-weight: normal'>${
-                                      e.fields["Department/Team"] ||
-                                      "No Team Listed"
-                                    }</span>
-                                </p>
-                                <p style='font-size: 25px; font-weight: bold'>Salary: <span
-                                        style='font-size: 25px; font-weight: normal'>${
-                                          e.fields["Salary"] ||
-                                          "No Salary Listed"
-                                        }</span></p>
+              // htmlString += `
+              //   <div class="job-listing-card loading-effect">
+              //       <div class='card-header'>
+              //           <p style="font-family: 'Caprasimo', cursive; font-size:35px;">${
+              //             e.fields["Job Title"]
+              //           }</p>
+              //           <p style="font-size: 20px;">Date Posted: ${
+              //             e.fields["Created"]
+              //           }</p>
+              //       </div>
+              //       <div class="job-field-div" style="padding-bottom: 10px;">
+              //           <div class="tag-field">
+              //               ${fields(e.fields["Field"]) || ""}
+              //           </div>
+              //       </div>
+              //       <div class="job-spec-div">
+              //           <div class="job-spec">
+              //               <p class="job-spec-title">Company/Org:</p>
+              //               <p class='job-type'>${e.fields["Company/Org"]}</p>
+              //           </div>
+              //           <div class='vertical-hr'></div>
+              //           <div class="job-spec">
+              //               <p class="job-spec-title">Location:</p>
+              //               <p class='job-type'>${e.fields["Location"]}</p>
+              //           </div>
+              //           <div class='vertical-hr'></div>
+              //           <div class="job-spec">
+              //               <p class="job-spec-title">Type:</p>
+              //               <p class='job-type'>${
+              //                 e.fields["Type"]
+              //                   ? e.fields["Type"].join(", ")
+              //                   : "N/A"
+              //               }</p>
+              //           </div>
+              //       </div>
+              //       <div class="job-desc-div" style="width: 100%">
+              //           <div class="job-req-holder" style="padding-bottom: 10px;">
+              //               <div class="exp-sal-div"
+              //                   style="display:flex; justify-content: space-between; flex-wrap: wrap; padding-bottom: 5px;">
+              //                   <p style='font-size: 25px; font-weight: bold'>Department/Team:
+              //                       <span style='font-size: 25px; font-weight: normal'>${
+              //                         e.fields["Department/Team"] ||
+              //                         "No Team Listed"
+              //                       }</span>
+              //                   </p>
+              //                   <p style='font-size: 25px; font-weight: bold'>Salary: <span
+              //                           style='font-size: 25px; font-weight: normal'>${
+              //                             e.fields["Salary"] ||
+              //                             "No Salary Listed"
+              //                           }</span></p>
                                       
-                            </div>
-                            <div class="min-max-div" style="display: flex; justify-content:space-between; flex-wrap: wrap;">
-                                <p style='font-size: 25px; font-weight: bold' class="visa-label">Visa Sponsorship:
-                                    <span style='font-size: 25px; font-weight: normal'>${
-                                      e.fields["VISA sponsorship"]
-                                        ? e.fields["VISA sponsorship"].join(
-                                            ", "
-                                          )
-                                        : "N/A"
-                                    }</span>
-                                </p>
-                                <p style='font-size: 25px; font-weight: bold' class="min-sal-label">Minimum Salary:
-                                    <span style='font-size: 25px; font-weight: normal'>
-                                        ${minSalaryFormatted}
-                                    </span>
-                                </p>
-                            </div>
-                            <div class="exp-sal-div"
-                                style="display:flex; justify-content: space-between; flex-wrap: wrap; padding-bottom: 5px;">
-                                <p style='font-size: 25px; font-weight: bold'>Experience Level:
-                                    <span style='font-size: 25px; font-weight: normal'>${
-                                      e.fields["Experience Level"] &&
-                                      e.fields["Experience Level"].length
-                                        ? e.fields["Experience Level"].join(
-                                            ", "
-                                          )
-                                        : e.fields["Experience Level"]
-                                        ? e.fields["Experience Level"]
-                                        : "No Experience Listed"
-                                    }</span>
-                                </p>
-                                <p style='font-size: 25px; font-weight: bold' class="max-sal-label">Maximum Salary:
-                                    <span style='font-size: 25px; font-weight: normal'>
-                                        ${maxSalaryFormatted}
-                                    </span>
-                                </p>
-                            </div>
-                            <div class="reg-visa-div" style="display: flex; justify-content:space-between; flex-wrap: wrap;">
-                                <p style='font-size: 25px; font-weight: bold' class="region-label">Region:
-                                    <span style='font-size: 25px; font-weight: normal'>${
-                                      e.fields["Region"]
-                                        ? e.fields["Region"].join(", ")
-                                        : "N/A"
-                                    }</span>
-                                </p>
-                                <p style='font-size: 25px; font-weight: bold'>Closing Date: <span
-                                        style='font-size: 25px; font-weight: normal'>${
-                                          e.fields["Closing Date"]
-                                        }</span></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div style="display:flex; justify-content: center;">
-                        <div class='apply-div'>
-                            ${buttons(e.fields["Link to Apply"]) || ""}
-                        </div>
-                    </div>
+              //               </div>
+              //               <div class="min-max-div" style="display: flex; justify-content:space-between; flex-wrap: wrap;">
+              //                   <p style='font-size: 25px; font-weight: bold' class="visa-label">Visa Sponsorship:
+              //                       <span style='font-size: 25px; font-weight: normal'>${
+              //                         e.fields["VISA sponsorship"]
+              //                           ? e.fields["VISA sponsorship"].join(
+              //                               ", "
+              //                             )
+              //                           : "N/A"
+              //                       }</span>
+              //                   </p>
+              //                   <p style='font-size: 25px; font-weight: bold' class="min-sal-label">Minimum Salary:
+              //                       <span style='font-size: 25px; font-weight: normal'>
+              //                           ${minSalaryFormatted}
+              //                       </span>
+              //                   </p>
+              //               </div>
+              //               <div class="exp-sal-div"
+              //                   style="display:flex; justify-content: space-between; flex-wrap: wrap; padding-bottom: 5px;">
+              //                   <p style='font-size: 25px; font-weight: bold'>Experience Level:
+              //                       <span style='font-size: 25px; font-weight: normal'>${
+              //                         e.fields["Experience Level"] &&
+              //                         e.fields["Experience Level"].length
+              //                           ? e.fields["Experience Level"].join(
+              //                               ", "
+              //                             )
+              //                           : e.fields["Experience Level"]
+              //                           ? e.fields["Experience Level"]
+              //                           : "No Experience Listed"
+              //                       }</span>
+              //                   </p>
+              //                   <p style='font-size: 25px; font-weight: bold' class="max-sal-label">Maximum Salary:
+              //                       <span style='font-size: 25px; font-weight: normal'>
+              //                           ${maxSalaryFormatted}
+              //                       </span>
+              //                   </p>
+              //               </div>
+              //               <div class="reg-visa-div" style="display: flex; justify-content:space-between; flex-wrap: wrap;">
+              //                   <p style='font-size: 25px; font-weight: bold' class="region-label">Region:
+              //                       <span style='font-size: 25px; font-weight: normal'>${
+              //                         e.fields["Region"]
+              //                           ? e.fields["Region"].join(", ")
+              //                           : "N/A"
+              //                       }</span>
+              //                   </p>
+              //                   <p style='font-size: 25px; font-weight: bold'>Closing Date: <span
+              //                           style='font-size: 25px; font-weight: normal'>${
+              //                             e.fields["Closing Date"]
+              //                           }</span></p>
+              //               </div>
+              //           </div>
+              //       </div>
+              //       <div style="display:flex; justify-content: center;">
+              //           <div class='apply-div'>
+              //               ${buttons(e.fields["Link to Apply"]) || ""}
+              //           </div>
+              //       </div>
+              //   </div>
+              // `;
+              htmlString += `
+                <div class='grid-card'>
+                <p>${e.fields["Job Title"]}</p>
+                  <button class='apply-btn'>Read More</button>
                 </div>
               `;
             });

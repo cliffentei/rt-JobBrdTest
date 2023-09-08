@@ -12,28 +12,21 @@ document.addEventListener("DOMContentLoaded", function () {
     if (typeof salary !== "number") {
       return "No Salary Listed";
     }
-
     const salaryString = salary.toString();
-
     const [integerPart, decimalPart] = salaryString.split(".");
-
     const formattedIntegerPart = integerPart.replace(
       /\B(?=(\d{3})+(?!\d))/g,
       ","
     );
-
     let formattedSalary = "$" + formattedIntegerPart;
-
     if (decimalPart) {
       formattedSalary += "." + decimalPart;
     }
-
     return formattedSalary;
   }
 
   searchInputs.addEventListener("keyup", function () {
     const inputValue = this.value.trim();
-
     if (inputValue.length > 0) {
       clearIcon.style.display = "block";
     } else {
@@ -46,6 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
     clearIcon.style.display = "none";
     fetchAllData();
   });
+
   const dropdownData = {
     dropdown1: [],
     dropdown2: [
@@ -157,10 +151,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const apiKey =
     "patNamJqXdDlueUxM.6e6e7f9efc1e8ab27056891e8f3c51c97bf2f994036cc554fb9618143bc58c31";
-  const columnName = "Field";
-
-  const endpoint = `https://api.airtable.com/v0/apprdsx9uO4l5FieL/Table%201?fields%5B%5D=${columnName}`;
-  const uniqueValues = new Set();
 
   const companyNameColumn = "Company/Org";
   const companyEndpoint = `https://api.airtable.com/v0/apprdsx9uO4l5FieL/Table%201?fields%5B%5D=${companyNameColumn}`;
@@ -189,6 +179,7 @@ document.addEventListener("DOMContentLoaded", function () {
       })
       .catch((error) => console.error("Error fetching data:", error));
   }
+
   fetchCompanies();
 
   function renderDropdowns() {
@@ -207,7 +198,6 @@ document.addEventListener("DOMContentLoaded", function () {
           <span>${optionText}</span>
         `;
         dropdownMenu.appendChild(optionElement);
-
         const checkbox = optionElement.querySelector(
           ".dropdown-option-checkbox"
         );
@@ -215,7 +205,6 @@ document.addEventListener("DOMContentLoaded", function () {
           event.stopPropagation();
           updateButtonState();
         });
-
         optionElement.addEventListener("click", function (event) {
           checkbox.checked = !checkbox.checked;
           optionElement.classList.toggle("selected");
@@ -245,13 +234,11 @@ document.addEventListener("DOMContentLoaded", function () {
         button.addEventListener("click", function () {
           const dropdownMenus = document.querySelectorAll(".dropdown-menu");
           const clickedMenu = button.nextElementSibling;
-
           dropdownMenus.forEach((menu) => {
             if (menu !== clickedMenu) {
               menu.classList.remove("active");
             }
           });
-
           clickedMenu.classList.toggle("active");
         });
       });
@@ -259,21 +246,17 @@ document.addEventListener("DOMContentLoaded", function () {
       document.addEventListener("click", function (event) {
         const dropdownMenus = document.querySelectorAll(".dropdown-menu");
         const dropdownButtons = document.querySelectorAll(".dropdown-button");
-
         let isInsideDropdown = false;
-
         dropdownMenus.forEach((dropdownMenu) => {
           if (dropdownMenu.contains(event.target)) {
             isInsideDropdown = true;
           }
         });
-
         dropdownButtons.forEach((dropdownButton) => {
           if (dropdownButton.contains(event.target)) {
             isInsideDropdown = true;
           }
         });
-
         if (!isInsideDropdown) {
           dropdownMenus.forEach((dropdownMenu) => {
             dropdownMenu.classList.remove("active");
@@ -304,21 +287,17 @@ document.addEventListener("DOMContentLoaded", function () {
     document.addEventListener("click", function (event) {
       const dropdownMenus = document.querySelectorAll(".dropdown-menu");
       const dropdownButtons = document.querySelectorAll(".dropdown-button");
-
       let isInsideDropdown = false;
-
       dropdownMenus.forEach((dropdownMenu) => {
         if (dropdownMenu.contains(event.target)) {
           isInsideDropdown = true;
         }
       });
-
       dropdownButtons.forEach((dropdownButton) => {
         if (dropdownButton.contains(event.target)) {
           isInsideDropdown = true;
         }
       });
-
       if (!isInsideDropdown) {
         dropdownMenus.forEach((dropdownMenu) => {
           dropdownMenu.classList.remove("active");
@@ -455,11 +434,9 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     let url = urlCreator(selectedOptions);
-    console.log(url);
     let newOffset = "&offset=" + offsetArray[offset];
-    if (document.getElementById("toDelete")) {
+    if (document.getElementById("toDelete"))
       document.getElementById("toDelete").remove();
-    }
 
     if (url !== globalUrl || (url === globalUrl && offsetKey === newOffset)) {
       offset = 0;
@@ -554,25 +531,22 @@ document.addEventListener("DOMContentLoaded", function () {
               const maxSalaryFormatted = formatSalary(
                 e.fields["Max Salary (USD)"]
               );
-
-              htmlString += `<div class="job-listing-card loading-effect">          
-                                                  
-                          <div class='card-header'>
-                            <p style="font-family: 'Caprasimo', cursive; font-size:35px;">${
-                              e.fields["Job Title"]
-                            }</p>
-                            <p style="font-size: 20px;">Date Posted: ${
-                              e.fields["Created"]
-                            }</p> 
-                          </div>
-                          <div class="job-field-div" style="padding-bottom: 10px;">
-                          <div class="tag-field">                           
-                              ${
-                                fields(e.fields["Field"]) || ""
-                              }                           
-                          </div>
-                      </div>
-                        <div class="job-spec-div">
+              htmlString += `
+                <div class="job-listing-card loading-effect">
+                    <div class='card-header'>
+                        <p style="font-family: 'Caprasimo', cursive; font-size:35px;">${
+                          e.fields["Job Title"]
+                        }</p>
+                        <p style="font-size: 20px;">Date Posted: ${
+                          e.fields["Created"]
+                        }</p>
+                    </div>
+                    <div class="job-field-div" style="padding-bottom: 10px;">
+                        <div class="tag-field">
+                            ${fields(e.fields["Field"]) || ""}
+                        </div>
+                    </div>
+                    <div class="job-spec-div">
                         <div class="job-spec">
                             <p class="job-spec-title">Company/Org:</p>
                             <p class='job-type'>${e.fields["Company/Org"]}</p>
@@ -583,81 +557,90 @@ document.addEventListener("DOMContentLoaded", function () {
                             <p class='job-type'>${e.fields["Location"]}</p>
                         </div>
                         <div class='vertical-hr'></div>
-                        <div class="job-spec">        
+                        <div class="job-spec">
                             <p class="job-spec-title">Type:</p>
                             <p class='job-type'>${
                               e.fields["Type"]
                                 ? e.fields["Type"].join(", ")
                                 : "N/A"
-                            }</p>                          
+                            }</p>
                         </div>
-                    </div>            
+                    </div>
                     <div class="job-desc-div" style="width: 100%">
                         <div class="job-req-holder" style="padding-bottom: 10px;">
-                        <div class="exp-sal-div" style="display:flex; justify-content: space-between; flex-wrap: wrap; padding-bottom: 5px;">                                     
-                        <p style='font-size: 25px; font-weight: bold'>Department/Team: 
-                        <span style='font-size: 25px; font-weight: normal'>${
-                          e.fields["Department/Team"] || "No Team Listed"
-                        }</span>
-                        </p>                                                          
-                                <p style='font-size: 25px; font-weight: bold'>Salary: <span style='font-size: 25px; font-weight: normal'>${
-                                  e.fields["Salary"] || "No Salary Listed"
-                                }</span></p>
-                             
+                            <div class="exp-sal-div"
+                                style="display:flex; justify-content: space-between; flex-wrap: wrap; padding-bottom: 5px;">
+                                <p style='font-size: 25px; font-weight: bold'>Department/Team:
+                                    <span style='font-size: 25px; font-weight: normal'>${
+                                      e.fields["Department/Team"] ||
+                                      "No Team Listed"
+                                    }</span>
+                                </p>
+                                <p style='font-size: 25px; font-weight: bold'>Salary: <span
+                                        style='font-size: 25px; font-weight: normal'>${
+                                          e.fields["Salary"] ||
+                                          "No Salary Listed"
+                                        }</span></p>
+                                      
                             </div>
                             <div class="min-max-div" style="display: flex; justify-content:space-between; flex-wrap: wrap;">
-                            <p style='font-size: 25px; font-weight: bold' class="visa-label">Visa Sponsorship: 
-                            <span style='font-size: 25px; font-weight: normal'>${
-                              e.fields["VISA sponsorship"]
-                                ? e.fields["VISA sponsorship"].join(", ")
-                                : "N/A"
-                            }</span>
-                            </p>
-                              <p style='font-size: 25px; font-weight: bold' class="min-sal-label">Minimum Salary: 
-                                <span style='font-size: 25px; font-weight: normal'>
-                                  ${minSalaryFormatted}
-                                </span>
-                              </p>
+                                <p style='font-size: 25px; font-weight: bold' class="visa-label">Visa Sponsorship:
+                                    <span style='font-size: 25px; font-weight: normal'>${
+                                      e.fields["VISA sponsorship"]
+                                        ? e.fields["VISA sponsorship"].join(
+                                            ", "
+                                          )
+                                        : "N/A"
+                                    }</span>
+                                </p>
+                                <p style='font-size: 25px; font-weight: bold' class="min-sal-label">Minimum Salary:
+                                    <span style='font-size: 25px; font-weight: normal'>
+                                        ${minSalaryFormatted}
+                                    </span>
+                                </p>
                             </div>
-                            <div class="exp-sal-div" style="display:flex; justify-content: space-between; flex-wrap: wrap; padding-bottom: 5px;">                                     
-                                <p style='font-size: 25px; font-weight: bold'>Experience Level: 
-                                  <span style='font-size: 25px; font-weight: normal'>${
-                                    e.fields["Experience Level"] &&
-                                    e.fields["Experience Level"].length
-                                      ? e.fields["Experience Level"].join(", ")
-                                      : e.fields["Experience Level"]
-                                      ? e.fields["Experience Level"]
-                                      : "No Experience Listed"
-                                  }</span>
-                               </p>
-                               <p style='font-size: 25px; font-weight: bold' class="max-sal-label">Maximum Salary: 
-                                <span style='font-size: 25px; font-weight: normal'>
-                                  ${maxSalaryFormatted}
-                                </span>
-                              </p>                                                                                          
+                            <div class="exp-sal-div"
+                                style="display:flex; justify-content: space-between; flex-wrap: wrap; padding-bottom: 5px;">
+                                <p style='font-size: 25px; font-weight: bold'>Experience Level:
+                                    <span style='font-size: 25px; font-weight: normal'>${
+                                      e.fields["Experience Level"] &&
+                                      e.fields["Experience Level"].length
+                                        ? e.fields["Experience Level"].join(
+                                            ", "
+                                          )
+                                        : e.fields["Experience Level"]
+                                        ? e.fields["Experience Level"]
+                                        : "No Experience Listed"
+                                    }</span>
+                                </p>
+                                <p style='font-size: 25px; font-weight: bold' class="max-sal-label">Maximum Salary:
+                                    <span style='font-size: 25px; font-weight: normal'>
+                                        ${maxSalaryFormatted}
+                                    </span>
+                                </p>
                             </div>
                             <div class="reg-visa-div" style="display: flex; justify-content:space-between; flex-wrap: wrap;">
-                                    <p style='font-size: 25px; font-weight: bold' class="region-label">Region: 
+                                <p style='font-size: 25px; font-weight: bold' class="region-label">Region:
                                     <span style='font-size: 25px; font-weight: normal'>${
                                       e.fields["Region"]
                                         ? e.fields["Region"].join(", ")
                                         : "N/A"
                                     }</span>
-                                    </p>
-                                    <p style='font-size: 25px; font-weight: bold'>Closing Date: <span style='font-size: 25px; font-weight: normal'>${
-                                      e.fields["Closing Date"]
-                                    }</span></p>
+                                </p>
+                                <p style='font-size: 25px; font-weight: bold'>Closing Date: <span
+                                        style='font-size: 25px; font-weight: normal'>${
+                                          e.fields["Closing Date"]
+                                        }</span></p>
                             </div>
-                            
+                        </div>
                     </div>
-        </div>
-      
-                      <div style="display:flex; justify-content: center;">
-                    <div class='apply-div'>
-                      ${buttons(e.fields["Link to Apply"]) || ""}
+                    <div style="display:flex; justify-content: center;">
+                        <div class='apply-div'>
+                            ${buttons(e.fields["Link to Apply"]) || ""}
+                        </div>
                     </div>
-          </div>
-        </div>`;
+                </div>
+              `;
             });
           } else {
             htmlString += `<h1 class="title">No Results Found</h1>`;

@@ -9,24 +9,27 @@ document.addEventListener("DOMContentLoaded", function () {
   const clearIcon = document.querySelector(".clear-icon");
 
   function formatSalary(salary) {
-    if (typeof salary !== 'number') {
+    if (typeof salary !== "number") {
       return "No Salary Listed";
     }
 
     const salaryString = salary.toString();
-  
-    const [integerPart, decimalPart] = salaryString.split('.');
-  
-    const formattedIntegerPart = integerPart.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-  
-    let formattedSalary = '$' + formattedIntegerPart;
-  
+
+    const [integerPart, decimalPart] = salaryString.split(".");
+
+    const formattedIntegerPart = integerPart.replace(
+      /\B(?=(\d{3})+(?!\d))/g,
+      ","
+    );
+
+    let formattedSalary = "$" + formattedIntegerPart;
+
     if (decimalPart) {
-      formattedSalary += '.' + decimalPart;
+      formattedSalary += "." + decimalPart;
     }
-  
+
     return formattedSalary;
-  }  
+  }
 
   searchInputs.addEventListener("keyup", function () {
     const inputValue = this.value.trim();
@@ -60,6 +63,7 @@ document.addEventListener("DOMContentLoaded", function () {
     ],
     dropdown3: ["Yes", "No", "In some cases"],
     dropdown4: [
+      // need to be fetched
       "Internship",
       "Volunteer",
       "0-2 Years",
@@ -77,6 +81,7 @@ document.addEventListener("DOMContentLoaded", function () {
       "Executive/Director",
     ],
     dropdown5: [
+      // need to be fetched
       "Academic or Professor",
       "Accessibility",
       "Advocacy",
@@ -543,8 +548,12 @@ document.addEventListener("DOMContentLoaded", function () {
           let htmlString = "";
           if (data.records.length > 0) {
             data.records.forEach((e) => {
-              const minSalaryFormatted = formatSalary(e.fields["Min Salary (USD)"]);
-              const maxSalaryFormatted = formatSalary(e.fields["Max Salary (USD)"]);
+              const minSalaryFormatted = formatSalary(
+                e.fields["Min Salary (USD)"]
+              );
+              const maxSalaryFormatted = formatSalary(
+                e.fields["Max Salary (USD)"]
+              );
 
               htmlString += `<div class="job-listing-card loading-effect">          
                                                   
@@ -552,7 +561,9 @@ document.addEventListener("DOMContentLoaded", function () {
                             <p style="font-family: 'Caprasimo', cursive; font-size:35px;">${
                               e.fields["Job Title"]
                             }</p>
-                            <p style="font-size: 20px;">Date Posted: ${e.fields["Created"]}</p> 
+                            <p style="font-size: 20px;">Date Posted: ${
+                              e.fields["Created"]
+                            }</p> 
                           </div>
                           <div class="job-field-div" style="padding-bottom: 10px;">
                           <div class="tag-field">                           

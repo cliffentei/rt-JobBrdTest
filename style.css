@@ -126,6 +126,12 @@
 }
 
 
+.modal-footer{
+    display:flex;
+    justify-content: center;
+}
+
+
 
 .close {
     color: #aaa;
@@ -736,4 +742,26 @@ transform: translate(0, -8px);
     cursor: pointer;
     transform: scale(1.03);
     box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+}
+
+#scrollToTopBtn {
+    display: none;
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    padding: 10px 15px;
+    font-size: 24px;
+    background-color: black;
+    color: #fff;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.1s ease-in;
+}
+
+#scrollToTopBtn:hover{
+    transform: scale(1.08);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }

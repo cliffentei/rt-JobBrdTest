@@ -4,6 +4,22 @@ document.addEventListener("DOMContentLoaded", function () {
     .addEventListener("click", function () {
       document.getElementById("search-input").focus();
     });
+  const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+
+  window.addEventListener("scroll", () => {
+    if (document.body.scrollTop > 1500 || document.documentElement.scrollTop > 1500) {
+      scrollToTopBtn.style.display = "block";
+    } else {
+      scrollToTopBtn.style.display = "none";
+    }
+  });
+
+  scrollToTopBtn.addEventListener("click", () => {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+});
 
   const searchInputs = document.getElementById("search-input");
   const clearIcon = document.querySelector(".clear-icon");
@@ -290,11 +306,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function buttons(input) {
     if (!input) return "";
-    const regex = /\[APPLY\]\((.*?)\)/g;
+    const regex = /\bhttps?:\/\/\S+/gi;
     const matches = [];
     let match;
     while ((match = regex.exec(input)) !== null) {
-      matches.push(match[1]);
+      matches.push(match[0]);
     }
     let b = "";
     if (matches.length === 1) {
@@ -783,12 +799,11 @@ document.addEventListener("DOMContentLoaded", function () {
               </div>
           </div>
       </div>`;
-    modalFooter.innerHTML = `<div style="display:flex; justify-content: center;">
+    modalFooter.innerHTML = `
       <div class='apply-div'>
           ${buttons(e["Link to Apply"]) || ""}
-      </div>
-  </div>`
-  console.log(e["Link to Apply"])
+      </div>`
+    console.log(e["Link to Apply"])
     modal.style.display = "flex";
 
     const closeBtn = modal.querySelector(".close");

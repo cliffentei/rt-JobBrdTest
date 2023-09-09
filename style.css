@@ -187,9 +187,9 @@
        }
 
        .modal-div {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
+           display: flex;
+           flex-direction: column;
+           justify-content: space-between;
            background-color: white;
            height: 80vh;
            padding: 20px;
@@ -212,7 +212,10 @@
            justify-content: center;
        }
 
-
+       .no-scroll {
+        height: 100%;
+        overflow-y: hidden;
+       }
 
        .close {
            color: #aaa;

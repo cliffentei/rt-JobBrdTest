@@ -777,7 +777,8 @@ document.addEventListener("DOMContentLoaded", function () {
           const readMoreButtons = document.querySelectorAll(".job-card");
           readMoreButtons.forEach((button, index) => {
             button.addEventListener("click", () => {
-              openModal(data.records[index].fields); // Pass the job details to your openModal function
+              openModal(data.records[index].fields);
+              document.getElementById('targetElement').style.position = 'fixed';
             });
           });
         })
@@ -882,12 +883,12 @@ document.addEventListener("DOMContentLoaded", function () {
       <div class='apply-div'>
           ${buttons(e["Link to Apply"]) || ""}
       </div>`;
-    console.log(e["Link to Apply"]);
     modal.style.display = "flex";
 
     const closeBtn = modal.querySelector(".close");
     closeBtn.onclick = function () {
       modal.style.display = "none";
+      document.getElementById('targetElement').style.position = '';;
     };
   }
 

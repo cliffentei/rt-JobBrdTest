@@ -100,18 +100,31 @@
 
 }
 
-.modal-content {
+.modal-div{
     background-color: white;
-    /* margin: 15% auto; */
+    max-height: 80vh;
     padding: 20px;
     border: 1px solid #888;
     max-width: 80vw;
     border-radius: 17px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
     font-family: system-ui, Arial, Helvetica, sans-serif;
-    max-height: 80vh;
-    overflow-y: auto;
 }
+
+.modal-content {
+    /* background-color: white; */
+    /* margin: 15% auto; */
+    /* padding: 20px;
+    border: 1px solid #888;
+    max-width: 80vw;
+    border-radius: 17px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    font-family: system-ui, Arial, Helvetica, sans-serif; */
+    overflow-y: auto;
+    max-height: 50vh;
+    padding: 10px;
+}
+
 
 
 .close {
@@ -477,12 +490,13 @@ transform: translate(0, -8px);
 
 .card-header {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    /* justify-content: space-between; */
     align-items: baseline;
 }
 
 .card-header p {
-    margin: 15px 0;
+    margin: 0px 20px 15px 0;
 }
 
 .job-spec-div {

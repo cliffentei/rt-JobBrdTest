@@ -56,97 +56,27 @@ document.addEventListener("DOMContentLoaded", function () {
       "Australia/New Zealand",
     ],
     dropdown3: ["Yes", "No", "In some cases"],
-    dropdown4: [
-      // need to be fetched
-      "Internship",
-      "Volunteer",
-      "0-2 Years",
-      "3-4 Years",
-      "5-6 Years",
-      "7-9 Years",
-      "10+ Years",
-      "15+ Years",
-      "Early Career",
-      "Mid-Senior",
-      "PostDoc/Fellowship/Residency",
-      "Ph.D.",
-      "Grant/Award",
-      "Academia",
-      "Executive/Director",
-    ],
-    dropdown5: [
-      // need to be fetched
-      "Academic or Professor",
-      "Accessibility",
-      "Advocacy",
-      "AI Governance",
-      "Business Analytics",
-      "Business Development",
-      "Communications",
-      "Community Management",
-      "Consulting",
-      "Customer Success",
-      "Cybersecurity",
-      "Data Governance",
-      "Data Justice",
-      "Data Privacy",
-      "Data Science / Data Analysis",
-      "Developer",
-      "DevOps",
-      "Digital Campaigning",
-      "Digital Citizenship",
-      "Digital Divide",
-      "Digital Ethics",
-      "Digital Governance",
-      "Digital Rights",
-      "Digital Wellbeing",
-      "Disinformation",
-      "Diversity, Equity, & Inclusion",
-      "Event Planning",
-      "Finance",
-      "Financial Fairness",
-      "Grant Management",
-      "Healthy Digital Spaces",
-      "Human Computation",
-      "Human Computer Interaction",
-      "Human Resources / Recruiting",
-      "Human Rights",
-      "Human-Centered Design",
-      "Instructional Design/Curriculum Development",
-      "Journalism",
-      "Language specialty",
-      "Leadership",
-      "Machine Learning",
-      "Marketing",
-      "MLOps",
-      "Nonprofit Development",
-      "Online Safety",
-      "Open Source",
-      "Operations",
-      "Partnerships/Relationships",
-      "Portfolio Development",
-      "Portfolio Management",
-      "Practice Development",
-      "Product",
-      "Production",
-      "Program or Project Management",
-      "Programming",
-      "Public Interest Technology",
-      "Research",
-      "Responsible AI",
-      "Risk & Compliance",
-      "Sales",
-      "Social Impact",
-      "Software Engineering",
-      "Strategy",
-      "Systems Developer",
-      "Tech & Democracy",
-      "Tech Policy/Law",
-      "Trust & Safety",
-      "UX Design / UX Research",
-      "Youth Wellbeing",
-    ],
+    dropdown4: [],
+    dropdown5: [],
     dropdown6: ["Part-Time", "Full-Time", "Contract/Term"],
+    dropdown7: [
+      "Less than $30,000",
+      "$30,000 - $50,000",
+      "$50,000 - $75,000",
+      "$75,000 - $100,000",
+      "$100,000 - $150,000",
+      "$150,000 - $200,000",
+      "$200,000 - $300,000",
+      "$300,000 - $500,000",
+      "Over $500,000",
+    ],
+    dropdown8: [
+      "1 Day Ago",
+      "3 Days Ago",
+      "7 Days Ago",
+      "14 Days Ago",
+      "30 Days Ago",
+    ],
   };
 
   const apiKey =
@@ -422,6 +352,51 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 1000);
   });
 
+  function getFilterFormula(options) {
+    const daysAgoMapping = {
+      "1 Day Ago": 1,
+      "3 Days Ago": 3,
+      "7 Days Ago": 7,
+      "14 Days Ago": 14,
+      "30 Days Ago": 30,
+    };
+
+    let max = -Infinity;
+
+    options.forEach((e) => {
+      if (daysAgoMapping[e] > max) {
+        max = daysAgoMapping[e];
+      }
+    });
+
+    return `DATETIME_DIFF(TODAY(), {Created}, 'days') <= ${max}`;
+  }
+
+  function generateSalaryFilterFormula(options) {
+    const formulaParts = [];
+
+    options.forEach((option) => {
+      let lowerBound = 0;
+      let upperBound = 0;
+
+      if (option === "Less than $30,000") {
+        formulaParts.push(`AND({Max Salary (USD)} <= 30000)`);
+      } else if (option === "Over $500,000") {
+        formulaParts.push(`AND({Max Salary (USD)} > 500000)`);
+      } else {
+        const rangeMatch = option.match(/\$([\d,]+) - \$([\d,]+)/);
+        if (rangeMatch) {
+          lowerBound = parseInt(rangeMatch[1].replace(/,/g, ""), 10);
+          upperBound = parseInt(rangeMatch[2].replace(/,/g, ""), 10);
+        }
+        formulaParts.push(
+          `AND({Max Salary (USD)} >= ${lowerBound}, {Max Salary (USD)} <= ${upperBound})`
+        );
+      }
+    });
+
+    return `OR(${formulaParts.join(", ")})`;
+  }
   function urlCreator(s) {
     const baseUrl = "https://api.airtable.com/v0/apprdsx9uO4l5FieL/Table%201?";
     const pageSize = "pageSize=100";
@@ -435,6 +410,8 @@ document.addEventListener("DOMContentLoaded", function () {
       dropdown4: "Experience Level",
       dropdown5: "Field",
       dropdown6: "Type",
+      dropdown7: "Max Salary (USD)",
+      dropdown8: "Created",
     };
 
     for (const f in s) {
@@ -444,6 +421,10 @@ document.addEventListener("DOMContentLoaded", function () {
           (term) => `SEARCH("${term}", {Concat})`
         );
         filters.push(`AND(${searchConditions.join(",")})`);
+      } else if (f === "dropdown7" && s[f].length) {
+        filters.push(generateSalaryFilterFormula(s[f]));
+      } else if (f === "dropdown8" && s[f].length) {
+        filters.push(getFilterFormula(s[f]));
       } else if (s[f].length) {
         filters.push(
           `OR(${s[f]
@@ -465,6 +446,8 @@ document.addEventListener("DOMContentLoaded", function () {
       dropdown4: [],
       dropdown5: [],
       dropdown6: [],
+      dropdown7: [],
+      dropdown8: [],
       searchInput: "",
     };
 
@@ -483,8 +466,8 @@ document.addEventListener("DOMContentLoaded", function () {
         selectedOptions[dropdownId].push(optionText);
       });
     });
-
     let url = urlCreator(selectedOptions);
+    console.log(url);
     let newOffset = "&offset=" + offsetArray[offset];
     if (document.getElementById("toDelete"))
       document.getElementById("toDelete").remove();

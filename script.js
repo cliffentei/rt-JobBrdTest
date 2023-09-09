@@ -686,7 +686,7 @@ document.addEventListener("DOMContentLoaded", function () {
               //   </div>
               // `;
               htmlString += `
-                <div class='grid-card'>
+                <div class='grid-card loading-effect'>
                 <p>${e.fields["Job Title"]}</p>
                 </div>
               `;

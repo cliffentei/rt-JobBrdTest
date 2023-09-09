@@ -690,11 +690,79 @@ document.addEventListener("DOMContentLoaded", function () {
               //       </div>
               //   </div>
               // `;
-              htmlString += `
-                <div class='grid-card loading-effect'>
-                <p>${e.fields["Job Title"]}</p>
-                </div>
-              `;
+              function formatNumberToK(number) {
+                if (typeof number !== 'number') {
+                  return "Invalid input";
+                }
+              
+                // Check if the number is greater than or equal to 1000
+                if (number >= 1000) {
+                  // Divide the number by 1000 and round it to 1 decimal place
+                  const numInK = (number / 1000).toFixed(0);
+                  return `$${numInK}k`;
+                }
+              
+                // If the number is less than 1000, simply display it as is
+                return `$${number}`;
+              }
+              htmlString += `<div class='job-card'>
+              <div>
+                <p class='job-title'>${
+                  e.fields["Job Title"]
+                }</p>
+                <hr/>
+              
+              </div>
+              <div class='info-div'>
+                  <div>
+                      <p class='card-icon'>Company: </p>
+                      <p>${
+                        e.fields["Company/Org"]
+                      }</p>
+                  </div>
+                  <div>
+                      <p class='card-icon'>Experience Level: </p>
+                      <p>${
+                        e.fields["Location"]
+                      }</p>
+                  </div>
+                  <div>
+                      <p class='card-icon'>Company: </p>
+                      <p>${
+                        e.fields["Experience Level"]
+                      }</p>
+                  </div>
+                  <div>
+                      <p class='card-icon'>Experience Level: </p>
+                      <p>${
+                        e.fields["Region"]
+                      }</p>
+                  </div>
+                  <div>
+                      <p class='card-icon'>Company: </p>
+                      <p>${
+                        e.fields["Type"]
+                      }</p>
+                  </div>
+                  <div>
+                      <p class='card-icon'>Experience Level: </p>
+                      <p>${
+                        e.fields["VISA sponsorship"]
+                      }</p>
+                  </div>
+              </div>
+              <div>
+                  <div class='salary-text'>
+                      <div>
+                        <h2>${formatNumberToK(e.fields['Min Salary (USD)'])} <span>Min</span></h2>
+                      </div>
+                        <div>
+                      <h2>${formatNumberToK(e.fields['Max Salary (USD)'])} <span>Max</span></h2>
+                      </div>
+                  </div>
+                  <div class='salary-bar'></div>
+              </div>
+          </div>`;
             });
           } else {
             htmlString += `<h1 class="title">No Results Found</h1>`;
@@ -706,7 +774,7 @@ document.addEventListener("DOMContentLoaded", function () {
           const parsedElement = parsedHtml.querySelector("div");
           const targetElement = document.getElementById("targetElement");
           targetElement.appendChild(parsedElement);
-          const readMoreButtons = document.querySelectorAll(".grid-card");
+          const readMoreButtons = document.querySelectorAll(".job-card");
           readMoreButtons.forEach((button, index) => {
             button.addEventListener("click", () => {
               openModal(data.records[index].fields); // Pass the job details to your openModal function

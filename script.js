@@ -7,7 +7,10 @@ document.addEventListener("DOMContentLoaded", function () {
   const scrollToTopBtn = document.getElementById("scrollToTopBtn");
 
   window.addEventListener("scroll", () => {
-    if (document.body.scrollTop > 1500 || document.documentElement.scrollTop > 1500) {
+    if (
+      document.body.scrollTop > 1500 ||
+      document.documentElement.scrollTop > 1500
+    ) {
       scrollToTopBtn.style.display = "block";
     } else {
       scrollToTopBtn.style.display = "none";
@@ -16,10 +19,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
   scrollToTopBtn.addEventListener("click", () => {
     window.scrollTo({
-        top: 0,
-        behavior: "smooth"
+      top: 0,
+      behavior: "smooth",
     });
-});
+  });
 
   const searchInputs = document.getElementById("search-input");
   const clearIcon = document.querySelector(".clear-icon");
@@ -317,9 +320,11 @@ document.addEventListener("DOMContentLoaded", function () {
       return `<a href="${matches[0]}" target="_blank" style='text-decoration: none;'><div class='apply-btn'><p>Apply<p></div></a>`;
     }
     for (let i = 0; i < matches.length; i++) {
-      b += `<a href="${matches[i]
-        }" target="_blank" style='text-decoration: none;'><div class='apply-btn'>Apply (${i + 1
-        })</div></a>`;
+      b += `<a href="${
+        matches[i]
+      }" target="_blank" style='text-decoration: none;'><div class='apply-btn'>Apply (${
+        i + 1
+      })</div></a>`;
     }
     return b;
   }
@@ -686,7 +691,7 @@ document.addEventListener("DOMContentLoaded", function () {
               //   </div>
               // `;
               htmlString += `
-                <div class='grid-card'>
+                <div class='grid-card loading-effect'>
                 <p>${e.fields["Job Title"]}</p>
                 </div>
               `;
@@ -719,8 +724,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const modalContent = modal.querySelector(".modal-content");
     modalHeader.innerHTML = `<span style='font-size: 50px; margin: 0 0 0 auto;' class="close">&times;</span>
     <div class='card-header'>
-        <p style="font-family: 'Caprasimo', cursive; font-size:35px;">${e["Job Title"]
-      }</p>
+        <p style="font-family: 'Caprasimo', cursive; font-size:35px;">${e["Job Title"]}</p>
         <p style="font-size: 20px;">Date Posted: ${e["Created"]}</p>
     </div>`;
     modalContent.innerHTML = "";
@@ -743,8 +747,9 @@ document.addEventListener("DOMContentLoaded", function () {
           <div class='vertical-hr'></div>
           <div class="job-spec">
               <p class="job-spec-title">Type:</p>
-              <p class='job-type'>${e["Type"] ? e["Type"].join(", ") : "N/A"
-      }</p>
+              <p class='job-type'>${
+                e["Type"] ? e["Type"].join(", ") : "N/A"
+              }</p>
           </div>
       </div>
       <div class="job-desc-div" style="width: 100%">
@@ -752,19 +757,22 @@ document.addEventListener("DOMContentLoaded", function () {
               <div class="exp-sal-div"
                   style="display:flex; justify-content: space-between; flex-wrap: wrap; padding-bottom: 5px;">
                   <p style='font-size: 25px; font-weight: bold'>Department/Team:
-                      <span style='font-size: 25px; font-weight: normal'>${e["Department/Team"] || "No Team Listed"
-      }</span>
+                      <span style='font-size: 25px; font-weight: normal'>${
+                        e["Department/Team"] || "No Team Listed"
+                      }</span>
                   </p>
-                  <p style='font-size: 25px; font-weight: bold'>Salary: <span style='font-size: 25px; font-weight: normal'>${e["Salary"] || "No Salary Listed"
-      }</span></p>
+                  <p style='font-size: 25px; font-weight: bold'>Salary: <span style='font-size: 25px; font-weight: normal'>${
+                    e["Salary"] || "No Salary Listed"
+                  }</span></p>
                         
               </div>
               <div class="min-max-div" style="display: flex; justify-content:space-between; flex-wrap: wrap;">
                   <p style='font-size: 25px; font-weight: bold' class="visa-label">Visa Sponsorship:
-                      <span style='font-size: 25px; font-weight: normal'>${e["VISA sponsorship"]
-        ? e["VISA sponsorship"].join(", ")
-        : "N/A"
-      }</span>
+                      <span style='font-size: 25px; font-weight: normal'>${
+                        e["VISA sponsorship"]
+                          ? e["VISA sponsorship"].join(", ")
+                          : "N/A"
+                      }</span>
                   </p>
                   <p style='font-size: 25px; font-weight: bold' class="min-sal-label">Minimum Salary:
                       <span style='font-size: 25px; font-weight: normal'>
@@ -775,12 +783,13 @@ document.addEventListener("DOMContentLoaded", function () {
               <div class="exp-sal-div"
                   style="display:flex; justify-content: space-between; flex-wrap: wrap; padding-bottom: 5px;">
                   <p style='font-size: 25px; font-weight: bold'>Experience Level:
-                      <span style='font-size: 25px; font-weight: normal'>${e["Experience Level"] && e["Experience Level"].length
-        ? e["Experience Level"].join(", ")
-        : e["Experience Level"]
-          ? e["Experience Level"]
-          : "No Experience Listed"
-      }</span>
+                      <span style='font-size: 25px; font-weight: normal'>${
+                        e["Experience Level"] && e["Experience Level"].length
+                          ? e["Experience Level"].join(", ")
+                          : e["Experience Level"]
+                          ? e["Experience Level"]
+                          : "No Experience Listed"
+                      }</span>
                   </p>
                   <p style='font-size: 25px; font-weight: bold' class="max-sal-label">Maximum Salary:
                       <span style='font-size: 25px; font-weight: normal'>
@@ -790,20 +799,22 @@ document.addEventListener("DOMContentLoaded", function () {
               </div>
               <div class="reg-visa-div" style="display: flex; justify-content:space-between; flex-wrap: wrap;">
                   <p style='font-size: 25px; font-weight: bold' class="region-label">Region:
-                      <span style='font-size: 25px; font-weight: normal'>${e["Region"] ? e["Region"].join(", ") : "N/A"
-      }</span>
+                      <span style='font-size: 25px; font-weight: normal'>${
+                        e["Region"] ? e["Region"].join(", ") : "N/A"
+                      }</span>
                   </p>
                   <p style='font-size: 25px; font-weight: bold'>Closing Date: <span
-                          style='font-size: 25px; font-weight: normal'>${e["Closing Date"]
-      }</span></p>
+                          style='font-size: 25px; font-weight: normal'>${
+                            e["Closing Date"]
+                          }</span></p>
               </div>
           </div>
       </div>`;
     modalFooter.innerHTML = `
       <div class='apply-div'>
           ${buttons(e["Link to Apply"]) || ""}
-      </div>`
-    console.log(e["Link to Apply"])
+      </div>`;
+    console.log(e["Link to Apply"]);
     modal.style.display = "flex";
 
     const closeBtn = modal.querySelector(".close");

@@ -765,3 +765,7 @@ transform: translate(0, -8px);
     transform: scale(1.08);
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
+
+* {
+    -webkit-tap-highlight-color: transparent;
+  } 

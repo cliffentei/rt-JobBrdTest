@@ -213,8 +213,9 @@ document.addEventListener("DOMContentLoaded", function () {
       dropdownData[dropdownId].forEach((optionText) => {
         const optionElement = document.createElement("div");
         optionElement.classList.add("dropdown-option");
+        optionElement.classList.add("checkbox-rect2");
         optionElement.innerHTML = `
-          <input type="checkbox" class="dropdown-option-checkbox">
+          <input type="checkbox" class="dropdown-option-checkbox" id="checkbox-rect2" name="check">
           <span>${optionText}</span>
         `;
         dropdownMenu.appendChild(optionElement);
@@ -597,7 +598,6 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
     let url = urlCreator(selectedOptions);
-    console.log(url);
     let newOffset = "&offset=" + offsetArray[offset];
     if (document.getElementById("toDelete"))
       document.getElementById("toDelete").remove();
@@ -702,13 +702,15 @@ document.addEventListener("DOMContentLoaded", function () {
               <div class='info-div'>
                   <div>
                       ${icons["company"]}
-                      <p>${e.fields["Company/Org"]}</p>
+                      <div class="field-div" > <p>${
+                        e.fields["Company/Org"]
+                      }</p></div>
                   </div>
                   ${
                     e.fields["Location"]
                       ? `<div>
                       ${icons["location"]}
-                      <p>${e.fields["Location"]}</p>
+                      <div class="field-div" > <p>${e.fields["Location"]}</p></div>
                   </div>`
                       : ""
                   }
@@ -716,8 +718,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     e.fields["Experience Level"]
                       ? `<div>
                       ${icons["experience"]}
-                      <p>${e.fields["Experience Level"]}</p>
-                  </div>`
+                            ${fields(e.fields["Experience Level"]) || ""}
+                      </div>`
                       : ""
                   }
                   <div>
@@ -727,7 +729,7 @@ document.addEventListener("DOMContentLoaded", function () {
                       ? icons["world"]
                       : icons["remote"]
                   }
-                      <p>${e.fields["Region"]}</p>
+                      ${fields(e.fields["Region"]) || ""}
                   </div>
                   <div>
                       ${
@@ -737,7 +739,7 @@ document.addEventListener("DOMContentLoaded", function () {
                           ? icons["partTime"]
                           : icons["contract"]
                       }
-                      <p>${e.fields["Type"]}</p>
+                      ${fields(e.fields["Type"]) || ""}
                   </div>
                   ${
                     e.fields["VISA sponsorship"]
@@ -749,7 +751,7 @@ document.addEventListener("DOMContentLoaded", function () {
                           ? icons["visaEx"]
                           : icons["visaQuestion"]
                       }
-                      <p>${e.fields["VISA sponsorship"]}</p>
+                      ${fields(e.fields["VISA sponsorship"]) || ""}
                   </div>`
                       : ``
                   }

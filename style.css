@@ -207,7 +207,7 @@
 
        /* MODAL STUFF */
        /* Modal */
-       .modal {
+       /* .modal {
            display: none;
            justify-content: center;
            align-items: center;
@@ -219,7 +219,21 @@
            height: 100%;
            background-color: rgba(0, 0, 0, 0.4);
 
-       }
+       } */
+       .modal {
+        display: none;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(255, 255, 255, 0.15); /* Adjust the background color and opacity */
+        backdrop-filter: blur(10px); /* Adjust the blur intensity as needed */
+    }
+    
 
        .modal-div {
            display: flex;

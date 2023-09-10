@@ -430,14 +430,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const dropdownDiv = document.querySelector(".dropdown-div");
   const paginElement = document.querySelector(".pagin");
-
   const originalHeight = dropdownDiv.clientHeight;
-
-  const targetDiv = document.querySelector(".dropdown-div");
 
   const resizeObserver = new ResizeObserver((entries) => {
     for (const entry of entries) {
-      const newHeight = entry.contentRect.height;
+      const newHeight = Math.round(entry.contentRect.height);
       if (newHeight + 20 !== originalHeight) {
         paginElement.style.marginTop = `-${newHeight + 20 - originalHeight}px`;
       } else {
@@ -446,7 +443,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  resizeObserver.observe(targetDiv);
+  resizeObserver.observe(dropdownDiv);
 
   let offset = 0;
   let offsetArray = [""];

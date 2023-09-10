@@ -30,10 +30,11 @@ body {
     font-family: system-ui, Arial, Helvetica, sans-serif;
     border-radius: 20px;
     cursor: pointer;
-    transition: all .3s ease-in;
+    transition: box-shadow .3s ease-in;
 }
 .job-card:hover {
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    transform: scale(1.005) !important;
 }
 .job-card hr {
     width: 80%;
@@ -361,7 +362,7 @@ svg {
 .dropdown-button:hover svg, .remove-filter:hover svg, .increase:hover svg, .decrease:hover svg, .increase2:hover svg, .decrease2:hover svg {
     filter: invert(1) 
 }
-.dropdown-menu {
+/* .dropdown-menu {
     top: 100%;
     left: 0;
     width: 300px;
@@ -373,11 +374,55 @@ svg {
     z-index: 1;
     user-select: none;
 }
-.col-text {
-    font-size: 20px;
-}
 .dropdown-menu.active {
     display: block;
+} */
+/* .dropdown-menu {
+    top: 100%;
+    left: 0;
+    width: 0; 
+    max-height: 300px;
+    height: auto; 
+    overflow-y: auto;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    z-index: 1;
+    user-select: none;
+    transition: width 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    opacity: 0; 
+    pointer-events: none; 
+}
+
+.dropdown-menu.active {
+    width: 300px; 
+    opacity: 1; 
+    pointer-events: auto;
+} */
+.dropdown-menu {
+    top: 100%;
+    left: 0;
+    max-width: 0; 
+    max-height: 0; 
+    width: auto; 
+    height: auto; 
+    overflow-y: auto;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    z-index: 1;
+    user-select: none;
+    transition: max-height 0.3s ease-in-out, max-width 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    opacity: 0; 
+    pointer-events: none; 
+}
+
+.dropdown-menu.active {
+    max-height: 300px; 
+    max-width: 300px; 
+    opacity: 1; 
+    pointer-events: auto;
+}
+.col-text {
+    font-size: 20px;
 }
 .dropdown-option {
     padding: 10px;

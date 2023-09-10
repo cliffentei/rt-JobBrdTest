@@ -690,7 +690,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
                 return `$${number}`;
               }
-              htmlString += `<div class='job-card'>
+              htmlString += `<div class='job-card loading-effect'>
               <div>
                 <p class='job-title'>${e.fields["Job Title"]}</p>
                 <hr/>

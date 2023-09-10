@@ -105,7 +105,7 @@ document.addEventListener("DOMContentLoaded", function () {
       "Over $500,000",
     ],
     dropdown8: [
-      "1 Day Ago",
+      "24 Hours Ago",
       "3 Days Ago",
       "7 Days Ago",
       "14 Days Ago",
@@ -482,7 +482,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function getFilterFormula(options) {
     const daysAgoMapping = {
-      "1 Day Ago": 1,
+      "24 Hours Ago": 1,
       "3 Days Ago": 3,
       "7 Days Ago": 7,
       "14 Days Ago": 14,
@@ -815,6 +815,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function openModal(e) {
     const modal = document.getElementById("myModal");
+    document.body.classList.add("modal-open");
     const modalHeader = modal.querySelector(".modal-header");
     const modalFooter = modal.querySelector(".modal-footer");
     const modalContent = modal.querySelector(".modal-content");
@@ -923,6 +924,7 @@ document.addEventListener("DOMContentLoaded", function () {
     ) {
       document.getElementById("myModal").style.display = "none";
       document.getElementById("targetElement").style.position = "";
+      document.body.classList.remove("modal-open");
     }
   });
 

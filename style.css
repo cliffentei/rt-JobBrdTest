@@ -745,3 +745,7 @@ svg {
     background: #50565a;
     box-shadow: 2px 1px 0 #50565a;
   }
+
+  .modal-open {
+    overflow: hidden;
+  }

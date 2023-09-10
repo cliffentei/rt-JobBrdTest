@@ -465,7 +465,7 @@ cursor: pointer;
            max-width: 90vw;
            overflow-x: auto;
            position: relative;
-        z-index: 1;
+            z-index: 1;
        }
 
        .dropdown {
@@ -916,4 +916,8 @@ transform: translate(0, -8px);
       
       .dropdown-div::-webkit-scrollbar-thumb {
         background-color: transparent; 
+      }
+
+      .dropdown-search {
+        width: 100%;
       }

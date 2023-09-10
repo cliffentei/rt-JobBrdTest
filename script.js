@@ -205,7 +205,11 @@ document.addEventListener("DOMContentLoaded", function () {
       const dropdownButton = dropdown.querySelector(".dropdown-button");
       const dropdownMenu = dropdown.querySelector(".dropdown-menu");
       const dropdownId = dropdown.id;
-
+      const searchOption = document.createElement("div");
+      searchOption.innerHTML = `
+      <input type="text" class="dropdown-search" placeholder="Search...">
+        `;
+      dropdownMenu.appendChild(searchOption);
       dropdownData[dropdownId].forEach((optionText) => {
         const optionElement = document.createElement("div");
         optionElement.classList.add("dropdown-option");
@@ -249,7 +253,6 @@ document.addEventListener("DOMContentLoaded", function () {
           }, 1000);
         });
       });
-
       dropdownButton.addEventListener("click", function () {
         dropdownMenu.classList.toggle("active");
       });
@@ -289,6 +292,26 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       });
 
+      const dropSearch = document.querySelector(
+        `#${dropdownId} .dropdown-search`
+      );
+      const dropSearchOptions = document.querySelectorAll(
+        `#${dropdownId} .dropdown-option`
+      );
+      dropSearch.addEventListener("input", function () {
+        const searchTerm = this.value.toLowerCase();
+        dropSearchOptions.forEach(function (option) {
+          const optionText = option
+            .querySelector("span")
+            .textContent.toLowerCase();
+          if (optionText.includes(searchTerm)) {
+            option.style.display = "block";
+          } else {
+            option.style.display = "none";
+          }
+        });
+      });
+
       updateButtonState();
     });
   }
@@ -312,6 +335,8 @@ document.addEventListener("DOMContentLoaded", function () {
     document.addEventListener("click", function (event) {
       const dropdownMenus = document.querySelectorAll(".dropdown-menu");
       const dropdownButtons = document.querySelectorAll(".dropdown-button");
+      const dropDownSearch = document.querySelectorAll(".dropdown-search");
+      const dropdownOptions = document.querySelectorAll(".dropdown-option");
       let isInsideDropdown = false;
       dropdownMenus.forEach((dropdownMenu) => {
         if (dropdownMenu.contains(event.target)) {
@@ -326,6 +351,12 @@ document.addEventListener("DOMContentLoaded", function () {
       if (!isInsideDropdown) {
         dropdownMenus.forEach((dropdownMenu) => {
           dropdownMenu.classList.remove("active");
+        });
+        dropDownSearch.forEach((input) => {
+          input.value = "";
+        });
+        dropdownOptions.forEach((option) => {
+          option.style.display = "block";
         });
       }
     });
@@ -783,7 +814,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 // If the number is less than 1000, simply display it as is
                 return `$${number}`;
               }
-              console.log(e.fields);
               htmlString += `<div class='job-card'>
               <div>
                 <p class='job-title'>${e.fields["Job Title"]}</p>

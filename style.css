@@ -487,7 +487,7 @@ justify-content: space-between;
 white-space: nowrap;
 } */
 
-       .dropdown-button {
+       .dropdown-button, .remove-filter{
            display: flex;
            align-items: center;
            justify-content: space-between;
@@ -500,8 +500,10 @@ white-space: nowrap;
            transition: all 0.3s ease;
            white-space: nowrap;
        }
+       
 
        .dropdown-button:hover,
+       .remove-filter:hover,
        .increase:hover,
        .decrease:hover,
        .increase2:hover,
@@ -529,6 +531,7 @@ white-space: nowrap;
        }
 
        .dropdown-button svg,
+       .remove-filter svg,
        .increase svg,
        .decrease svg,
        .increase2 svg,
@@ -537,6 +540,7 @@ white-space: nowrap;
        }
 
        .dropdown-button:hover svg,
+       .remove-filter:hover svg,
        .increase:hover svg,
        .decrease:hover svg,
        .increase2:hover svg,
@@ -587,12 +591,14 @@ white-space: nowrap;
            color: #333;
        }
 
-       .dropdown-button.selected {
+       .dropdown-button.selected,
+       .remove-filter.selected {
            background-color: black;
            color: white;
        }
 
-       .dropdown-button.selected svg {
+       .dropdown-button.selected svg,
+       .remove-filter.selected svg  {
            filter: invert(1);
        }
 

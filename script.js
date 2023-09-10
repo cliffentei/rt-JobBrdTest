@@ -211,6 +211,15 @@ document.addEventListener("DOMContentLoaded", function () {
           optionElement.classList.toggle("selected");
           updateButtonState();
           event.preventDefault();
+          const selectedOptions = document.querySelectorAll(
+            ".dropdown-option.selected"
+          );
+          if (selectedOptions.length === 0) {
+            document.querySelector(".remove-filter").classList.remove("hidden");
+            document.querySelector(".remove-filter").classList.add("hidden");
+          } else {
+            document.querySelector(".remove-filter").classList.remove("hidden");
+          }
           decreaseBtn.classList.remove("show");
           decreaseBtn2.classList.remove("show");
           increaseBtn.classList.remove("show");
@@ -337,6 +346,40 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     return b;
   }
+
+  const removeFilterButton = document.querySelector(".remove-filter");
+  removeFilterButton.addEventListener("click", function () {
+    const selectedOptions = document.querySelectorAll(
+      ".dropdown-option.selected"
+    );
+    selectedOptions.forEach((option) => {
+      option.classList.remove("selected");
+    });
+    const selectedButtons = document.querySelectorAll(
+      ".dropdown-button.selected"
+    );
+    const selectedChecks = document.querySelectorAll(
+      ".dropdown-option-checkbox"
+    );
+    selectedButtons.forEach((option) => {
+      option.classList.remove("selected");
+    });
+    selectedChecks.forEach((option) => {
+      option.checked = false;
+    });
+    decreaseBtn.classList.remove("show");
+    decreaseBtn2.classList.remove("show");
+    increaseBtn.classList.remove("show");
+    increaseBtn2.classList.remove("show");
+    document.getElementById("toDelete").remove();
+    clearTimeout(timeoutId);
+    dotSpinner.classList.remove("hidden");
+    timeoutId = setTimeout(() => {
+      fetchAllData();
+      dotSpinner.classList.add("hidden");
+    }, 1000);
+    document.querySelector(".remove-filter").classList.add("hidden");
+  });
 
   let offset = 0;
   let offsetArray = [""];
@@ -691,73 +734,63 @@ document.addEventListener("DOMContentLoaded", function () {
               //   </div>
               // `;
               function formatNumberToK(number) {
-                if (typeof number !== 'number') {
+                if (typeof number !== "number") {
                   return "Invalid input";
                 }
-              
+
                 // Check if the number is greater than or equal to 1000
                 if (number >= 1000) {
                   // Divide the number by 1000 and round it to 1 decimal place
                   const numInK = (number / 1000).toFixed(0);
                   return `$${numInK}k`;
                 }
-              
+
                 // If the number is less than 1000, simply display it as is
                 return `$${number}`;
               }
               htmlString += `<div class='job-card'>
               <div>
-                <p class='job-title'>${
-                  e.fields["Job Title"]
-                }</p>
+                <p class='job-title'>${e.fields["Job Title"]}</p>
                 <hr/>
               
               </div>
               <div class='info-div'>
                   <div>
                       <p class='card-icon'>Company: </p>
-                      <p>${
-                        e.fields["Company/Org"]
-                      }</p>
+                      <p>${e.fields["Company/Org"]}</p>
                   </div>
                   <div>
                       <p class='card-icon'>Experience Level: </p>
-                      <p>${
-                        e.fields["Location"]
-                      }</p>
+                      <p>${e.fields["Location"]}</p>
                   </div>
                   <div>
                       <p class='card-icon'>Company: </p>
-                      <p>${
-                        e.fields["Experience Level"]
-                      }</p>
+                      <p>${e.fields["Experience Level"]}</p>
                   </div>
                   <div>
                       <p class='card-icon'>Experience Level: </p>
-                      <p>${
-                        e.fields["Region"]
-                      }</p>
+                      <p>${e.fields["Region"]}</p>
                   </div>
                   <div>
                       <p class='card-icon'>Company: </p>
-                      <p>${
-                        e.fields["Type"]
-                      }</p>
+                      <p>${e.fields["Type"]}</p>
                   </div>
                   <div>
                       <p class='card-icon'>Experience Level: </p>
-                      <p>${
-                        e.fields["VISA sponsorship"]
-                      }</p>
+                      <p>${e.fields["VISA sponsorship"]}</p>
                   </div>
               </div>
               <div>
                   <div class='salary-text'>
                       <div>
-                        <h2>${formatNumberToK(e.fields['Min Salary (USD)'])} <span>Min</span></h2>
+                        <h2>${formatNumberToK(
+                          e.fields["Min Salary (USD)"]
+                        )} <span>Min</span></h2>
                       </div>
                         <div>
-                      <h2>${formatNumberToK(e.fields['Max Salary (USD)'])} <span>Max</span></h2>
+                      <h2>${formatNumberToK(
+                        e.fields["Max Salary (USD)"]
+                      )} <span>Max</span></h2>
                       </div>
                   </div>
                   <div class='salary-bar'></div>
@@ -778,7 +811,7 @@ document.addEventListener("DOMContentLoaded", function () {
           readMoreButtons.forEach((button, index) => {
             button.addEventListener("click", () => {
               openModal(data.records[index].fields);
-              document.getElementById('targetElement').style.position = 'fixed';
+              document.getElementById("targetElement").style.position = "fixed";
             });
           });
         })
@@ -888,7 +921,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const closeBtn = modal.querySelector(".close");
     closeBtn.onclick = function () {
       modal.style.display = "none";
-      document.getElementById('targetElement').style.position = '';;
+      document.getElementById("targetElement").style.position = "";
     };
   }
 

@@ -31,7 +31,7 @@
            margin: 20px;
            display: flex;
            flex-direction: column;
-           justify-content: space-evenly;
+           justify-content: space-between;
            font-family: system-ui, Arial, Helvetica, sans-serif;
            border-radius: 20px;
            cursor: pointer;
@@ -53,10 +53,17 @@
            margin: 20px 10px 0 10px;
            font-weight: normal;
        }
-
+       .info-div{
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+       }
        .info-div div {
            display: flex;
+           align-items: center;
            margin: 10px 0;
+           max-height: 50px;
        }
 
        .info-div div p {
@@ -64,17 +71,45 @@
            margin-bottom: 0;
        }
 
+       .info-div div svg{
+        min-width:40px;
+        max-width:40px;
+        height: 45px;
+        margin-right: 5px;
+       }
+
        .card-icon {
            margin-right: 15px;
        }
 
-       .salary-bar {
+       .salary-2-bar {
            width: 100%;
            height: 20px;
            border: solid .5px rgb(98, 97, 97);
            border-radius: 50px;
            background: linear-gradient(90deg, #b1ffac 50%, #4ed670 50%);
        }
+       .salary-0-bar {
+        width: 100%;
+        height: 20px;
+        border: solid .5px rgb(98, 97, 97);
+        border-radius: 50px;
+        background: linear-gradient(90deg, #d5d5d5 50%, #b6b6b6 50%);
+    }
+    .salary-min-bar {
+        width: 100%;
+        height: 20px;
+        border: solid .5px rgb(98, 97, 97);
+        border-radius: 50px;
+        background-color: #b1ffac;
+    }
+    .salary-max-bar {
+        width: 100%;
+        height: 20px;
+        border: solid .5px rgb(98, 97, 97);
+        border-radius: 50px;
+        background-color: #4ed670;
+    }
 
        .salary-text {
            display: flex;

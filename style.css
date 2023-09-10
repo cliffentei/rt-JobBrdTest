@@ -465,7 +465,7 @@ cursor: pointer;
            max-width: 90vw;
            overflow-x: auto;
            position: relative;
-             z-index: 10;
+        z-index: 1;
        }
 
        .dropdown {

@@ -6,7 +6,8 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   const scrollToTopBtn = document.getElementById("scrollToTopBtn");
   const icons = {
-    world: '<svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="3 3 18 18"> <g id="SVGRepo_bgCarrier" stroke-width="0"></g> <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g> <g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M6.15407 7.30116C7.52877 5.59304 9.63674 4.5 12 4.5C12.365 4.5 12.7238 4.52607 13.0748 4.57644L13.7126 5.85192L11.2716 8.2929L8.6466 8.6679L7.36009 9.95441L6.15407 7.30116ZM5.2011 8.82954C4.75126 9.79256 4.5 10.8669 4.5 12C4.5 15.6945 7.17133 18.7651 10.6878 19.3856L11.0989 18.7195L8.8147 15.547L10.3741 13.5256L9.63268 13.1549L6.94027 13.6036L6.41366 11.4972L5.2011 8.82954ZM7.95559 11.4802L8.05962 11.8964L9.86722 11.5951L11.3726 12.3478L14.0824 11.9714L18.9544 14.8135C19.3063 13.9447 19.5 12.995 19.5 12C19.5 8.93729 17.6642 6.30336 15.033 5.13856L15.5377 6.1481L11.9787 9.70711L9.35371 10.0821L7.95559 11.4802ZM18.2539 16.1414C16.9774 18.0652 14.8369 19.366 12.3859 19.4902L12.9011 18.6555L10.6853 15.578L12.0853 13.7632L13.7748 13.5286L18.2539 16.1414ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z" fill="#000000"></path> </g> </svg>',
+    world:
+      '<svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="3 3 18 18"> <g id="SVGRepo_bgCarrier" stroke-width="0"></g> <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g> <g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M6.15407 7.30116C7.52877 5.59304 9.63674 4.5 12 4.5C12.365 4.5 12.7238 4.52607 13.0748 4.57644L13.7126 5.85192L11.2716 8.2929L8.6466 8.6679L7.36009 9.95441L6.15407 7.30116ZM5.2011 8.82954C4.75126 9.79256 4.5 10.8669 4.5 12C4.5 15.6945 7.17133 18.7651 10.6878 19.3856L11.0989 18.7195L8.8147 15.547L10.3741 13.5256L9.63268 13.1549L6.94027 13.6036L6.41366 11.4972L5.2011 8.82954ZM7.95559 11.4802L8.05962 11.8964L9.86722 11.5951L11.3726 12.3478L14.0824 11.9714L18.9544 14.8135C19.3063 13.9447 19.5 12.995 19.5 12C19.5 8.93729 17.6642 6.30336 15.033 5.13856L15.5377 6.1481L11.9787 9.70711L9.35371 10.0821L7.95559 11.4802ZM18.2539 16.1414C16.9774 18.0652 14.8369 19.366 12.3859 19.4902L12.9011 18.6555L10.6853 15.578L12.0853 13.7632L13.7748 13.5286L18.2539 16.1414ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z" fill="#000000"></path> </g> </svg>',
     remote: `<svg fill="none" xmlns="http://www.w3.org/2000/svg" #000000"="" stroke-width="0.048" viewBox="4.27 9 15.45 12"> <g id="SVGRepo_bgCarrier" stroke-width="0"></g> <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g> <g id="SVGRepo_iconCarrier"> <path d="M12.0002 19C11.4479 19 11.0002 19.4477 11.0002 20C11.0002 20.5523 11.4479 21 12.0002 21V19ZM12.0102 21C12.5625 21 13.0102 20.5523 13.0102 20C13.0102 19.4477 12.5625 19 12.0102 19V21ZM14.6907 17.04C15.0993 17.4116 15.7317 17.3817 16.1033 16.9732C16.475 16.5646 16.445 15.9322 16.0365 15.5605L14.6907 17.04ZM18.0541 13.3403C18.4626 13.7119 19.0951 13.682 19.4667 13.2734C19.8384 12.8649 19.8084 12.2324 19.3999 11.8608L18.0541 13.3403ZM7.96394 15.5605C7.55539 15.9322 7.52546 16.5646 7.89708 16.9732C8.26871 17.3817 8.90117 17.4116 9.30971 17.04L7.96394 15.5605ZM4.60055 11.8608C4.192 12.2324 4.16207 12.8649 4.53369 13.2734C4.90532 13.682 5.53778 13.7119 5.94633 13.3403L4.60055 11.8608ZM12.0002 21H12.0102V19H12.0002V21ZM12.0002 16C13.0369 16 13.9795 16.3931 14.6907 17.04L16.0365 15.5605C14.9715 14.5918 13.5538 14 12.0002 14V16ZM12.0002 11C14.3321 11 16.4548 11.8855 18.0541 13.3403L19.3999 11.8608C17.4468 10.0842 14.8489 9 12.0002 9V11ZM9.30971 17.04C10.0209 16.3931 10.9635 16 12.0002 16V14C10.4466 14 9.02893 14.5918 7.96394 15.5605L9.30971 17.04ZM5.94633 13.3403C7.54565 11.8855 9.66836 11 12.0002 11V9C9.15148 9 6.55365 10.0842 4.60055 11.8608L5.94633 13.3403Z" fill="#000000"></path></g> </svg>`,
     location: `<svg style="fill: none" xmlns="http://www.w3.org/2000/svg" svgrepo_bgcarrier"="" stroke-width="0" viewBox="4 2 16 20">     <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>     <g id="SVGRepo_iconCarrier">         <path d="M12 21C15.5 17.4 19 14.1764 19 10.2C19 6.22355 15.866 3 12 3C8.13401 3 5 6.22355 5 10.2C5 14.1764 8.5 17.4 12 21Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>         <path d="M12 12C13.1046 12 14 11.1046 14 10C14 8.89543 13.1046 8 12 8C10.8954 8 10 8.89543 10 10C10 11.1046 10.8954 12 12 12Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>     </g> </svg>`,
     company: `<svg style="fill: none" xmlns="http://www.w3.org/2000/svg" svgrepo_bgcarrier"="" stroke-width="0" viewBox="2 3 20 18">     <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>     <g id="SVGRepo_iconCarrier">         <path d="M11 20H21V10C21 8.89543 20.1046 8 19 8H15M11 16H11.01M17 16H17.01M7 16H7.01M11 12H11.01M17 12H17.01M7 12H7.01M11 8H11.01M7 8H7.01M15 20V6C15 4.89543 14.1046 4 13 4H5C3.89543 4 3 4.89543 3 6V20H15Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>     </g> </svg>`,
@@ -17,8 +18,8 @@ document.addEventListener("DOMContentLoaded", function () {
     fullTime: `<svg xmlns="http://www.w3.org/2000/svg" id="master-artboard" version="1.1" x="0px" y="0px" style="enable-background:new 0 0 1400 980;" viewBox="290.67 80.67 818.67 818.67">     <g transform="matrix(40.833335876464844, 0, 0, 40.833335876464844, 209.99990844726562, -0.00005262045669951476)">         <path d="M2 9C2 7.89543 2.89543 7 4 7H20C21.1046 7 22 7.89543 22 9V20C22 21.1046 21.1046 22 20 22H4C2.89543 22 2 21.1046 2 20V9Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="fill-opacity: 0;"></path>         <path d="M16 7V4C16 2.89543 15.1046 2 14 2H10C8.89543 2 8 2.89543 8 4V7" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="fill-opacity: 0;"></path>         <path d="M22 12L12.3922 13.9216C12.1333 13.9733 11.8667 13.9733 11.6078 13.9216L2 12" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="fill-opacity: 0;"></path>     </g> </svg>`,
     partTime: `<svg xmlns="http://www.w3.org/2000/svg" id="master-artboard" version="1.1" x="0px" y="0px" style="enable-background:new 0 0 1400 980;" viewBox="142.38 55.29 1045.73 850.94">     <g transform="matrix(41.192642211914055, 0, 0, 41.192642211914055, 60.99431313717582, -1.00776209050764)">         <path d="M2 9C2 7.89543 2.89543 7 4 7H20C21.1046 7 22 7.89543 22 9V20C22 21.1046 21.1046 22 20 22H4C2.89543 22 2 21.1046 2 20V9Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="fill-opacity: 0;"></path>         <path d="M16 7V4C16 2.89543 15.1046 2 14 2H10C8.89543 2 8 2.89543 8 4V7" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="fill-opacity: 0;"></path>         <path d="M22 12L12.3922 13.9216C12.1333 13.9733 11.8667 13.9733 11.6078 13.9216L2 12" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="fill-opacity: 0;"></path>     </g>     <g transform="matrix(26.024921417236325, 0, 0, 26.024921417236325, 679.6267708703297, -21.786719457451227)">         <path d="M12 14V11M12 6C7.85786 6 4.5 9.35786 4.5 13.5C4.5 17.6421 7.85786 21 12 21C16.1421 21 19.5 17.6421 19.5 13.5C19.5 11.5561 18.7605 9.78494 17.5474 8.4525M12 6C14.1982 6 16.1756 6.94572 17.5474 8.4525M12 6V3M19.5 6.5L17.5474 8.4525M12 3H9M12 3H15" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="fill-opacity: 1; fill: rgb(255, 255, 255);"></path>     </g> </svg>`,
     experience: `<svg xmlns="http://www.w3.org/2000/svg" id="master-artboard" version="1.1" x="0px" y="0px" style="enable-background:new 0 0 1400 980;" viewBox="337.1 71.46 721.87 857.31">     <g transform="matrix(11.224331855773924, 0, 0, 11.224331855773924, 337.5957123912501, 209.9147728197479)">         <path fill="#231F20" d="M32,0C14.327,0,0,14.327,0,32s14.327,32,32,32s32-14.327,32-32S49.673,0,32,0z M49.972,31 c-0.138-5.582-1.414-10.878-3.613-15.667c2.652-1.022,5.169-2.317,7.515-3.854c4.824,5.14,7.854,11.976,8.102,19.521H49.972z M33.333,61.966c-0.11,0.005-0.222,0.005-0.333,0.009V50.035c3.324,0.087,6.547,0.581,9.605,1.47 C40.184,55.541,37.029,59.084,33.333,61.966z M44.549,52.141c2.283,0.801,4.462,1.817,6.523,3.018 c-3.991,3.29-8.849,5.563-14.178,6.438C39.902,58.861,42.484,55.672,44.549,52.141z M21.394,51.505 c3.059-0.89,6.282-1.383,9.606-1.47v11.939c-0.111-0.004-0.223-0.004-0.333-0.009C26.97,59.084,23.816,55.541,21.394,51.505z M27.105,61.596c-5.329-0.874-10.187-3.147-14.178-6.438c2.062-1.2,4.24-2.217,6.523-3.017 C21.515,55.672,24.098,58.861,27.105,61.596z M2.025,31c0.248-7.545,3.277-14.381,8.102-19.521c2.346,1.536,4.862,2.831,7.515,3.854 C15.442,20.122,14.166,25.418,14.028,31H2.025z M43.57,14.196c-3.345,1.069-6.894,1.67-10.57,1.766V2.025 c0.111,0.004,0.223,0.004,0.333,0.009C37.541,5.314,41.047,9.453,43.57,14.196z M36.895,2.404 c5.944,0.976,11.298,3.696,15.521,7.622c-2.176,1.391-4.496,2.57-6.944,3.499C43.278,9.326,40.369,5.562,36.895,2.404z M31,2.025 v13.937c-3.677-0.096-7.226-0.696-10.57-1.766c2.523-4.743,6.029-8.882,10.237-12.162C30.777,2.029,30.889,2.029,31,2.025z M18.529,13.525c-2.448-0.929-4.769-2.108-6.944-3.499c4.223-3.926,9.576-6.646,15.521-7.622 C23.631,5.562,20.722,9.326,18.529,13.525z M19.532,16.009c3.622,1.189,7.472,1.873,11.468,1.972V31H16.031 C16.17,25.654,17.403,20.584,19.532,16.009z M31,33v15.036c-3.684,0.092-7.245,0.665-10.615,1.689 C17.732,44.712,16.188,39.029,16.031,33H31z M33,48.036V33h14.969c-0.156,6.029-1.701,11.712-4.354,16.726 C40.245,48.701,36.684,48.128,33,48.036z M33,31V17.98c3.996-0.099,7.846-0.782,11.468-1.972c2.129,4.575,3.362,9.646,3.501,14.991 H33z M2.025,33h12.003c0.154,6.253,1.74,12.146,4.447,17.369c-2.496,0.899-4.871,2.044-7.109,3.396 C5.827,48.513,2.294,41.172,2.025,33z M52.634,53.766c-2.238-1.353-4.613-2.497-7.109-3.396c2.707-5.224,4.293-11.116,4.447-17.369 h12.003C61.706,41.172,58.173,48.513,52.634,53.766z" style="stroke: rgb(0, 0, 0); stroke-width: 1;"></path>     </g>     <g transform="matrix(3.606806516647339, 0, 0, 3.606806516647339, -3456.764761241562, -2924.2148353345488)">         <g>             <path d="M1151.998,921.75c-4.129,0-8.17-0.771-12.01-2.292l-50.167-19.888c0,11.08,0,27.65,0,32.066 c0,15.562,27.836,28.174,62.178,28.174s62.181-12.612,62.181-28.174v-32.067l-50.172,19.889 C1160.168,920.979,1156.127,921.75,1151.998,921.75z"></path>             <path d="M1248.592,867.082l-87.989-34.878c-5.526-2.19-11.681-2.19-17.208,0l-87.988,34.878c-2.057,0.815-3.407,2.804-3.407,5.016 c0,2.213,1.351,4.201,3.407,5.017l12.317,4.882v34.925c-2.736,1.865-4.533,5.007-4.533,8.568c0,3.262,1.508,6.171,3.863,8.071 l-3.751,18.007c-0.503,2.416,0.108,4.931,1.666,6.845c1.557,1.915,3.894,3.026,6.361,3.026h4.449c2.468,0,4.804-1.111,6.361-3.026 c1.557-1.914,2.168-4.429,1.666-6.845l-3.752-18.007c2.356-1.9,3.864-4.81,3.864-8.071c0-3.562-1.797-6.703-4.533-8.568v-30.303 l63.729,25.264c5.708,2.263,12.063,2.263,17.771,0l87.709-34.768c2.057-0.815,3.407-2.804,3.407-5.017 C1252,869.886,1250.649,867.897,1248.592,867.082z"></path>         </g>     </g> </svg>`,
-    created: `<svg xmlns="http://www.w3.org/2000/svg" fill="#000000" id="date-alt-add" data-name="Flat Line" class="icon flat-line" viewBox="2 2 20 20">  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>  <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>  <g id="SVGRepo_iconCarrier">      <circle id="secondary" cx="12" cy="15" r="6" style="fill: #ffffff; stroke-width: 2;"></circle>      <path id="primary" d="M7.54,19H4a1,1,0,0,1-1-1V5A1,1,0,0,1,4,4H20a1,1,0,0,1,1,1V18a1,1,0,0,1-1,1H16.46" style="fill: none; stroke: #000000; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></path>      <path id="primary-2" data-name="primary" d="M12,9a6,6,0,1,0,6,6A6,6,0,0,0,12,9ZM3,9H21M16,3V6M8,3V6m4,11V13m-2,2h4" style="fill: none; stroke: #000000; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></path>  </g>  </svg>`
-  }
+    created: `<svg xmlns="http://www.w3.org/2000/svg" fill="#000000" id="date-alt-add" data-name="Flat Line" class="icon flat-line" viewBox="2 2 20 20">  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>  <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>  <g id="SVGRepo_iconCarrier">      <circle id="secondary" cx="12" cy="15" r="6" style="fill: #ffffff; stroke-width: 2;"></circle>      <path id="primary" d="M7.54,19H4a1,1,0,0,1-1-1V5A1,1,0,0,1,4,4H20a1,1,0,0,1,1,1V18a1,1,0,0,1-1,1H16.46" style="fill: none; stroke: #000000; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></path>      <path id="primary-2" data-name="primary" d="M12,9a6,6,0,1,0,6,6A6,6,0,0,0,12,9ZM3,9H21M16,3V6M8,3V6m4,11V13m-2,2h4" style="fill: none; stroke: #000000; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></path>  </g>  </svg>`,
+  };
 
   window.addEventListener("scroll", () => {
     if (
@@ -343,9 +344,11 @@ document.addEventListener("DOMContentLoaded", function () {
       return `<a href="${matches[0]}" target="_blank" style='text-decoration: none;'><div class='apply-btn'><p>Apply<p></div></a>`;
     }
     for (let i = 0; i < matches.length; i++) {
-      b += `<a href="${matches[i]
-        }" target="_blank" style='text-decoration: none;'><div class='apply-btn'>Apply (${i + 1
-        })</div></a>`;
+      b += `<a href="${
+        matches[i]
+      }" target="_blank" style='text-decoration: none;'><div class='apply-btn'>Apply (${
+        i + 1
+      })</div></a>`;
     }
     return b;
   }
@@ -402,6 +405,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const resizeObserver = new ResizeObserver((entries) => {
     for (const entry of entries) {
+      const newHeight = entry.contentRect.height;
       if (newHeight + 20 !== originalHeight) {
         paginElement.style.marginTop = `-${newHeight + 20 - originalHeight}px`;
       } else {
@@ -494,7 +498,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   function urlCreator(s) {
     const baseUrl = "https://api.airtable.com/v0/apprdsx9uO4l5FieL/Table%201?";
-    const pageSize = "pageSize=100";
+    const pageSize = "pageSize=99";
     const sort = `sort%5B0%5D%5Bfield%5D=Created&sort%5B0%5D%5Bdirection%5D=desc`;
     let filterFunction = "filterByFormula=";
     const filters = [];
@@ -769,7 +773,6 @@ document.addEventListener("DOMContentLoaded", function () {
                   return "Invalid input";
                 }
 
-
                 // Check if the number is greater than or equal to 1000
                 if (number >= 1000) {
                   // Divide the number by 1000 and round it to 1 decimal place
@@ -777,55 +780,75 @@ document.addEventListener("DOMContentLoaded", function () {
                   return `$${numInK}k`;
                 }
 
-
                 // If the number is less than 1000, simply display it as is
                 return `$${number}`;
               }
-              console.log(e.fields)
+              console.log(e.fields);
               htmlString += `<div class='job-card'>
               <div>
-                <p class='job-title'>${e.fields["Job Title"]
-                }</p>
+                <p class='job-title'>${e.fields["Job Title"]}</p>
                 <hr/>
               
               </div>
               <div class='info-div'>
                   <div>
-                      ${icons['company']}
-                      <p>${e.fields["Company/Org"]
-                }</p>
+                      ${icons["company"]}
+                      <p>${e.fields["Company/Org"]}</p>
                   </div>
-                  ${e.fields["Location"] ? `<div>
-                      ${icons['location']}
-                      <p>${e.fields["Location"]
-                  }</p>
-                  </div>`: ''}
-                  ${e.fields["Experience Level"] ? `<div>
-                      ${icons['experience']}
-                      <p>${e.fields["Experience Level"]
-                  }</p>
-                  </div>`: ''}
+                  ${
+                    e.fields["Location"]
+                      ? `<div>
+                      ${icons["location"]}
+                      <p>${e.fields["Location"]}</p>
+                  </div>`
+                      : ""
+                  }
+                  ${
+                    e.fields["Experience Level"]
+                      ? `<div>
+                      ${icons["experience"]}
+                      <p>${e.fields["Experience Level"]}</p>
+                  </div>`
+                      : ""
+                  }
                   <div>
-                  ${e.fields["Region"][0] !== 'Remote' || e.fields['Region'].length > 1 ? icons['world'] : icons['remote']
-                }
-                      <p>${e.fields["Region"]
-                }</p>
+                  ${
+                    e.fields["Region"][0] !== "Remote" ||
+                    e.fields["Region"].length > 1
+                      ? icons["world"]
+                      : icons["remote"]
+                  }
+                      <p>${e.fields["Region"]}</p>
                   </div>
                   <div>
-                      ${e.fields['Type'] === 'Full-Time' ? icons['fullTime'] :
-                  e.fields["Type"] === 'Part-Time' ? icons['partTime'] : icons['contract']}
-                      <p>${e.fields["Type"]
-                }</p>
+                      ${
+                        e.fields["Type"] === "Full-Time"
+                          ? icons["fullTime"]
+                          : e.fields["Type"] === "Part-Time"
+                          ? icons["partTime"]
+                          : icons["contract"]
+                      }
+                      <p>${e.fields["Type"]}</p>
                   </div>
-                  ${e.fields["VISA sponsorship"] ? `<div>
-                      ${e.fields["VISA sponsorship"][0] === 'Yes' ? icons['visaCheck'] :
-                    e.fields["VISA sponsorship"][0] === 'No' ? icons['visaEx'] : icons['visaQuestion']}
-                      <p>${e.fields["VISA sponsorship"]
-                  }</p>
-                  </div>`: ``}
+                  ${
+                    e.fields["VISA sponsorship"]
+                      ? `<div>
+                      ${
+                        e.fields["VISA sponsorship"][0] === "Yes"
+                          ? icons["visaCheck"]
+                          : e.fields["VISA sponsorship"][0] === "No"
+                          ? icons["visaEx"]
+                          : icons["visaQuestion"]
+                      }
+                      <p>${e.fields["VISA sponsorship"]}</p>
+                  </div>`
+                      : ``
+                  }
               </div>
               <div>
-                  ${e.fields['Max Salary (USD)'] && e.fields['Min Salary (USD)']? `<div class='salary-text'>
+                  ${
+                    e.fields["Max Salary (USD)"] && e.fields["Min Salary (USD)"]
+                      ? `<div class='salary-text'>
                       <div>
                         <h2>${formatNumberToK(
                           e.fields["Min Salary (USD)"]
@@ -836,13 +859,28 @@ document.addEventListener("DOMContentLoaded", function () {
                         e.fields["Max Salary (USD)"]
                       )} <span>Max</span></h2>
                       </div>
-                  </div>`: e.fields['Max Salary (USD)']? `<div><h2 style="text-align: center; margin-bottom: 5px; color: rgb(101, 101, 101);">${formatNumberToK(e.fields['Max Salary (USD)'])} <span>Max</span></h2></div>`:
-                  e.fields['Min Salary (USD)']? `<div><h2 style="text-align: center; margin-bottom: 5px; color: rgb(101, 101, 101);">${formatNumberToK(e.fields['Min Salary (USD)'])} <span>Min</span></h2></div>`:
-                   `<div><h2 style="text-align: center; margin-bottom: 5px; color: rgb(101, 101, 101);">No Salary Listed</h2></div>`}
-                  <div class='${e.fields['Min Salary (USD)'] && e.fields['Max Salary (USD)']? `salary-2-bar`: 
-                  e.fields['Max Salary (USD)']? `salary-max-bar`: e.fields['Min Salary (USD)']? `salary-min-bar`: 'salary-0-bar'}'></div>
+                  </div>`
+                      : e.fields["Max Salary (USD)"]
+                      ? `<div><h2 style="text-align: center; margin-bottom: 5px; color: rgb(101, 101, 101);">${formatNumberToK(
+                          e.fields["Max Salary (USD)"]
+                        )} <span>Max</span></h2></div>`
+                      : e.fields["Min Salary (USD)"]
+                      ? `<div><h2 style="text-align: center; margin-bottom: 5px; color: rgb(101, 101, 101);">${formatNumberToK(
+                          e.fields["Min Salary (USD)"]
+                        )} <span>Min</span></h2></div>`
+                      : `<div><h2 style="text-align: center; margin-bottom: 5px; color: rgb(101, 101, 101);">No Salary Listed</h2></div>`
+                  }
+                  <div class='${
+                    e.fields["Min Salary (USD)"] && e.fields["Max Salary (USD)"]
+                      ? `salary-2-bar`
+                      : e.fields["Max Salary (USD)"]
+                      ? `salary-max-bar`
+                      : e.fields["Min Salary (USD)"]
+                      ? `salary-min-bar`
+                      : "salary-0-bar"
+                  }'></div>
               </div>
-          </div>`; 
+          </div>`;
             });
           } else {
             htmlString += `<h1 class="title">No Results Found</h1>`;
@@ -858,8 +896,8 @@ document.addEventListener("DOMContentLoaded", function () {
           readMoreButtons.forEach((button, index) => {
             button.addEventListener("click", () => {
               openModal(data.records[index].fields);
-              document.getElementById('targetElement').style.position = 'fixed';
-              console.log(data.records[index])
+              document.getElementById("targetElement").style.position = "fixed";
+              console.log(data.records[index]);
             });
           });
         })
@@ -897,8 +935,9 @@ document.addEventListener("DOMContentLoaded", function () {
           <div class='vertical-hr'></div>
           <div class="job-spec">
               <p class="job-spec-title">Type:</p>
-              <p class='job-type'>${e["Type"] ? e["Type"].join(", ") : "N/A"
-      }</p>
+              <p class='job-type'>${
+                e["Type"] ? e["Type"].join(", ") : "N/A"
+              }</p>
           </div>
       </div>
       <div class="job-desc-div" style="width: 100%">
@@ -906,19 +945,22 @@ document.addEventListener("DOMContentLoaded", function () {
               <div class="exp-sal-div"
                   style="display:flex; justify-content: space-between; flex-wrap: wrap; padding-bottom: 5px;">
                   <p style='font-size: 25px; font-weight: bold'>Department/Team:
-                      <span style='font-size: 25px; font-weight: normal'>${e["Department/Team"] || "No Team Listed"
-      }</span>
+                      <span style='font-size: 25px; font-weight: normal'>${
+                        e["Department/Team"] || "No Team Listed"
+                      }</span>
                   </p>
-                  <p style='font-size: 25px; font-weight: bold'>Salary: <span style='font-size: 25px; font-weight: normal'>${e["Salary"] || "No Salary Listed"
-      }</span></p>
+                  <p style='font-size: 25px; font-weight: bold'>Salary: <span style='font-size: 25px; font-weight: normal'>${
+                    e["Salary"] || "No Salary Listed"
+                  }</span></p>
                         
               </div>
               <div class="min-max-div" style="display: flex; justify-content:space-between; flex-wrap: wrap;">
                   <p style='font-size: 25px; font-weight: bold' class="visa-label">Visa Sponsorship:
-                      <span style='font-size: 25px; font-weight: normal'>${e["VISA sponsorship"]
-        ? e["VISA sponsorship"].join(", ")
-        : "N/A"
-      }</span>
+                      <span style='font-size: 25px; font-weight: normal'>${
+                        e["VISA sponsorship"]
+                          ? e["VISA sponsorship"].join(", ")
+                          : "N/A"
+                      }</span>
                   </p>
                   <p style='font-size: 25px; font-weight: bold' class="min-sal-label">Minimum Salary:
                       <span style='font-size: 25px; font-weight: normal'>
@@ -929,12 +971,13 @@ document.addEventListener("DOMContentLoaded", function () {
               <div class="exp-sal-div"
                   style="display:flex; justify-content: space-between; flex-wrap: wrap; padding-bottom: 5px;">
                   <p style='font-size: 25px; font-weight: bold'>Experience Level:
-                      <span style='font-size: 25px; font-weight: normal'>${e["Experience Level"] && e["Experience Level"].length
-        ? e["Experience Level"].join(", ")
-        : e["Experience Level"]
-          ? e["Experience Level"]
-          : "No Experience Listed"
-      }</span>
+                      <span style='font-size: 25px; font-weight: normal'>${
+                        e["Experience Level"] && e["Experience Level"].length
+                          ? e["Experience Level"].join(", ")
+                          : e["Experience Level"]
+                          ? e["Experience Level"]
+                          : "No Experience Listed"
+                      }</span>
                   </p>
                   <p style='font-size: 25px; font-weight: bold' class="max-sal-label">Maximum Salary:
                       <span style='font-size: 25px; font-weight: normal'>
@@ -944,12 +987,14 @@ document.addEventListener("DOMContentLoaded", function () {
               </div>
               <div class="reg-visa-div" style="display: flex; justify-content:space-between; flex-wrap: wrap;">
                   <p style='font-size: 25px; font-weight: bold' class="region-label">Region:
-                      <span style='font-size: 25px; font-weight: normal'>${e["Region"] ? e["Region"].join(", ") : "N/A"
-      }</span>
+                      <span style='font-size: 25px; font-weight: normal'>${
+                        e["Region"] ? e["Region"].join(", ") : "N/A"
+                      }</span>
                   </p>
                   <p style='font-size: 25px; font-weight: bold'>Closing Date: <span
-                          style='font-size: 25px; font-weight: normal'>${e["Closing Date"]
-      }</span></p>
+                          style='font-size: 25px; font-weight: normal'>${
+                            e["Closing Date"]
+                          }</span></p>
               </div>
           </div>
       </div>`;

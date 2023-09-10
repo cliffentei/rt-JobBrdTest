@@ -238,6 +238,7 @@
        .pagin {
            display: flex;
            justify-content: center;
+           z-index: 0;
        }
 
        .card-holder {
@@ -428,6 +429,8 @@ cursor: pointer;
            padding-bottom: 20px;
            max-width: 90vw;
            overflow-x: auto;
+           position: relative;
+             z-index: 10;
        }
 
        .dropdown {
@@ -867,3 +870,15 @@ transform: translate(0, -8px);
        * {
            -webkit-tap-highlight-color: transparent;
        }
+
+       .dropdown-div::-webkit-scrollbar {
+        width: 0.5em; 
+      }
+      
+      .dropdown-div::-webkit-scrollbar-track {
+        background-color: transparent; 
+      }
+      
+      .dropdown-div::-webkit-scrollbar-thumb {
+        background-color: transparent; 
+      }

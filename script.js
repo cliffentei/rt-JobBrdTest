@@ -381,6 +381,25 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelector(".remove-filter").classList.add("hidden");
   });
 
+  const dropdownDiv = document.querySelector(".dropdown-div");
+  const paginElement = document.querySelector(".pagin");
+
+  const originalHeight = dropdownDiv.clientHeight;
+
+  const targetDiv = document.querySelector(".dropdown-div");
+
+  const resizeObserver = new ResizeObserver((entries) => {
+    for (const entry of entries) {
+      if (newHeight + 20 !== originalHeight) {
+        paginElement.style.marginTop = `-${newHeight + 20 - originalHeight}px`;
+      } else {
+        paginElement.style.marginTop = `0px`;
+      }
+    }
+  });
+
+  resizeObserver.observe(targetDiv);
+
   let offset = 0;
   let offsetArray = [""];
   let globalUrl = "";

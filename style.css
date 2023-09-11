@@ -423,7 +423,7 @@ svg {
 
 .dropdown-menu.active {
     max-height: 300px; 
-    max-width: 300px; 
+    min-width: 300px; 
     opacity: 1; 
     pointer-events: auto;
 }

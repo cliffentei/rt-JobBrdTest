@@ -847,7 +847,7 @@ document.addEventListener("DOMContentLoaded", function () {
           <div class="job-req-holder" style="padding-bottom: 10px;">
               <div class="exp-sal-div"
                   style="display:flex; justify-content: space-between; flex-wrap: wrap; padding-bottom: 5px;">
-                  <p style='font-size: 25px; font-weight: bold'>Department/Team:
+                  <p style='font-size: 25px; font-weight: bold; margin-right: 20px'>Department/Team:
                       <span style='font-size: 25px; font-weight: normal'>${e["Department/Team"] || "No Team Listed"
       }</span>
                   </p>
@@ -856,20 +856,12 @@ document.addEventListener("DOMContentLoaded", function () {
                         
               </div>
               <div class="min-max-div" style="display: flex; justify-content:space-between; flex-wrap: wrap;">
-                  <p style='font-size: 25px; font-weight: bold' class="visa-label">Visa Sponsorship:
+                  <p style='font-size: 25px; font-weight: bold; margin-right: 20px' class="visa-label">Visa Sponsorship:
                       <span style='font-size: 25px; font-weight: normal'>${e["VISA sponsorship"]
         ? e["VISA sponsorship"].join(", ")
         : "N/A"
       }</span>
                   </p>
-                  <p style='font-size: 25px; font-weight: bold' class="min-sal-label">Minimum Salary:
-                      <span style='font-size: 25px; font-weight: normal'>
-                          ${"ds" || minSalaryFormatted}
-                      </span>
-                  </p>
-              </div>
-              <div class="exp-sal-div"
-                  style="display:flex; justify-content: space-between; flex-wrap: wrap; padding-bottom: 5px;">
                   <p style='font-size: 25px; font-weight: bold'>Experience Level:
                       <span style='font-size: 25px; font-weight: normal'>${e["Experience Level"] && e["Experience Level"].length
         ? e["Experience Level"].join(", ")
@@ -878,19 +870,14 @@ document.addEventListener("DOMContentLoaded", function () {
           : "No Experience Listed"
       }</span>
                   </p>
-                  <p style='font-size: 25px; font-weight: bold' class="max-sal-label">Maximum Salary:
-                      <span style='font-size: 25px; font-weight: normal'>
-                          ${"ds" || maxSalaryFormatted}
-                      </span>
-                  </p>
               </div>
               <div class="reg-visa-div" style="display: flex; justify-content:space-between; flex-wrap: wrap;">
-                  <p style='font-size: 25px; font-weight: bold' class="region-label">Region:
+                  <p style='font-size: 25px; font-weight: bold; margin-right: 20px;' class="region-label">Region:
                       <span style='font-size: 25px; font-weight: normal'>${e["Region"] ? e["Region"].join(", ") : "N/A"
       }</span>
                   </p>
                   <p style='font-size: 25px; font-weight: bold'>Closing Date: <span
-                          style='font-size: 25px; font-weight: normal'>${e["Closing Date"]
+                          style='font-size: 25px; font-weight: normal'>${e["Closing Date"] || 'No Closing Date Listed'
       }</span></p>
               </div>
           </div>

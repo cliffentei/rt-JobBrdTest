@@ -769,14 +769,14 @@ document.addEventListener("DOMContentLoaded", function () {
                       </div>
                   </div>`
                       : e.fields["Max Salary (USD)"]
-                      ? `<div><h2 style="text-align: center; margin-bottom: 5px; color: rgb(101, 101, 101);">${formatNumberToK(
+                      ? `<div><h2 style="text-align: center; margin: 0 0 5px 0; color: rgb(101, 101, 101);">${formatNumberToK(
                           e.fields["Max Salary (USD)"]
                         )} <span>Max</span></h2></div>`
                       : e.fields["Min Salary (USD)"]
-                      ? `<div><h2 style="text-align: center; margin-bottom: 5px; color: rgb(101, 101, 101);">${formatNumberToK(
+                      ? `<div><h2 style="text-align: center; margin: 0 0 5px 0; color: rgb(101, 101, 101);">${formatNumberToK(
                           e.fields["Min Salary (USD)"]
                         )} <span>Min</span></h2></div>`
-                      : `<div><h2 style="text-align: center; margin-bottom: 5px; color: rgb(101, 101, 101);">No Salary Listed</h2></div>`
+                      : `<div><h2 style="text-align: center; margin: 0 0 5px 0; color: rgb(101, 101, 101);">No Salary Listed</h2></div>`
                   }
                   <div class='${
                     e.fields["Min Salary (USD)"] && e.fields["Max Salary (USD)"]

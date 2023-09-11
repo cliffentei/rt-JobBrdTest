@@ -45,6 +45,7 @@ body {
     text-align: center;
     margin: 20px 10px 0 10px;
     font-weight: normal;
+    font-size: 20px;
 }
 .info-div{
     height: 100%;
@@ -55,7 +56,8 @@ body {
 .info-div div {
     display: flex;
     align-items: center;
-    margin: 10px 0;
+    margin: 5px 10px 6px 0;
+    flex-wrap: wrap;
     /* max-height: 50px; */
 }
 .info-div div p {
@@ -63,10 +65,10 @@ body {
     margin-bottom: 0;
 }
 .info-div div svg{
-    min-width:40px;
-    max-width:40px;
-    height: 45px;
-    margin-right: 5px;
+    min-width:30px;
+    max-width:30px;
+    height: 33px;
+    margin-right: 10px;
 }
 .card-icon {
     margin-right: 15px;
@@ -154,6 +156,7 @@ body {
 }
 .field-div {
     width: fit-content;
+    max-width: 325px;
     background-color: rgba(234, 234, 234, 0.862);
     margin: 5px 10px 5px 0;
     border-radius: 30px;

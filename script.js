@@ -719,7 +719,7 @@ document.addEventListener("DOMContentLoaded", function () {
                       </div>`
                       : ""
                   }
-                  <div>
+                  ${e.fields["Region"]? `<div>
                   ${
                     e.fields["Region"][0] !== "Remote" ||
                     e.fields["Region"].length > 1
@@ -727,8 +727,8 @@ document.addEventListener("DOMContentLoaded", function () {
                       : icons["remote"]
                   }
                       ${fields(e.fields["Region"]) || ""}
-                  </div>
-                  <div>
+                  </div>`: ''}
+                  ${e.fields["Type"]? `<div>
                       ${
                         e.fields["Type"] === "Full-Time"
                           ? icons["fullTime"]
@@ -737,7 +737,7 @@ document.addEventListener("DOMContentLoaded", function () {
                           : icons["contract"]
                       }
                       ${fields(e.fields["Type"]) || ""}
-                  </div>
+                  </div>`: ''}
                   ${
                     e.fields["VISA sponsorship"]
                       ? `<div>
@@ -758,14 +758,14 @@ document.addEventListener("DOMContentLoaded", function () {
                     e.fields["Max Salary (USD)"] && e.fields["Min Salary (USD)"]
                       ? `<div class='salary-text'>
                       <div>
-                        <h2>${formatNumberToK(
+                        <p>${formatNumberToK(
                           e.fields["Min Salary (USD)"]
-                        )} <span>Min</span></h2>
+                        )} <span>Min</span></p>
                       </div>
                         <div>
-                      <h2>${formatNumberToK(
+                      <p>${formatNumberToK(
                         e.fields["Max Salary (USD)"]
-                      )} <span>Max</span></h2>
+                      )} <span>Max</span></p>
                       </div>
                   </div>`
                       : e.fields["Max Salary (USD)"]

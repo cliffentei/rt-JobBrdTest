@@ -376,11 +376,9 @@ document.addEventListener("DOMContentLoaded", function () {
       return `<a href="${matches[0]}" target="_blank" style='text-decoration: none;'><div class='apply-btn'><p>Apply<p></div></a>`;
     }
     for (let i = 0; i < matches.length; i++) {
-      b += `<a href="${
-        matches[i]
-      }" target="_blank" style='text-decoration: none;'><div class='apply-btn'>Apply (${
-        i + 1
-      })</div></a>`;
+      b += `<a href="${matches[i]
+        }" target="_blank" style='text-decoration: none;'><div class='apply-btn'>Apply (${i + 1
+        })</div></a>`;
     }
     return b;
   }
@@ -699,94 +697,91 @@ document.addEventListener("DOMContentLoaded", function () {
               <div class='info-div'>
                   <div>
                       ${icons["company"]}
-                      <div class="field-div" > <p>${
-                        e.fields["Company/Org"]
-                      }</p></div>
+                      <div class="field-div" > <p>${e.fields["Company/Org"]
+                }</p></div>
                   </div>
-                  ${
-                    e.fields["Location"]
-                      ? `<div>
+                  ${e.fields["Location"]
+                  ? `<div>
                       ${icons["location"]}
                       <div class="field-div" > <p>${e.fields["Location"]}</p></div>
                   </div>`
-                      : ""
-                  }
-                  ${
-                    e.fields["Experience Level"]
-                      ? `<div>
+                  : ""
+                }
+                  ${e.fields["Experience Level"]
+                  ? `<div>
                       ${icons["experience"]}
                             ${fields(e.fields["Experience Level"]) || ""}
                       </div>`
-                      : ""
-                  }
-                  ${e.fields["Region"]? `<div>
-                  ${
-                    e.fields["Region"][0] !== "Remote" ||
+                  : ""
+                }
+                  ${e.fields["Region"] ? `<div>
+                  ${e.fields["Region"][0] !== "Remote" ||
                     e.fields["Region"].length > 1
-                      ? icons["world"]
-                      : icons["remote"]
+                    ? icons["world"]
+                    : icons["remote"]
                   }
                       ${fields(e.fields["Region"]) || ""}
                   </div>`: ''}
-                  ${e.fields["Type"]? `<div>
-                      ${
-                        e.fields["Type"] === "Full-Time"
-                          ? icons["fullTime"]
-                          : e.fields["Type"] === "Part-Time"
-                          ? icons["partTime"]
-                          : icons["contract"]
-                      }
+                  ${e.fields["Type"] ? `<div>
+                      ${e.fields["Type"] === "Full-Time"
+                    ? icons["fullTime"]
+                    : e.fields["Type"] === "Part-Time"
+                      ? icons["partTime"]
+                      : icons["contract"]
+                  }
                       ${fields(e.fields["Type"]) || ""}
                   </div>`: ''}
-                  ${
-                    e.fields["VISA sponsorship"]
-                      ? `<div>
-                      ${
-                        e.fields["VISA sponsorship"][0] === "Yes"
-                          ? icons["visaCheck"]
-                          : e.fields["VISA sponsorship"][0] === "No"
-                          ? icons["visaEx"]
-                          : icons["visaQuestion"]
-                      }
+                  ${e.fields["VISA sponsorship"]
+                  ? `<div>
+                      ${e.fields["VISA sponsorship"][0] === "Yes"
+                    ? icons["visaCheck"]
+                    : e.fields["VISA sponsorship"][0] === "No"
+                      ? icons["visaEx"]
+                      : icons["visaQuestion"]
+                  }
                       ${fields(e.fields["VISA sponsorship"]) || ""}
                   </div>`
-                      : ``
-                  }
+                  : ``
+                }
               </div>
               <div>
-                  ${
-                    e.fields["Max Salary (USD)"] && e.fields["Min Salary (USD)"]
-                      ? `<div class='salary-text'>
+                  ${e.fields["Max Salary (USD)"] && e.fields["Min Salary (USD)"]
+                  ? `<div class='salary-text'>
                       <div>
                         <p>${formatNumberToK(
-                          e.fields["Min Salary (USD)"]
-                        )} <span>Min</span></p>
+                    e.fields["Min Salary (USD)"]
+                  )} <span>Min</span></p>
                       </div>
                         <div>
                       <p>${formatNumberToK(
-                        e.fields["Max Salary (USD)"]
-                      )} <span>Max</span></p>
+                    e.fields["Max Salary (USD)"]
+                  )} <span>Max</span></p>
                       </div>
                   </div>`
-                      : e.fields["Max Salary (USD)"]
-                      ? `<div><h2 style="text-align: center; margin: 0 0 5px 0; color: rgb(101, 101, 101);">${formatNumberToK(
-                          e.fields["Max Salary (USD)"]
-                        )} <span>Max</span></h2></div>`
-                      : e.fields["Min Salary (USD)"]
-                      ? `<div><h2 style="text-align: center; margin: 0 0 5px 0; color: rgb(101, 101, 101);">${formatNumberToK(
-                          e.fields["Min Salary (USD)"]
-                        )} <span>Min</span></h2></div>`
-                      : `<div><h2 style="text-align: center; margin: 0 0 5px 0; color: rgb(101, 101, 101);">No Salary Listed</h2></div>`
-                  }
-                  <div class='${
-                    e.fields["Min Salary (USD)"] && e.fields["Max Salary (USD)"]
-                      ? `salary-2-bar`
-                      : e.fields["Max Salary (USD)"]
-                      ? `salary-max-bar`
-                      : e.fields["Min Salary (USD)"]
+                  : e.fields["Max Salary (USD)"]
+                    ? `<div><p style="text-align: center; margin: 0 0 5px 0; color: rgb(101, 101, 101);
+                      font-weight: bold;
+                      font-size: 24px;">${formatNumberToK(
+                      e.fields["Max Salary (USD)"]
+                    )} <span>Max</span></p></div>`
+                    : e.fields["Min Salary (USD)"]
+                      ? `<div><p style="text-align: center; margin: 0 0 5px 0; color: rgb(101, 101, 101);
+                      font-weight: bold;
+                      font-size: 24px;">${formatNumberToK(
+                        e.fields["Min Salary (USD)"]
+                      )} <span>Min</span></p></div>`
+                      : `<div><p style="text-align: center; margin: 0 0 5px 0; color: rgb(101, 101, 101);
+                      font-weight: bold;
+                      font-size: 24px;">No Salary Listed</p></div>`
+                }
+                  <div class='${e.fields["Min Salary (USD)"] && e.fields["Max Salary (USD)"]
+                  ? `salary-2-bar`
+                  : e.fields["Max Salary (USD)"]
+                    ? `salary-max-bar`
+                    : e.fields["Min Salary (USD)"]
                       ? `salary-min-bar`
                       : "salary-0-bar"
-                  }'></div>
+                }'></div>
               </div>
           </div>`;
             });
@@ -844,9 +839,8 @@ document.addEventListener("DOMContentLoaded", function () {
           <div class='vertical-hr'></div>
           <div class="job-spec">
               <p class="job-spec-title">Type:</p>
-              <p class='job-type'>${
-                e["Type"] ? e["Type"].join(", ") : "N/A"
-              }</p>
+              <p class='job-type'>${e["Type"] ? e["Type"].join(", ") : "N/A"
+      }</p>
           </div>
       </div>
       <div class="job-desc-div" style="width: 100%">
@@ -854,22 +848,19 @@ document.addEventListener("DOMContentLoaded", function () {
               <div class="exp-sal-div"
                   style="display:flex; justify-content: space-between; flex-wrap: wrap; padding-bottom: 5px;">
                   <p style='font-size: 25px; font-weight: bold'>Department/Team:
-                      <span style='font-size: 25px; font-weight: normal'>${
-                        e["Department/Team"] || "No Team Listed"
-                      }</span>
+                      <span style='font-size: 25px; font-weight: normal'>${e["Department/Team"] || "No Team Listed"
+      }</span>
                   </p>
-                  <p style='font-size: 25px; font-weight: bold'>Salary: <span style='font-size: 25px; font-weight: normal'>${
-                    e["Salary"] || "No Salary Listed"
-                  }</span></p>
+                  <p style='font-size: 25px; font-weight: bold'>Salary: <span style='font-size: 25px; font-weight: normal'>${e["Salary"] || "No Salary Listed"
+      }</span></p>
                         
               </div>
               <div class="min-max-div" style="display: flex; justify-content:space-between; flex-wrap: wrap;">
                   <p style='font-size: 25px; font-weight: bold' class="visa-label">Visa Sponsorship:
-                      <span style='font-size: 25px; font-weight: normal'>${
-                        e["VISA sponsorship"]
-                          ? e["VISA sponsorship"].join(", ")
-                          : "N/A"
-                      }</span>
+                      <span style='font-size: 25px; font-weight: normal'>${e["VISA sponsorship"]
+        ? e["VISA sponsorship"].join(", ")
+        : "N/A"
+      }</span>
                   </p>
                   <p style='font-size: 25px; font-weight: bold' class="min-sal-label">Minimum Salary:
                       <span style='font-size: 25px; font-weight: normal'>
@@ -880,13 +871,12 @@ document.addEventListener("DOMContentLoaded", function () {
               <div class="exp-sal-div"
                   style="display:flex; justify-content: space-between; flex-wrap: wrap; padding-bottom: 5px;">
                   <p style='font-size: 25px; font-weight: bold'>Experience Level:
-                      <span style='font-size: 25px; font-weight: normal'>${
-                        e["Experience Level"] && e["Experience Level"].length
-                          ? e["Experience Level"].join(", ")
-                          : e["Experience Level"]
-                          ? e["Experience Level"]
-                          : "No Experience Listed"
-                      }</span>
+                      <span style='font-size: 25px; font-weight: normal'>${e["Experience Level"] && e["Experience Level"].length
+        ? e["Experience Level"].join(", ")
+        : e["Experience Level"]
+          ? e["Experience Level"]
+          : "No Experience Listed"
+      }</span>
                   </p>
                   <p style='font-size: 25px; font-weight: bold' class="max-sal-label">Maximum Salary:
                       <span style='font-size: 25px; font-weight: normal'>
@@ -896,14 +886,12 @@ document.addEventListener("DOMContentLoaded", function () {
               </div>
               <div class="reg-visa-div" style="display: flex; justify-content:space-between; flex-wrap: wrap;">
                   <p style='font-size: 25px; font-weight: bold' class="region-label">Region:
-                      <span style='font-size: 25px; font-weight: normal'>${
-                        e["Region"] ? e["Region"].join(", ") : "N/A"
-                      }</span>
+                      <span style='font-size: 25px; font-weight: normal'>${e["Region"] ? e["Region"].join(", ") : "N/A"
+      }</span>
                   </p>
                   <p style='font-size: 25px; font-weight: bold'>Closing Date: <span
-                          style='font-size: 25px; font-weight: normal'>${
-                            e["Closing Date"]
-                          }</span></p>
+                          style='font-size: 25px; font-weight: normal'>${e["Closing Date"]
+      }</span></p>
               </div>
           </div>
       </div>`;

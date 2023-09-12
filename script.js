@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
       document.body.scrollTop > 1500 ||
       document.documentElement.scrollTop > 1500
     ) {
-      scrollToTopBtn.style.display = "block";
+      scrollToTopBtn.style.display = "flex";
     } else {
       scrollToTopBtn.style.display = "none";
     }
@@ -761,18 +761,18 @@ document.addEventListener("DOMContentLoaded", function () {
                   : e.fields["Max Salary (USD)"]
                     ? `<div><p style="text-align: center; margin: 0 0 5px 0; color: rgb(101, 101, 101);
                       font-weight: bold;
-                      font-size: 24px;">${formatNumberToK(
+                      font-size: 20px">${formatNumberToK(
                       e.fields["Max Salary (USD)"]
                     )} <span>Max</span></p></div>`
                     : e.fields["Min Salary (USD)"]
                       ? `<div><p style="text-align: center; margin: 0 0 5px 0; color: rgb(101, 101, 101);
                       font-weight: bold;
-                      font-size: 24px;">${formatNumberToK(
+                      font-size: 20px">${formatNumberToK(
                         e.fields["Min Salary (USD)"]
                       )} <span>Min</span></p></div>`
                       : `<div><p style="text-align: center; margin: 0 0 5px 0; color: rgb(101, 101, 101);
                       font-weight: bold;
-                      font-size: 24px;">No Salary Listed</p></div>`
+                      font-size: 20px">No Salary Listed</p></div>`
                 }
                   <div class='${e.fields["Min Salary (USD)"] && e.fields["Max Salary (USD)"]
                   ? `salary-2-bar`
@@ -816,7 +816,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const modalContent = modal.querySelector(".modal-content");
     modalHeader.innerHTML = `<span style='font-size: 50px; margin: 0 0 0 auto;' class="close">&times;</span>
     <div class='card-header'>
-        <p style="font-family: 'Caprasimo', cursive; font-size:35px;">${e["Job Title"]}</p>
+        <p class='card-title'>${e["Job Title"]}</p>
         <p style="font-size: 20px;">Date Posted: ${e["Created"]}</p>
     </div>`;
     modalContent.innerHTML = "";
@@ -843,6 +843,9 @@ document.addEventListener("DOMContentLoaded", function () {
       }</p>
           </div>
       </div>
+      <div class='job-mobile-div'>
+          
+      </div>
       <div class="job-desc-div" style="width: 100%">
           <div class="job-req-holder" style="padding-bottom: 10px;">
               <div class="exp-sal-div"
@@ -850,9 +853,11 @@ document.addEventListener("DOMContentLoaded", function () {
                   <p style='font-size: 25px; font-weight: bold; margin-right: 20px'>Department/Team:
                       <span style='font-size: 25px; font-weight: normal'>${e["Department/Team"] || "No Team Listed"
       }</span>
+      <hr style='width: 80%; margin: auto;'>
                   </p>
                   <p style='font-size: 25px; font-weight: bold'>Salary: <span style='font-size: 25px; font-weight: normal'>${e["Salary"] || "No Salary Listed"
       }</span></p>
+      <hr style='width: 80%; margin: auto;'>
                         
               </div>
               <div class="min-max-div" style="display: flex; justify-content:space-between; flex-wrap: wrap;">
@@ -861,6 +866,7 @@ document.addEventListener("DOMContentLoaded", function () {
         ? e["VISA sponsorship"].join(", ")
         : "N/A"
       }</span>
+      <hr style='width: 80%; margin: auto;'>
                   </p>
                   <p style='font-size: 25px; font-weight: bold'>Experience Level:
                       <span style='font-size: 25px; font-weight: normal'>${e["Experience Level"] && e["Experience Level"].length
@@ -870,15 +876,18 @@ document.addEventListener("DOMContentLoaded", function () {
           : "No Experience Listed"
       }</span>
                   </p>
+                  <hr style='width: 80%; margin: auto;'>
               </div>
               <div class="reg-visa-div" style="display: flex; justify-content:space-between; flex-wrap: wrap;">
                   <p style='font-size: 25px; font-weight: bold; margin-right: 20px;' class="region-label">Region:
                       <span style='font-size: 25px; font-weight: normal'>${e["Region"] ? e["Region"].join(", ") : "N/A"
       }</span>
                   </p>
+                  <hr style='width: 80%; margin: auto;'>
                   <p style='font-size: 25px; font-weight: bold'>Closing Date: <span
                           style='font-size: 25px; font-weight: normal'>${e["Closing Date"] || 'No Closing Date Listed'
       }</span></p>
+      <hr style='width: 80%; margin: auto;'>
               </div>
           </div>
       </div>`;

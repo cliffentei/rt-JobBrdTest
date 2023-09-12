@@ -844,32 +844,41 @@ document.addEventListener("DOMContentLoaded", function () {
           </div>
       </div>
       <div class='job-mobile-div'>
-          
-      </div>
-      <div class="job-desc-div" style="width: 100%">
-          <div class="job-req-holder" style="padding-bottom: 10px;">
-              <div class="exp-sal-div"
-                  style="display:flex; justify-content: space-between; flex-wrap: wrap; padding-bottom: 5px;">
-                  <p style='font-size: 25px; font-weight: bold; margin-right: 20px'>Department/Team:
-                      <span style='font-size: 25px; font-weight: normal'>${e["Department/Team"] || "No Team Listed"
+      <p style='font-weight: bold; margin-right: 20px'>Company/Org: 
+      <span style='font-weight: normal'>${e["Company/Org"] || "No Company Listed"
       }</span>
-      <hr style='width: 80%; margin: auto;'>
+  </p>
+  <hr style='width: 80%; margin: auto;'>
+  <p style='font-weight: bold'>Location: <span style='font-weight: normal'>${e["Location"] || "No Location Listed Listed"
+      }</span></p>
+<hr style='width: 80%; margin: auto;'>
+  <p style='font-weight: bold; margin-right: 20px>Job Type: 
+      <span style='font-weight: normal'>${e["Type"] ? e["Type"].join(", ") : "N/A"
+    }</span>
+  </p>
+  <hr style='width: 80%; margin: auto;'>
+      </div>
+      
+                  <p style='font-weight: bold; margin-right: 20px'>Department/Team:
+                      <span style='font-weight: normal'>${e["Department/Team"] || "No Team Listed"
+      }</span>
                   </p>
-                  <p style='font-size: 25px; font-weight: bold'>Salary: <span style='font-size: 25px; font-weight: normal'>${e["Salary"] || "No Salary Listed"
+                  <hr style='width: 80%; margin: auto;'>
+                  <p style='font-weight: bold'>Salary: <span style='font-weight: normal'>${e["Salary"] || "No Salary Listed"
       }</span></p>
       <hr style='width: 80%; margin: auto;'>
                         
-              </div>
-              <div class="min-max-div" style="display: flex; justify-content:space-between; flex-wrap: wrap;">
-                  <p style='font-size: 25px; font-weight: bold; margin-right: 20px' class="visa-label">Visa Sponsorship:
-                      <span style='font-size: 25px; font-weight: normal'>${e["VISA sponsorship"]
+              
+              
+                  <p style='font-weight: bold; margin-right: 20px' class="visa-label">Visa Sponsorship:
+                      <span style='font-weight: normal'>${e["VISA sponsorship"]
         ? e["VISA sponsorship"].join(", ")
         : "N/A"
       }</span>
-      <hr style='width: 80%; margin: auto;'>
                   </p>
-                  <p style='font-size: 25px; font-weight: bold'>Experience Level:
-                      <span style='font-size: 25px; font-weight: normal'>${e["Experience Level"] && e["Experience Level"].length
+                  <hr style='width: 80%; margin: auto;'>
+                  <p style='font-weight: bold'>Experience Level:
+                      <span style='font-weight: normal'>${e["Experience Level"] && e["Experience Level"].length
         ? e["Experience Level"].join(", ")
         : e["Experience Level"]
           ? e["Experience Level"]
@@ -877,18 +886,17 @@ document.addEventListener("DOMContentLoaded", function () {
       }</span>
                   </p>
                   <hr style='width: 80%; margin: auto;'>
-              </div>
-              <div class="reg-visa-div" style="display: flex; justify-content:space-between; flex-wrap: wrap;">
-                  <p style='font-size: 25px; font-weight: bold; margin-right: 20px;' class="region-label">Region:
-                      <span style='font-size: 25px; font-weight: normal'>${e["Region"] ? e["Region"].join(", ") : "N/A"
+              
+              
+                  <p style='font-weight: bold; margin-right: 20px;' class="region-label">Region:
+                      <span style='font-weight: normal'>${e["Region"] ? e["Region"].join(", ") : "N/A"
       }</span>
                   </p>
                   <hr style='width: 80%; margin: auto;'>
-                  <p style='font-size: 25px; font-weight: bold'>Closing Date: <span
-                          style='font-size: 25px; font-weight: normal'>${e["Closing Date"] || 'No Closing Date Listed'
+                  <p style='font-weight: bold'>Closing Date: <span
+                          style='font-weight: normal'>${e["Closing Date"] || 'No Closing Date Listed'
       }</span></p>
-      <hr style='width: 80%; margin: auto;'>
-              </div>
+              
           </div>
       </div>`;
     modalFooter.innerHTML = `

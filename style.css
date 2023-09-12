@@ -621,6 +621,14 @@ svg {
     font-size:35px;
 }
 
+.modal-content p{
+    font-size: 25px;
+}
+
+.modal-content .field-div p{
+    font-size: 20px;
+}
+
 @media screen and (max-width: 650px) {
     .dropdown-button:hover {
         background-position: 0 0;
@@ -679,6 +687,9 @@ svg {
         margin: 5px;
         text-align: center;
     }
+    .modal-content p{
+        font-size: 20px;
+    }
 }
 
 @media screen and (max-width: 600px) {
@@ -701,6 +712,7 @@ svg {
     .card-title{
         font-size: 20px;
     }
+
 }
 
 .newtons-cradle {

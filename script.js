@@ -723,9 +723,9 @@ document.addEventListener("DOMContentLoaded", function () {
                       ${fields(e.fields["Region"]) || ""}
                   </div>`: ''}
                   ${e.fields["Type"] ? `<div>
-                      ${e.fields["Type"] === "Full-Time"
+                      ${e.fields["Type"][0] === "Full-Time" || e.fields['Type'].length > 1
                     ? icons["fullTime"]
-                    : e.fields["Type"] === "Part-Time"
+                    : e.fields["Type"][0] === "Part-Time"
                       ? icons["partTime"]
                       : icons["contract"]
                   }
@@ -852,7 +852,7 @@ document.addEventListener("DOMContentLoaded", function () {
   <p style='font-weight: bold'>Location: <span style='font-weight: normal'>${e["Location"] || "No Location Listed Listed"
       }</span></p>
 <hr style='width: 80%; margin: auto;'>
-  <p style='font-weight: bold; margin-right: 20px>Job Type: 
+  <p style='font-weight: bold; margin-right: 20px'>Job Type: 
       <span style='font-weight: normal'>${e["Type"] ? e["Type"].join(", ") : "N/A"
     }</span>
   </p>

@@ -46,6 +46,10 @@ body {
     margin: 10px auto;
 }
 
+.modal-content hr {
+    width: 90%;
+}
+
 .job-title {
     font-family: 'Caprasimo', cursive;
     text-align: center;

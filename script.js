@@ -376,9 +376,11 @@ document.addEventListener("DOMContentLoaded", function () {
       return `<a href="${matches[0]}" target="_blank" style='text-decoration: none;'><div class='apply-btn'><p>Apply<p></div></a>`;
     }
     for (let i = 0; i < matches.length; i++) {
-      b += `<a href="${matches[i]
-        }" target="_blank" style='text-decoration: none;'><div class='apply-btn'>Apply (${i + 1
-        })</div></a>`;
+      b += `<a href="${
+        matches[i]
+      }" target="_blank" style='text-decoration: none;'><div class='apply-btn'>Apply (${
+        i + 1
+      })</div></a>`;
     }
     return b;
   }
@@ -697,74 +699,90 @@ document.addEventListener("DOMContentLoaded", function () {
               <div class='info-div'>
                   <div>
                       ${icons["company"]}
-                      <div class="field-div" > <p>${e.fields["Company/Org"]
-                }</p></div>
+                      <div class="field-div" > <p>${
+                        e.fields["Company/Org"]
+                      }</p></div>
                   </div>
-                  ${e.fields["Location"]
-                  ? `<div>
+                  ${
+                    e.fields["Location"]
+                      ? `<div>
                       ${icons["location"]}
                       <div class="field-div" > <p>${e.fields["Location"]}</p></div>
                   </div>`
-                  : ""
-                }
-                  ${e.fields["Experience Level"]
-                  ? `<div>
+                      : ""
+                  }
+                  ${
+                    e.fields["Experience Level"]
+                      ? `<div>
                       ${icons["experience"]}
                             ${fields(e.fields["Experience Level"]) || ""}
                       </div>`
-                  : ""
-                }
-                  ${e.fields["Region"] ? `<div>
-                  ${e.fields["Region"][0] !== "Remote" ||
+                      : ""
+                  }
+                  ${
+                    e.fields["Region"]
+                      ? `<div>
+                  ${
+                    e.fields["Region"][0] !== "Remote" ||
                     e.fields["Region"].length > 1
-                    ? icons["world"]
-                    : icons["remote"]
+                      ? icons["world"]
+                      : icons["remote"]
                   }
                       ${fields(e.fields["Region"]) || ""}
-                  </div>`: ''}
-                  ${e.fields["Type"] ? `<div>
-                      ${e.fields["Type"][0] === "Full-Time" || e.fields['Type'].length > 1
-                    ? icons["fullTime"]
-                    : e.fields["Type"][0] === "Part-Time"
-                      ? icons["partTime"]
-                      : icons["contract"]
+                  </div>`
+                      : ""
                   }
+                  ${
+                    e.fields["Type"]
+                      ? `<div>
+                      ${
+                        e.fields["Type"] === "Full-Time"
+                          ? icons["fullTime"]
+                          : e.fields["Type"] === "Part-Time"
+                          ? icons["partTime"]
+                          : icons["contract"]
+                      }
                       ${fields(e.fields["Type"]) || ""}
-                  </div>`: ''}
-                  ${e.fields["VISA sponsorship"]
-                  ? `<div>
-                      ${e.fields["VISA sponsorship"][0] === "Yes"
-                    ? icons["visaCheck"]
-                    : e.fields["VISA sponsorship"][0] === "No"
-                      ? icons["visaEx"]
-                      : icons["visaQuestion"]
+                  </div>`
+                      : ""
                   }
+                  ${
+                    e.fields["VISA sponsorship"]
+                      ? `<div>
+                      ${
+                        e.fields["VISA sponsorship"][0] === "Yes"
+                          ? icons["visaCheck"]
+                          : e.fields["VISA sponsorship"][0] === "No"
+                          ? icons["visaEx"]
+                          : icons["visaQuestion"]
+                      }
                       ${fields(e.fields["VISA sponsorship"]) || ""}
                   </div>`
-                  : ``
-                }
+                      : ``
+                  }
               </div>
               <div>
-                  ${e.fields["Max Salary (USD)"] && e.fields["Min Salary (USD)"]
-                  ? `<div class='salary-text'>
+                  ${
+                    e.fields["Max Salary (USD)"] && e.fields["Min Salary (USD)"]
+                      ? `<div class='salary-text'>
                       <div>
                         <p>${formatNumberToK(
-                    e.fields["Min Salary (USD)"]
-                  )} <span>Min</span></p>
+                          e.fields["Min Salary (USD)"]
+                        )} <span>Min</span></p>
                       </div>
                         <div>
                       <p>${formatNumberToK(
-                    e.fields["Max Salary (USD)"]
-                  )} <span>Max</span></p>
+                        e.fields["Max Salary (USD)"]
+                      )} <span>Max</span></p>
                       </div>
                   </div>`
-                  : e.fields["Max Salary (USD)"]
-                    ? `<div><p style="text-align: center; margin: 0 0 5px 0; color: rgb(101, 101, 101);
+                      : e.fields["Max Salary (USD)"]
+                      ? `<div><p style="text-align: center; margin: 0 0 5px 0; color: rgb(101, 101, 101);
                       font-weight: bold;
                       font-size: 20px">${formatNumberToK(
-                      e.fields["Max Salary (USD)"]
-                    )} <span>Max</span></p></div>`
-                    : e.fields["Min Salary (USD)"]
+                        e.fields["Max Salary (USD)"]
+                      )} <span>Max</span></p></div>`
+                      : e.fields["Min Salary (USD)"]
                       ? `<div><p style="text-align: center; margin: 0 0 5px 0; color: rgb(101, 101, 101);
                       font-weight: bold;
                       font-size: 20px">${formatNumberToK(
@@ -773,15 +791,16 @@ document.addEventListener("DOMContentLoaded", function () {
                       : `<div><p style="text-align: center; margin: 0 0 5px 0; color: rgb(101, 101, 101);
                       font-weight: bold;
                       font-size: 20px">No Salary Listed</p></div>`
-                }
-                  <div class='${e.fields["Min Salary (USD)"] && e.fields["Max Salary (USD)"]
-                  ? `salary-2-bar`
-                  : e.fields["Max Salary (USD)"]
-                    ? `salary-max-bar`
-                    : e.fields["Min Salary (USD)"]
+                  }
+                  <div class='${
+                    e.fields["Min Salary (USD)"] && e.fields["Max Salary (USD)"]
+                      ? `salary-2-bar`
+                      : e.fields["Max Salary (USD)"]
+                      ? `salary-max-bar`
+                      : e.fields["Min Salary (USD)"]
                       ? `salary-min-bar`
                       : "salary-0-bar"
-                }'></div>
+                  }'></div>
               </div>
           </div>`;
             });
@@ -834,69 +853,87 @@ document.addEventListener("DOMContentLoaded", function () {
           <div class='vertical-hr'></div>
           <div class="job-spec">
               <p class="job-spec-title">Location:</p>
-              <p class='job-type'>${e["Location"]}</p>
+              <p class='job-type'>${
+                e["Location"] ? e["Location"] : "No Location Listed"
+              }</p>
           </div>
           <div class='vertical-hr'></div>
           <div class="job-spec">
               <p class="job-spec-title">Type:</p>
-              <p class='job-type'>${e["Type"] ? e["Type"].join(", ") : "N/A"
-      }</p>
+              <p class='job-type'>${
+                e["Type"] ? e["Type"].join(", ") : "N/A"
+              }</p>
           </div>
       </div>
       <div class='job-mobile-div'>
       <p style='font-weight: bold; margin-right: 20px'>Company/Org: 
-      <span style='font-weight: normal'>${e["Company/Org"] || "No Company Listed"
+      <span style='font-weight: normal'>${
+        e["Company/Org"] || "No Company Listed"
       }</span>
   </p>
   <hr style='width: 80%; margin: auto;'>
-  <p style='font-weight: bold'>Location: <span style='font-weight: normal'>${e["Location"] || "No Location Listed Listed"
-      }</span></p>
+  <p style='font-weight: bold'>Location: <span style='font-weight: normal'>${
+    e["Location"] || "No Location Listed Listed"
+  }</span></p>
 <hr style='width: 80%; margin: auto;'>
-  <p style='font-weight: bold; margin-right: 20px'>Job Type: 
-      <span style='font-weight: normal'>${e["Type"] ? e["Type"].join(", ") : "N/A"
-    }</span>
+  <p style='font-weight: bold; margin-right: 20px>Job Type: 
+      <span style='font-weight: normal'>${
+        e["Type"] ? e["Type"].join(", ") : "N/A"
+      }</span>
   </p>
   <hr style='width: 80%; margin: auto;'>
       </div>
-      
-                  <p style='font-weight: bold; margin-right: 20px'>Department/Team:
-                      <span style='font-weight: normal'>${e["Department/Team"] || "No Team Listed"
-      }</span>
-                  </p>
+                  <div style='display:flex; align-items:center; flex-wrap:wrap;'>
+                  <p style='font-weight: bold; margin-right: 20px'>Department/Team: ${
+                    e["Department/Team"]
+                      ? fields([e["Department/Team"]])
+                      : fields(["No Team Listed"])
+                  }
+                  </p> </div>
                   <hr style='width: 80%; margin: auto;'>
-                  <p style='font-weight: bold'>Salary: <span style='font-weight: normal'>${e["Salary"] || "No Salary Listed"
-      }</span></p>
+                  <div style='display:flex; align-items:center; flex-wrap:wrap;'>
+                  <p style='font-weight: bold;margin-right: 20px'>Salary:  ${
+                    e["Salary"]
+                      ? fields([e["Salary"]])
+                      : fields(["No Salary Listed"])
+                  }</p></div>
       <hr style='width: 80%; margin: auto;'>
                         
               
-              
+                <div style='display:flex; align-items:center; flex-wrap:wrap;'>
                   <p style='font-weight: bold; margin-right: 20px' class="visa-label">Visa Sponsorship:
-                      <span style='font-weight: normal'>${e["VISA sponsorship"]
-        ? e["VISA sponsorship"].join(", ")
-        : "N/A"
-      }</span>
+                      ${
+                        e["VISA sponsorship"]
+                          ? fields(e["VISA sponsorship"])
+                          : fields(["N/A"])
+                      }
                   </p>
+                </div>
                   <hr style='width: 80%; margin: auto;'>
-                  <p style='font-weight: bold'>Experience Level:
-                      <span style='font-weight: normal'>${e["Experience Level"] && e["Experience Level"].length
-        ? e["Experience Level"].join(", ")
-        : e["Experience Level"]
-          ? e["Experience Level"]
-          : "No Experience Listed"
-      }</span>
+                  <div style='display:flex; align-items:center; flex-wrap:wrap;'>
+                  <p style='font-weight: bold;margin-right: 20px'>Experience Level: ${
+                    e["Experience Level"] && e["Experience Level"].length
+                      ? fields(e["Experience Level"])
+                      : e["Experience Level"]
+                      ? fields([e["Experience Level"]])
+                      : fields(["No Experience Listed"])
+                  }</p></div>
+                  <hr style='width: 80%; margin: auto;'>
+                  <div style='display:flex; align-items:center; flex-wrap:wrap;'>
+                  <p style='font-weight: bold; margin-right: 20px' class="visa-label">Region:
+                      ${e["Region"] ? fields(e["Region"]) : fields(["N/A"])}
                   </p>
+                </div>
                   <hr style='width: 80%; margin: auto;'>
-              
-              
-                  <p style='font-weight: bold; margin-right: 20px;' class="region-label">Region:
-                      <span style='font-weight: normal'>${e["Region"] ? e["Region"].join(", ") : "N/A"
-      }</span>
+                  <div style='display:flex; align-items:center; flex-wrap:wrap;'>
+                  <p style='font-weight: bold; margin-right: 20px' class="visa-label">Closing Date:
+                      ${
+                        e["Closing Date"]
+                          ? fields([e["Closing Date"]])
+                          : fields(["No Closing Date Listed"])
+                      }
                   </p>
-                  <hr style='width: 80%; margin: auto;'>
-                  <p style='font-weight: bold'>Closing Date: <span
-                          style='font-weight: normal'>${e["Closing Date"] || 'No Closing Date Listed'
-      }</span></p>
-              
+                </div>
           </div>
       </div>`;
     modalFooter.innerHTML = `

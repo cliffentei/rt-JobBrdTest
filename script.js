@@ -600,6 +600,23 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
+  function generateRandomWaveSVG(width, height) {
+    let svg = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" transform="scale(1, -1)">`;
+    const waveAmplitude = Math.random() * 1 + 20;
+    const waveFrequency = Math.random() * 0.02 + 0.01;
+    const wavePhaseShift = Math.random() * 50;
+    let path = `<path fill="${getRandomPastelColor()}" d="M 0 ${height} `;
+    for (let x = 0; x <= width; x += 10) {
+      const y =
+        waveAmplitude * Math.sin(waveFrequency * x + wavePhaseShift) +
+        height / 2;
+      path += `L ${x} ${y} `;
+    }
+    path += `L ${width} ${height} L 0 ${height}" /></svg>`;
+    svg += path;
+    return svg;
+  }
+
   let offset = 0;
   let offsetArray = [""];
   let globalUrl = "";
@@ -1167,7 +1184,14 @@ document.addEventListener("DOMContentLoaded", function () {
           ${buttons(e["Link to Apply"]) || ""}
       </div>`;
     modal.style.display = "flex";
-    document.querySelectorAll(".pagin").style.display = "none";
+    const modalDiv = document.querySelector(".svg-background");
+    const svgString = generateRandomWaveSVG(1600, 800);
+    modalDiv.style.backgroundImage = `url('${svgString}')`;
+    modalDiv.style.backgroundPosition = `center -300px`;
+    const pagebuttons = document.querySelectorAll(".pagin");
+    if (pagebuttons) {
+      pagebuttons.style.display = "none";
+    }
   }
   const modalView = document.querySelector(".modal-div");
 

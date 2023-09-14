@@ -70,7 +70,6 @@ body {
     align-items: center;
     margin: 5px 10px 6px 0;
     flex-wrap: wrap;
-    /* max-height: 50px; */
 }
 
 .info-div div p {
@@ -83,6 +82,10 @@ body {
     max-width: 30px;
     height: 33px;
     margin-right: 10px;
+}
+
+.info-div .visa svg {
+    max-width: 40px;
 }
 
 .card-icon {

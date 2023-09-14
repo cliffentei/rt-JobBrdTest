@@ -10,6 +10,11 @@ body {
     overflow-x: hidden;
 }
 
+.content {
+    overflow-x: hidden !important;
+    overflow-y: hidden !important;
+}
+
 .card-button {
     display: inline-block;
     background-color: #007bff;
@@ -983,4 +988,8 @@ svg {
 .svg-background {
     background-size: cover;
     background-repeat: no-repeat;
+}
+
+#targetElement {
+    overflow-x: hidden !important;
 }

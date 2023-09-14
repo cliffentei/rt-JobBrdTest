@@ -570,8 +570,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function randomizePosition(div) {
     const targetElement = document.getElementById("targetElement");
-    const maxX = targetElement.scrollWidth;
-    const maxY = document.body.scrollHeight;
+    const targetRect = targetElement.getBoundingClientRect();
+    const maxX = targetRect.width - div.offsetWidth;
+    const maxY = targetRect.height - div.offsetHeight;
     const left = Math.floor(Math.random() * maxX);
     const top = Math.floor(Math.random() * maxY);
     div.style.left = `${left}px`;
@@ -592,8 +593,8 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function wonderBreadMaxing() {
-    const maxX = document.body.scrollWidth;
-    const maxY = document.body.scrollHeight;
+    const maxX = document.body.querySelector("#targetElement").scrollWidth;
+    const maxY = document.body.querySelector("#targetElement").scrollHeight;
     const numDivs = Math.round(0.000009879661767803447 * maxX * maxY);
     for (let i = 0; i < numDivs; i++) {
       createRandomDiv();
@@ -1185,9 +1186,11 @@ document.addEventListener("DOMContentLoaded", function () {
       </div>`;
     modal.style.display = "flex";
     const modalDiv = document.querySelector(".svg-background");
-    const svgString = generateRandomWaveSVG(1600, 800);
+    const svgString = generateRandomWaveSVG(1600, modalDiv.clientHeight);
+    const y = modalDiv.clientHeight;
+    const x = modalHeader.clientHeight;
     modalDiv.style.backgroundImage = `url('${svgString}')`;
-    modalDiv.style.backgroundPosition = `center -300px`;
+    modalDiv.style.backgroundPosition = `center -${y / 2 - x - 20}px`;
     const pagebuttons = document.querySelectorAll(".pagin");
     if (pagebuttons) {
       pagebuttons.style.display = "none";
@@ -1238,6 +1241,17 @@ document.addEventListener("DOMContentLoaded", function () {
         dotSpinner.classList.remove("loading-effect-craddle");
         dotSpinner.classList.add("hidden");
       }, 1000);
+      if (
+        document.body.scrollTop > 1500 ||
+        document.documentElement.scrollTop > 1500
+      ) {
+        const title = document.querySelector(".title");
+        const targetDivY = title.getBoundingClientRect().top + window.scrollY;
+        window.scrollTo({
+          top: targetDivY,
+          behavior: "smooth",
+        });
+      }
       dots.forEach((div) => {
         div.remove();
       });
@@ -1275,6 +1289,17 @@ document.addEventListener("DOMContentLoaded", function () {
         dotSpinner.classList.remove("loading-effect-craddle");
         dotSpinner.classList.add("hidden");
       }, 1000);
+      if (
+        document.body.scrollTop > 1500 ||
+        document.documentElement.scrollTop > 1500
+      ) {
+        const title = document.querySelector(".title");
+        const targetDivY = title.getBoundingClientRect().top + window.scrollY;
+        window.scrollTo({
+          top: targetDivY,
+          behavior: "smooth",
+        });
+      }
       dots.forEach((div) => {
         div.remove();
       });

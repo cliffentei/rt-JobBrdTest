@@ -87,6 +87,12 @@ body {
 .info-div .visa svg {
     max-width: 40px;
 }
+.info-div .part svg {
+    max-width: 40px;
+}
+.info-div .contract svg {
+    min-width: 40px;
+}
 
 .card-icon {
     margin-right: 15px;

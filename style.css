@@ -816,6 +816,22 @@ svg {
     animation: fade-in 1s forwards;
 }
 
+@keyframes fade-in-out {
+    0%, 100% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.loading-effect-craddle {
+    animation: fade-in-out 1s forwards;
+}
+
 @keyframes fade-in {
     from {
         opacity: 0;
@@ -956,4 +972,9 @@ svg {
 
 .modal-open {
     overflow: hidden;
+}
+
+.random-div {
+    position: absolute;
+    z-index: -1; 
 }

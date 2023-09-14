@@ -85,14 +85,35 @@ document.addEventListener("DOMContentLoaded", function () {
     clearIcon.style.display = "none";
     const deleteMe = document.getElementById("toDelete");
     deleteMe.classList.add("opposite-loading-effect");
+    decreaseBtn.classList.add("opposite-loading-effect");
+    decreaseBtn2.classList.add("opposite-loading-effect");
+    increaseBtn.classList.add("opposite-loading-effect");
+    increaseBtn2.classList.add("opposite-loading-effect");
+    const dots = document.querySelectorAll(".random-div");
+    dots.forEach((div) => {
+      div.classList.add("opposite-loading-effect");
+    });
     setTimeout(() => {
       if (deleteMe) deleteMe.remove();
+      decreaseBtn.classList.remove("opposite-loading-effect");
+      decreaseBtn2.classList.remove("opposite-loading-effect");
+      increaseBtn.classList.remove("opposite-loading-effect");
+      increaseBtn2.classList.remove("opposite-loading-effect");
+      decreaseBtn.classList.remove("show");
+      decreaseBtn2.classList.remove("show");
+      increaseBtn.classList.remove("show");
+      increaseBtn2.classList.remove("show");
       clearTimeout(timeoutId);
       dotSpinner.classList.remove("hidden");
+      dotSpinner.classList.add("loading-effect-craddle");
       timeoutId = setTimeout(() => {
         fetchAllData();
+        dotSpinner.classList.remove("loading-effect-craddle");
         dotSpinner.classList.add("hidden");
       }, 1000);
+      dots.forEach((div) => {
+        div.remove();
+      });
     }, 1000);
   });
 
@@ -262,20 +283,40 @@ document.addEventListener("DOMContentLoaded", function () {
           } else {
             document.querySelector(".remove-filter").classList.remove("hidden");
           }
-          decreaseBtn.classList.remove("show");
-          decreaseBtn2.classList.remove("show");
-          increaseBtn.classList.remove("show");
-          increaseBtn2.classList.remove("show");
-          const deleteMe = document.getElementById("toDelete");
-          deleteMe.classList.add("opposite-loading-effect");
+          document
+            .getElementById("toDelete")
+            .classList.add("opposite-loading-effect");
+          decreaseBtn.classList.add("opposite-loading-effect");
+          decreaseBtn2.classList.add("opposite-loading-effect");
+          increaseBtn.classList.add("opposite-loading-effect");
+          increaseBtn2.classList.add("opposite-loading-effect");
+          const dots = document.querySelectorAll(".random-div");
+          dots.forEach((div) => {
+            div.classList.add("opposite-loading-effect");
+          });
           setTimeout(() => {
+            const deleteMe = document.getElementById("toDelete");
             if (deleteMe) deleteMe.remove();
+            decreaseBtn.classList.remove("opposite-loading-effect");
+            decreaseBtn2.classList.remove("opposite-loading-effect");
+            increaseBtn.classList.remove("opposite-loading-effect");
+            increaseBtn2.classList.remove("opposite-loading-effect");
+            decreaseBtn.classList.remove("show");
+            decreaseBtn2.classList.remove("show");
+            increaseBtn.classList.remove("show");
+            increaseBtn2.classList.remove("show");
             clearTimeout(timeoutId);
             dotSpinner.classList.remove("hidden");
+            dotSpinner.classList.add("loading-effect-craddle");
             timeoutId = setTimeout(() => {
               fetchAllData();
+              dotSpinner.classList.remove("loading-effect-craddle");
+              dotSpinner.classList.add("hidden");
               dotSpinner.classList.add("hidden");
             }, 1000);
+            dots.forEach((div) => {
+              div.remove();
+            });
           }, 1000);
         });
       });
@@ -439,21 +480,45 @@ document.addEventListener("DOMContentLoaded", function () {
     selectedChecks.forEach((option) => {
       option.checked = false;
     });
-    decreaseBtn.classList.remove("show");
-    decreaseBtn2.classList.remove("show");
-    increaseBtn.classList.remove("show");
-    increaseBtn2.classList.remove("show");
     document
       .getElementById("toDelete")
       .classList.add("opposite-loading-effect");
+    document
+      .querySelector(".remove-filter")
+      .classList.add("opposite-loading-effect");
+    decreaseBtn.classList.add("opposite-loading-effect");
+    decreaseBtn2.classList.add("opposite-loading-effect");
+    increaseBtn.classList.add("opposite-loading-effect");
+    increaseBtn2.classList.add("opposite-loading-effect");
+    const dots = document.querySelectorAll(".random-div");
+    dots.forEach((div) => {
+      div.classList.add("opposite-loading-effect");
+    });
+
     setTimeout(() => {
       document.getElementById("toDelete").remove();
+      document
+        .querySelector(".remove-filter")
+        .classList.remove("opposite-loading-effect");
+      decreaseBtn.classList.remove("opposite-loading-effect");
+      decreaseBtn2.classList.remove("opposite-loading-effect");
+      increaseBtn.classList.remove("opposite-loading-effect");
+      increaseBtn2.classList.remove("opposite-loading-effect");
+      decreaseBtn.classList.remove("show");
+      decreaseBtn2.classList.remove("show");
+      increaseBtn.classList.remove("show");
+      increaseBtn2.classList.remove("show");
       clearTimeout(timeoutId);
       dotSpinner.classList.remove("hidden");
+      dotSpinner.classList.add("loading-effect-craddle");
       timeoutId = setTimeout(() => {
         fetchAllData();
+        dotSpinner.classList.remove("loading-effect-craddle");
         dotSpinner.classList.add("hidden");
       }, 1000);
+      dots.forEach((div) => {
+        div.remove();
+      });
       document.querySelector(".remove-filter").classList.add("hidden");
     }, 1000);
   });
@@ -474,6 +539,67 @@ document.addEventListener("DOMContentLoaded", function () {
 
   resizeObserver.observe(dropdownDiv);
 
+  function getRandomPastelColor() {
+    let color = "rgba(";
+    for (let i = 0; i < 3; i++) {
+      const channel = Math.floor(Math.random() * 256);
+      color += channel + ",";
+    }
+    color += "0.25)";
+    return color;
+  }
+
+  function generateRandomBorderRadius() {
+    const topLeft = Math.floor(Math.random() * 31) * 2 + 20;
+    const topRight = 100 - topLeft;
+    const bottomLeft = Math.floor(Math.random() * 31) * 2 + 20;
+    const bottomRight = 100 - bottomLeft;
+    const horizontalRadius1 = Math.floor(Math.random() * 31) * 2 + 20;
+    const horizontalRadius2 = 100 - horizontalRadius1;
+    const verticalRadius1 = Math.floor(Math.random() * 31) * 2 + 20;
+    const verticalRadius2 = 100 - verticalRadius1;
+    return `${topLeft}% ${topRight}% ${bottomRight}% ${bottomLeft}% / ${horizontalRadius1}% ${verticalRadius1}% ${verticalRadius2}% ${horizontalRadius2}%`;
+  }
+
+  function randomizeSize(div) {
+    const width = Math.floor(Math.random() * 301) + 100;
+    const height = Math.floor(Math.random() * 301) + 100;
+    div.style.width = `${width}px`;
+    div.style.height = `${height}px`;
+  }
+
+  function randomizePosition(div) {
+    const targetElement = document.getElementById("targetElement");
+    const maxX = targetElement.scrollWidth;
+    const maxY = document.body.scrollHeight;
+    const left = Math.floor(Math.random() * maxX);
+    const top = Math.floor(Math.random() * maxY);
+    div.style.left = `${left}px`;
+    div.style.top = `${top}px`;
+  }
+
+  function createRandomDiv() {
+    const div = document.createElement("div");
+    div.classList.add("random-div");
+    div.classList.add("loading-effect");
+    randomizeSize(div);
+    randomizePosition(div);
+    const borderRadius = generateRandomBorderRadius();
+    div.style.borderRadius = borderRadius;
+    const backgroundColor = getRandomPastelColor();
+    div.style.backgroundColor = backgroundColor;
+    document.body.querySelector("#targetElement").appendChild(div);
+  }
+
+  function wonderBreadMaxing() {
+    const maxX = document.body.scrollWidth;
+    const maxY = document.body.scrollHeight;
+    const numDivs = Math.round(0.000009879661767803447 * maxX * maxY);
+    for (let i = 0; i < numDivs; i++) {
+      createRandomDiv();
+    }
+  }
+
   let offset = 0;
   let offsetArray = [""];
   let globalUrl = "";
@@ -486,8 +612,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
   clearTimeout(timeoutId);
   dotSpinner.classList.remove("hidden");
+  dotSpinner.classList.add("loading-effect-craddle");
   timeoutId = setTimeout(() => {
     fetchAllData();
+    dotSpinner.classList.remove("loading-effect-craddle");
     dotSpinner.classList.add("hidden");
   }, 1000);
 
@@ -497,18 +625,35 @@ document.addEventListener("DOMContentLoaded", function () {
     event.preventDefault();
     const deleteMe = document.getElementById("toDelete");
     deleteMe.classList.add("opposite-loading-effect");
+    decreaseBtn.classList.add("opposite-loading-effect");
+    decreaseBtn2.classList.add("opposite-loading-effect");
+    increaseBtn.classList.add("opposite-loading-effect");
+    increaseBtn2.classList.add("opposite-loading-effect");
+    const dots = document.querySelectorAll(".random-div");
+    dots.forEach((div) => {
+      div.classList.add("opposite-loading-effect");
+    });
     setTimeout(() => {
       if (deleteMe) deleteMe.remove();
-      clearTimeout(timeoutId);
+      decreaseBtn.classList.remove("opposite-loading-effect");
+      decreaseBtn2.classList.remove("opposite-loading-effect");
+      increaseBtn.classList.remove("opposite-loading-effect");
+      increaseBtn2.classList.remove("opposite-loading-effect");
       decreaseBtn.classList.remove("show");
       decreaseBtn2.classList.remove("show");
       increaseBtn.classList.remove("show");
       increaseBtn2.classList.remove("show");
+      clearTimeout(timeoutId);
       dotSpinner.classList.remove("hidden");
+      dotSpinner.classList.add("loading-effect-craddle");
       timeoutId = setTimeout(() => {
         fetchAllData();
+        dotSpinner.classList.remove("loading-effect-craddle");
         dotSpinner.classList.add("hidden");
       }, 1000);
+      dots.forEach((div) => {
+        div.remove();
+      });
     }, 1000);
   });
 
@@ -847,6 +992,7 @@ document.addEventListener("DOMContentLoaded", function () {
           const parsedElement = parsedHtml.querySelector("div");
           const targetElement = document.getElementById("targetElement");
           targetElement.appendChild(parsedElement);
+          wonderBreadMaxing();
           const readMoreButtons = document.querySelectorAll(".job-card");
           readMoreButtons.forEach((button, index) => {
             button.addEventListener("click", () => {
@@ -1042,18 +1188,35 @@ document.addEventListener("DOMContentLoaded", function () {
     document
       .getElementById("toDelete")
       .classList.add("opposite-loading-effect");
+    decreaseBtn.classList.add("opposite-loading-effect");
+    decreaseBtn2.classList.add("opposite-loading-effect");
+    increaseBtn.classList.add("opposite-loading-effect");
+    increaseBtn2.classList.add("opposite-loading-effect");
+    const dots = document.querySelectorAll(".random-div");
+    dots.forEach((div) => {
+      div.classList.add("opposite-loading-effect");
+    });
     setTimeout(() => {
       document.getElementById("toDelete").remove();
+      decreaseBtn.classList.remove("opposite-loading-effect");
+      decreaseBtn2.classList.remove("opposite-loading-effect");
+      increaseBtn.classList.remove("opposite-loading-effect");
+      increaseBtn2.classList.remove("opposite-loading-effect");
       decreaseBtn.classList.remove("show");
       decreaseBtn2.classList.remove("show");
       increaseBtn.classList.remove("show");
       increaseBtn2.classList.remove("show");
       clearTimeout(timeoutId);
       dotSpinner.classList.remove("hidden");
+      dotSpinner.classList.add("loading-effect-craddle");
       timeoutId = setTimeout(() => {
         fetchAllData();
+        dotSpinner.classList.remove("loading-effect-craddle");
         dotSpinner.classList.add("hidden");
       }, 1000);
+      dots.forEach((div) => {
+        div.remove();
+      });
     }, 1000);
   }
 
@@ -1062,18 +1225,35 @@ document.addEventListener("DOMContentLoaded", function () {
     document
       .getElementById("toDelete")
       .classList.add("opposite-loading-effect");
+    decreaseBtn.classList.add("opposite-loading-effect");
+    decreaseBtn2.classList.add("opposite-loading-effect");
+    increaseBtn.classList.add("opposite-loading-effect");
+    increaseBtn2.classList.add("opposite-loading-effect");
+    const dots = document.querySelectorAll(".random-div");
+    dots.forEach((div) => {
+      div.classList.add("opposite-loading-effect");
+    });
     setTimeout(() => {
       document.getElementById("toDelete").remove();
+      decreaseBtn.classList.remove("opposite-loading-effect");
+      decreaseBtn2.classList.remove("opposite-loading-effect");
+      increaseBtn.classList.remove("opposite-loading-effect");
+      increaseBtn2.classList.remove("opposite-loading-effect");
       decreaseBtn.classList.remove("show");
       decreaseBtn2.classList.remove("show");
       increaseBtn.classList.remove("show");
       increaseBtn2.classList.remove("show");
       clearTimeout(timeoutId);
       dotSpinner.classList.remove("hidden");
+      dotSpinner.classList.add("loading-effect-craddle");
       timeoutId = setTimeout(() => {
         fetchAllData();
+        dotSpinner.classList.remove("loading-effect-craddle");
         dotSpinner.classList.add("hidden");
       }, 1000);
+      dots.forEach((div) => {
+        div.remove();
+      });
     }, 1000);
   }
 

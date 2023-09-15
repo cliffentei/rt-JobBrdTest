@@ -709,6 +709,10 @@ svg {
     .modal-content p{
         font-size: 20px;
     }
+    .modal-content .field-div p{
+        font-size: 15px;
+    }
+    
 }
 
 @media screen and (max-width: 600px) {

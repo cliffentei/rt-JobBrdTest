@@ -1131,7 +1131,7 @@ ${
     </div>
                   <hr style='width:90%; margin: auto;'>
                   <div style='display:flex; align-items:center; flex-wrap:wrap; margin: 10px 0;'>
-    <div style='width: 45px; margin: 0px 23px'>
+    <div style='width: 40px; margin: 0px 25px'>
       ${icons["salary"]}
     </div>
     <p style='font-weight: bold; margin: 0;'>Salary</p>

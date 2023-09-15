@@ -1067,8 +1067,9 @@ document.addEventListener("DOMContentLoaded", function () {
               }</p>
           </div>
       </div>
+      <hr style='width:90%; margin: auto;'>
       <div class='job-mobile-div'>
-      <div style='display:flex; align-items:center; flex-wrap:wrap;'>
+      <div style='display:flex; align-items:center; flex-wrap:wrap; margin: 10px 0;'>
       <div style='width: 50px; margin: 0px 20px'>
         ${icons["company"]}
       </div>
@@ -1082,7 +1083,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     </div>
   <hr style='width:90%; margin: auto;'>
-  <div style='display:flex; align-items:center; flex-wrap:wrap;'>
+  <div style='display:flex; align-items:center; flex-wrap:wrap; margin: 10px 0;'>
     <div style='width: 50px; margin: 0px 20px'>
       ${icons["location"]}
     </div>
@@ -1096,7 +1097,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   </div>
 <hr style='width:90%; margin: auto;'>
-<div style='display:flex; align-items:center; flex-wrap:wrap;'>
+<div style='display:flex; align-items:center; flex-wrap:wrap; margin: 10px 0;'>
 <div style='width: 50px; margin: 0px 20px'>
   ${
     e["Type"][0] === "Full-Time" || e["Type"].length > 1
@@ -1115,7 +1116,7 @@ ${
 </div>
   <hr style='width:90%; margin: auto;'>
       </div>
-      <div style='display:flex; align-items:center; flex-wrap:wrap;'>
+      <div style='display:flex; align-items:center; flex-wrap:wrap; margin: 10px 0;'>
       <div style='width: 50px; margin: 0px 20px'>
         ${icons["team"]}
       </div>
@@ -1129,7 +1130,7 @@ ${
       }
     </div>
                   <hr style='width:90%; margin: auto;'>
-                  <div style='display:flex; align-items:center; flex-wrap:wrap;'>
+                  <div style='display:flex; align-items:center; flex-wrap:wrap; margin: 10px 0;'>
     <div style='width: 45px; margin: 0px 23px'>
       ${icons["salary"]}
     </div>
@@ -1147,7 +1148,7 @@ ${
               
       ${
         e["VISA sponsorship"]
-          ? `<div style='display:flex; align-items:center; flex-wrap:wrap;'>
+          ? `<div style='display:flex; align-items:center; flex-wrap:wrap; margin: 10px 0;'>
               <div style='width: 50px; margin: 0px 20px'>
                 ${
                   e["VISA sponsorship"][0] === "Yes"
@@ -1169,7 +1170,7 @@ ${
             <hr style='width:90%; margin: auto;'>`
           : ""
       }          
-                <div style='display:flex; align-items:center; flex-wrap:wrap;'>
+                <div style='display:flex; align-items:center; flex-wrap:wrap; margin: 10px 0;'>
                 <div style='width: 50px; margin: 0px 20px'>
                   ${icons["experience"]}
                 </div>
@@ -1185,7 +1186,7 @@ ${
                 }
               </div>
                   <hr style='width:90%; margin: auto;'>
-                  <div style='display:flex; align-items:center; flex-wrap:wrap;'>
+                  <div style='display:flex; align-items:center; flex-wrap:wrap; margin: 10px 0;'>
                   <div style='width: 50px; margin: 0px 20px'>
                     ${
                       e["Region"][0] !== "Remote" || e["Region"].length > 1
@@ -1199,7 +1200,7 @@ ${
                   ${e["Region"] ? fields(e["Region"]) : fields(["N/A"])}
                 </div>
                   <hr style='width:90%; margin: auto;'>
-                  <div style='display:flex; align-items:center; flex-wrap:wrap;'>
+                  <div style='display:flex; align-items:center; flex-wrap:wrap; margin: 10px 0;'>
     <div style='width: 50px; margin: 0px 20px'>
       ${icons["clock2"]}
     </div>

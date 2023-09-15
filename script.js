@@ -1068,116 +1068,150 @@ document.addEventListener("DOMContentLoaded", function () {
           </div>
       </div>
       <div class='job-mobile-div'>
-  <div style='display:flex; align-items:center; flex-wrap:wrap;'>
-  <div style='width: 50px; margin: 10px 20px'>
-  ${icons["company"]}
-  </div>
-                  ${
-                    e["Company/Org"]
-                      ? fields([e["Company/Org"]])
-                      : fields(["No Company Listed"])
-                  }</div>
+      <div style='display:flex; align-items:center; flex-wrap:wrap;'>
+      <div style='width: 50px; margin: 0px 20px'>
+        ${icons["company"]}
+      </div>
+      <p style='font-weight: bold; margin: 0;'>Company/Org</p>
+    </div>
+    <div style='margin-left: 80px; margin-bottom: 15px; display: flex; flex-wrap: wrap;'>
+      ${
+        e["Company/Org"]
+          ? fields([e["Company/Org"]])
+          : fields(["No Company Listed"])
+      }
+    </div>
   <hr style='width:90%; margin: auto;'>
   <div style='display:flex; align-items:center; flex-wrap:wrap;'>
-  <div style='width: 50px; margin: 10px 20px'>
-  ${icons["location"]}
+    <div style='width: 50px; margin: 0px 20px'>
+      ${icons["location"]}
+    </div>
+    <p style='font-weight: bold; margin: 0;'>Location</p>
   </div>
-                  ${
-                    e["Location"]
-                      ? fields([e["Location"]])
-                      : fields(["No Location Listed"])
-                  }</div>
+  <div style='margin-left: 80px; margin-bottom: 15px; display: flex; flex-wrap: wrap;'>
+    ${
+      e["Location"]
+        ? fields([e["Location"]])
+        : fields(["No Location Listed"])
+    }
+  </div>
 <hr style='width:90%; margin: auto;'>
-  <div style='display:flex; align-items:center; flex-wrap:wrap;'>
-  <div style='width: 50px; margin: 10px 20px'>${
+<div style='display:flex; align-items:center; flex-wrap:wrap;'>
+<div style='width: 50px; margin: 0px 20px'>
+  ${
     e["Type"][0] === "Full-Time" || e["Type"].length > 1
       ? icons["fullTime"]
       : e["Type"][0] === "Part-Time"
       ? icons["partTime"]
       : icons["contract"]
-  }</div>
-                   ${
-                     e["Type"] ? fields(e["Type"]) : fields(["No Type Listed"])
-                   }</div>
+  }
+</div>
+<p style='font-weight: bold; margin: 0;'>Type</p>
+</div>
+<div style='margin-left: 80px; margin-bottom: 15px; display: flex; flex-wrap: wrap;'>
+${
+  e["Type"] ? fields(e["Type"]) : fields(["No Type Listed"])
+}
+</div>
   <hr style='width:90%; margin: auto;'>
       </div>
-                  <div style='display:flex; align-items:center; flex-wrap:wrap;'>
-                  <div style='width: 50px; margin: 10px 20px'>
-  ${icons["team"]}
-  </div>
-                  ${
-                    e["Department/Team"]
-                      ? fields([e["Department/Team"]])
-                      : fields(["No Team Listed"])
-                  }
-                  </div>
+      <div style='display:flex; align-items:center; flex-wrap:wrap;'>
+      <div style='width: 50px; margin: 0px 20px'>
+        ${icons["team"]}
+      </div>
+      <p style='font-weight: bold; margin: 0;'>Department/Team</p>
+    </div>
+    <div style='margin-left: 80px; margin-bottom: 15px; display: flex; flex-wrap: wrap;'>
+      ${
+        e["Department/Team"]
+          ? fields([e["Department/Team"]])
+          : fields(["No Team Listed"])
+      }
+    </div>
                   <hr style='width:90%; margin: auto;'>
                   <div style='display:flex; align-items:center; flex-wrap:wrap;'>
-                  <div style='width: 45px; margin: 10px 23px'>
-  ${icons["salary"]}
+    <div style='width: 45px; margin: 0px 23px'>
+      ${icons["salary"]}
+    </div>
+    <p style='font-weight: bold; margin: 0;'>Salary</p>
   </div>
-                  ${
-                    e["Salary"]
-                      ? fields([e["Salary"]])
-                      : fields(["No Salary Listed"])
-                  }</div>
+  <div style='margin-left: 80px; margin-bottom: 15px; display: flex; flex-wrap: wrap;'>
+    ${
+      e["Salary"]
+        ? fields([e["Salary"]])
+        : fields(["No Salary Listed"])
+    }
+  </div>
       <hr style='width:90%; margin: auto;'>
                         
               
+      ${
+        e["VISA sponsorship"]
+          ? `<div style='display:flex; align-items:center; flex-wrap:wrap;'>
+              <div style='width: 50px; margin: 0px 20px'>
                 ${
-                  e["VISA sponsorship"]
-                    ? `<div style='display:flex; align-items:center; flex-wrap:wrap;'>
-                <div style='width: 50px; margin: 10px 20px'>${
                   e["VISA sponsorship"][0] === "Yes"
                     ? icons["visaCheck"]
                     : e["VISA sponsorship"][0] === "No"
                     ? icons["visaEx"]
                     : icons["visaQuestion"]
-                }</div>
-                      ${
-                        e["VISA sponsorship"]
-                          ? fields(e["VISA sponsorship"])
-                          : fields(["N/A"])
-                      }
-                </div>
-                  <hr style='width:90%; margin: auto;'>`
-                    : ""
                 }
-                  <div style='display:flex; align-items:center; flex-wrap:wrap;'>
-                  <div style='width: 50px; margin: 10px 20px'>
-  ${icons["experience"]}
-  </div>
-                  ${
-                    e["Experience Level"] && e["Experience Level"].length
-                      ? fields(e["Experience Level"])
-                      : e["Experience Level"]
-                      ? fields([e["Experience Level"]])
-                      : fields(["No Experience Listed"])
-                  }</div>
+              </div>
+              <p style='font-weight: bold; margin: 0;'>VISA sponsorship</p>
+            </div>
+            <div style='margin-left: 80px; margin-bottom: 15px; display: flex; flex-wrap: wrap;'>
+              ${
+                e["VISA sponsorship"]
+                  ? fields(e["VISA sponsorship"])
+                  : fields(["N/A"])
+              }
+            </div>
+            <hr style='width:90%; margin: auto;'>`
+          : ""
+      }          
+                <div style='display:flex; align-items:center; flex-wrap:wrap;'>
+                <div style='width: 50px; margin: 0px 20px'>
+                  ${icons["experience"]}
+                </div>
+                <p style='font-weight: bold; margin: 0;'>Experience Level</p>
+              </div>
+              <div style='margin-left: 80px; margin-bottom: 15px; display: flex; flex-wrap: wrap;'>
+                ${
+                  e["Experience Level"] && e["Experience Level"].length
+                    ? fields(e["Experience Level"])
+                    : e["Experience Level"]
+                    ? fields([e["Experience Level"]])
+                    : fields(["No Experience Listed"])
+                }
+              </div>
                   <hr style='width:90%; margin: auto;'>
                   <div style='display:flex; align-items:center; flex-wrap:wrap;'>
-                  <div style='width: 50px; margin: 10px 20px'>
-                  ${
-                    e["Region"][0] !== "Remote" || e["Region"].length > 1
-                      ? icons["world"]
-                      : icons["remote"]
-                  }
+                  <div style='width: 50px; margin: 0px 20px'>
+                    ${
+                      e["Region"][0] !== "Remote" || e["Region"].length > 1
+                        ? icons["world"]
+                        : icons["remote"]
+                    }
                   </div>
-                      ${e["Region"] ? fields(e["Region"]) : fields(["N/A"])}
-                  
+                  <p style='font-weight: bold; margin: 0;'>Region</p>
+                </div>
+                <div style='margin-left: 80px; margin-bottom: 15px; display: flex; flex-wrap: wrap;'>
+                  ${e["Region"] ? fields(e["Region"]) : fields(["N/A"])}
                 </div>
                   <hr style='width:90%; margin: auto;'>
                   <div style='display:flex; align-items:center; flex-wrap:wrap;'>
-                  <div style='width: 50px; margin: 10px 20px'>
-  ${icons["clock2"]}
+    <div style='width: 50px; margin: 0px 20px'>
+      ${icons["clock2"]}
+    </div>
+    <p style='font-weight: bold; margin: 0;'>Closing Date</p>
   </div>
-                      ${
-                        e["Closing Date"]
-                          ? fields([e["Closing Date"]])
-                          : fields(["No Closing Date Listed"])
-                      }
-                  
-                </div>
+  <div style='margin-left: 80px; margin-bottom: 15px; display: flex; flex-wrap: wrap;'>
+    ${
+      e["Closing Date"]
+        ? fields([e["Closing Date"]])
+        : fields(["No Closing Date Listed"])
+    }
+  </div>
           </div>
       </div>`;
     modalFooter.innerHTML = `

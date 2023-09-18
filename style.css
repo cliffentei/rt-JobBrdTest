@@ -480,42 +480,6 @@ svg {
     filter: invert(1)
 }
 
-/* .dropdown-menu {
-    top: 100%;
-    left: 0;
-    width: 300px;
-    max-height: 300px;
-    overflow-y: auto;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    display: none;
-    z-index: 1;
-    user-select: none;
-}
-.dropdown-menu.active {
-    display: block;
-} */
-/* .dropdown-menu {
-    top: 100%;
-    left: 0;
-    width: 0; 
-    max-height: 300px;
-    height: auto; 
-    overflow-y: auto;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    z-index: 1;
-    user-select: none;
-    transition: width 0.3s ease-in-out, opacity 0.3s ease-in-out;
-    opacity: 0; 
-    pointer-events: none; 
-}
-
-.dropdown-menu.active {
-    width: 300px; 
-    opacity: 1; 
-    pointer-events: auto;
-} */
 .dropdown-menu {
     top: 100%;
     left: 0;
@@ -525,7 +489,6 @@ svg {
     height: auto;
     overflow-y: auto;
     background-color: #fff;
-    border: 1px solid #ccc;
     z-index: 1;
     user-select: none;
     transition: max-height 0.3s ease-in-out, max-width 0.3s ease-in-out, opacity 0.3s ease-in-out;
@@ -537,6 +500,7 @@ svg {
     max-height: 300px;
     min-width: 300px;
     opacity: 1;
+    border: 1px solid #ccc;
     pointer-events: auto;
     overflow-x: hidden;
 }
@@ -760,7 +724,7 @@ svg {
     justify-content: center;
     width: var(--uib-size);
     height: var(--uib-size);
-    margin-top: 10vh;
+    /* margin-top: 10vh; */
 }
 
 .newtons-cradle__dot {
@@ -830,6 +794,7 @@ svg {
 .loading {
     display: flex;
     justify-content: center;
+    
 }
 
 .loading-effect {
@@ -851,7 +816,7 @@ svg {
 }
 
 .loading-effect-craddle {
-    animation: fade-in-out 1s forwards;
+    animation: fade-in-out infinite forwards;
 }
 
 @keyframes fade-in {
@@ -870,6 +835,14 @@ svg {
     transform: translateY(0);
     animation: fade-out 1s forwards;
 }
+
+.opposite-craddle-effect {
+    opacity: 1;
+    transform: translateY(0);
+    animation: fade-out2 0.5s forwards;
+    pointer-events: none; 
+}
+
 @keyframes fade-out {
     from {
         opacity: 1;
@@ -878,6 +851,17 @@ svg {
     to {
         opacity: 0;
         transform: translateY(20px);
+    }
+}
+
+@keyframes fade-out2 {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-20px);
     }
 }
 
@@ -1008,9 +992,5 @@ svg {
 
 #targetElement {
     overflow-x: hidden !important;
+    min-height: 100vh;
 }
-
-/* #myModal > div > div.modal-content > div.job-field-div {
-    opacity: 1;
-    transition: opacity 0.3s ease-in-out;
-} */

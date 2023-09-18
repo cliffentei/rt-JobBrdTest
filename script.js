@@ -83,8 +83,9 @@ document.addEventListener("DOMContentLoaded", function () {
   clearIcon.addEventListener("click", function () {
     searchInputs.value = "";
     clearIcon.style.display = "none";
+    clearTimeout(timeoutId);
     const deleteMe = document.getElementById("toDelete");
-    deleteMe.classList.add("opposite-loading-effect");
+    if (deleteMe) deleteMe.classList.add("opposite-loading-effect");
     decreaseBtn.classList.add("opposite-loading-effect");
     decreaseBtn2.classList.add("opposite-loading-effect");
     increaseBtn.classList.add("opposite-loading-effect");
@@ -94,26 +95,24 @@ document.addEventListener("DOMContentLoaded", function () {
       div.classList.add("opposite-loading-effect");
     });
     setTimeout(() => {
+      dotSpinner.classList.remove("hidden");
       if (deleteMe) deleteMe.remove();
-      decreaseBtn.classList.remove("opposite-loading-effect");
-      decreaseBtn2.classList.remove("opposite-loading-effect");
-      increaseBtn.classList.remove("opposite-loading-effect");
-      increaseBtn2.classList.remove("opposite-loading-effect");
       decreaseBtn.classList.remove("show");
       decreaseBtn2.classList.remove("show");
       increaseBtn.classList.remove("show");
       increaseBtn2.classList.remove("show");
-      clearTimeout(timeoutId);
-      dotSpinner.classList.remove("hidden");
-      dotSpinner.classList.add("loading-effect-craddle");
-      timeoutId = setTimeout(() => {
-        fetchAllData();
-        dotSpinner.classList.remove("loading-effect-craddle");
-        dotSpinner.classList.add("hidden");
-      }, 1000);
+      decreaseBtn.classList.remove("opposite-loading-effect");
+      decreaseBtn2.classList.remove("opposite-loading-effect");
+      increaseBtn.classList.remove("opposite-loading-effect");
+      increaseBtn2.classList.remove("opposite-loading-effect");
       dots.forEach((div) => {
         div.remove();
       });
+    }, 1000);
+    timeoutId = setTimeout(() => {
+      setTimeout(() => {
+        fetchAllData();
+      }, 500);
     }, 1000);
   });
 
@@ -270,10 +269,11 @@ document.addEventListener("DOMContentLoaded", function () {
           updateButtonState();
         });
         optionElement.addEventListener("click", function (event) {
+          event.preventDefault();
+          clearTimeout(timeoutId);
           checkbox.checked = !checkbox.checked;
           optionElement.classList.toggle("selected");
           updateButtonState();
-          event.preventDefault();
           const selectedOptions = document.querySelectorAll(
             ".dropdown-option.selected"
           );
@@ -283,9 +283,8 @@ document.addEventListener("DOMContentLoaded", function () {
           } else {
             document.querySelector(".remove-filter").classList.remove("hidden");
           }
-          document
-            .getElementById("toDelete")
-            .classList.add("opposite-loading-effect");
+          const deleteMe = document.getElementById("toDelete");
+          if (deleteMe) deleteMe.classList.add("opposite-loading-effect");
           decreaseBtn.classList.add("opposite-loading-effect");
           decreaseBtn2.classList.add("opposite-loading-effect");
           increaseBtn.classList.add("opposite-loading-effect");
@@ -295,28 +294,24 @@ document.addEventListener("DOMContentLoaded", function () {
             div.classList.add("opposite-loading-effect");
           });
           setTimeout(() => {
-            const deleteMe = document.getElementById("toDelete");
+            dotSpinner.classList.remove("hidden");
             if (deleteMe) deleteMe.remove();
-            decreaseBtn.classList.remove("opposite-loading-effect");
-            decreaseBtn2.classList.remove("opposite-loading-effect");
-            increaseBtn.classList.remove("opposite-loading-effect");
-            increaseBtn2.classList.remove("opposite-loading-effect");
             decreaseBtn.classList.remove("show");
             decreaseBtn2.classList.remove("show");
             increaseBtn.classList.remove("show");
             increaseBtn2.classList.remove("show");
-            clearTimeout(timeoutId);
-            dotSpinner.classList.remove("hidden");
-            dotSpinner.classList.add("loading-effect-craddle");
-            timeoutId = setTimeout(() => {
-              fetchAllData();
-              dotSpinner.classList.remove("loading-effect-craddle");
-              dotSpinner.classList.add("hidden");
-              dotSpinner.classList.add("hidden");
-            }, 1000);
+            decreaseBtn.classList.remove("opposite-loading-effect");
+            decreaseBtn2.classList.remove("opposite-loading-effect");
+            increaseBtn.classList.remove("opposite-loading-effect");
+            increaseBtn2.classList.remove("opposite-loading-effect");
             dots.forEach((div) => {
               div.remove();
             });
+          }, 750);
+          timeoutId = setTimeout(() => {
+            setTimeout(() => {
+              fetchAllData();
+            }, 500);
           }, 1000);
         });
       });
@@ -489,12 +484,12 @@ document.addEventListener("DOMContentLoaded", function () {
     selectedChecks.forEach((option) => {
       option.checked = false;
     });
-    document
-      .getElementById("toDelete")
-      .classList.add("opposite-loading-effect");
+    clearTimeout(timeoutId);
+    const deleteMe = document.getElementById("toDelete");
     document
       .querySelector(".remove-filter")
       .classList.add("opposite-loading-effect");
+    if (deleteMe) deleteMe.classList.add("opposite-loading-effect");
     decreaseBtn.classList.add("opposite-loading-effect");
     decreaseBtn2.classList.add("opposite-loading-effect");
     increaseBtn.classList.add("opposite-loading-effect");
@@ -503,31 +498,28 @@ document.addEventListener("DOMContentLoaded", function () {
     dots.forEach((div) => {
       div.classList.add("opposite-loading-effect");
     });
-
     setTimeout(() => {
-      document.getElementById("toDelete").remove();
-      document
-        .querySelector(".remove-filter")
-        .classList.remove("opposite-loading-effect");
-      decreaseBtn.classList.remove("opposite-loading-effect");
-      decreaseBtn2.classList.remove("opposite-loading-effect");
-      increaseBtn.classList.remove("opposite-loading-effect");
-      increaseBtn2.classList.remove("opposite-loading-effect");
+      dotSpinner.classList.remove("hidden");
+      if (deleteMe) deleteMe.remove();
       decreaseBtn.classList.remove("show");
       decreaseBtn2.classList.remove("show");
       increaseBtn.classList.remove("show");
       increaseBtn2.classList.remove("show");
-      clearTimeout(timeoutId);
-      dotSpinner.classList.remove("hidden");
-      dotSpinner.classList.add("loading-effect-craddle");
-      timeoutId = setTimeout(() => {
-        fetchAllData();
-        dotSpinner.classList.remove("loading-effect-craddle");
-        dotSpinner.classList.add("hidden");
-      }, 1000);
+      decreaseBtn.classList.remove("opposite-loading-effect");
+      decreaseBtn2.classList.remove("opposite-loading-effect");
+      increaseBtn.classList.remove("opposite-loading-effect");
+      increaseBtn2.classList.remove("opposite-loading-effect");
       dots.forEach((div) => {
         div.remove();
       });
+    }, 750);
+    timeoutId = setTimeout(() => {
+      setTimeout(() => {
+        fetchAllData();
+      }, 500);
+      document
+        .querySelector(".remove-filter")
+        .classList.remove("opposite-loading-effect");
       document.querySelector(".remove-filter").classList.add("hidden");
     }, 1000);
   });
@@ -637,21 +629,20 @@ document.addEventListener("DOMContentLoaded", function () {
   const decreaseBtn = document.querySelector(".decrease");
   const decreaseBtn2 = document.querySelector(".decrease2");
 
-  clearTimeout(timeoutId);
   dotSpinner.classList.remove("hidden");
-  dotSpinner.classList.add("loading-effect-craddle");
+  clearTimeout(timeoutId);
   timeoutId = setTimeout(() => {
-    fetchAllData();
-    dotSpinner.classList.remove("loading-effect-craddle");
-    dotSpinner.classList.add("hidden");
+    setTimeout(() => {
+      fetchAllData();
+    }, 500);
   }, 1000);
 
   const searchInput = document.getElementById("search-input");
-
   searchInput.addEventListener("input", function (event) {
     event.preventDefault();
+    clearTimeout(timeoutId);
     const deleteMe = document.getElementById("toDelete");
-    deleteMe.classList.add("opposite-loading-effect");
+    if (deleteMe) deleteMe.classList.add("opposite-loading-effect");
     decreaseBtn.classList.add("opposite-loading-effect");
     decreaseBtn2.classList.add("opposite-loading-effect");
     increaseBtn.classList.add("opposite-loading-effect");
@@ -661,26 +652,24 @@ document.addEventListener("DOMContentLoaded", function () {
       div.classList.add("opposite-loading-effect");
     });
     setTimeout(() => {
+      dotSpinner.classList.remove("hidden");
       if (deleteMe) deleteMe.remove();
-      decreaseBtn.classList.remove("opposite-loading-effect");
-      decreaseBtn2.classList.remove("opposite-loading-effect");
-      increaseBtn.classList.remove("opposite-loading-effect");
-      increaseBtn2.classList.remove("opposite-loading-effect");
       decreaseBtn.classList.remove("show");
       decreaseBtn2.classList.remove("show");
       increaseBtn.classList.remove("show");
       increaseBtn2.classList.remove("show");
-      clearTimeout(timeoutId);
-      dotSpinner.classList.remove("hidden");
-      dotSpinner.classList.add("loading-effect-craddle");
-      timeoutId = setTimeout(() => {
-        fetchAllData();
-        dotSpinner.classList.remove("loading-effect-craddle");
-        dotSpinner.classList.add("hidden");
-      }, 1000);
+      decreaseBtn.classList.remove("opposite-loading-effect");
+      decreaseBtn2.classList.remove("opposite-loading-effect");
+      increaseBtn.classList.remove("opposite-loading-effect");
+      increaseBtn2.classList.remove("opposite-loading-effect");
       dots.forEach((div) => {
         div.remove();
       });
+    }, 750);
+    timeoutId = setTimeout(() => {
+      setTimeout(() => {
+        fetchAllData();
+      }, 500);
     }, 1000);
   });
 
@@ -770,7 +759,7 @@ document.addEventListener("DOMContentLoaded", function () {
     return baseUrl + [pageSize, sort, filterFunction].join("&");
   }
 
-  function fetchAllData() {
+  async function fetchAllData() {
     const selectedOptions = {
       dropdown1: [],
       dropdown2: [],
@@ -822,79 +811,87 @@ document.addEventListener("DOMContentLoaded", function () {
       })
         .then((response) => response.json())
         .then((data) => {
-          data.records.forEach((record) => {
-            const createdDate = new Date(record.fields.Created);
-            const options = { year: "numeric", month: "long", day: "numeric" };
-            const formattedDate = createdDate.toLocaleDateString(
-              undefined,
-              options
-            );
-            record.fields.Created = formattedDate;
-          });
-          if (data.offset && !offsetArray[offset + 1]) {
-            offsetArray.push(data.offset);
-          }
-          if (data.offset && !offsetArray[offset + 1]) {
-            offsetArray.push(data.offset);
-          }
+          dotSpinner.classList.add("opposite-craddle-effect");
+          setTimeout(() => {
+            dotSpinner.classList.add("hidden");
+            dotSpinner.classList.remove("opposite-craddle-effect");
+            data.records.forEach((record) => {
+              const createdDate = new Date(record.fields.Created);
+              const options = {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              };
+              const formattedDate = createdDate.toLocaleDateString(
+                undefined,
+                options
+              );
+              record.fields.Created = formattedDate;
+            });
+            if (data.offset && !offsetArray[offset + 1]) {
+              offsetArray.push(data.offset);
+            }
+            if (data.offset && !offsetArray[offset + 1]) {
+              offsetArray.push(data.offset);
+            }
 
-          if (offset === 0 && offsetArray.length > 1) {
-            decreaseBtn.classList.remove("show");
-            decreaseBtn2.classList.remove("show");
-            increaseBtn.classList.remove("show");
-            increaseBtn2.classList.remove("show");
-            decreaseBtn.classList.remove("show");
-            decreaseBtn2.classList.remove("show");
-            increaseBtn.classList.add("show");
-            increaseBtn2.classList.add("show");
-          } else if (
-            offsetArray[offset + 1] !== undefined &&
-            offsetArray[offset - 1] !== undefined
-          ) {
-            decreaseBtn.classList.remove("show");
-            decreaseBtn2.classList.remove("show");
-            increaseBtn.classList.remove("show");
-            increaseBtn2.classList.remove("show");
-            decreaseBtn.classList.add("show");
-            decreaseBtn2.classList.add("show");
-            increaseBtn.classList.add("show");
-            increaseBtn2.classList.add("show");
-          } else if (
-            offsetArray[offset - 1] !== undefined &&
-            offsetArray[offset + 1] === undefined
-          ) {
-            decreaseBtn.classList.remove("show");
-            decreaseBtn2.classList.remove("show");
-            increaseBtn.classList.remove("show");
-            increaseBtn2.classList.remove("show");
-            increaseBtn.classList.remove("show");
-            increaseBtn2.classList.remove("show");
-            decreaseBtn.classList.add("show");
-            decreaseBtn2.classList.add("show");
-          } else {
-            decreaseBtn.classList.remove("show");
-            decreaseBtn2.classList.remove("show");
-            increaseBtn.classList.remove("show");
-            increaseBtn2.classList.remove("show");
-            decreaseBtn.classList.remove("show");
-            decreaseBtn2.classList.remove("show");
-            increaseBtn.classList.remove("show");
-            increaseBtn2.classList.remove("show");
-          }
-          let htmlString = "";
-          if (data.records.length > 0) {
-            data.records.forEach((e) => {
-              function formatNumberToK(number) {
-                if (typeof number !== "number") {
-                  return "Invalid input";
+            if (offset === 0 && offsetArray.length > 1) {
+              decreaseBtn.classList.remove("show");
+              decreaseBtn2.classList.remove("show");
+              increaseBtn.classList.remove("show");
+              increaseBtn2.classList.remove("show");
+              decreaseBtn.classList.remove("show");
+              decreaseBtn2.classList.remove("show");
+              increaseBtn.classList.add("show");
+              increaseBtn2.classList.add("show");
+            } else if (
+              offsetArray[offset + 1] !== undefined &&
+              offsetArray[offset - 1] !== undefined
+            ) {
+              decreaseBtn.classList.remove("show");
+              decreaseBtn2.classList.remove("show");
+              increaseBtn.classList.remove("show");
+              increaseBtn2.classList.remove("show");
+              decreaseBtn.classList.add("show");
+              decreaseBtn2.classList.add("show");
+              increaseBtn.classList.add("show");
+              increaseBtn2.classList.add("show");
+            } else if (
+              offsetArray[offset - 1] !== undefined &&
+              offsetArray[offset + 1] === undefined
+            ) {
+              decreaseBtn.classList.remove("show");
+              decreaseBtn2.classList.remove("show");
+              increaseBtn.classList.remove("show");
+              increaseBtn2.classList.remove("show");
+              increaseBtn.classList.remove("show");
+              increaseBtn2.classList.remove("show");
+              decreaseBtn.classList.add("show");
+              decreaseBtn2.classList.add("show");
+            } else {
+              decreaseBtn.classList.remove("show");
+              decreaseBtn2.classList.remove("show");
+              increaseBtn.classList.remove("show");
+              increaseBtn2.classList.remove("show");
+              decreaseBtn.classList.remove("show");
+              decreaseBtn2.classList.remove("show");
+              increaseBtn.classList.remove("show");
+              increaseBtn2.classList.remove("show");
+            }
+            let htmlString = "";
+            if (data.records.length > 0) {
+              data.records.forEach((e) => {
+                function formatNumberToK(number) {
+                  if (typeof number !== "number") {
+                    return "Invalid input";
+                  }
+                  if (number >= 1000) {
+                    const numInK = (number / 1000).toFixed(0);
+                    return `$${numInK}k`;
+                  }
+                  return `$${number}`;
                 }
-                if (number >= 1000) {
-                  const numInK = (number / 1000).toFixed(0);
-                  return `$${numInK}k`;
-                }
-                return `$${number}`;
-              }
-              htmlString += `<div class='job-card loading-effect'>
+                htmlString += `<div class='job-card loading-effect'>
               <div>
                 <p class='job-title'>${e.fields["Job Title"]}</p>
                 <hr/>
@@ -1008,26 +1005,28 @@ document.addEventListener("DOMContentLoaded", function () {
                   }'></div>
               </div>
           </div>`;
+              });
+            } else {
+              htmlString += `<h1 class="title">No Results Found</h1>`;
+            }
+            htmlString =
+              '<div id="toDelete" class="card-holder">' + htmlString + "</div>";
+            const parser = new DOMParser();
+            const parsedHtml = parser.parseFromString(htmlString, "text/html");
+            const parsedElement = parsedHtml.querySelector("div");
+            const targetElement = document.getElementById("targetElement");
+            targetElement.appendChild(parsedElement);
+            wonderBreadMaxing();
+            const readMoreButtons = document.querySelectorAll(".job-card");
+            readMoreButtons.forEach((button, index) => {
+              button.addEventListener("click", () => {
+                openModal(data.records[index].fields);
+                document.getElementById("targetElement").style.position =
+                  "fixed";
+                console.log(data.records[index]);
+              });
             });
-          } else {
-            htmlString += `<h1 class="title">No Results Found</h1>`;
-          }
-          htmlString =
-            '<div id="toDelete" class="card-holder">' + htmlString + "</div>";
-          const parser = new DOMParser();
-          const parsedHtml = parser.parseFromString(htmlString, "text/html");
-          const parsedElement = parsedHtml.querySelector("div");
-          const targetElement = document.getElementById("targetElement");
-          targetElement.appendChild(parsedElement);
-          wonderBreadMaxing();
-          const readMoreButtons = document.querySelectorAll(".job-card");
-          readMoreButtons.forEach((button, index) => {
-            button.addEventListener("click", () => {
-              openModal(data.records[index].fields);
-              document.getElementById("targetElement").style.position = "fixed";
-              console.log(data.records[index]);
-            });
-          });
+          }, 500);
         })
         .catch((error) => console.error("Error fetching data:", error));
     }
@@ -1295,9 +1294,9 @@ ${e["Type"] ? fieldsModal(e["Type"]) : fieldsModal(["No Type Listed"])}
 
   function increase() {
     offset++;
-    document
-      .getElementById("toDelete")
-      .classList.add("opposite-loading-effect");
+    clearTimeout(timeoutId);
+    const deleteMe = document.getElementById("toDelete");
+    if (deleteMe) deleteMe.classList.add("opposite-loading-effect");
     decreaseBtn.classList.add("opposite-loading-effect");
     decreaseBtn2.classList.add("opposite-loading-effect");
     increaseBtn.classList.add("opposite-loading-effect");
@@ -1307,45 +1306,43 @@ ${e["Type"] ? fieldsModal(e["Type"]) : fieldsModal(["No Type Listed"])}
       div.classList.add("opposite-loading-effect");
     });
     setTimeout(() => {
-      document.getElementById("toDelete").remove();
-      decreaseBtn.classList.remove("opposite-loading-effect");
-      decreaseBtn2.classList.remove("opposite-loading-effect");
-      increaseBtn.classList.remove("opposite-loading-effect");
-      increaseBtn2.classList.remove("opposite-loading-effect");
+      dotSpinner.classList.remove("hidden");
+      if (deleteMe) deleteMe.remove();
       decreaseBtn.classList.remove("show");
       decreaseBtn2.classList.remove("show");
       increaseBtn.classList.remove("show");
       increaseBtn2.classList.remove("show");
-      clearTimeout(timeoutId);
-      dotSpinner.classList.remove("hidden");
-      dotSpinner.classList.add("loading-effect-craddle");
-      timeoutId = setTimeout(() => {
-        fetchAllData();
-        dotSpinner.classList.remove("loading-effect-craddle");
-        dotSpinner.classList.add("hidden");
-      }, 1000);
-      if (
-        document.body.scrollTop > 1500 ||
-        document.documentElement.scrollTop > 1500
-      ) {
-        const title = document.querySelector(".title");
-        const targetDivY = title.getBoundingClientRect().top + window.scrollY;
-        window.scrollTo({
-          top: targetDivY,
-          behavior: "smooth",
-        });
-      }
+      decreaseBtn.classList.remove("opposite-loading-effect");
+      decreaseBtn2.classList.remove("opposite-loading-effect");
+      increaseBtn.classList.remove("opposite-loading-effect");
+      increaseBtn2.classList.remove("opposite-loading-effect");
       dots.forEach((div) => {
         div.remove();
       });
     }, 1000);
+    timeoutId = setTimeout(() => {
+      setTimeout(() => {
+        fetchAllData();
+      }, 500);
+    }, 1000);
+    // if (
+    //   document.body.scrollTop > 1500 ||
+    //   document.documentElement.scrollTop > 1500
+    // ) {
+    //   const title = document.querySelector(".title");
+    //   const targetDivY = title.getBoundingClientRect().top + window.scrollY;
+    //   window.scrollTo({
+    //     top: targetDivY,
+    //     behavior: "smooth",
+    //   });
+    // }
   }
 
   function decrease() {
     if (offset > 0) offset--;
-    document
-      .getElementById("toDelete")
-      .classList.add("opposite-loading-effect");
+    clearTimeout(timeoutId);
+    const deleteMe = document.getElementById("toDelete");
+    if (deleteMe) deleteMe.classList.add("opposite-loading-effect");
     decreaseBtn.classList.add("opposite-loading-effect");
     decreaseBtn2.classList.add("opposite-loading-effect");
     increaseBtn.classList.add("opposite-loading-effect");
@@ -1355,38 +1352,36 @@ ${e["Type"] ? fieldsModal(e["Type"]) : fieldsModal(["No Type Listed"])}
       div.classList.add("opposite-loading-effect");
     });
     setTimeout(() => {
-      document.getElementById("toDelete").remove();
-      decreaseBtn.classList.remove("opposite-loading-effect");
-      decreaseBtn2.classList.remove("opposite-loading-effect");
-      increaseBtn.classList.remove("opposite-loading-effect");
-      increaseBtn2.classList.remove("opposite-loading-effect");
+      dotSpinner.classList.remove("hidden");
+      if (deleteMe) deleteMe.remove();
       decreaseBtn.classList.remove("show");
       decreaseBtn2.classList.remove("show");
       increaseBtn.classList.remove("show");
       increaseBtn2.classList.remove("show");
-      clearTimeout(timeoutId);
-      dotSpinner.classList.remove("hidden");
-      dotSpinner.classList.add("loading-effect-craddle");
-      timeoutId = setTimeout(() => {
-        fetchAllData();
-        dotSpinner.classList.remove("loading-effect-craddle");
-        dotSpinner.classList.add("hidden");
-      }, 1000);
-      if (
-        document.body.scrollTop > 1500 ||
-        document.documentElement.scrollTop > 1500
-      ) {
-        const title = document.querySelector(".title");
-        const targetDivY = title.getBoundingClientRect().top + window.scrollY;
-        window.scrollTo({
-          top: targetDivY,
-          behavior: "smooth",
-        });
-      }
+      decreaseBtn.classList.remove("opposite-loading-effect");
+      decreaseBtn2.classList.remove("opposite-loading-effect");
+      increaseBtn.classList.remove("opposite-loading-effect");
+      increaseBtn2.classList.remove("opposite-loading-effect");
       dots.forEach((div) => {
         div.remove();
       });
     }, 1000);
+    timeoutId = setTimeout(() => {
+      setTimeout(() => {
+        fetchAllData();
+      }, 500);
+    }, 1000);
+    // if (
+    //   document.body.scrollTop > 1500 ||
+    //   document.documentElement.scrollTop > 1500
+    // ) {
+    //   const title = document.querySelector(".title");
+    //   const targetDivY = title.getBoundingClientRect().top + window.scrollY;
+    //   window.scrollTo({
+    //     top: targetDivY,
+    //     behavior: "smooth",
+    //   });
+    // }
   }
 
   increaseBtn.addEventListener("click", increase);

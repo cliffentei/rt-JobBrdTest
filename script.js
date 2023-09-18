@@ -1024,6 +1024,30 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
+  function trackJobClick(jobTitle, experienceLevels, fields) {
+    if (jobTitle !== undefined) {
+      gtag("event", "job_click", {
+        job_title: jobTitle,
+      });
+    }
+
+    if (experienceLevels !== undefined && experienceLevels.length) {
+      experienceLevels.forEach(function (exp) {
+        gtag("event", "job_click", {
+          experience_level: exp,
+        });
+      });
+    }
+
+    if (fields !== undefined && fields.length) {
+      fields.forEach(function (field) {
+        gtag("event", "job_click", {
+          field: field,
+        });
+      });
+    }
+  }
+
   function openModal(e) {
     const modal = document.getElementById("myModal");
     document.body.classList.add("modal-open");
@@ -1090,11 +1114,7 @@ document.addEventListener("DOMContentLoaded", function () {
     <p style='font-weight: bold; margin: 0;'>Location</p>
   </div>
   <div style='margin-left: 80px; margin-bottom: 15px; display: flex; flex-wrap: wrap;'>
-    ${
-      e["Location"]
-        ? fields([e["Location"]])
-        : fields(["No Location Listed"])
-    }
+    ${e["Location"] ? fields([e["Location"]]) : fields(["No Location Listed"])}
   </div>
 <hr style='width:90%; margin: auto;'>
 <div style='display:flex; align-items:center; flex-wrap:wrap; margin: 10px 0;'>
@@ -1110,9 +1130,7 @@ document.addEventListener("DOMContentLoaded", function () {
 <p style='font-weight: bold; margin: 0;'>Type</p>
 </div>
 <div style='margin-left: 80px; margin-bottom: 15px; display: flex; flex-wrap: wrap;'>
-${
-  e["Type"] ? fields(e["Type"]) : fields(["No Type Listed"])
-}
+${e["Type"] ? fields(e["Type"]) : fields(["No Type Listed"])}
 </div>
   <hr style='width:90%; margin: auto;'>
       </div>
@@ -1137,11 +1155,7 @@ ${
     <p style='font-weight: bold; margin: 0;'>Salary</p>
   </div>
   <div style='margin-left: 80px; margin-bottom: 15px; display: flex; flex-wrap: wrap;'>
-    ${
-      e["Salary"]
-        ? fields([e["Salary"]])
-        : fields(["No Salary Listed"])
-    }
+    ${e["Salary"] ? fields([e["Salary"]]) : fields(["No Salary Listed"])}
   </div>
       <hr style='width:90%; margin: auto;'>
                         
@@ -1227,6 +1241,9 @@ ${
     modalDiv.style.backgroundImage = `url('${svgString}')`;
     modalDiv.style.backgroundPosition = `center -${y / 2 - x - 20}px`;
     const pagebuttons = document.querySelectorAll(".pagin");
+    // console.log(e["Job Title"], e["Field"], e["Experience Level"]);
+    console.log(e["Job Title"], e["Field"], e["Experience Level"]);
+    trackJobClick(e["Job Title"], e["Experience Level"], e["Field"]);
     if (pagebuttons) {
       pagebuttons.style.display = "none";
     }

@@ -602,18 +602,18 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function generateRandomWaveSVG(width, height) {
-    let svg = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" transform="scale(1, -1)">`;
+    let svg = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" >`;
     const waveAmplitude = Math.random() * 1 + 20;
     const waveFrequency = Math.random() * 0.02 + 0.01;
     const wavePhaseShift = Math.random() * 50;
-    let path = `<path fill="${getRandomPastelColor()}" d="M 0 ${height} `;
+    let path = `<path fill="${getRandomPastelColor()}" d="M 0 0 `; // Changed the starting point to "M 0 0"
     for (let x = 0; x <= width; x += 10) {
       const y =
         waveAmplitude * Math.sin(waveFrequency * x + wavePhaseShift) +
         height / 2;
       path += `L ${x} ${y} `;
     }
-    path += `L ${width} ${height} L 0 ${height}" /></svg>`;
+    path += `L ${width} 0 L 0 0" /></svg>`; // Closed the path with "L ${width} 0 L 0 0"
     svg += path;
     return svg;
   }
@@ -1024,29 +1024,29 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  function trackJobClick(jobTitle, experienceLevels, fields) {
-    if (jobTitle !== undefined) {
-      gtag("event", "job_click", {
-        job_title: jobTitle,
-      });
-    }
+  // function trackJobClick(jobTitle, experienceLevels, fields) {
+  //   if (jobTitle !== undefined) {
+  //     gtag("event", "job_click", {
+  //       job_title: jobTitle,
+  //     });
+  //   }
 
-    if (experienceLevels !== undefined && experienceLevels.length) {
-      experienceLevels.forEach(function (exp) {
-        gtag("event", "job_click", {
-          experience_level: exp,
-        });
-      });
-    }
+  //   if (experienceLevels !== undefined && experienceLevels.length) {
+  //     experienceLevels.forEach(function (exp) {
+  //       gtag("event", "job_click", {
+  //         experience_level: exp,
+  //       });
+  //     });
+  //   }
 
-    if (fields !== undefined && fields.length) {
-      fields.forEach(function (field) {
-        gtag("event", "job_click", {
-          field: field,
-        });
-      });
-    }
-  }
+  //   if (fields !== undefined && fields.length) {
+  //     fields.forEach(function (field) {
+  //       gtag("event", "job_click", {
+  //         field: field,
+  //       });
+  //     });
+  //   }
+  // }
 
   function openModal(e) {
     const modal = document.getElementById("myModal");
@@ -1226,14 +1226,15 @@ ${e["Type"] ? fields(e["Type"]) : fields(["No Type Listed"])}
         ? fields([e["Closing Date"]])
         : fields(["No Closing Date Listed"])
     }
-  </div>
-          </div>
-      </div>`;
+    </div>
+    </div>
+    </div>`;
     modalFooter.innerHTML = `
-      <div class='apply-div'>
-          ${buttons(e["Link to Apply"]) || ""}
-      </div>`;
+    <div class='apply-div'>
+    ${buttons(e["Link to Apply"]) || ""}
+    </div>`;
     modal.style.display = "flex";
+    modalContent.scrollTop = 0;
     const modalDiv = document.querySelector(".svg-background");
     const svgString = generateRandomWaveSVG(1600, modalDiv.clientHeight);
     const y = modalDiv.clientHeight;

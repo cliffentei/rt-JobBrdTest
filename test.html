@@ -6,6 +6,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Caprasimo&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-JYLG22Q8SJ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-JYLG22Q8SJ');
+    </script> -->
 </head>
 
 <body>
@@ -20,6 +28,11 @@
         body {
             background-color: #fdf9f2;
             overflow-x: hidden;
+        }
+
+        .content {
+            overflow-x: hidden !important;
+            overflow-y: hidden !important;
         }
 
         .card-button {
@@ -720,6 +733,11 @@
             .modal-content p {
                 font-size: 20px;
             }
+
+            .modal-content .field-div p {
+                font-size: 15px;
+            }
+
         }
 
         @media screen and (max-width: 600px) {
@@ -1006,6 +1024,10 @@
             background-size: cover;
             background-repeat: no-repeat;
         }
+
+        #targetElement {
+            overflow-x: hidden !important;
+        }
     </style>
     <div id="targetElement">
         <h1 class="title">Responsible Tech Job Board</h1>
@@ -1220,7 +1242,7 @@
                 </svg>
             </div>
         </div>
-        <div class="loading">
+        <div class="loading loading-effect-craddle">
             <div class="newtons-cradle hidden">
                 <div class="newtons-cradle__dot"></div>
                 <div class="newtons-cradle__dot"></div>
@@ -1297,17 +1319,17 @@
             const scrollToTopBtn = document.getElementById("scrollToTopBtn");
             const icons = {
                 world:
-                    '<svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="3 3 18 18">
-                    < g id="SVGRepo_bgCarrier" stroke- width="0" >
-                </g >
+                    `<svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="3 3 18 18">
+            < g id="SVGRepo_bgCarrier" stroke- width="0">
+                </g>
                 <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
                 <g id="SVGRepo_iconCarrier">
                     <path fill-rule="evenodd" clip-rule="evenodd"
                         d="M6.15407 7.30116C7.52877 5.59304 9.63674 4.5 12 4.5C12.365 4.5 12.7238 4.52607 13.0748 4.57644L13.7126 5.85192L11.2716 8.2929L8.6466 8.6679L7.36009 9.95441L6.15407 7.30116ZM5.2011 8.82954C4.75126 9.79256 4.5 10.8669 4.5 12C4.5 15.6945 7.17133 18.7651 10.6878 19.3856L11.0989 18.7195L8.8147 15.547L10.3741 13.5256L9.63268 13.1549L6.94027 13.6036L6.41366 11.4972L5.2011 8.82954ZM7.95559 11.4802L8.05962 11.8964L9.86722 11.5951L11.3726 12.3478L14.0824 11.9714L18.9544 14.8135C19.3063 13.9447 19.5 12.995 19.5 12C19.5 8.93729 17.6642 6.30336 15.033 5.13856L15.5377 6.1481L11.9787 9.70711L9.35371 10.0821L7.95559 11.4802ZM18.2539 16.1414C16.9774 18.0652 14.8369 19.366 12.3859 19.4902L12.9011 18.6555L10.6853 15.578L12.0853 13.7632L13.7748 13.5286L18.2539 16.1414ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z"
                         fill="#000000"></path>
                 </g>
-        </svg > ',
-            remote: `<svg fill="none" xmlns="http://www.w3.org/2000/svg" #000000"="" stroke-width="0.048"
+        </svg> `,
+                remote: `<svg fill="none" xmlns="http://www.w3.org/2000/svg" #000000"="" stroke-width="0.048"
             viewBox="4.27 9 15.45 12">
             <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
             <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
@@ -1329,7 +1351,7 @@
                     stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
             </g>
         </svg>`,
-                    company: `<svg style="fill: none" xmlns="http://www.w3.org/2000/svg" svgrepo_bgcarrier"="" stroke-width="0"
+                company: `<svg style="fill: none" xmlns="http://www.w3.org/2000/svg" svgrepo_bgcarrier"="" stroke-width="0"
             viewBox="2 3 20 18">
             <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
             <g id="SVGRepo_iconCarrier">
@@ -1338,7 +1360,7 @@
                     stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
             </g>
         </svg>`,
-                        visaCheck: `<svg xmlns="http://www.w3.org/2000/svg" id="master-artboard" version="1.1" x="0px" y="0px"
+                visaCheck: `<svg xmlns="http://www.w3.org/2000/svg" id="master-artboard" version="1.1" x="0px" y="0px"
             style="enable-background:new 0 0 1400 980;" viewBox="39.82 12.96 1259.52 942.13" width="60px" height="60px">
             <g transform="matrix(1.8244638442993162, 0, 0, 1.8244638442993162, -80.72742166151784, 16.961577618989395)">
                 <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -1375,7 +1397,7 @@
                 </g>
             </g>
         </svg>`,
-                            visaEx: `<svg xmlns="http://www.w3.org/2000/svg" id="master-artboard" version="1.1" x="0px" y="0px"
+                visaEx: `<svg xmlns="http://www.w3.org/2000/svg" id="master-artboard" version="1.1" x="0px" y="0px"
             style="enable-background:new 0 0 1400 980;" viewBox="39.82 12.96 1147.22 942.13" width="55px" height="55px">
             <g transform="matrix(1.8244638442993162, 0, 0, 1.8244638442993162, -80.72742166151784, 16.961577618989395)">
                 <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -1407,7 +1429,7 @@
                     style="fill: rgb(232, 21, 24);"></path>
             </g>
         </svg>`,
-                                visaQuestion: `<svg xmlns="http://www.w3.org/2000/svg" id="master-artboard" version="1.1" x="0px" y="0px"
+                visaQuestion: `<svg xmlns="http://www.w3.org/2000/svg" id="master-artboard" version="1.1" x="0px" y="0px"
             style="enable-background:new 0 0 1400 980;" viewBox="39.82 12.96 1047.99 942.13" width="50px" height="50px">
             <g transform="matrix(1.8244638442993162, 0, 0, 1.8244638442993162, -80.72742166151784, 16.961577618989395)">
                 <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -1440,7 +1462,7 @@
                     fill="#000000" style="fill: rgb(255, 165, 0); stroke: rgb(255, 165, 0);"></path>
             </g>
         </svg>`,
-                                    contract: `<svg xmlns="http://www.w3.org/2000/svg" id="master-artboard" version="1.1" x="0px" y="0px"
+                contract: `<svg xmlns="http://www.w3.org/2000/svg" id="master-artboard" version="1.1" x="0px" y="0px"
             style="enable-background:new 0 0 1400 980;" viewBox="198.64 0 1302.21 980" width="50px" height="50px">
             <defs>
                 <linearGradient id="gradient-0" gradientUnits="objectBoundingBox" x1="0.5" y1="0" x2="0.5" y2="1">
@@ -1488,7 +1510,7 @@
                 </path>
             </g>
         </svg>`,
-                                        contract2: `<div class="contract"><svg xmlns="http://www.w3.org/2000/svg" id="master-artboard" version="1.1"
+                contract2: `<div class="contract"><svg xmlns="http://www.w3.org/2000/svg" id="master-artboard" version="1.1"
                 x="0px" y="0px" style="enable-background:new 0 0 1400 980;" viewBox="198.64 0 1302.21 980">
                 <defs>
                     <linearGradient id="gradient-0" gradientUnits="objectBoundingBox" x1="0.5" y1="0" x2="0.5" y2="1">
@@ -1536,7 +1558,7 @@
                         style="fill: rgb(255, 255, 255); stroke: rgb(0, 0, 0); fill-opacity: 0;"></path>
                 </g>
             </svg></div>`,
-                                            fullTime: `<svg xmlns="http://www.w3.org/2000/svg" id="master-artboard"
+                fullTime: `<svg xmlns="http://www.w3.org/2000/svg" id="master-artboard"
             viewBox="0 0 654.2351684570312 651.0585327148438" version="1.1" x="0px" y="0px"
             style="enable-background:new 0 0 1400 980;" width="50px" height="50px">
             <rect id="ee-background" x="0" y="0" width="654.2351684570312" height="651.0585327148438"
@@ -1552,7 +1574,7 @@
                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="fill-opacity: 0;" />
             </g>
         </svg>`,
-                                                partTime: `<svg xmlns="http://www.w3.org/2000/svg" id="master-artboard"
+                partTime: `<svg xmlns="http://www.w3.org/2000/svg" id="master-artboard"
             viewBox="0 0 1036.4305419921875 881.3770751953125" version="1.1" x="0px" y="0px"
             style="enable-background:new 0 0 1400 980;" width="60px" height="60px">
             <rect id="ee-background" x="0" y="0" width="1036.4305419921875" height="881.3770751953125"
@@ -1575,7 +1597,7 @@
                     transform="matrix(0.633127272129059, 0, 0, 0.633127272129059, 10.52169868408356, 0.7484283155075069)" />
             </g>
         </svg>`,
-                                                    partTime2: `<div class='part'><svg xmlns="http://www.w3.org/2000/svg" id="master-artboard"
+                partTime2: `<div class='part'><svg xmlns="http://www.w3.org/2000/svg" id="master-artboard"
                 viewBox="0 0 1036.4305419921875 881.3770751953125" version="1.1" x="0px" y="0px"
                 style="enable-background:new 0 0 1400 980;" width="60px" height="60px">
                 <rect id="ee-background" x="0" y="0" width="1036.4305419921875" height="881.3770751953125"
@@ -1601,7 +1623,7 @@
                         transform="matrix(0.633127272129059, 0, 0, 0.633127272129059, 10.52169868408356, 0.7484283155075069)" />
                 </g>
             </svg></div>`,
-                                                        experience: `<svg xmlns="http://www.w3.org/2000/svg" id="master-artboard" version="1.1" x="0px" y="0px"
+                experience: `<svg xmlns="http://www.w3.org/2000/svg" id="master-artboard" version="1.1" x="0px" y="0px"
             style="enable-background:new 0 0 1400 980;" viewBox="337.1 71.46 721.87 857.31">
             <g transform="matrix(11.224331855773924, 0, 0, 11.224331855773924, 337.5957123912501, 209.9147728197479)">
                 <path fill="#231F20"
@@ -1619,7 +1641,7 @@
                 </g>
             </g>
         </svg>`,
-                                                            created: `<svg xmlns="http://www.w3.org/2000/svg" fill="#000000" id="date-alt-add" data-name="Flat Line"
+                created: `<svg xmlns="http://www.w3.org/2000/svg" fill="#000000" id="date-alt-add" data-name="Flat Line"
             class="icon flat-line" viewBox="2 2 20 20">
             <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
             <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
@@ -1634,17 +1656,17 @@
                 </path>
             </g>
         </svg>`,
-                                                                team: `<svg xmlns="http://www.w3.org/2000/svg" style="fill:#000000" viewBox="0 0 640 512">
+                team: `<svg xmlns="http://www.w3.org/2000/svg" style="fill:#000000" viewBox="0 0 640 512">
             <path
                 d="M96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM0 482.3C0 383.8 79.8 304 178.3 304h91.4C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7H29.7C13.3 512 0 498.7 0 482.3zM609.3 512H471.4c5.4-9.4 8.6-20.3 8.6-32v-8c0-60.7-27.1-115.2-69.8-151.8c2.4-.1 4.7-.2 7.1-.2h61.4C567.8 320 640 392.2 640 481.3c0 17-13.8 30.7-30.7 30.7zM432 256c-31 0-59-12.6-79.3-32.9C372.4 196.5 384 163.6 384 128c0-26.8-6.6-52.1-18.3-74.3C384.3 40.1 407.2 32 432 32c61.9 0 112 50.1 112 112s-50.1 112-112 112z">
             </path>
         </svg>`,
-                                                                    salary: `<svg xmlns="http://www.w3.org/2000/svg" style="fill:#000000" viewBox="14.44 0 289.53 512">
+                salary: `<svg xmlns="http://www.w3.org/2000/svg" style="fill:#000000" viewBox="14.44 0 289.53 512">
             <path
                 d="M160 0c17.7 0 32 14.3 32 32V67.7c1.6 .2 3.1 .4 4.7 .7c.4 .1 .7 .1 1.1 .2l48 8.8c17.4 3.2 28.9 19.9 25.7 37.2s-19.9 28.9-37.2 25.7l-47.5-8.7c-31.3-4.6-58.9-1.5-78.3 6.2s-27.2 18.3-29 28.1c-2 10.7-.5 16.7 1.2 20.4c1.8 3.9 5.5 8.3 12.8 13.2c16.3 10.7 41.3 17.7 73.7 26.3l2.9 .8c28.6 7.6 63.6 16.8 89.6 33.8c14.2 9.3 27.6 21.9 35.9 39.5c8.5 17.9 10.3 37.9 6.4 59.2c-6.9 38-33.1 63.4-65.6 76.7c-13.7 5.6-28.6 9.2-44.4 11V480c0 17.7-14.3 32-32 32s-32-14.3-32-32V445.1c-.4-.1-.9-.1-1.3-.2l-.2 0 0 0c-24.4-3.8-64.5-14.3-91.5-26.3c-16.1-7.2-23.4-26.1-16.2-42.2s26.1-23.4 42.2-16.2c20.9 9.3 55.3 18.5 75.2 21.6c31.9 4.7 58.2 2 76-5.3c16.9-6.9 24.6-16.9 26.8-28.9c1.9-10.6 .4-16.7-1.3-20.4c-1.9-4-5.6-8.4-13-13.3c-16.4-10.7-41.5-17.7-74-26.3l-2.8-.7 0 0C119.4 279.3 84.4 270 58.4 253c-14.2-9.3-27.5-22-35.8-39.6c-8.4-17.9-10.1-37.9-6.1-59.2C23.7 116 52.3 91.2 84.8 78.3c13.3-5.3 27.9-8.9 43.2-11V32c0-17.7 14.3-32 32-32z">
             </path>
         </svg>`,
-                                                                        clock: `<svg xmlns="http://www.w3.org/2000/svg" fill="#000000" id="date-alt-add" data-name="Flat Line"
+                clock: `<svg xmlns="http://www.w3.org/2000/svg" fill="#000000" id="date-alt-add" data-name="Flat Line"
             class="icon flat-line" viewBox="2 2 20 20">
             <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
             <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
@@ -1659,7 +1681,7 @@
                 </path>
             </g>
         </svg>`,
-                                                                            clock2: `<svg fill="#000000" id="date-alt-remove-alt" data-name="Flat Line" xmlns="http://www.w3.org/2000/svg"
+                clock2: `<svg fill="#000000" id="date-alt-remove-alt" data-name="Flat Line" xmlns="http://www.w3.org/2000/svg"
             class="icon flat-line" viewBox="2 2 20 20">
             <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
             <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
@@ -1674,318 +1696,381 @@
                 </path>
             </g>
         </svg>`,
-        };
+            };
 
-        window.addEventListener("scroll", () => {
-            if (
-                document.body.scrollTop > 1500 ||
-                document.documentElement.scrollTop > 1500
-            ) {
-                scrollToTopBtn.style.display = "flex";
-            } else {
-                scrollToTopBtn.style.display = "none";
-            }
-        });
-
-        scrollToTopBtn.addEventListener("click", () => {
-            const title = document.querySelector(".title");
-            const targetDivY = title.getBoundingClientRect().top + window.scrollY;
-            window.scrollTo({
-                top: targetDivY,
-                behavior: "smooth",
-            });
-        });
-
-        const searchInputs = document.getElementById("search-input");
-        const clearIcon = document.querySelector(".clear-icon");
-
-        function formatSalary(salary) {
-            if (typeof salary !== "number") {
-                return "No Salary Listed";
-            }
-            const salaryString = salary.toString();
-            const [integerPart, decimalPart] = salaryString.split(".");
-            const formattedIntegerPart = integerPart.replace(
-                /\B(?=(\d{3})+(?!\d))/g,
-                ","
-            );
-            let formattedSalary = "$" + formattedIntegerPart;
-            if (decimalPart) {
-                formattedSalary += "." + decimalPart;
-            }
-            return formattedSalary;
-        }
-
-        searchInputs.addEventListener("keyup", function () {
-            const inputValue = this.value.trim();
-            if (inputValue.length > 0) {
-                clearIcon.style.display = "block";
-            } else {
-                clearIcon.style.display = "none";
-            }
-        });
-
-        clearIcon.addEventListener("click", function () {
-            searchInputs.value = "";
-            clearIcon.style.display = "none";
-            const deleteMe = document.getElementById("toDelete");
-            deleteMe.classList.add("opposite-loading-effect");
-            decreaseBtn.classList.add("opposite-loading-effect");
-            decreaseBtn2.classList.add("opposite-loading-effect");
-            increaseBtn.classList.add("opposite-loading-effect");
-            increaseBtn2.classList.add("opposite-loading-effect");
-            const dots = document.querySelectorAll(".random-div");
-            dots.forEach((div) => {
-                div.classList.add("opposite-loading-effect");
-            });
-            setTimeout(() => {
-                if (deleteMe) deleteMe.remove();
-                decreaseBtn.classList.remove("opposite-loading-effect");
-                decreaseBtn2.classList.remove("opposite-loading-effect");
-                increaseBtn.classList.remove("opposite-loading-effect");
-                increaseBtn2.classList.remove("opposite-loading-effect");
-                decreaseBtn.classList.remove("show");
-                decreaseBtn2.classList.remove("show");
-                increaseBtn.classList.remove("show");
-                increaseBtn2.classList.remove("show");
-                clearTimeout(timeoutId);
-                dotSpinner.classList.remove("hidden");
-                dotSpinner.classList.add("loading-effect-craddle");
-                timeoutId = setTimeout(() => {
-                    fetchAllData();
-                    dotSpinner.classList.remove("loading-effect-craddle");
-                    dotSpinner.classList.add("hidden");
-                }, 1000);
-                dots.forEach((div) => {
-                    div.remove();
-                });
-            }, 1000);
-        });
-
-        const dropdownData = {
-            dropdown1: [],
-            dropdown2: [
-                "Remote",
-                "United States",
-                "Europe",
-                "United Kingdom",
-                "Africa",
-                "Asia",
-                "Canada",
-                "South America",
-                "Central America",
-                "Middle East",
-                "Australia/New Zealand",
-            ],
-            dropdown3: ["Yes", "No", "In some cases"],
-            dropdown4: [],
-            dropdown5: [],
-            dropdown6: ["Part-Time", "Full-Time", "Contract/Term"],
-            dropdown7: [
-                "Less than $30,000",
-                "$30,000 - $50,000",
-                "$50,000 - $75,000",
-                "$75,000 - $100,000",
-                "$100,000 - $150,000",
-                "$150,000 - $200,000",
-                "$200,000 - $300,000",
-                "$300,000 - $500,000",
-                "Over $500,000",
-            ],
-            dropdown8: [
-                "24 Hours Ago",
-                "3 Days Ago",
-                "7 Days Ago",
-                "14 Days Ago",
-                "30 Days Ago",
-            ],
-        };
-
-        const apiKey =
-            "patNamJqXdDlueUxM.6e6e7f9efc1e8ab27056891e8f3c51c97bf2f994036cc554fb9618143bc58c31";
-
-        let timeoutId;
-        const dotSpinner = document.querySelector(".newtons-cradle");
-
-        async function fetchAPI(url) {
-            try {
-                const response = await fetch(url, {
-                    headers: {
-                        Authorization: `Bearer ${apiKey}`,
-                    },
-                });
-                if (!response.ok) {
-                    throw new Error("Network response was not ok");
+            window.addEventListener("scroll", () => {
+                if (
+                    document.body.scrollTop > 1500 ||
+                    document.documentElement.scrollTop > 1500
+                ) {
+                    scrollToTopBtn.style.display = "flex";
+                } else {
+                    scrollToTopBtn.style.display = "none";
                 }
-                const data = await response.json();
-                return data;
-            } catch (error) {
-                console.error("Error fetching data:", error);
-                return null;
-            }
-        }
+            });
 
-        async function fetchTableRecords(tableName, offset = null) {
-            const baseId = "apprdsx9uO4l5FieL";
-            const url = `https://api.airtable.com/v0/${baseId}/${encodeURIComponent(
-                tableName
-            )}?view=MAIN+-+Grid+view${offset ? `&offset=${offset}` : ""}`;
-            return fetchAPI(url);
-        }
+            scrollToTopBtn.addEventListener("click", () => {
+                const title = document.querySelector(".title");
+                const targetDivY = title.getBoundingClientRect().top + window.scrollY;
+                window.scrollTo({
+                    top: targetDivY,
+                    behavior: "smooth",
+                });
+            });
 
-        async function fetchTableRecordsWithOffset(tableName) {
-            let allRecords = [];
-            let offset = null;
-            do {
-                const { records, offset: newOffset } = await fetchTableRecords(
-                    tableName,
-                    offset
+            const searchInputs = document.getElementById("search-input");
+            const clearIcon = document.querySelector(".clear-icon");
+
+            function formatSalary(salary) {
+                if (typeof salary !== "number") {
+                    return "No Salary Listed";
+                }
+                const salaryString = salary.toString();
+                const [integerPart, decimalPart] = salaryString.split(".");
+                const formattedIntegerPart = integerPart.replace(
+                    /\B(?=(\d{3})+(?!\d))/g,
+                    ","
                 );
-                allRecords = allRecords.concat(records);
-                offset = newOffset;
-            } while (offset);
-            return allRecords;
-        }
+                let formattedSalary = "$" + formattedIntegerPart;
+                if (decimalPart) {
+                    formattedSalary += "." + decimalPart;
+                }
+                return formattedSalary;
+            }
 
-        async function fetchFilterOptions() {
-            const companyUniqueValues = new Set();
-            const fetchedCompanies = await fetchTableRecordsWithOffset("Table 1");
-            fetchedCompanies.forEach((record) => {
-                const value = record.fields["Company/Org"];
-                if (value !== undefined) {
-                    companyUniqueValues.add(value.trimStart());
+            searchInputs.addEventListener("keyup", function () {
+                const inputValue = this.value.trim();
+                if (inputValue.length > 0) {
+                    clearIcon.style.display = "block";
+                } else {
+                    clearIcon.style.display = "none";
                 }
             });
-            const companyUniqueArray = Array.from(companyUniqueValues).sort((a, b) =>
-                a.localeCompare(b)
-            );
-            dropdownData["dropdown1"] = companyUniqueArray;
 
-            const uniqueExperiences = [];
-            const fetchedExperiences = await fetchTableRecordsWithOffset("Experience");
-            fetchedExperiences.forEach((record) => {
-                const value = record.fields["Experiences"];
-                if (value !== undefined) {
-                    uniqueExperiences.push(value.trimStart());
-                }
+            clearIcon.addEventListener("click", function () {
+                searchInputs.value = "";
+                clearIcon.style.display = "none";
+                const deleteMe = document.getElementById("toDelete");
+                deleteMe.classList.add("opposite-loading-effect");
+                decreaseBtn.classList.add("opposite-loading-effect");
+                decreaseBtn2.classList.add("opposite-loading-effect");
+                increaseBtn.classList.add("opposite-loading-effect");
+                increaseBtn2.classList.add("opposite-loading-effect");
+                const dots = document.querySelectorAll(".random-div");
+                dots.forEach((div) => {
+                    div.classList.add("opposite-loading-effect");
+                });
+                setTimeout(() => {
+                    if (deleteMe) deleteMe.remove();
+                    decreaseBtn.classList.remove("opposite-loading-effect");
+                    decreaseBtn2.classList.remove("opposite-loading-effect");
+                    increaseBtn.classList.remove("opposite-loading-effect");
+                    increaseBtn2.classList.remove("opposite-loading-effect");
+                    decreaseBtn.classList.remove("show");
+                    decreaseBtn2.classList.remove("show");
+                    increaseBtn.classList.remove("show");
+                    increaseBtn2.classList.remove("show");
+                    clearTimeout(timeoutId);
+                    dotSpinner.classList.remove("hidden");
+                    dotSpinner.classList.add("loading-effect-craddle");
+                    timeoutId = setTimeout(() => {
+                        fetchAllData();
+                        dotSpinner.classList.remove("loading-effect-craddle");
+                        dotSpinner.classList.add("hidden");
+                    }, 1000);
+                    dots.forEach((div) => {
+                        div.remove();
+                    });
+                }, 1000);
             });
-            dropdownData["dropdown4"] = uniqueExperiences;
 
-            const uniqueFields = [];
-            const fetchedFields = await fetchTableRecordsWithOffset("Field");
-            fetchedFields.forEach((record) => {
-                const value = record.fields["Fields"];
-                if (value !== undefined) {
-                    uniqueFields.push(value.trimStart());
+            const dropdownData = {
+                dropdown1: [],
+                dropdown2: [
+                    "Remote",
+                    "United States",
+                    "Europe",
+                    "United Kingdom",
+                    "Africa",
+                    "Asia",
+                    "Canada",
+                    "South America",
+                    "Central America",
+                    "Middle East",
+                    "Australia/New Zealand",
+                ],
+                dropdown3: ["Yes", "No", "In some cases"],
+                dropdown4: [],
+                dropdown5: [],
+                dropdown6: ["Part-Time", "Full-Time", "Contract/Term"],
+                dropdown7: [
+                    "Less than $30,000",
+                    "$30,000 - $50,000",
+                    "$50,000 - $75,000",
+                    "$75,000 - $100,000",
+                    "$100,000 - $150,000",
+                    "$150,000 - $200,000",
+                    "$200,000 - $300,000",
+                    "$300,000 - $500,000",
+                    "Over $500,000",
+                ],
+                dropdown8: [
+                    "24 Hours Ago",
+                    "3 Days Ago",
+                    "7 Days Ago",
+                    "14 Days Ago",
+                    "30 Days Ago",
+                ],
+            };
+
+            const apiKey =
+                "patNamJqXdDlueUxM.6e6e7f9efc1e8ab27056891e8f3c51c97bf2f994036cc554fb9618143bc58c31";
+
+            let timeoutId;
+            const dotSpinner = document.querySelector(".newtons-cradle");
+
+            async function fetchAPI(url) {
+                try {
+                    const response = await fetch(url, {
+                        headers: {
+                            Authorization: `Bearer ${apiKey}`,
+                        },
+                    });
+                    if (!response.ok) {
+                        throw new Error("Network response was not ok");
+                    }
+                    const data = await response.json();
+                    return data;
+                } catch (error) {
+                    console.error("Error fetching data:", error);
+                    return null;
                 }
-            });
-            dropdownData["dropdown5"] = uniqueFields;
+            }
 
-            renderDropdowns();
-        }
+            async function fetchTableRecords(tableName, offset = null) {
+                const baseId = "apprdsx9uO4l5FieL";
+                const url = `https://api.airtable.com/v0/${baseId}/${encodeURIComponent(
+                    tableName
+                )}?view=MAIN+-+Grid+view${offset ? `&offset=${offset}` : ""}`;
+                return fetchAPI(url);
+            }
 
-        fetchFilterOptions();
+            async function fetchTableRecordsWithOffset(tableName) {
+                let allRecords = [];
+                let offset = null;
+                do {
+                    const { records, offset: newOffset } = await fetchTableRecords(
+                        tableName,
+                        offset
+                    );
+                    allRecords = allRecords.concat(records);
+                    offset = newOffset;
+                } while (offset);
+                return allRecords;
+            }
 
-        function renderDropdowns() {
-            const dropdowns = document.querySelectorAll(".dropdown");
+            async function fetchFilterOptions() {
+                const companyUniqueValues = new Set();
+                const fetchedCompanies = await fetchTableRecordsWithOffset("Table 1");
+                fetchedCompanies.forEach((record) => {
+                    const value = record.fields["Company/Org"];
+                    if (value !== undefined) {
+                        companyUniqueValues.add(value.trimStart());
+                    }
+                });
+                const companyUniqueArray = Array.from(companyUniqueValues).sort((a, b) =>
+                    a.localeCompare(b)
+                );
+                dropdownData["dropdown1"] = companyUniqueArray;
 
-            dropdowns.forEach((dropdown) => {
-                const dropdownButton = dropdown.querySelector(".dropdown-button");
-                const dropdownMenu = dropdown.querySelector(".dropdown-menu");
-                const dropdownId = dropdown.id;
-                const searchOption = document.createElement("div");
-                searchOption.innerHTML = `
+                const uniqueExperiences = [];
+                const fetchedExperiences = await fetchTableRecordsWithOffset("Experience");
+                fetchedExperiences.forEach((record) => {
+                    const value = record.fields["Experiences"];
+                    if (value !== undefined) {
+                        uniqueExperiences.push(value.trimStart());
+                    }
+                });
+                dropdownData["dropdown4"] = uniqueExperiences;
+
+                const uniqueFields = [];
+                const fetchedFields = await fetchTableRecordsWithOffset("Field");
+                fetchedFields.forEach((record) => {
+                    const value = record.fields["Fields"];
+                    if (value !== undefined) {
+                        uniqueFields.push(value.trimStart());
+                    }
+                });
+                dropdownData["dropdown5"] = uniqueFields;
+
+                renderDropdowns();
+            }
+
+            fetchFilterOptions();
+
+            function renderDropdowns() {
+                const dropdowns = document.querySelectorAll(".dropdown");
+
+                dropdowns.forEach((dropdown) => {
+                    const dropdownButton = dropdown.querySelector(".dropdown-button");
+                    const dropdownMenu = dropdown.querySelector(".dropdown-menu");
+                    const dropdownId = dropdown.id;
+                    const searchOption = document.createElement("div");
+                    searchOption.innerHTML = `
         <input type="text" class="dropdown-search" placeholder="Search...">
         `;
-                dropdownMenu.appendChild(searchOption);
-                dropdownData[dropdownId].forEach((optionText) => {
-                    const optionElement = document.createElement("div");
-                    optionElement.classList.add("dropdown-option");
-                    optionElement.classList.add("checkbox-rect2");
-                    optionElement.innerHTML = `
+                    dropdownMenu.appendChild(searchOption);
+                    dropdownData[dropdownId].forEach((optionText) => {
+                        const optionElement = document.createElement("div");
+                        optionElement.classList.add("dropdown-option");
+                        optionElement.classList.add("checkbox-rect2");
+                        optionElement.innerHTML = `
         <input type="checkbox" class="dropdown-option-checkbox" id="checkbox-rect2" name="check">
         <span>${optionText}</span>
         `;
-                    dropdownMenu.appendChild(optionElement);
-                    const checkbox = optionElement.querySelector(
-                        ".dropdown-option-checkbox"
-                    );
-                    checkbox.addEventListener("click", function (event) {
-                        event.stopPropagation();
-                        updateButtonState();
-                    });
-                    optionElement.addEventListener("click", function (event) {
-                        checkbox.checked = !checkbox.checked;
-                        optionElement.classList.toggle("selected");
-                        updateButtonState();
-                        event.preventDefault();
-                        const selectedOptions = document.querySelectorAll(
-                            ".dropdown-option.selected"
+                        dropdownMenu.appendChild(optionElement);
+                        const checkbox = optionElement.querySelector(
+                            ".dropdown-option-checkbox"
                         );
-                        if (selectedOptions.length === 0) {
-                            document.querySelector(".remove-filter").classList.remove("hidden");
-                            document.querySelector(".remove-filter").classList.add("hidden");
-                        } else {
-                            document.querySelector(".remove-filter").classList.remove("hidden");
-                        }
-                        document
-                            .getElementById("toDelete")
-                            .classList.add("opposite-loading-effect");
-                        decreaseBtn.classList.add("opposite-loading-effect");
-                        decreaseBtn2.classList.add("opposite-loading-effect");
-                        increaseBtn.classList.add("opposite-loading-effect");
-                        increaseBtn2.classList.add("opposite-loading-effect");
-                        const dots = document.querySelectorAll(".random-div");
-                        dots.forEach((div) => {
-                            div.classList.add("opposite-loading-effect");
+                        checkbox.addEventListener("click", function (event) {
+                            event.stopPropagation();
+                            updateButtonState();
                         });
-                        setTimeout(() => {
-                            const deleteMe = document.getElementById("toDelete");
-                            if (deleteMe) deleteMe.remove();
-                            decreaseBtn.classList.remove("opposite-loading-effect");
-                            decreaseBtn2.classList.remove("opposite-loading-effect");
-                            increaseBtn.classList.remove("opposite-loading-effect");
-                            increaseBtn2.classList.remove("opposite-loading-effect");
-                            decreaseBtn.classList.remove("show");
-                            decreaseBtn2.classList.remove("show");
-                            increaseBtn.classList.remove("show");
-                            increaseBtn2.classList.remove("show");
-                            clearTimeout(timeoutId);
-                            dotSpinner.classList.remove("hidden");
-                            dotSpinner.classList.add("loading-effect-craddle");
-                            timeoutId = setTimeout(() => {
-                                fetchAllData();
-                                dotSpinner.classList.remove("loading-effect-craddle");
-                                dotSpinner.classList.add("hidden");
-                                dotSpinner.classList.add("hidden");
-                            }, 1000);
+                        optionElement.addEventListener("click", function (event) {
+                            checkbox.checked = !checkbox.checked;
+                            optionElement.classList.toggle("selected");
+                            updateButtonState();
+                            event.preventDefault();
+                            const selectedOptions = document.querySelectorAll(
+                                ".dropdown-option.selected"
+                            );
+                            if (selectedOptions.length === 0) {
+                                document.querySelector(".remove-filter").classList.remove("hidden");
+                                document.querySelector(".remove-filter").classList.add("hidden");
+                            } else {
+                                document.querySelector(".remove-filter").classList.remove("hidden");
+                            }
+                            document
+                                .getElementById("toDelete")
+                                .classList.add("opposite-loading-effect");
+                            decreaseBtn.classList.add("opposite-loading-effect");
+                            decreaseBtn2.classList.add("opposite-loading-effect");
+                            increaseBtn.classList.add("opposite-loading-effect");
+                            increaseBtn2.classList.add("opposite-loading-effect");
+                            const dots = document.querySelectorAll(".random-div");
                             dots.forEach((div) => {
-                                div.remove();
+                                div.classList.add("opposite-loading-effect");
                             });
-                        }, 1000);
+                            setTimeout(() => {
+                                const deleteMe = document.getElementById("toDelete");
+                                if (deleteMe) deleteMe.remove();
+                                decreaseBtn.classList.remove("opposite-loading-effect");
+                                decreaseBtn2.classList.remove("opposite-loading-effect");
+                                increaseBtn.classList.remove("opposite-loading-effect");
+                                increaseBtn2.classList.remove("opposite-loading-effect");
+                                decreaseBtn.classList.remove("show");
+                                decreaseBtn2.classList.remove("show");
+                                increaseBtn.classList.remove("show");
+                                increaseBtn2.classList.remove("show");
+                                clearTimeout(timeoutId);
+                                dotSpinner.classList.remove("hidden");
+                                dotSpinner.classList.add("loading-effect-craddle");
+                                timeoutId = setTimeout(() => {
+                                    fetchAllData();
+                                    dotSpinner.classList.remove("loading-effect-craddle");
+                                    dotSpinner.classList.add("hidden");
+                                    dotSpinner.classList.add("hidden");
+                                }, 1000);
+                                dots.forEach((div) => {
+                                    div.remove();
+                                });
+                            }, 1000);
+                        });
                     });
-                });
-                dropdownButton.addEventListener("click", function () {
-                    dropdownMenu.classList.toggle("active");
-                });
-                const dropdownButtons = document.querySelectorAll(".dropdown-button");
+                    dropdownButton.addEventListener("click", function () {
+                        dropdownMenu.classList.toggle("active");
+                    });
+                    const dropdownButtons = document.querySelectorAll(".dropdown-button");
 
-                dropdownButtons.forEach((button) => {
-                    button.addEventListener("click", function () {
+                    dropdownButtons.forEach((button) => {
+                        button.addEventListener("click", function () {
+                            const dropdownMenus = document.querySelectorAll(".dropdown-menu");
+                            const clickedMenu = button.nextElementSibling;
+                            dropdownMenus.forEach((menu) => {
+                                if (menu !== clickedMenu) {
+                                    menu.classList.remove("active");
+                                }
+                            });
+                            clickedMenu.classList.toggle("active");
+                        });
+                    });
+
+                    document.addEventListener("click", function (event) {
                         const dropdownMenus = document.querySelectorAll(".dropdown-menu");
-                        const clickedMenu = button.nextElementSibling;
-                        dropdownMenus.forEach((menu) => {
-                            if (menu !== clickedMenu) {
-                                menu.classList.remove("active");
+                        const dropdownButtons = document.querySelectorAll(".dropdown-button");
+                        let isInsideDropdown = false;
+                        dropdownMenus.forEach((dropdownMenu) => {
+                            if (dropdownMenu.contains(event.target)) {
+                                isInsideDropdown = true;
                             }
                         });
-                        clickedMenu.classList.toggle("active");
+                        dropdownButtons.forEach((dropdownButton) => {
+                            if (dropdownButton.contains(event.target)) {
+                                isInsideDropdown = true;
+                            }
+                        });
+                        if (!isInsideDropdown) {
+                            dropdownMenus.forEach((dropdownMenu) => {
+                                dropdownMenu.classList.remove("active");
+                            });
+                        }
                     });
+
+                    const dropSearch = document.querySelector(
+                        `#${dropdownId} .dropdown-search`
+                    );
+                    const dropSearchOptions = document.querySelectorAll(
+                        `#${dropdownId} .dropdown-option`
+                    );
+                    dropSearch.addEventListener("input", function () {
+                        const searchTerm = this.value.toLowerCase();
+                        dropSearchOptions.forEach(function (option) {
+                            const optionText = option
+                                .querySelector("span")
+                                .textContent.toLowerCase();
+                            if (optionText.includes(searchTerm)) {
+                                option.style.display = "block";
+                            } else {
+                                option.style.display = "none";
+                            }
+                        });
+                    });
+
+                    updateButtonState();
+                });
+            }
+
+            function updateButtonState() {
+                const selectedOptions = document.querySelectorAll(
+                    ".dropdown-option.selected"
+                );
+                selectedOptions.forEach((option) => {
+                    option.querySelector(".dropdown-option-checkbox").checked = true;
                 });
 
+                const dropdownButtons = document.querySelectorAll(".dropdown-button");
+                dropdownButtons.forEach((button) => {
+                    const dropdownMenu = button.nextElementSibling;
+                    button.classList.toggle(
+                        "selected",
+                        dropdownMenu.querySelector(".dropdown-option.selected")
+                    );
+                });
                 document.addEventListener("click", function (event) {
                     const dropdownMenus = document.querySelectorAll(".dropdown-menu");
                     const dropdownButtons = document.querySelectorAll(".dropdown-button");
+                    const dropDownSearch = document.querySelectorAll(".dropdown-search");
+                    const dropdownOptions = document.querySelectorAll(".dropdown-option");
                     let isInsideDropdown = false;
                     dropdownMenus.forEach((dropdownMenu) => {
                         if (dropdownMenu.contains(event.target)) {
@@ -2001,501 +2086,439 @@
                         dropdownMenus.forEach((dropdownMenu) => {
                             dropdownMenu.classList.remove("active");
                         });
-                    }
-                });
-
-                const dropSearch = document.querySelector(
-                    `#${dropdownId} .dropdown-search`
-                );
-                const dropSearchOptions = document.querySelectorAll(
-                    `#${dropdownId} .dropdown-option`
-                );
-                dropSearch.addEventListener("input", function () {
-                    const searchTerm = this.value.toLowerCase();
-                    dropSearchOptions.forEach(function (option) {
-                        const optionText = option
-                            .querySelector("span")
-                            .textContent.toLowerCase();
-                        if (optionText.includes(searchTerm)) {
+                        dropDownSearch.forEach((input) => {
+                            input.value = "";
+                        });
+                        dropdownOptions.forEach((option) => {
                             option.style.display = "block";
-                        } else {
-                            option.style.display = "none";
-                        }
-                    });
-                });
-
-                updateButtonState();
-            });
-        }
-
-        function updateButtonState() {
-            const selectedOptions = document.querySelectorAll(
-                ".dropdown-option.selected"
-            );
-            selectedOptions.forEach((option) => {
-                option.querySelector(".dropdown-option-checkbox").checked = true;
-            });
-
-            const dropdownButtons = document.querySelectorAll(".dropdown-button");
-            dropdownButtons.forEach((button) => {
-                const dropdownMenu = button.nextElementSibling;
-                button.classList.toggle(
-                    "selected",
-                    dropdownMenu.querySelector(".dropdown-option.selected")
-                );
-            });
-            document.addEventListener("click", function (event) {
-                const dropdownMenus = document.querySelectorAll(".dropdown-menu");
-                const dropdownButtons = document.querySelectorAll(".dropdown-button");
-                const dropDownSearch = document.querySelectorAll(".dropdown-search");
-                const dropdownOptions = document.querySelectorAll(".dropdown-option");
-                let isInsideDropdown = false;
-                dropdownMenus.forEach((dropdownMenu) => {
-                    if (dropdownMenu.contains(event.target)) {
-                        isInsideDropdown = true;
+                        });
                     }
                 });
-                dropdownButtons.forEach((dropdownButton) => {
-                    if (dropdownButton.contains(event.target)) {
-                        isInsideDropdown = true;
-                    }
-                });
-                if (!isInsideDropdown) {
-                    dropdownMenus.forEach((dropdownMenu) => {
-                        dropdownMenu.classList.remove("active");
-                    });
-                    dropDownSearch.forEach((input) => {
-                        input.value = "";
-                    });
-                    dropdownOptions.forEach((option) => {
-                        option.style.display = "block";
-                    });
-                }
-            });
-        }
-
-        function buttons(input) {
-            if (!input) return "";
-            const regex = /\bhttps?:\/\/\S+/gi;
-            const matches = [];
-            let match;
-            while ((match = regex.exec(input)) !== null) {
-                matches.push(match[0]);
             }
-            let b = "";
-            if (matches.length === 1) {
-                return `<a href="${matches[0]}" target="_blank" style='text-decoration: none;'>
+
+            function buttons(input) {
+                if (!input) return "";
+                const regex = /\bhttps?:\/\/\S+/gi;
+                const matches = [];
+                let match;
+                while ((match = regex.exec(input)) !== null) {
+                    matches.push(match[0]);
+                }
+                let b = "";
+                if (matches.length === 1) {
+                    return `<a href="${matches[0]}" target="_blank" style='text-decoration: none;'>
             <div class='apply-btn'>
                 <p>Apply
                 <p>
             </div>
         </a>`;
-            }
-            for (let i = 0; i < matches.length; i++) {
-                b += `<a href="${matches[i]
-                }" target="_blank" style='text-decoration: none;'>
+                }
+                for (let i = 0; i < matches.length; i++) {
+                    b += `<a href="${matches[i]
+                    }" target="_blank" style='text-decoration: none;'>
             <div class='apply-btn'>Apply (${i + 1
-                })</div></a>`;
+                    })</div></a>`;
+                }
+                return b;
             }
-            return b;
-        }
 
-        function fields(input) {
-            if (!input) return "";
-            let b = "";
-            for (l of input) {
-                b += `<div class="field-div">
+            function fields(input) {
+                if (!input) return "";
+                let b = "";
+                for (l of input) {
+                    b += `<div class="field-div">
                 <p>${l}</p>
             </div>`;
-            }
-            return b;
-        }
-
-        const removeFilterButton = document.querySelector(".remove-filter");
-        removeFilterButton.addEventListener("click", function () {
-            const selectedOptions = document.querySelectorAll(
-                ".dropdown-option.selected"
-            );
-            selectedOptions.forEach((option) => {
-                option.classList.remove("selected");
-            });
-            const selectedButtons = document.querySelectorAll(
-                ".dropdown-button.selected"
-            );
-            const selectedChecks = document.querySelectorAll(
-                ".dropdown-option-checkbox"
-            );
-            selectedButtons.forEach((option) => {
-                option.classList.remove("selected");
-            });
-            selectedChecks.forEach((option) => {
-                option.checked = false;
-            });
-            document
-                .getElementById("toDelete")
-                .classList.add("opposite-loading-effect");
-            document
-                .querySelector(".remove-filter")
-                .classList.add("opposite-loading-effect");
-            decreaseBtn.classList.add("opposite-loading-effect");
-            decreaseBtn2.classList.add("opposite-loading-effect");
-            increaseBtn.classList.add("opposite-loading-effect");
-            increaseBtn2.classList.add("opposite-loading-effect");
-            const dots = document.querySelectorAll(".random-div");
-            dots.forEach((div) => {
-                div.classList.add("opposite-loading-effect");
-            });
-
-            setTimeout(() => {
-                document.getElementById("toDelete").remove();
-                document
-                    .querySelector(".remove-filter")
-                    .classList.remove("opposite-loading-effect");
-                decreaseBtn.classList.remove("opposite-loading-effect");
-                decreaseBtn2.classList.remove("opposite-loading-effect");
-                increaseBtn.classList.remove("opposite-loading-effect");
-                increaseBtn2.classList.remove("opposite-loading-effect");
-                decreaseBtn.classList.remove("show");
-                decreaseBtn2.classList.remove("show");
-                increaseBtn.classList.remove("show");
-                increaseBtn2.classList.remove("show");
-                clearTimeout(timeoutId);
-                dotSpinner.classList.remove("hidden");
-                dotSpinner.classList.add("loading-effect-craddle");
-                timeoutId = setTimeout(() => {
-                    fetchAllData();
-                    dotSpinner.classList.remove("loading-effect-craddle");
-                    dotSpinner.classList.add("hidden");
-                }, 1000);
-                dots.forEach((div) => {
-                    div.remove();
-                });
-                document.querySelector(".remove-filter").classList.add("hidden");
-            }, 1000);
-        });
-
-        const dropdownDiv = document.querySelector(".dropdown-div");
-        const paginElement = document.querySelector(".pagin");
-        const originalHeight = dropdownDiv.clientHeight;
-        const resizeObserver = new ResizeObserver((entries) => {
-            for (const entry of entries) {
-                const newHeight = Math.round(entry.contentRect.height);
-                if (newHeight + 20 !== originalHeight) {
-                    paginElement.style.marginTop = `-${newHeight + 20 - originalHeight}px`;
-                } else {
-                    paginElement.style.marginTop = `0px`;
                 }
+                return b;
             }
-        });
 
-        resizeObserver.observe(dropdownDiv);
-
-        function getRandomPastelColor() {
-            let color = "rgba(";
-            for (let i = 0; i < 3; i++) { const channel = Math.floor(Math.random() * 256); color += channel + ","; } color
-                += "0.25)"; return color;
-        } function generateRandomBorderRadius() {
-            const
-            topLeft = Math.floor(Math.random() * 31) * 2 + 20; const topRight = 100 - topLeft; const
-                bottomLeft = Math.floor(Math.random() * 31) * 2 + 20; const bottomRight = 100 - bottomLeft; const
-                    horizontalRadius1 = Math.floor(Math.random() * 31) * 2 + 20; const horizontalRadius2 = 100 -
-                        horizontalRadius1; const verticalRadius1 = Math.floor(Math.random() * 31) * 2 + 20; const
-                            verticalRadius2 = 100 - verticalRadius1; return `${topLeft}% ${topRight}% ${bottomRight}% ${bottomLeft}% /
-                ${horizontalRadius1}% ${verticalRadius1}% ${verticalRadius2}% ${horizontalRadius2}%`;
-        } function
-            randomizeSize(div) {
-                const width = Math.floor(Math.random() * 301) + 100; const
-                    height = Math.floor(Math.random() * 301) + 100; div.style.width = `${width}px`;
-            div.style.height = `${height}px`;
-        } function randomizePosition(div) {
-            const
-            targetElement = document.getElementById("targetElement"); const
-                targetRect = targetElement.getBoundingClientRect(); const maxX = targetRect.width - div.offsetWidth; const
-                    maxY = targetRect.height - div.offsetHeight; const left = Math.floor(Math.random() * maxX); const
-                        top = Math.floor(Math.random() * maxY); div.style.left = `${left}px`; div.style.top = `${top}px`;
-        } function
-            createRandomDiv() {
-                const div = document.createElement("div"); div.classList.add("random-div");
-            div.classList.add("loading-effect"); randomizeSize(div); randomizePosition(div); const
-                borderRadius = generateRandomBorderRadius(); div.style.borderRadius = borderRadius; const
-                    backgroundColor = getRandomPastelColor(); div.style.backgroundColor = backgroundColor;
-            document.body.querySelector("#targetElement").appendChild(div);
-        } function wonderBreadMaxing() {
-            const
-            maxX = document.body.querySelector("#targetElement").scrollWidth; const
-                maxY = document.body.querySelector("#targetElement").scrollHeight; const
-                    numDivs = Math.round(0.000009879661767803447 * maxX * maxY); for (let i = 0; i < numDivs; i++) {
-                        createRandomDiv();
-                    }
-        } function generateRandomWaveSVG(width, height) {
-            let
-            svg = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" transform="scale(1, -1)">`;
-            const waveAmplitude = Math.random() * 1 + 20;
-            const waveFrequency = Math.random() * 0.02 + 0.01;
-            const wavePhaseShift = Math.random() * 50;
-            let path = `
-                <path fill="${getRandomPastelColor()}" d="M 0 ${height} `;
-            for (let x = 0; x <= width; x += 10) {
-                const y =
-                    waveAmplitude * Math.sin(waveFrequency * x + wavePhaseShift) +
-                    height / 2;
-                path += `L ${x} ${y} `;
-            }
-            path += `L ${width} ${height} L 0 ${height}" /></svg>`;
-            svg += path;
-            return svg;
-        }
-
-        let offset = 0;
-        let offsetArray = [""];
-        let globalUrl = "";
-        let offsetKey = "&offset=";
-
-        const increaseBtn = document.querySelector(".increase");
-        const increaseBtn2 = document.querySelector(".increase2");
-        const decreaseBtn = document.querySelector(".decrease");
-        const decreaseBtn2 = document.querySelector(".decrease2");
-
-        clearTimeout(timeoutId);
-        dotSpinner.classList.remove("hidden");
-        dotSpinner.classList.add("loading-effect-craddle");
-        timeoutId = setTimeout(() => {
-            fetchAllData();
-            dotSpinner.classList.remove("loading-effect-craddle");
-            dotSpinner.classList.add("hidden");
-        }, 1000);
-
-        const searchInput = document.getElementById("search-input");
-
-        searchInput.addEventListener("input", function (event) {
-            event.preventDefault();
-            const deleteMe = document.getElementById("toDelete");
-            deleteMe.classList.add("opposite-loading-effect");
-            decreaseBtn.classList.add("opposite-loading-effect");
-            decreaseBtn2.classList.add("opposite-loading-effect");
-            increaseBtn.classList.add("opposite-loading-effect");
-            increaseBtn2.classList.add("opposite-loading-effect");
-            const dots = document.querySelectorAll(".random-div");
-            dots.forEach((div) => {
-                div.classList.add("opposite-loading-effect");
-            });
-            setTimeout(() => {
-                if (deleteMe) deleteMe.remove();
-                decreaseBtn.classList.remove("opposite-loading-effect");
-                decreaseBtn2.classList.remove("opposite-loading-effect");
-                increaseBtn.classList.remove("opposite-loading-effect");
-                increaseBtn2.classList.remove("opposite-loading-effect");
-                decreaseBtn.classList.remove("show");
-                decreaseBtn2.classList.remove("show");
-                increaseBtn.classList.remove("show");
-                increaseBtn2.classList.remove("show");
-                clearTimeout(timeoutId);
-                dotSpinner.classList.remove("hidden");
-                dotSpinner.classList.add("loading-effect-craddle");
-                timeoutId = setTimeout(() => {
-                    fetchAllData();
-                    dotSpinner.classList.remove("loading-effect-craddle");
-                    dotSpinner.classList.add("hidden");
-                }, 1000);
-                dots.forEach((div) => {
-                    div.remove();
-                });
-            }, 1000);
-        });
-
-        function getFilterFormula(options) {
-            const daysAgoMapping = {
-                "24 Hours Ago": 1,
-                "3 Days Ago": 3,
-                "7 Days Ago": 7,
-                "14 Days Ago": 14,
-                "30 Days Ago": 30,
-            };
-
-            let max = -Infinity;
-
-            options.forEach((e) => {
-                if (daysAgoMapping[e] > max) {
-                    max = daysAgoMapping[e];
-                }
-            });
-
-            return `DATETIME_DIFF(TODAY(), {Created}, 'days') <= ${max}`;
-        } function
-            generateSalaryFilterFormula(options) {
-                const formulaParts = []; options.forEach((option) => {
-                    let lowerBound = 0;
-                    let upperBound = 0;
-
-                    if (option === "Less than $30,000") {
-                        formulaParts.push(`AND({Max Salary (USD)} <= 30000)`);
-                    } else if (option === "Over $500,000") {
-                        formulaParts.push(`AND({Max Salary (USD)}> 500000)`);
-                    } else {
-                        const rangeMatch = option.match(/\$([\d,]+) - \$([\d,]+)/);
-                        if (rangeMatch) {
-                            lowerBound = parseInt(rangeMatch[1].replace(/,/g, ""), 10);
-                            upperBound = parseInt(rangeMatch[2].replace(/,/g, ""), 10);
-                        }
-                        formulaParts.push(
-                            `AND({Max Salary (USD)} >= ${lowerBound}, {Max Salary (USD)} <= ${upperBound})`);
-                    }
-                }); return
-            `OR(${formulaParts.join(", ")})`;
-        }
-        function urlCreator(s) {
-            const baseUrl = " https://api.airtable.com/v0/apprdsx9uO4l5FieL/Table%201?"; const pageSize = "pageSize=99";
-            const sort = `sort%5B0%5D%5Bfield%5D=Created&sort%5B0%5D%5Bdirection%5D=desc`; let
-                filterFunction = "filterByFormula="; const filters = []; const dropdownName = {
-                    dropdown1: "Company/Org", dropdown2: "Region", dropdown3: "Visa sponsorship",
-                    dropdown4: "Experience Level", dropdown5: "Field", dropdown6: "Type",
-                    dropdown7: "Max Salary (USD)", dropdown8: "Created",
-                }; for (const f in s) {
-                    if
-                        (f === "searchInput") {
-                            const searchTerms = s[f].toLowerCase().split(" ");
-                        const searchConditions = searchTerms.map(
-                            (term) => `SEARCH(" ${term}", {Concat})`);
-                        filters.push(`AND(${searchConditions.join(",")})`);
-                    } else if (f === "dropdown7" &&
-                        s[f].length) { filters.push(generateSalaryFilterFormula(s[f])); } else if (f === "dropdown8"
-                            && s[f].length) { filters.push(getFilterFormula(s[f])); } else if (s[f].length) {
-                                filters.push(`OR(${s[f].map((e) => `SEARCH('${e}', {${dropdownName[f]}})`)
-                                    .join(",")})`
-                                );
-                            }
-                }
-
-            filterFunction += `${encodeURIComponent("AND(" + filters.join(",") + ")")}`;
-            return baseUrl + [pageSize, sort, filterFunction].join("&");
-        }
-
-        function fetchAllData() {
-            const selectedOptions = {
-                dropdown1: [],
-                dropdown2: [],
-                dropdown3: [],
-                dropdown4: [],
-                dropdown5: [],
-                dropdown6: [],
-                dropdown7: [],
-                dropdown8: [],
-                searchInput: "",
-            };
-
-            selectedOptions.searchInput = document.getElementById("search-input").value;
-
-            const dropdowns = document.querySelectorAll(".dropdown");
-
-            dropdowns.forEach((dropdown) => {
-                const dropdownId = dropdown.id;
-                const selectedOptionElements = dropdown.querySelectorAll(
+            const removeFilterButton = document.querySelector(".remove-filter");
+            removeFilterButton.addEventListener("click", function () {
+                const selectedOptions = document.querySelectorAll(
                     ".dropdown-option.selected"
                 );
-
-                selectedOptionElements.forEach((optionElement) => {
-                    const optionText = optionElement.querySelector("span").textContent;
-                    selectedOptions[dropdownId].push(optionText);
+                selectedOptions.forEach((option) => {
+                    option.classList.remove("selected");
                 });
-            });
-            let url = urlCreator(selectedOptions);
-            let newOffset = "&offset=" + offsetArray[offset];
-            if (document.getElementById("toDelete"))
-                document.getElementById("toDelete").remove();
+                const selectedButtons = document.querySelectorAll(
+                    ".dropdown-button.selected"
+                );
+                const selectedChecks = document.querySelectorAll(
+                    ".dropdown-option-checkbox"
+                );
+                selectedButtons.forEach((option) => {
+                    option.classList.remove("selected");
+                });
+                selectedChecks.forEach((option) => {
+                    option.checked = false;
+                });
+                document
+                    .getElementById("toDelete")
+                    .classList.add("opposite-loading-effect");
+                document
+                    .querySelector(".remove-filter")
+                    .classList.add("opposite-loading-effect");
+                decreaseBtn.classList.add("opposite-loading-effect");
+                decreaseBtn2.classList.add("opposite-loading-effect");
+                increaseBtn.classList.add("opposite-loading-effect");
+                increaseBtn2.classList.add("opposite-loading-effect");
+                const dots = document.querySelectorAll(".random-div");
+                dots.forEach((div) => {
+                    div.classList.add("opposite-loading-effect");
+                });
 
-            if (url !== globalUrl || (url === globalUrl && offsetKey === newOffset)) {
-                offset = 0;
-                offsetArray = [""];
-                setCards(url);
-                offsetKey = "&offset=";
-                globalUrl = url;
-            } else if (url === globalUrl && offsetKey !== newOffset) {
-                setCards(url + newOffset);
-                offsetKey = newOffset;
+                setTimeout(() => {
+                    document.getElementById("toDelete").remove();
+                    document
+                        .querySelector(".remove-filter")
+                        .classList.remove("opposite-loading-effect");
+                    decreaseBtn.classList.remove("opposite-loading-effect");
+                    decreaseBtn2.classList.remove("opposite-loading-effect");
+                    increaseBtn.classList.remove("opposite-loading-effect");
+                    increaseBtn2.classList.remove("opposite-loading-effect");
+                    decreaseBtn.classList.remove("show");
+                    decreaseBtn2.classList.remove("show");
+                    increaseBtn.classList.remove("show");
+                    increaseBtn2.classList.remove("show");
+                    clearTimeout(timeoutId);
+                    dotSpinner.classList.remove("hidden");
+                    dotSpinner.classList.add("loading-effect-craddle");
+                    timeoutId = setTimeout(() => {
+                        fetchAllData();
+                        dotSpinner.classList.remove("loading-effect-craddle");
+                        dotSpinner.classList.add("hidden");
+                    }, 1000);
+                    dots.forEach((div) => {
+                        div.remove();
+                    });
+                    document.querySelector(".remove-filter").classList.add("hidden");
+                }, 1000);
+            });
+
+            const dropdownDiv = document.querySelector(".dropdown-div");
+            const paginElement = document.querySelector(".pagin");
+            const originalHeight = dropdownDiv.clientHeight;
+            const resizeObserver = new ResizeObserver((entries) => {
+                for (const entry of entries) {
+                    const newHeight = Math.round(entry.contentRect.height);
+                    if (newHeight + 20 !== originalHeight) {
+                        paginElement.style.marginTop = `-${newHeight + 20 - originalHeight}px`;
+                    } else {
+                        paginElement.style.marginTop = `0px`;
+                    }
+                }
+            });
+
+            resizeObserver.observe(dropdownDiv);
+
+            function getRandomPastelColor() {
+                let color = "rgba(";
+                for (let i = 0; i < 3; i++) { const channel = Math.floor(Math.random() * 256); color += channel + ","; } color
+                    += "0.25)"; return color;
+            } function generateRandomBorderRadius() {
+                const
+                topLeft = Math.floor(Math.random() * 31) * 2 + 20; const topRight = 100 - topLeft; const
+                    bottomLeft = Math.floor(Math.random() * 31) * 2 + 20; const bottomRight = 100 - bottomLeft; const
+                        horizontalRadius1 = Math.floor(Math.random() * 31) * 2 + 20; const horizontalRadius2 = 100 -
+                            horizontalRadius1; const verticalRadius1 = Math.floor(Math.random() * 31) * 2 + 20; const
+                                verticalRadius2 = 100 - verticalRadius1; return `${topLeft}% ${topRight}% ${bottomRight}% ${bottomLeft}% /
+                ${horizontalRadius1}% ${verticalRadius1}% ${verticalRadius2}% ${horizontalRadius2}%`;
+            } function
+                randomizeSize(div) {
+                    const width = Math.floor(Math.random() * 301) + 100; const
+                        height = Math.floor(Math.random() * 301) + 100; div.style.width = `${width}px`;
+                div.style.height = `${height}px`;
+            } function randomizePosition(div) {
+                const
+                targetElement = document.getElementById("targetElement"); const
+                    targetRect = targetElement.getBoundingClientRect(); const maxX = targetRect.width - div.offsetWidth; const
+                        maxY = targetRect.height - div.offsetHeight; const left = Math.floor(Math.random() * maxX); const
+                            top = Math.floor(Math.random() * maxY); div.style.left = `${left}px`; div.style.top = `${top}px`;
+            } function
+                createRandomDiv() {
+                    const div = document.createElement("div"); div.classList.add("random-div");
+                div.classList.add("loading-effect"); randomizeSize(div); randomizePosition(div); const
+                    borderRadius = generateRandomBorderRadius(); div.style.borderRadius = borderRadius; const
+                        backgroundColor = getRandomPastelColor(); div.style.backgroundColor = backgroundColor;
+                document.body.querySelector("#targetElement").appendChild(div);
+            } function wonderBreadMaxing() {
+                const
+                maxX = document.body.querySelector("#targetElement").scrollWidth; const
+                    maxY = document.body.querySelector("#targetElement").scrollHeight; const
+                        numDivs = Math.round(0.000009879661767803447 * maxX * maxY); for (let i = 0; i < numDivs; i++) {
+                            createRandomDiv();
+                        }
+            } function generateRandomWaveSVG(width, height) {
+                let
+                svg = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" transform="scale(1, -1)">`;
+                const waveAmplitude = Math.random() * 1 + 20;
+                const waveFrequency = Math.random() * 0.02 + 0.01;
+                const wavePhaseShift = Math.random() * 50;
+                let path = `
+                <path fill="${getRandomPastelColor()}" d="M 0 ${height} `;
+                for (let x = 0; x <= width; x += 10) {
+                    const y =
+                        waveAmplitude * Math.sin(waveFrequency * x + wavePhaseShift) +
+                        height / 2;
+                    path += `L ${x} ${y} `;
+                }
+                path += `L ${width} ${height} L 0 ${height}" /></svg>`;
+                svg += path;
+                return svg;
             }
 
-            async function setCards(newUrl) {
-                fetch(newUrl, {
-                    headers: {
-                        Authorization: `Bearer
-                            patNamJqXdDlueUxM.6e6e7f9efc1e8ab27056891e8f3c51c97bf2f994036cc554fb9618143bc58c31`,
-                    },
-                })
-                    .then((response) => response.json())
-                    .then((data) => {
-                        data.records.forEach((record) => {
-                            const createdDate = new Date(record.fields.Created);
-                            const options = { year: "numeric", month: "long", day: "numeric" };
-                            const formattedDate = createdDate.toLocaleDateString(
-                                undefined,
-                                options
-                            );
-                            record.fields.Created = formattedDate;
-                        });
-                        if (data.offset && !offsetArray[offset + 1]) {
-                            offsetArray.push(data.offset);
-                        }
-                        if (data.offset && !offsetArray[offset + 1]) {
-                            offsetArray.push(data.offset);
-                        }
+            let offset = 0;
+            let offsetArray = [""];
+            let globalUrl = "";
+            let offsetKey = "&offset=";
 
-                        if (offset === 0 && offsetArray.length > 1) {
-                            decreaseBtn.classList.remove("show");
-                            decreaseBtn2.classList.remove("show");
-                            increaseBtn.classList.remove("show");
-                            increaseBtn2.classList.remove("show");
-                            decreaseBtn.classList.remove("show");
-                            decreaseBtn2.classList.remove("show");
-                            increaseBtn.classList.add("show");
-                            increaseBtn2.classList.add("show");
-                        } else if (
-                            offsetArray[offset + 1] !== undefined &&
-                            offsetArray[offset - 1] !== undefined
-                        ) {
-                            decreaseBtn.classList.remove("show");
-                            decreaseBtn2.classList.remove("show");
-                            increaseBtn.classList.remove("show");
-                            increaseBtn2.classList.remove("show");
-                            decreaseBtn.classList.add("show");
-                            decreaseBtn2.classList.add("show");
-                            increaseBtn.classList.add("show");
-                            increaseBtn2.classList.add("show");
-                        } else if (
-                            offsetArray[offset - 1] !== undefined &&
-                            offsetArray[offset + 1] === undefined
-                        ) {
-                            decreaseBtn.classList.remove("show");
-                            decreaseBtn2.classList.remove("show");
-                            increaseBtn.classList.remove("show");
-                            increaseBtn2.classList.remove("show");
-                            increaseBtn.classList.remove("show");
-                            increaseBtn2.classList.remove("show");
-                            decreaseBtn.classList.add("show");
-                            decreaseBtn2.classList.add("show");
+            const increaseBtn = document.querySelector(".increase");
+            const increaseBtn2 = document.querySelector(".increase2");
+            const decreaseBtn = document.querySelector(".decrease");
+            const decreaseBtn2 = document.querySelector(".decrease2");
+
+            clearTimeout(timeoutId);
+            dotSpinner.classList.remove("hidden");
+            dotSpinner.classList.add("loading-effect-craddle");
+            timeoutId = setTimeout(() => {
+                fetchAllData();
+                dotSpinner.classList.remove("loading-effect-craddle");
+                dotSpinner.classList.add("hidden");
+            }, 1000);
+
+            const searchInput = document.getElementById("search-input");
+
+            searchInput.addEventListener("input", function (event) {
+                event.preventDefault();
+                const deleteMe = document.getElementById("toDelete");
+                deleteMe.classList.add("opposite-loading-effect");
+                decreaseBtn.classList.add("opposite-loading-effect");
+                decreaseBtn2.classList.add("opposite-loading-effect");
+                increaseBtn.classList.add("opposite-loading-effect");
+                increaseBtn2.classList.add("opposite-loading-effect");
+                const dots = document.querySelectorAll(".random-div");
+                dots.forEach((div) => {
+                    div.classList.add("opposite-loading-effect");
+                });
+                setTimeout(() => {
+                    if (deleteMe) deleteMe.remove();
+                    decreaseBtn.classList.remove("opposite-loading-effect");
+                    decreaseBtn2.classList.remove("opposite-loading-effect");
+                    increaseBtn.classList.remove("opposite-loading-effect");
+                    increaseBtn2.classList.remove("opposite-loading-effect");
+                    decreaseBtn.classList.remove("show");
+                    decreaseBtn2.classList.remove("show");
+                    increaseBtn.classList.remove("show");
+                    increaseBtn2.classList.remove("show");
+                    clearTimeout(timeoutId);
+                    dotSpinner.classList.remove("hidden");
+                    dotSpinner.classList.add("loading-effect-craddle");
+                    timeoutId = setTimeout(() => {
+                        fetchAllData();
+                        dotSpinner.classList.remove("loading-effect-craddle");
+                        dotSpinner.classList.add("hidden");
+                    }, 1000);
+                    dots.forEach((div) => {
+                        div.remove();
+                    });
+                }, 1000);
+            });
+
+            function getFilterFormula(options) {
+                const daysAgoMapping = {
+                    "24 Hours Ago": 1,
+                    "3 Days Ago": 3,
+                    "7 Days Ago": 7,
+                    "14 Days Ago": 14,
+                    "30 Days Ago": 30,
+                };
+
+                let max = -Infinity;
+
+                options.forEach((e) => {
+                    if (daysAgoMapping[e] > max) {
+                        max = daysAgoMapping[e];
+                    }
+                });
+
+                return `DATETIME_DIFF(TODAY(), {Created}, 'days') <= ${max}`;
+            } function
+                generateSalaryFilterFormula(options) {
+                    const formulaParts = []; options.forEach((option) => {
+                        let lowerBound = 0;
+                        let upperBound = 0;
+
+                        if (option === "Less than $30,000") {
+                            formulaParts.push(`AND({Max Salary (USD)} <= 30000)`);
+                        } else if (option === "Over $500,000") {
+                            formulaParts.push(`AND({Max Salary (USD)}> 500000)`);
                         } else {
-                            decreaseBtn.classList.remove("show");
-                            decreaseBtn2.classList.remove("show");
-                            increaseBtn.classList.remove("show");
-                            increaseBtn2.classList.remove("show");
-                            decreaseBtn.classList.remove("show");
-                            decreaseBtn2.classList.remove("show");
-                            increaseBtn.classList.remove("show");
-                            increaseBtn2.classList.remove("show");
+                            const rangeMatch = option.match(/\$([\d,]+) - \$([\d,]+)/);
+                            if (rangeMatch) {
+                                lowerBound = parseInt(rangeMatch[1].replace(/,/g, ""), 10);
+                                upperBound = parseInt(rangeMatch[2].replace(/,/g, ""), 10);
+                            }
+                            formulaParts.push(
+                                `AND({Max Salary (USD)} >= ${lowerBound}, {Max Salary (USD)} <= ${upperBound})`);
                         }
-                        let htmlString = "";
-                        if (data.records.length > 0) {
-                            data.records.forEach((e) => {
-                                function formatNumberToK(number) {
-                                    if (typeof number !== "number") {
-                                        return "Invalid input";
+                    }); return
+                `OR(${formulaParts.join(", ")})`;
+            }
+            function urlCreator(s) {
+                const baseUrl = " https://api.airtable.com/v0/apprdsx9uO4l5FieL/Table%201?"; const
+                    pageSize = "pageSize=99"; const
+                        sort = `sort%5B0%5D%5Bfield%5D=Created&sort%5B0%5D%5Bdirection%5D=desc`; let
+                            filterFunction = "filterByFormula="; const filters = []; const dropdownName = {
+                                dropdown1: "Company/Org", dropdown2: "Region", dropdown3: "Visa sponsorship",
+                                dropdown4: "Experience Level", dropdown5: "Field", dropdown6: "Type",
+                                dropdown7: "Max Salary (USD)", dropdown8: "Created",
+                            }; for (const f in s) {
+                                if
+                                    (f === "searchInput") {
+                                        const searchTerms = s[f].toLowerCase().split(" ");
+                                    const searchConditions = searchTerms.map(
+                                        (term) => `SEARCH(" ${term}", {Concat})`);
+                                    filters.push(`AND(${searchConditions.join(",")})`);
+                                } else if (f === "dropdown7" &&
+                                    s[f].length) { filters.push(generateSalaryFilterFormula(s[f])); } else if (f === "dropdown8"
+                                        && s[f].length) { filters.push(getFilterFormula(s[f])); } else if (s[f].length) {
+                                            filters.push(`OR(${s[f].map((e) => `SEARCH('${e}', {${dropdownName[f]}})`)
+                                                .join(",")})`
+                                            );
+                                        }
+                            }
+
+                filterFunction += `${encodeURIComponent("AND(" + filters.join(",") + ")")}`;
+                return baseUrl + [pageSize, sort, filterFunction].join("&");
+            }
+
+            function fetchAllData() {
+                const selectedOptions = {
+                    dropdown1: [],
+                    dropdown2: [],
+                    dropdown3: [],
+                    dropdown4: [],
+                    dropdown5: [],
+                    dropdown6: [],
+                    dropdown7: [],
+                    dropdown8: [],
+                    searchInput: "",
+                };
+
+                selectedOptions.searchInput = document.getElementById("search-input").value;
+
+                const dropdowns = document.querySelectorAll(".dropdown");
+
+                dropdowns.forEach((dropdown) => {
+                    const dropdownId = dropdown.id;
+                    const selectedOptionElements = dropdown.querySelectorAll(
+                        ".dropdown-option.selected"
+                    );
+
+                    selectedOptionElements.forEach((optionElement) => {
+                        const optionText = optionElement.querySelector("span").textContent;
+                        selectedOptions[dropdownId].push(optionText);
+                    });
+                });
+                let url = urlCreator(selectedOptions);
+                let newOffset = "&offset=" + offsetArray[offset];
+                if (document.getElementById("toDelete"))
+                    document.getElementById("toDelete").remove();
+
+                if (url !== globalUrl || (url === globalUrl && offsetKey === newOffset)) {
+                    offset = 0;
+                    offsetArray = [""];
+                    setCards(url);
+                    offsetKey = "&offset=";
+                    globalUrl = url;
+                } else if (url === globalUrl && offsetKey !== newOffset) {
+                    setCards(url + newOffset);
+                    offsetKey = newOffset;
+                }
+
+                async function setCards(newUrl) {
+                    fetch(newUrl, {
+                        headers: {
+                            Authorization: `Bearer
+                            patNamJqXdDlueUxM.6e6e7f9efc1e8ab27056891e8f3c51c97bf2f994036cc554fb9618143bc58c31`,
+                        },
+                    })
+                        .then((response) => response.json())
+                        .then((data) => {
+                            data.records.forEach((record) => {
+                                const createdDate = new Date(record.fields.Created);
+                                const options = { year: "numeric", month: "long", day: "numeric" };
+                                const formattedDate = createdDate.toLocaleDateString(
+                                    undefined,
+                                    options
+                                );
+                                record.fields.Created = formattedDate;
+                            });
+                            if (data.offset && !offsetArray[offset + 1]) {
+                                offsetArray.push(data.offset);
+                            }
+                            if (data.offset && !offsetArray[offset + 1]) {
+                                offsetArray.push(data.offset);
+                            }
+
+                            if (offset === 0 && offsetArray.length > 1) {
+                                decreaseBtn.classList.remove("show");
+                                decreaseBtn2.classList.remove("show");
+                                increaseBtn.classList.remove("show");
+                                increaseBtn2.classList.remove("show");
+                                decreaseBtn.classList.remove("show");
+                                decreaseBtn2.classList.remove("show");
+                                increaseBtn.classList.add("show");
+                                increaseBtn2.classList.add("show");
+                            } else if (
+                                offsetArray[offset + 1] !== undefined &&
+                                offsetArray[offset - 1] !== undefined
+                            ) {
+                                decreaseBtn.classList.remove("show");
+                                decreaseBtn2.classList.remove("show");
+                                increaseBtn.classList.remove("show");
+                                increaseBtn2.classList.remove("show");
+                                decreaseBtn.classList.add("show");
+                                decreaseBtn2.classList.add("show");
+                                increaseBtn.classList.add("show");
+                                increaseBtn2.classList.add("show");
+                            } else if (
+                                offsetArray[offset - 1] !== undefined &&
+                                offsetArray[offset + 1] === undefined
+                            ) {
+                                decreaseBtn.classList.remove("show");
+                                decreaseBtn2.classList.remove("show");
+                                increaseBtn.classList.remove("show");
+                                increaseBtn2.classList.remove("show");
+                                increaseBtn.classList.remove("show");
+                                increaseBtn2.classList.remove("show");
+                                decreaseBtn.classList.add("show");
+                                decreaseBtn2.classList.add("show");
+                            } else {
+                                decreaseBtn.classList.remove("show");
+                                decreaseBtn2.classList.remove("show");
+                                increaseBtn.classList.remove("show");
+                                increaseBtn2.classList.remove("show");
+                                decreaseBtn.classList.remove("show");
+                                decreaseBtn2.classList.remove("show");
+                                increaseBtn.classList.remove("show");
+                                increaseBtn2.classList.remove("show");
+                            }
+                            let htmlString = "";
+                            if (data.records.length > 0) {
+                                data.records.forEach((e) => {
+                                    function formatNumberToK(number) {
+                                        if (typeof number !== "number") {
+                                            return "Invalid input";
+                                        }
+                                        if (number >= 1000) {
+                                            const numInK = (number / 1000).toFixed(0);
+                                            return `$${numInK}k`;
+                                        }
+                                        return `$${number}`;
                                     }
-                                    if (number >= 1000) {
-                                        const numInK = (number / 1000).toFixed(0);
-                                        return `$${numInK}k`;
-                                    }
-                                    return `$${number}`;
-                                }
-                                htmlString += `<div class='job-card loading-effect'>
+                                    htmlString += `<div class='job-card loading-effect'>
                                 <div>
                                     <p class='job-title'>${e.fields["Job Title"]}</p>
                                     <hr />
@@ -2506,140 +2529,164 @@
                                         ${icons["company"]}
                                         <div class="field-div">
                                             <p>${e.fields["Company/Org"]
-                                    }</p>
+                                        }</p>
                                         </div>
                                     </div>
                                     ${e.fields["Location"]
-                                        ? `<div>
+                                            ? `<div>
                                         ${icons["location"]}
                                         <div class="field-div">
                                             <p>${e.fields["Location"]}</p>
                                         </div>
                                     </div>`
-                                        : ""
-                                    }
+                                            : ""
+                                        }
                                     ${e.fields["Experience Level"]
-                                        ? `<div>
+                                            ? `<div>
                                         ${icons["experience"]}
                                         ${fields(e.fields["Experience Level"]) || ""}
                                     </div>`
-                                        : ""
-                                    }
-                                    ${e.fields["Region"]
-                                        ? `<div>
-                                        ${e.fields["Region"][0] !== "Remote" ||
-                                            e.fields["Region"].length > 1
-                                            ? icons["world"]
-                                            : icons["remote"]
+                                            : ""
                                         }
+                                    ${e.fields["Region"]
+                                            ? `<div>
+                                        ${e.fields["Region"][0] !== "Remote" ||
+                                                e.fields["Region"].length > 1
+                                                ? icons["world"]
+                                                : icons["remote"]
+                                            }
                                         ${fields(e.fields["Region"]) || ""}
                                     </div>`
-                                        : ""
-                                    }
-                                    ${e.fields["Type"]
-                                        ? `<div>
-                                        ${e.fields["Type"][0] === "Full-Time" ||
-                                            e.fields["Type"].length > 1
-                                            ? icons["fullTime"]
-                                            : e.fields["Type"][0] === "Part-Time"
-                                                ? icons["partTime2"]
-                                                : icons["contract2"]
+                                            : ""
                                         }
+                                    ${e.fields["Type"]
+                                            ? `<div>
+                                        ${e.fields["Type"][0] === "Full-Time" ||
+                                                e.fields["Type"].length > 1
+                                                ? icons["fullTime"]
+                                                : e.fields["Type"][0] === "Part-Time"
+                                                    ? icons["partTime2"]
+                                                    : icons["contract2"]
+                                            }
                                         ${fields(e.fields["Type"]) || ""}
                                     </div>`
-                                        : ""
-                                    }
-                                    ${e.fields["VISA sponsorship"]
-                                        ? `<div class="visa">
-                                        ${e.fields["VISA sponsorship"][0] === "Yes"
-                                            ? icons["visaCheck"]
-                                            : e.fields["VISA sponsorship"][0] === "No"
-                                                ? icons["visaEx"]
-                                                : icons["visaQuestion"]
+                                            : ""
                                         }
+                                    ${e.fields["VISA sponsorship"]
+                                            ? `<div class="visa">
+                                        ${e.fields["VISA sponsorship"][0] === "Yes"
+                                                ? icons["visaCheck"]
+                                                : e.fields["VISA sponsorship"][0] === "No"
+                                                    ? icons["visaEx"]
+                                                    : icons["visaQuestion"]
+                                            }
                                         ${fields(e.fields["VISA sponsorship"]) || ""}
                                     </div>`
-                                        : ``
-                                    }
+                                            : ``
+                                        }
                                 </div>
                                 <div>
                                     ${e.fields["Max Salary (USD)"] && e.fields["Min Salary (USD)"]
-                                        ? `<div class='salary-text'>
+                                            ? `<div class='salary-text'>
                                         <div>
                                             <p>${formatNumberToK(
-                                            e.fields["Min Salary (USD)"]
-                                        )} <span>Min</span></p>
+                                                e.fields["Min Salary (USD)"]
+                                            )} <span>Min</span></p>
                                         </div>
                                         <div>
                                             <p>${formatNumberToK(
-                                            e.fields["Max Salary (USD)"]
-                                        )} <span>Max</span></p>
-                                        </div>
-                                    </div>`
-                                        : e.fields["Max Salary (USD)"]
-                                            ? `<div>
-                                        <p style="text-align: center; margin: 0 0 5px 0; color: rgb(101, 101, 101);
-                      font-weight: bold;
-                      font-size: 20px">${formatNumberToK(
                                                 e.fields["Max Salary (USD)"]
                                             )} <span>Max</span></p>
+                                        </div>
                                     </div>`
-                                            : e.fields["Min Salary (USD)"]
+                                            : e.fields["Max Salary (USD)"]
                                                 ? `<div>
                                         <p style="text-align: center; margin: 0 0 5px 0; color: rgb(101, 101, 101);
                       font-weight: bold;
                       font-size: 20px">${formatNumberToK(
-                                                    e.fields["Min Salary (USD)"]
-                                                )} <span>Min</span></p>
+                                                    e.fields["Max Salary (USD)"]
+                                                )} <span>Max</span></p>
                                     </div>`
-                                                : `<div>
+                                                : e.fields["Min Salary (USD)"]
+                                                    ? `<div>
+                                        <p style="text-align: center; margin: 0 0 5px 0; color: rgb(101, 101, 101);
+                      font-weight: bold;
+                      font-size: 20px">${formatNumberToK(
+                                                        e.fields["Min Salary (USD)"]
+                                                    )} <span>Min</span></p>
+                                    </div>`
+                                                    : `<div>
                                         <p style="text-align: center; margin: 0 0 5px 0; color: rgb(101, 101, 101);
                       font-weight: bold;
                       font-size: 20px">No Salary Listed</p>
                                     </div>`
-                                    }
+                                        }
                                     <div class='${e.fields["Min Salary (USD)"] && e.fields["Max Salary (USD)"]
-                                        ? `salary-2-bar`
-                                        : e.fields["Max Salary (USD)"]
-                                            ? `salary-max-bar`
-                                            : e.fields["Min Salary (USD)"]
-                                                ? `salary-min-bar`
-                                                : "salary-0-bar"
-                                    }'></div>
+                                            ? `salary-2-bar`
+                                            : e.fields["Max Salary (USD)"]
+                                                ? `salary-max-bar`
+                                                : e.fields["Min Salary (USD)"]
+                                                    ? `salary-min-bar`
+                                                    : "salary-0-bar"
+                                        }'></div>
                                 </div>
                             </div>`;
+                                });
+                            } else {
+                                htmlString += `<h1 class="title">No Results Found</h1>`;
+                            }
+                            htmlString =
+                                '<div id="toDelete" class="card-holder">' + htmlString + "</div>";
+                            const parser = new DOMParser();
+                            const parsedHtml = parser.parseFromString(htmlString, "text/html");
+                            const parsedElement = parsedHtml.querySelector("div");
+                            const targetElement = document.getElementById("targetElement");
+                            targetElement.appendChild(parsedElement);
+                            wonderBreadMaxing();
+                            const readMoreButtons = document.querySelectorAll(".job-card");
+                            readMoreButtons.forEach((button, index) => {
+                                button.addEventListener("click", () => {
+                                    openModal(data.records[index].fields);
+                                    document.getElementById("targetElement").style.position = "fixed";
+                                    console.log(data.records[index]);
+                                });
                             });
-                        } else {
-                            htmlString += `<h1 class="title">No Results Found</h1>`;
-                        }
-                        htmlString =
-                            '<div id="toDelete" class="card-holder">' + htmlString + "</div>";
-                        const parser = new DOMParser();
-                        const parsedHtml = parser.parseFromString(htmlString, "text/html");
-                        const parsedElement = parsedHtml.querySelector("div");
-                        const targetElement = document.getElementById("targetElement");
-                        targetElement.appendChild(parsedElement);
-                        wonderBreadMaxing();
-                        const readMoreButtons = document.querySelectorAll(".job-card");
-                        readMoreButtons.forEach((button, index) => {
-                            button.addEventListener("click", () => {
-                                openModal(data.records[index].fields);
-                                document.getElementById("targetElement").style.position = "fixed";
-                                console.log(data.records[index]);
-                            });
-                        });
-                    })
-                    .catch((error) => console.error("Error fetching data:", error));
+                        })
+                        .catch((error) => console.error("Error fetching data:", error));
+                }
             }
-        }
 
-        function openModal(e) {
-            const modal = document.getElementById("myModal");
-            document.body.classList.add("modal-open");
-            const modalHeader = modal.querySelector(".modal-header");
-            const modalFooter = modal.querySelector(".modal-footer");
-            const modalContent = modal.querySelector(".modal-content");
-            modalHeader.innerHTML = `<span style='font-size: 50px; margin: 0 0 0 auto;'
+            // function trackJobClick(jobTitle, experienceLevels, fields) {
+            // if (jobTitle !== undefined) {
+            // gtag("event", "job_click", {
+            // job_title: jobTitle,
+            // });
+            // }
+
+            // if (experienceLevels !== undefined && experienceLevels.length) {
+            // experienceLevels.forEach(function (exp) {
+            // gtag("event", "job_click", {
+            // experience_level: exp,
+            // });
+            // });
+            // }
+
+            // if (fields !== undefined && fields.length) {
+            // fields.forEach(function (field) {
+            // gtag("event", "job_click", {
+            // field: field,
+            // });
+            // });
+            // }
+            // }
+
+            function openModal(e) {
+                const modal = document.getElementById("myModal");
+                document.body.classList.add("modal-open");
+                const modalHeader = modal.querySelector(".modal-header");
+                const modalFooter = modal.querySelector(".modal-footer");
+                const modalContent = modal.querySelector(".modal-content");
+                modalHeader.innerHTML = `<span style='font-size: 50px; margin: 0 0 0 auto;'
                                 class="close">&times;</span>
                             <div class='card-header'>
                                 <p class='card-title'>${e["Job Title"]}</p>
@@ -2650,8 +2697,8 @@
                                     <p style="font-size: 20px;">${e["Created"]}</p>
                                 </div>
                             </div>`;
-            modalContent.innerHTML = "";
-            modalContent.innerHTML = `
+                modalContent.innerHTML = "";
+                modalContent.innerHTML = `
                             <div class="job-field-div" style="padding-bottom: 10px;">
                                 <div class="tag-field">
                                     ${fields(e["Field"]) || ""}
@@ -2666,251 +2713,276 @@
                                 <div class="job-spec">
                                     <p class="job-spec-title">Location:</p>
                                     <p class='job-type'>${e["Location"] ? e["Location"] : "No Location Listed"
-                }</p>
+                    }</p>
                                 </div>
                                 <div class='vertical-hr'></div>
                                 <div class="job-spec">
                                     <p class="job-spec-title">Type:</p>
                                     <p class='job-type'>${e["Type"] ? e["Type"].join(", ") : "N/A"
-                }</p>
+                    }</p>
                                 </div>
-                            </div>
-                            <div class='job-mobile-div'>
-                                <div style='display:flex; align-items:center; flex-wrap:wrap;'>
-                                    <div style='width: 50px; margin: 10px 20px'>
-                                        ${icons["company"]}
-                                    </div>
-                                    ${e["Company/Org"]
-                    ? fields([e["Company/Org"]])
-                    : fields(["No Company Listed"])
-                }
-                                </div>
-                                <hr style='width:90%; margin: auto;'>
-                                <div style='display:flex; align-items:center; flex-wrap:wrap;'>
-                                    <div style='width: 50px; margin: 10px 20px'>
-                                        ${icons["location"]}
-                                    </div>
-                                    ${e["Location"]
-                    ? fields([e["Location"]])
-                    : fields(["No Location Listed"])
-                }
-                                </div>
-                                <hr style='width:90%; margin: auto;'>
-                                <div style='display:flex; align-items:center; flex-wrap:wrap;'>
-                                    <div style='width: 50px; margin: 10px 20px'>${e["Type"][0] === "Full-Time" ||
-                    e["Type"].length > 1
-                    ? icons["fullTime"]
-                    : e["Type"][0] === "Part-Time"
-                        ? icons["partTime"]
-                        : icons["contract"]
-                }</div>
-                                    ${e["Type"] ? fields(e["Type"]) : fields(["No Type Listed"])
-                }
-                                </div>
-                                <hr style='width:90%; margin: auto;'>
-                            </div>
-                            <div style='display:flex; align-items:center; flex-wrap:wrap;'>
-                                <div style='width: 50px; margin: 10px 20px'>
-                                    ${icons["team"]}
-                                </div>
-                                ${e["Department/Team"]
-                    ? fields([e["Department/Team"]])
-                    : fields(["No Team Listed"])
-                }
                             </div>
                             <hr style='width:90%; margin: auto;'>
-                            <div style='display:flex; align-items:center; flex-wrap:wrap;'>
-                                <div style='width: 45px; margin: 10px 23px'>
+                            <div class='job-mobile-div'>
+                                <div style='display:flex; align-items:center; flex-wrap:wrap; margin: 10px 0;'>
+                                    <div style='width: 50px; margin: 0px 20px'>
+                                        ${icons["company"]}
+                                    </div>
+                                    <p style='font-weight: bold; margin: 0;'>Company/Org</p>
+                                </div>
+                                <div style='margin-left: 80px; margin-bottom: 15px; display: flex; flex-wrap: wrap;'>
+                                    ${e["Company/Org"]
+                        ? fields([e["Company/Org"]])
+                        : fields(["No Company Listed"])
+                    }
+                                </div>
+                                <hr style='width:90%; margin: auto;'>
+                                <div style='display:flex; align-items:center; flex-wrap:wrap; margin: 10px 0;'>
+                                    <div style='width: 50px; margin: 0px 20px'>
+                                        ${icons["location"]}
+                                    </div>
+                                    <p style='font-weight: bold; margin: 0;'>Location</p>
+                                </div>
+                                <div style='margin-left: 80px; margin-bottom: 15px; display: flex; flex-wrap: wrap;'>
+                                    ${e["Location"] ? fields([e["Location"]]) : fields(["No Location Listed"])}
+                                </div>
+                                <hr style='width:90%; margin: auto;'>
+                                <div style='display:flex; align-items:center; flex-wrap:wrap; margin: 10px 0;'>
+                                    <div style='width: 50px; margin: 0px 20px'>
+                                        ${e["Type"][0] === "Full-Time" || e["Type"].length > 1
+                        ? icons["fullTime"]
+                        : e["Type"][0] === "Part-Time"
+                            ? icons["partTime"]
+                            : icons["contract"]
+                    }
+                                    </div>
+                                    <p style='font-weight: bold; margin: 0;'>Type</p>
+                                </div>
+                                <div style='margin-left: 80px; margin-bottom: 15px; display: flex; flex-wrap: wrap;'>
+                                    ${e["Type"] ? fields(e["Type"]) : fields(["No Type Listed"])}
+                                </div>
+                                <hr style='width:90%; margin: auto;'>
+                            </div>
+                            <div style='display:flex; align-items:center; flex-wrap:wrap; margin: 10px 0;'>
+                                <div style='width: 50px; margin: 0px 20px'>
+                                    ${icons["team"]}
+                                </div>
+                                <p style='font-weight: bold; margin: 0;'>Department/Team</p>
+                            </div>
+                            <div style='margin-left: 80px; margin-bottom: 15px; display: flex; flex-wrap: wrap;'>
+                                ${e["Department/Team"]
+                        ? fields([e["Department/Team"]])
+                        : fields(["No Team Listed"])
+                    }
+                            </div>
+                            <hr style='width:90%; margin: auto;'>
+                            <div style='display:flex; align-items:center; flex-wrap:wrap; margin: 10px 0;'>
+                                <div style='width: 40px; margin: 0px 25px'>
                                     ${icons["salary"]}
                                 </div>
-                                ${e["Salary"]
-                    ? fields([e["Salary"]])
-                    : fields(["No Salary Listed"])
-                }
+                                <p style='font-weight: bold; margin: 0;'>Salary</p>
+                            </div>
+                            <div style='margin-left: 80px; margin-bottom: 15px; display: flex; flex-wrap: wrap;'>
+                                ${e["Salary"] ? fields([e["Salary"]]) : fields(["No Salary Listed"])}
                             </div>
                             <hr style='width:90%; margin: auto;'>
 
 
                             ${e["VISA sponsorship"]
-                    ? `<div style='display:flex; align-items:center; flex-wrap:wrap;'>
-                                <div style='width: 50px; margin: 10px 20px'>${e["VISA sponsorship"][0] === "Yes"
-                        ? icons["visaCheck"]
-                        : e["VISA sponsorship"][0] === "No"
-                            ? icons["visaEx"]
-                            : icons["visaQuestion"]
-                    }</div>
+                        ? `<div style='display:flex; align-items:center; flex-wrap:wrap; margin: 10px 0;'>
+                                <div style='width: 50px; margin: 0px 20px'>
+                                    ${e["VISA sponsorship"][0] === "Yes"
+                            ? icons["visaCheck"]
+                            : e["VISA sponsorship"][0] === "No"
+                                ? icons["visaEx"]
+                                : icons["visaQuestion"]
+                        }
+                                </div>
+                                <p style='font-weight: bold; margin: 0;'>VISA sponsorship</p>
+                            </div>
+                            <div style='margin-left: 80px; margin-bottom: 15px; display: flex; flex-wrap: wrap;'>
                                 ${e["VISA sponsorship"]
-                        ? fields(e["VISA sponsorship"])
-                        : fields(["N/A"])
-                    }
+                            ? fields(e["VISA sponsorship"])
+                            : fields(["N/A"])
+                        }
                             </div>
                             <hr style='width:90%; margin: auto;'>`
-                    : ""
-                }
-                            <div style='display:flex; align-items:center; flex-wrap:wrap;'>
-                                <div style='width: 50px; margin: 10px 20px'>
+                        : ""
+                    }
+                            <div style='display:flex; align-items:center; flex-wrap:wrap; margin: 10px 0;'>
+                                <div style='width: 50px; margin: 0px 20px'>
                                     ${icons["experience"]}
                                 </div>
+                                <p style='font-weight: bold; margin: 0;'>Experience Level</p>
+                            </div>
+                            <div style='margin-left: 80px; margin-bottom: 15px; display: flex; flex-wrap: wrap;'>
                                 ${e["Experience Level"] && e["Experience Level"].length
-                    ? fields(e["Experience Level"])
-                    : e["Experience Level"]
-                        ? fields([e["Experience Level"]])
-                        : fields(["No Experience Listed"])
-                }
+                        ? fields(e["Experience Level"])
+                        : e["Experience Level"]
+                            ? fields([e["Experience Level"]])
+                            : fields(["No Experience Listed"])
+                    }
                             </div>
                             <hr style='width:90%; margin: auto;'>
-                            <div style='display:flex; align-items:center; flex-wrap:wrap;'>
-                                <div style='width: 50px; margin: 10px 20px'>
+                            <div style='display:flex; align-items:center; flex-wrap:wrap; margin: 10px 0;'>
+                                <div style='width: 50px; margin: 0px 20px'>
                                     ${e["Region"][0] !== "Remote" || e["Region"].length > 1
-                    ? icons["world"]
-                    : icons["remote"]
-                }
+                        ? icons["world"]
+                        : icons["remote"]
+                    }
                                 </div>
+                                <p style='font-weight: bold; margin: 0;'>Region</p>
+                            </div>
+                            <div style='margin-left: 80px; margin-bottom: 15px; display: flex; flex-wrap: wrap;'>
                                 ${e["Region"] ? fields(e["Region"]) : fields(["N/A"])}
-
                             </div>
                             <hr style='width:90%; margin: auto;'>
-                            <div style='display:flex; align-items:center; flex-wrap:wrap;'>
-                                <div style='width: 50px; margin: 10px 20px'>
+                            <div style='display:flex; align-items:center; flex-wrap:wrap; margin: 10px 0;'>
+                                <div style='width: 50px; margin: 0px 20px'>
                                     ${icons["clock2"]}
                                 </div>
+                                <p style='font-weight: bold; margin: 0;'>Closing Date</p>
+                            </div>
+                            <div style='margin-left: 80px; margin-bottom: 15px; display: flex; flex-wrap: wrap;'>
                                 ${e["Closing Date"]
-                    ? fields([e["Closing Date"]])
-                    : fields(["No Closing Date Listed"])
-                }
-
+                        ? fields([e["Closing Date"]])
+                        : fields(["No Closing Date Listed"])
+                    }
                             </div>
                             </div>
                             </div>`;
-            modalFooter.innerHTML = `
+                modalFooter.innerHTML = `
                             <div class='apply-div'>
                                 ${buttons(e["Link to Apply"]) || ""}
                             </div>`;
-            modal.style.display = "flex";
-            const modalDiv = document.querySelector(".svg-background");
-            const svgString = generateRandomWaveSVG(1600, 800);
-            modalDiv.style.backgroundImage = `url('${svgString}')`;
-            modalDiv.style.backgroundPosition = `center -300px`;
-            const pagebuttons = document.querySelectorAll(".pagin");
-            if (pagebuttons) {
-                pagebuttons.style.display = "none";
+                modal.style.display = "flex";
+                const modalDiv = document.querySelector(".svg-background");
+                const svgString = generateRandomWaveSVG(1600, modalDiv.clientHeight);
+                const y = modalDiv.clientHeight;
+                const x = modalHeader.clientHeight;
+                modalDiv.style.backgroundImage = `url('${svgString}')`;
+                // modalDiv.style.backgroundPosition = `center -${y / 2 - x - 20}px`;
+                const pagebuttons = document.querySelectorAll(".pagin");
+                // trackJobClick(e["Job Title"], e["Experience Level"], e["Field"]);
+                if (pagebuttons) {
+                    pagebuttons.style.display = "none";
+                }
             }
-        }
-        const modalView = document.querySelector(".modal-div");
+            const modalView = document.querySelector(".modal-div");
 
-        document.addEventListener("click", function (event) {
-            if (
-                (!modalView.contains(event.target) &&
-                    event.target.classList.contains("modal")) ||
-                event.target.classList.contains("close")
-            ) {
-                document.getElementById("myModal").style.display = "none";
-                document.getElementById("targetElement").style.position = "";
-                document.body.classList.remove("modal-open");
+            document.addEventListener("click", function (event) {
+                if (
+                    (!modalView.contains(event.target) &&
+                        event.target.classList.contains("modal")) ||
+                    event.target.classList.contains("close")
+                ) {
+                    document.getElementById("myModal").style.display = "none";
+                    document.getElementById("targetElement").style.position = "";
+                    document.body.classList.remove("modal-open");
+                }
+            });
+
+            function increase() {
+                offset++;
+                document
+                    .getElementById("toDelete")
+                    .classList.add("opposite-loading-effect");
+                decreaseBtn.classList.add("opposite-loading-effect");
+                decreaseBtn2.classList.add("opposite-loading-effect");
+                increaseBtn.classList.add("opposite-loading-effect");
+                increaseBtn2.classList.add("opposite-loading-effect");
+                const dots = document.querySelectorAll(".random-div");
+                dots.forEach((div) => {
+                    div.classList.add("opposite-loading-effect");
+                });
+                setTimeout(() => {
+                    document.getElementById("toDelete").remove();
+                    decreaseBtn.classList.remove("opposite-loading-effect");
+                    decreaseBtn2.classList.remove("opposite-loading-effect");
+                    increaseBtn.classList.remove("opposite-loading-effect");
+                    increaseBtn2.classList.remove("opposite-loading-effect");
+                    decreaseBtn.classList.remove("show");
+                    decreaseBtn2.classList.remove("show");
+                    increaseBtn.classList.remove("show");
+                    increaseBtn2.classList.remove("show");
+                    clearTimeout(timeoutId);
+                    dotSpinner.classList.remove("hidden");
+                    dotSpinner.classList.add("loading-effect-craddle");
+                    timeoutId = setTimeout(() => {
+                        fetchAllData();
+                        dotSpinner.classList.remove("loading-effect-craddle");
+                        dotSpinner.classList.add("hidden");
+                    }, 1000);
+                    if (
+                        document.body.scrollTop > 1500 ||
+                        document.documentElement.scrollTop > 1500
+                    ) {
+                        const title = document.querySelector(".title");
+                        const targetDivY = title.getBoundingClientRect().top + window.scrollY;
+                        window.scrollTo({
+                            top: targetDivY,
+                            behavior: "smooth",
+                        });
+                    }
+                    dots.forEach((div) => {
+                        div.remove();
+                    });
+                }, 1000);
             }
+
+            function decrease() {
+                if (offset > 0) offset--;
+                document
+                    .getElementById("toDelete")
+                    .classList.add("opposite-loading-effect");
+                decreaseBtn.classList.add("opposite-loading-effect");
+                decreaseBtn2.classList.add("opposite-loading-effect");
+                increaseBtn.classList.add("opposite-loading-effect");
+                increaseBtn2.classList.add("opposite-loading-effect");
+                const dots = document.querySelectorAll(".random-div");
+                dots.forEach((div) => {
+                    div.classList.add("opposite-loading-effect");
+                });
+                setTimeout(() => {
+                    document.getElementById("toDelete").remove();
+                    decreaseBtn.classList.remove("opposite-loading-effect");
+                    decreaseBtn2.classList.remove("opposite-loading-effect");
+                    increaseBtn.classList.remove("opposite-loading-effect");
+                    increaseBtn2.classList.remove("opposite-loading-effect");
+                    decreaseBtn.classList.remove("show");
+                    decreaseBtn2.classList.remove("show");
+                    increaseBtn.classList.remove("show");
+                    increaseBtn2.classList.remove("show");
+                    clearTimeout(timeoutId);
+                    dotSpinner.classList.remove("hidden");
+                    dotSpinner.classList.add("loading-effect-craddle");
+                    timeoutId = setTimeout(() => {
+                        fetchAllData();
+                        dotSpinner.classList.remove("loading-effect-craddle");
+                        dotSpinner.classList.add("hidden");
+                    }, 1000);
+                    if (
+                        document.body.scrollTop > 1500 ||
+                        document.documentElement.scrollTop > 1500
+                    ) {
+                        const title = document.querySelector(".title");
+                        const targetDivY = title.getBoundingClientRect().top + window.scrollY;
+                        window.scrollTo({
+                            top: targetDivY,
+                            behavior: "smooth",
+                        });
+                    }
+                    dots.forEach((div) => {
+                        div.remove();
+                    });
+                }, 1000);
+            }
+
+            increaseBtn.addEventListener("click", increase);
+            increaseBtn2.addEventListener("click", increase);
+            decreaseBtn.addEventListener("click", decrease);
+            decreaseBtn2.addEventListener("click", decrease);
         });
-
-        function increase() {
-            offset++;
-            document
-                .getElementById("toDelete")
-                .classList.add("opposite-loading-effect");
-            decreaseBtn.classList.add("opposite-loading-effect");
-            decreaseBtn2.classList.add("opposite-loading-effect");
-            increaseBtn.classList.add("opposite-loading-effect");
-            increaseBtn2.classList.add("opposite-loading-effect");
-            const dots = document.querySelectorAll(".random-div");
-            dots.forEach((div) => {
-                div.classList.add("opposite-loading-effect");
-            });
-            setTimeout(() => {
-                document.getElementById("toDelete").remove();
-                decreaseBtn.classList.remove("opposite-loading-effect");
-                decreaseBtn2.classList.remove("opposite-loading-effect");
-                increaseBtn.classList.remove("opposite-loading-effect");
-                increaseBtn2.classList.remove("opposite-loading-effect");
-                decreaseBtn.classList.remove("show");
-                decreaseBtn2.classList.remove("show");
-                increaseBtn.classList.remove("show");
-                increaseBtn2.classList.remove("show");
-                clearTimeout(timeoutId);
-                dotSpinner.classList.remove("hidden");
-                dotSpinner.classList.add("loading-effect-craddle");
-                timeoutId = setTimeout(() => {
-                    fetchAllData();
-                    dotSpinner.classList.remove("loading-effect-craddle");
-                    dotSpinner.classList.add("hidden");
-                }, 1000);
-                if (
-                    document.body.scrollTop > 1500 ||
-                    document.documentElement.scrollTop > 1500
-                ) {
-                    const title = document.querySelector(".title");
-                    const targetDivY = title.getBoundingClientRect().top + window.scrollY;
-                    window.scrollTo({
-                        top: targetDivY,
-                        behavior: "smooth",
-                    });
-                }
-                dots.forEach((div) => {
-                    div.remove();
-                });
-            }, 1000);
-        }
-
-        function decrease() {
-            if (offset > 0) offset--;
-            document
-                .getElementById("toDelete")
-                .classList.add("opposite-loading-effect");
-            decreaseBtn.classList.add("opposite-loading-effect");
-            decreaseBtn2.classList.add("opposite-loading-effect");
-            increaseBtn.classList.add("opposite-loading-effect");
-            increaseBtn2.classList.add("opposite-loading-effect");
-            const dots = document.querySelectorAll(".random-div");
-            dots.forEach((div) => {
-                div.classList.add("opposite-loading-effect");
-            });
-            setTimeout(() => {
-                document.getElementById("toDelete").remove();
-                decreaseBtn.classList.remove("opposite-loading-effect");
-                decreaseBtn2.classList.remove("opposite-loading-effect");
-                increaseBtn.classList.remove("opposite-loading-effect");
-                increaseBtn2.classList.remove("opposite-loading-effect");
-                decreaseBtn.classList.remove("show");
-                decreaseBtn2.classList.remove("show");
-                increaseBtn.classList.remove("show");
-                increaseBtn2.classList.remove("show");
-                clearTimeout(timeoutId);
-                dotSpinner.classList.remove("hidden");
-                dotSpinner.classList.add("loading-effect-craddle");
-                timeoutId = setTimeout(() => {
-                    fetchAllData();
-                    dotSpinner.classList.remove("loading-effect-craddle");
-                    dotSpinner.classList.add("hidden");
-                }, 1000);
-                if (
-                    document.body.scrollTop > 1500 ||
-                    document.documentElement.scrollTop > 1500
-                ) {
-                    const title = document.querySelector(".title");
-                    const targetDivY = title.getBoundingClientRect().top + window.scrollY;
-                    window.scrollTo({
-                        top: targetDivY,
-                        behavior: "smooth",
-                    });
-                }
-                dots.forEach((div) => {
-                    div.remove();
-                });
-            }, 1000);
-        }
-
-        increaseBtn.addEventListener("click", increase);
-        increaseBtn2.addEventListener("click", increase);
-        decreaseBtn.addEventListener("click", decrease);
-        decreaseBtn2.addEventListener("click", decrease);
-                            });
 
     </script>
 </body>

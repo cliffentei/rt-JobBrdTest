@@ -1241,9 +1241,7 @@ ${e["Type"] ? fields(e["Type"]) : fields(["No Type Listed"])}
     modalDiv.style.backgroundImage = `url('${svgString}')`;
     modalDiv.style.backgroundPosition = `center -${y / 2 - x - 20}px`;
     const pagebuttons = document.querySelectorAll(".pagin");
-    // console.log(e["Job Title"], e["Field"], e["Experience Level"]);
-    console.log(e["Job Title"], e["Field"], e["Experience Level"]);
-    trackJobClick(e["Job Title"], e["Experience Level"], e["Field"]);
+    // trackJobClick(e["Job Title"], e["Experience Level"], e["Field"]);
     if (pagebuttons) {
       pagebuttons.style.display = "none";
     }

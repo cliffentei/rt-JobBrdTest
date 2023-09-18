@@ -24,11 +24,11 @@ document.addEventListener("DOMContentLoaded", function () {
     partTime: `<svg xmlns="http://www.w3.org/2000/svg" id="master-artboard" viewBox="0 0 1036.4305419921875 881.3770751953125" version="1.1" x="0px" y="0px" style="enable-background:new 0 0 1400 980;" width="60px" height="60px"><rect id="ee-background" x="0" y="0" width="1036.4305419921875" height="881.3770751953125" style="fill: white; fill-opacity: 0; pointer-events: none;"/><g transform="matrix(29.30873680114746, 0, 0, 29.30873680114746, -26.579784393310547, 204.98368227481842)"><path d="M2 9C2 7.89543 2.89543 7 4 7H20C21.1046 7 22 7.89543 22 9V20C22 21.1046 21.1046 22 20 22H4C2.89543 22 2 21.1046 2 20V9Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="fill-opacity: 0;"/><path d="M16 7V4C16 2.89543 15.1046 2 14 2H10C8.89543 2 8 2.89543 8 4V7" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="fill-opacity: 0;"/><path d="M22 12L12.3922 13.9216C12.1333 13.9733 11.8667 13.9733 11.6078 13.9216L2 12" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="fill-opacity: 0;"/></g><g transform="matrix(39.943782806396484, 0, 0, 39.943782806396484, 56.60022735595703, -77.27371060848236)"><path d="M5.06152 12C5.55362 8.05369 8.92001 5 12.9996 5C17.4179 5 20.9996 8.58172 20.9996 13C20.9996 17.4183 17.4179 21 12.9996 21H8M13 13V9M11 3H15M3 15H8M5 18H10" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="fill-opacity: 0;" transform="matrix(0.633127272129059, 0, 0, 0.633127272129059, 10.52169868408356, 0.7484283155075069)"/></g></svg>`,
     partTime2: `<div class='part'><svg xmlns="http://www.w3.org/2000/svg" id="master-artboard" viewBox="0 0 1036.4305419921875 881.3770751953125" version="1.1" x="0px" y="0px" style="enable-background:new 0 0 1400 980;" width="60px" height="60px"><rect id="ee-background" x="0" y="0" width="1036.4305419921875" height="881.3770751953125" style="fill: white; fill-opacity: 0; pointer-events: none;"/><g transform="matrix(29.30873680114746, 0, 0, 29.30873680114746, -26.579784393310547, 204.98368227481842)"><path d="M2 9C2 7.89543 2.89543 7 4 7H20C21.1046 7 22 7.89543 22 9V20C22 21.1046 21.1046 22 20 22H4C2.89543 22 2 21.1046 2 20V9Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="fill-opacity: 0;"/><path d="M16 7V4C16 2.89543 15.1046 2 14 2H10C8.89543 2 8 2.89543 8 4V7" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="fill-opacity: 0;"/><path d="M22 12L12.3922 13.9216C12.1333 13.9733 11.8667 13.9733 11.6078 13.9216L2 12" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="fill-opacity: 0;"/></g><g transform="matrix(39.943782806396484, 0, 0, 39.943782806396484, 56.60022735595703, -77.27371060848236)"><path d="M5.06152 12C5.55362 8.05369 8.92001 5 12.9996 5C17.4179 5 20.9996 8.58172 20.9996 13C20.9996 17.4183 17.4179 21 12.9996 21H8M13 13V9M11 3H15M3 15H8M5 18H10" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="fill-opacity: 0;" transform="matrix(0.633127272129059, 0, 0, 0.633127272129059, 10.52169868408356, 0.7484283155075069)"/></g></svg></div>`,
     experience: `<svg xmlns="http://www.w3.org/2000/svg" id="master-artboard" version="1.1" x="0px" y="0px" style="enable-background:new 0 0 1400 980;" viewBox="337.1 71.46 721.87 857.31">     <g transform="matrix(11.224331855773924, 0, 0, 11.224331855773924, 337.5957123912501, 209.9147728197479)">         <path fill="#231F20" d="M32,0C14.327,0,0,14.327,0,32s14.327,32,32,32s32-14.327,32-32S49.673,0,32,0z M49.972,31 c-0.138-5.582-1.414-10.878-3.613-15.667c2.652-1.022,5.169-2.317,7.515-3.854c4.824,5.14,7.854,11.976,8.102,19.521H49.972z M33.333,61.966c-0.11,0.005-0.222,0.005-0.333,0.009V50.035c3.324,0.087,6.547,0.581,9.605,1.47 C40.184,55.541,37.029,59.084,33.333,61.966z M44.549,52.141c2.283,0.801,4.462,1.817,6.523,3.018 c-3.991,3.29-8.849,5.563-14.178,6.438C39.902,58.861,42.484,55.672,44.549,52.141z M21.394,51.505 c3.059-0.89,6.282-1.383,9.606-1.47v11.939c-0.111-0.004-0.223-0.004-0.333-0.009C26.97,59.084,23.816,55.541,21.394,51.505z M27.105,61.596c-5.329-0.874-10.187-3.147-14.178-6.438c2.062-1.2,4.24-2.217,6.523-3.017 C21.515,55.672,24.098,58.861,27.105,61.596z M2.025,31c0.248-7.545,3.277-14.381,8.102-19.521c2.346,1.536,4.862,2.831,7.515,3.854 C15.442,20.122,14.166,25.418,14.028,31H2.025z M43.57,14.196c-3.345,1.069-6.894,1.67-10.57,1.766V2.025 c0.111,0.004,0.223,0.004,0.333,0.009C37.541,5.314,41.047,9.453,43.57,14.196z M36.895,2.404 c5.944,0.976,11.298,3.696,15.521,7.622c-2.176,1.391-4.496,2.57-6.944,3.499C43.278,9.326,40.369,5.562,36.895,2.404z M31,2.025 v13.937c-3.677-0.096-7.226-0.696-10.57-1.766c2.523-4.743,6.029-8.882,10.237-12.162C30.777,2.029,30.889,2.029,31,2.025z M18.529,13.525c-2.448-0.929-4.769-2.108-6.944-3.499c4.223-3.926,9.576-6.646,15.521-7.622 C23.631,5.562,20.722,9.326,18.529,13.525z M19.532,16.009c3.622,1.189,7.472,1.873,11.468,1.972V31H16.031 C16.17,25.654,17.403,20.584,19.532,16.009z M31,33v15.036c-3.684,0.092-7.245,0.665-10.615,1.689 C17.732,44.712,16.188,39.029,16.031,33H31z M33,48.036V33h14.969c-0.156,6.029-1.701,11.712-4.354,16.726 C40.245,48.701,36.684,48.128,33,48.036z M33,31V17.98c3.996-0.099,7.846-0.782,11.468-1.972c2.129,4.575,3.362,9.646,3.501,14.991 H33z M2.025,33h12.003c0.154,6.253,1.74,12.146,4.447,17.369c-2.496,0.899-4.871,2.044-7.109,3.396 C5.827,48.513,2.294,41.172,2.025,33z M52.634,53.766c-2.238-1.353-4.613-2.497-7.109-3.396c2.707-5.224,4.293-11.116,4.447-17.369 h12.003C61.706,41.172,58.173,48.513,52.634,53.766z" style="stroke: rgb(0, 0, 0); stroke-width: 1;"></path>     </g>     <g transform="matrix(3.606806516647339, 0, 0, 3.606806516647339, -3456.764761241562, -2924.2148353345488)">         <g>             <path d="M1151.998,921.75c-4.129,0-8.17-0.771-12.01-2.292l-50.167-19.888c0,11.08,0,27.65,0,32.066 c0,15.562,27.836,28.174,62.178,28.174s62.181-12.612,62.181-28.174v-32.067l-50.172,19.889 C1160.168,920.979,1156.127,921.75,1151.998,921.75z"></path>             <path d="M1248.592,867.082l-87.989-34.878c-5.526-2.19-11.681-2.19-17.208,0l-87.988,34.878c-2.057,0.815-3.407,2.804-3.407,5.016 c0,2.213,1.351,4.201,3.407,5.017l12.317,4.882v34.925c-2.736,1.865-4.533,5.007-4.533,8.568c0,3.262,1.508,6.171,3.863,8.071 l-3.751,18.007c-0.503,2.416,0.108,4.931,1.666,6.845c1.557,1.915,3.894,3.026,6.361,3.026h4.449c2.468,0,4.804-1.111,6.361-3.026 c1.557-1.914,2.168-4.429,1.666-6.845l-3.752-18.007c2.356-1.9,3.864-4.81,3.864-8.071c0-3.562-1.797-6.703-4.533-8.568v-30.303 l63.729,25.264c5.708,2.263,12.063,2.263,17.771,0l87.709-34.768c2.057-0.815,3.407-2.804,3.407-5.017 C1252,869.886,1250.649,867.897,1248.592,867.082z"></path>         </g>     </g> </svg>`,
-    created: `<svg xmlns="http://www.w3.org/2000/svg" fill="#000000" id="date-alt-add" data-name="Flat Line" class="icon flat-line" viewBox="2 2 20 20">  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>  <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>  <g id="SVGRepo_iconCarrier">      <circle id="secondary" cx="12" cy="15" r="6" style="fill: #ffffff; stroke-width: 2;"></circle>      <path id="primary" d="M7.54,19H4a1,1,0,0,1-1-1V5A1,1,0,0,1,4,4H20a1,1,0,0,1,1,1V18a1,1,0,0,1-1,1H16.46" style="fill: none; stroke: #000000; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></path>      <path id="primary-2" data-name="primary" d="M12,9a6,6,0,1,0,6,6A6,6,0,0,0,12,9ZM3,9H21M16,3V6M8,3V6m4,11V13m-2,2h4" style="fill: none; stroke: #000000; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></path>  </g>  </svg>`,
+    created: `<svg xmlns="http://www.w3.org/2000/svg" fill="#000000" id="date-alt-add" data-name="Flat Line" class="icon flat-line" viewBox="2 2 20 20">  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>  <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>  <g id="SVGRepo_iconCarrier"> <circle id="secondary" cx="12" cy="15" r="6" style="fill: none; stroke-width: 2;"></circle>      <path id="primary" d="M7.54,19H4a1,1,0,0,1-1-1V5A1,1,0,0,1,4,4H20a1,1,0,0,1,1,1V18a1,1,0,0,1-1,1H16.46" style="fill: none; stroke: #000000; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></path>      <path id="primary-2" data-name="primary" d="M12,9a6,6,0,1,0,6,6A6,6,0,0,0,12,9ZM3,9H21M16,3V6M8,3V6m4,11V13m-2,2h4" style="fill: none; stroke: #000000; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></path>  </g>  </svg>`,
     team: `<svg xmlns="http://www.w3.org/2000/svg" style="fill:#000000" viewBox="0 0 640 512"><path d="M96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM0 482.3C0 383.8 79.8 304 178.3 304h91.4C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7H29.7C13.3 512 0 498.7 0 482.3zM609.3 512H471.4c5.4-9.4 8.6-20.3 8.6-32v-8c0-60.7-27.1-115.2-69.8-151.8c2.4-.1 4.7-.2 7.1-.2h61.4C567.8 320 640 392.2 640 481.3c0 17-13.8 30.7-30.7 30.7zM432 256c-31 0-59-12.6-79.3-32.9C372.4 196.5 384 163.6 384 128c0-26.8-6.6-52.1-18.3-74.3C384.3 40.1 407.2 32 432 32c61.9 0 112 50.1 112 112s-50.1 112-112 112z"></path></svg>`,
     salary: `<svg xmlns="http://www.w3.org/2000/svg" style="fill:#000000" viewBox="14.44 0 289.53 512"><path d="M160 0c17.7 0 32 14.3 32 32V67.7c1.6 .2 3.1 .4 4.7 .7c.4 .1 .7 .1 1.1 .2l48 8.8c17.4 3.2 28.9 19.9 25.7 37.2s-19.9 28.9-37.2 25.7l-47.5-8.7c-31.3-4.6-58.9-1.5-78.3 6.2s-27.2 18.3-29 28.1c-2 10.7-.5 16.7 1.2 20.4c1.8 3.9 5.5 8.3 12.8 13.2c16.3 10.7 41.3 17.7 73.7 26.3l2.9 .8c28.6 7.6 63.6 16.8 89.6 33.8c14.2 9.3 27.6 21.9 35.9 39.5c8.5 17.9 10.3 37.9 6.4 59.2c-6.9 38-33.1 63.4-65.6 76.7c-13.7 5.6-28.6 9.2-44.4 11V480c0 17.7-14.3 32-32 32s-32-14.3-32-32V445.1c-.4-.1-.9-.1-1.3-.2l-.2 0 0 0c-24.4-3.8-64.5-14.3-91.5-26.3c-16.1-7.2-23.4-26.1-16.2-42.2s26.1-23.4 42.2-16.2c20.9 9.3 55.3 18.5 75.2 21.6c31.9 4.7 58.2 2 76-5.3c16.9-6.9 24.6-16.9 26.8-28.9c1.9-10.6 .4-16.7-1.3-20.4c-1.9-4-5.6-8.4-13-13.3c-16.4-10.7-41.5-17.7-74-26.3l-2.8-.7 0 0C119.4 279.3 84.4 270 58.4 253c-14.2-9.3-27.5-22-35.8-39.6c-8.4-17.9-10.1-37.9-6.1-59.2C23.7 116 52.3 91.2 84.8 78.3c13.3-5.3 27.9-8.9 43.2-11V32c0-17.7 14.3-32 32-32z"></path></svg>`,
-    clock: `<svg xmlns="http://www.w3.org/2000/svg" fill="#000000" id="date-alt-add" data-name="Flat Line" class="icon flat-line" viewBox="2 2 20 20">      <g id="SVGRepo_bgCarrier" stroke-width="0"></g>      <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>      <g id="SVGRepo_iconCarrier">          <circle id="secondary" cx="12" cy="15" r="6" style="fill: #ffffff; stroke-width: 2;"></circle>          <path id="primary" d="M7.54,19H4a1,1,0,0,1-1-1V5A1,1,0,0,1,4,4H20a1,1,0,0,1,1,1V18a1,1,0,0,1-1,1H16.46" style="fill: none; stroke: #000000; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></path>          <path id="primary-2" data-name="primary" d="M12,9a6,6,0,1,0,6,6A6,6,0,0,0,12,9ZM3,9H21M16,3V6M8,3V6m4,11V13m-2,2h4" style="fill: none; stroke: #000000; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></path>      </g>  </svg>`,
-    clock2: `<svg fill="#000000" id="date-alt-remove-alt" data-name="Flat Line" xmlns="http://www.w3.org/2000/svg" class="icon flat-line" viewBox="2 2 20 20"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><circle id="secondary" cx="12" cy="15" r="6" style="fill: #ffffff; stroke-width: 2;"></circle><path id="primary" d="M7.54,19H4a1,1,0,0,1-1-1V5A1,1,0,0,1,4,4H20a1,1,0,0,1,1,1V18a1,1,0,0,1-1,1H16.46" style="fill: none; stroke: #000000; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></path><path id="primary-2" data-name="primary" d="M16,3V6M8,3V6m8.24,4.76L8,19M12,9a6,6,0,1,0,6,6A6,6,0,0,0,12,9ZM3,9H21" style="fill: none; stroke: #000000; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></path></g></svg>`,
+    clock: `<svg xmlns="http://www.w3.org/2000/svg" fill="#000000" id="date-alt-add" data-name="Flat Line" class="icon flat-line" viewBox="2 2 20 20">      <g id="SVGRepo_bgCarrier" stroke-width="0"></g>      <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>      <g id="SVGRepo_iconCarrier">          <circle id="secondary" cx="12" cy="15" r="6" style="fill: none; stroke-width: 2;"></circle>          <path id="primary" d="M7.54,19H4a1,1,0,0,1-1-1V5A1,1,0,0,1,4,4H20a1,1,0,0,1,1,1V18a1,1,0,0,1-1,1H16.46" style="fill: none; stroke: #000000; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></path>          <path id="primary-2" data-name="primary" d="M12,9a6,6,0,1,0,6,6A6,6,0,0,0,12,9ZM3,9H21M16,3V6M8,3V6m4,11V13m-2,2h4" style="fill: none; stroke: #000000; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></path>      </g>  </svg>`,
+    clock2: `<svg fill="#000000" id="date-alt-remove-alt" data-name="Flat Line" xmlns="http://www.w3.org/2000/svg" class="icon flat-line" viewBox="2 2 20 20"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><circle id="secondary" cx="12" cy="15" r="6" style="fill: none; stroke-width: 2;"></circle><path id="primary" d="M7.54,19H4a1,1,0,0,1-1-1V5A1,1,0,0,1,4,4H20a1,1,0,0,1,1,1V18a1,1,0,0,1-1,1H16.46" style="fill: none; stroke: #000000; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></path><path id="primary-2" data-name="primary" d="M16,3V6M8,3V6m8.24,4.76L8,19M12,9a6,6,0,1,0,6,6A6,6,0,0,0,12,9ZM3,9H21" style="fill: none; stroke: #000000; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></path></g></svg>`,
   };
 
   window.addEventListener("scroll", () => {
@@ -456,6 +456,15 @@ document.addEventListener("DOMContentLoaded", function () {
     let b = "";
     for (l of input) {
       b += `<div class="field-div" > <p>${l}</p></div>`;
+    }
+    return b;
+  }
+
+  function fieldsModal(input) {
+    if (!input) return "";
+    let b = "";
+    for (l of input) {
+      b += `<div class="field-div on-scroll" > <p>${l}</p></div>`;
     }
     return b;
   }
@@ -1068,57 +1077,61 @@ document.addEventListener("DOMContentLoaded", function () {
     modalContent.innerHTML = `
     <div class="job-field-div" style="padding-bottom: 10px;">
         <div class="tag-field">
-            ${fields(e["Field"]) || ""}
+            ${fieldsModal(e["Field"]) || ""}
         </div>
     </div>
       <div class="job-spec-div">
           <div class="job-spec">
-              <p class="job-spec-title">Company/Org:</p>
-              <p class='job-type'>${e["Company/Org"]}</p>
+              <p class="job-spec-title on-scroll">Company/Org:</p>
+              <p class='job-type on-scroll'>${e["Company/Org"]}</p>
           </div>
-          <div class='vertical-hr'></div>
+          <div class='vertical-hr on-scroll'></div>
           <div class="job-spec">
-              <p class="job-spec-title">Location:</p>
-              <p class='job-type'>${
+              <p class="job-spec-title on-scroll">Location:</p>
+              <p class='job-type on-scroll'>${
                 e["Location"] ? e["Location"] : "No Location Listed"
               }</p>
           </div>
-          <div class='vertical-hr'></div>
+          <div class='vertical-hr on-scroll'></div>
           <div class="job-spec">
-              <p class="job-spec-title">Type:</p>
-              <p class='job-type'>${
+              <p class="job-spec-title on-scroll">Type:</p>
+              <p class='job-type on-scroll'>${
                 e["Type"] ? e["Type"].join(", ") : "N/A"
               }</p>
           </div>
       </div>
-      <hr style='width:90%; margin: auto;'>
+      <hr class="on-scroll" style='width:90%; margin: auto;'>
       <div class='job-mobile-div'>
-      <div style='display:flex; align-items:center; flex-wrap:wrap; margin: 10px 0;'>
+      <div class="on-scroll" style='display:flex; align-items:center; flex-wrap:wrap; margin: 10px 0;'>
       <div style='width: 50px; margin: 0px 20px'>
         ${icons["company"]}
       </div>
       <p style='font-weight: bold; margin: 0;'>Company/Org</p>
     </div>
-    <div style='margin-left: 80px; margin-bottom: 15px; display: flex; flex-wrap: wrap;'>
+    <div class="on-scroll" style='margin-left: 80px; margin-bottom: 15px; display: flex; flex-wrap: wrap;'>
       ${
         e["Company/Org"]
-          ? fields([e["Company/Org"]])
-          : fields(["No Company Listed"])
+          ? fieldsModal([e["Company/Org"]])
+          : fieldsModal(["No Company Listed"])
       }
     </div>
-  <hr style='width:90%; margin: auto;'>
+  <hr class="on-scroll" style='width:90%; margin: auto;'>
   <div style='display:flex; align-items:center; flex-wrap:wrap; margin: 10px 0;'>
-    <div style='width: 50px; margin: 0px 20px'>
+    <div class="on-scroll" style='width: 50px; margin: 0px 20px'>
       ${icons["location"]}
     </div>
-    <p style='font-weight: bold; margin: 0;'>Location</p>
+    <p class="on-scroll" style='font-weight: bold; margin: 0;'>Location</p>
   </div>
   <div style='margin-left: 80px; margin-bottom: 15px; display: flex; flex-wrap: wrap;'>
-    ${e["Location"] ? fields([e["Location"]]) : fields(["No Location Listed"])}
+    ${
+      e["Location"]
+        ? fieldsModal([e["Location"]])
+        : fieldsModal(["No Location Listed"])
+    }
   </div>
 <hr style='width:90%; margin: auto;'>
 <div style='display:flex; align-items:center; flex-wrap:wrap; margin: 10px 0;'>
-<div style='width: 50px; margin: 0px 20px'>
+<div class="on-scroll" style='width: 50px; margin: 0px 20px'>
   ${
     e["Type"][0] === "Full-Time" || e["Type"].length > 1
       ? icons["fullTime"]
@@ -1127,43 +1140,47 @@ document.addEventListener("DOMContentLoaded", function () {
       : icons["contract"]
   }
 </div>
-<p style='font-weight: bold; margin: 0;'>Type</p>
+<p class="on-scroll" style='font-weight: bold; margin: 0;'>Type</p>
 </div>
 <div style='margin-left: 80px; margin-bottom: 15px; display: flex; flex-wrap: wrap;'>
-${e["Type"] ? fields(e["Type"]) : fields(["No Type Listed"])}
+${e["Type"] ? fieldsModal(e["Type"]) : fieldsModal(["No Type Listed"])}
 </div>
-  <hr style='width:90%; margin: auto;'>
+  <hr class="on-scroll" style='width:90%; margin: auto;'>
       </div>
       <div style='display:flex; align-items:center; flex-wrap:wrap; margin: 10px 0;'>
-      <div style='width: 50px; margin: 0px 20px'>
+      <div class="on-scroll" style='width: 50px; margin: 0px 20px'>
         ${icons["team"]}
       </div>
-      <p style='font-weight: bold; margin: 0;'>Department/Team</p>
+      <p class="on-scroll" style='font-weight: bold; margin: 0;'>Department/Team</p>
     </div>
     <div style='margin-left: 80px; margin-bottom: 15px; display: flex; flex-wrap: wrap;'>
       ${
         e["Department/Team"]
-          ? fields([e["Department/Team"]])
-          : fields(["No Team Listed"])
+          ? fieldsModal([e["Department/Team"]])
+          : fieldsModal(["No Team Listed"])
       }
     </div>
-                  <hr style='width:90%; margin: auto;'>
+                  <hr class="on-scroll" style='width:90%; margin: auto;'>
                   <div style='display:flex; align-items:center; flex-wrap:wrap; margin: 10px 0;'>
-    <div style='width: 40px; margin: 0px 25px'>
+    <div class="on-scroll" style='width: 40px; margin: 0px 25px'>
       ${icons["salary"]}
     </div>
-    <p style='font-weight: bold; margin: 0;'>Salary</p>
+    <p class="on-scroll" style='font-weight: bold; margin: 0;'>Salary</p>
   </div>
   <div style='margin-left: 80px; margin-bottom: 15px; display: flex; flex-wrap: wrap;'>
-    ${e["Salary"] ? fields([e["Salary"]]) : fields(["No Salary Listed"])}
+    ${
+      e["Salary"]
+        ? fieldsModal([e["Salary"]])
+        : fieldsModal(["No Salary Listed"])
+    }
   </div>
-      <hr style='width:90%; margin: auto;'>
+      <hr class="on-scroll" style='width:90%; margin: auto;'>
                         
               
       ${
         e["VISA sponsorship"]
           ? `<div style='display:flex; align-items:center; flex-wrap:wrap; margin: 10px 0;'>
-              <div style='width: 50px; margin: 0px 20px'>
+              <div class="on-scroll" style='width: 50px; margin: 0px 20px'>
                 ${
                   e["VISA sponsorship"][0] === "Yes"
                     ? icons["visaCheck"]
@@ -1172,59 +1189,63 @@ ${e["Type"] ? fields(e["Type"]) : fields(["No Type Listed"])}
                     : icons["visaQuestion"]
                 }
               </div>
-              <p style='font-weight: bold; margin: 0;'>VISA sponsorship</p>
+              <p class="on-scroll" style='font-weight: bold; margin: 0;'>VISA sponsorship</p>
             </div>
             <div style='margin-left: 80px; margin-bottom: 15px; display: flex; flex-wrap: wrap;'>
               ${
                 e["VISA sponsorship"]
-                  ? fields(e["VISA sponsorship"])
-                  : fields(["N/A"])
+                  ? fieldsModal(e["VISA sponsorship"])
+                  : fieldsModal(["N/A"])
               }
             </div>
-            <hr style='width:90%; margin: auto;'>`
+            <hr class="on-scroll" style='width:90%; margin: auto;'>`
           : ""
       }          
                 <div style='display:flex; align-items:center; flex-wrap:wrap; margin: 10px 0;'>
-                <div style='width: 50px; margin: 0px 20px'>
+                <div class="on-scroll" style='width: 50px; margin: 0px 20px'>
                   ${icons["experience"]}
                 </div>
-                <p style='font-weight: bold; margin: 0;'>Experience Level</p>
+                <p class="on-scroll" style='font-weight: bold; margin: 0;'>Experience Level</p>
               </div>
               <div style='margin-left: 80px; margin-bottom: 15px; display: flex; flex-wrap: wrap;'>
                 ${
                   e["Experience Level"] && e["Experience Level"].length
-                    ? fields(e["Experience Level"])
+                    ? fieldsModal(e["Experience Level"])
                     : e["Experience Level"]
-                    ? fields([e["Experience Level"]])
-                    : fields(["No Experience Listed"])
+                    ? fieldsModal([e["Experience Level"]])
+                    : fieldsModal(["No Experience Listed"])
                 }
               </div>
-                  <hr style='width:90%; margin: auto;'>
+                  <hr class="on-scroll" style='width:90%; margin: auto;'>
                   <div style='display:flex; align-items:center; flex-wrap:wrap; margin: 10px 0;'>
-                  <div style='width: 50px; margin: 0px 20px'>
+                  <div class="on-scroll" style='width: 50px; margin: 0px 20px'>
                     ${
                       e["Region"][0] !== "Remote" || e["Region"].length > 1
                         ? icons["world"]
                         : icons["remote"]
                     }
                   </div>
-                  <p style='font-weight: bold; margin: 0;'>Region</p>
+                  <p class="on-scroll" style='font-weight: bold; margin: 0;'>Region</p>
                 </div>
                 <div style='margin-left: 80px; margin-bottom: 15px; display: flex; flex-wrap: wrap;'>
-                  ${e["Region"] ? fields(e["Region"]) : fields(["N/A"])}
+                  ${
+                    e["Region"]
+                      ? fieldsModal(e["Region"])
+                      : fieldsModal(["N/A"])
+                  }
                 </div>
-                  <hr style='width:90%; margin: auto;'>
+                  <hr class="on-scroll" style='width:90%; margin: auto;'>
                   <div style='display:flex; align-items:center; flex-wrap:wrap; margin: 10px 0;'>
-    <div style='width: 50px; margin: 0px 20px'>
+    <div class="on-scroll" style='width: 50px; margin: 0px 20px'>
       ${icons["clock2"]}
     </div>
-    <p style='font-weight: bold; margin: 0;'>Closing Date</p>
+    <p class="on-scroll" style='font-weight: bold; margin: 0;'>Closing Date</p>
   </div>
   <div style='margin-left: 80px; margin-bottom: 15px; display: flex; flex-wrap: wrap;'>
     ${
       e["Closing Date"]
-        ? fields([e["Closing Date"]])
-        : fields(["No Closing Date Listed"])
+        ? fieldsModal([e["Closing Date"]])
+        : fieldsModal(["No Closing Date Listed"])
     }
     </div>
     </div>
@@ -1235,6 +1256,17 @@ ${e["Type"] ? fields(e["Type"]) : fields(["No Type Listed"])}
     </div>`;
     modal.style.display = "flex";
     modalContent.scrollTop = 0;
+    function onScroll() {
+      const children = document.querySelectorAll(".on-scroll");
+      children.forEach((child) => {
+        const scrollPercentage =
+          (child.scrollHeight - (modalContent.scrollTop - child.offsetTop)) /
+          child.scrollHeight;
+        child.style.opacity = Math.min(1, Math.max(0, scrollPercentage));
+      });
+    }
+    modalContent.addEventListener("scroll", onScroll);
+    window.addEventListener("resize", onScroll);
     const modalDiv = document.querySelector(".svg-background");
     const svgString = generateRandomWaveSVG(1600, modalDiv.clientHeight);
     const y = modalDiv.clientHeight;

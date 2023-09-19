@@ -30,10 +30,9 @@ document.addEventListener("DOMContentLoaded", function () {
     clock: `<svg xmlns="http://www.w3.org/2000/svg" fill="#000000" id="date-alt-add" data-name="Flat Line" class="icon flat-line" viewBox="2 2 20 20">      <g id="SVGRepo_bgCarrier" stroke-width="0"></g>      <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>      <g id="SVGRepo_iconCarrier">          <circle id="secondary" cx="12" cy="15" r="6" style="fill: none; stroke-width: 2;"></circle>          <path id="primary" d="M7.54,19H4a1,1,0,0,1-1-1V5A1,1,0,0,1,4,4H20a1,1,0,0,1,1,1V18a1,1,0,0,1-1,1H16.46" style="fill: none; stroke: #000000; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></path>          <path id="primary-2" data-name="primary" d="M12,9a6,6,0,1,0,6,6A6,6,0,0,0,12,9ZM3,9H21M16,3V6M8,3V6m4,11V13m-2,2h4" style="fill: none; stroke: #000000; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></path>      </g>  </svg>`,
     clock2: `<svg fill="#000000" id="date-alt-remove-alt" data-name="Flat Line" xmlns="http://www.w3.org/2000/svg" class="icon flat-line" viewBox="2 2 20 20"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><circle id="secondary" cx="12" cy="15" r="6" style="fill: none; stroke-width: 2;"></circle><path id="primary" d="M7.54,19H4a1,1,0,0,1-1-1V5A1,1,0,0,1,4,4H20a1,1,0,0,1,1,1V18a1,1,0,0,1-1,1H16.46" style="fill: none; stroke: #000000; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></path><path id="primary-2" data-name="primary" d="M16,3V6M8,3V6m8.24,4.76L8,19M12,9a6,6,0,1,0,6,6A6,6,0,0,0,12,9ZM3,9H21" style="fill: none; stroke: #000000; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></path></g></svg>`,
   };
-
   window.addEventListener("scroll", () => {
     if (
-      document.body.scrollTop > 1500 ||
+      // document.body.scrollTop > 1500 ||
       document.documentElement.scrollTop > 1500
     ) {
       scrollToTopBtn.style.display = "flex";
@@ -41,6 +40,32 @@ document.addEventListener("DOMContentLoaded", function () {
       scrollToTopBtn.style.display = "none";
     }
   });
+
+  // let prevScrollPos = targetElement.offsetTop;
+
+  // window.addEventListener("scroll", () => {
+  //   const currentScrollPos = T.scrollTop;
+  //   // if (
+  //   //   scrollToTopBtn.style.display === "none" &&
+  //   //   currentScrollPos > prevScrollPos &&
+  //   //   (document.body.scrollTop > 1500 ||
+  //   //     document.documentElement.scrollTop > 1500)
+  //   // ) {
+  //   //   scrollToTopBtn.style.display = "flex";
+  //   // } else if (
+  //   //   scrollToTopBtn.style.display === "flex" &&
+  //   //   currentScrollPos < prevScrollPos &&
+  //   //   (document.body.scrollTop < 1500 ||
+  //   //     document.documentElement.scrollTop < 1500)
+  //   // ) {
+  //   //   scrollToTopBtn.classList.add("opposite-loading-effect");
+  //   //   setTimeout(() => {
+  //   //     scrollToTopBtn.classList.remove("opposite-loading-effect");
+  //   //     scrollToTopBtn.style.display = "none";
+  //   //   }, 1000);
+  //   // }
+  //   // prevScrollPos = currentScrollPos;
+  // });
 
   scrollToTopBtn.addEventListener("click", () => {
     const title = document.querySelector(".title");
@@ -53,7 +78,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const searchInputs = document.getElementById("search-input");
   const clearIcon = document.querySelector(".clear-icon");
-
+  ////////////////////////////////////////////////////////////////
   function formatSalary(salary) {
     if (typeof salary !== "number") {
       return "No Salary Listed";
@@ -70,6 +95,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     return formattedSalary;
   }
+  ////////////////////////////////////////////////////////////////
 
   searchInputs.addEventListener("keyup", function () {
     const inputValue = this.value.trim();
@@ -80,10 +106,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  clearIcon.addEventListener("click", function () {
-    searchInputs.value = "";
-    clearIcon.style.display = "none";
-    clearTimeout(timeoutId);
+  function disappear() {
     const deleteMe = document.getElementById("toDelete");
     if (deleteMe) deleteMe.classList.add("opposite-loading-effect");
     decreaseBtn.classList.add("opposite-loading-effect");
@@ -94,20 +117,33 @@ document.addEventListener("DOMContentLoaded", function () {
     dots.forEach((div) => {
       div.classList.add("opposite-loading-effect");
     });
+  }
+
+  function removeAnimationClasses() {
+    dotSpinner.classList.remove("hidden");
+    const deleteMe = document.getElementById("toDelete");
+    if (deleteMe) deleteMe.remove();
+    decreaseBtn.classList.remove("show");
+    decreaseBtn2.classList.remove("show");
+    increaseBtn.classList.remove("show");
+    increaseBtn2.classList.remove("show");
+    decreaseBtn.classList.remove("opposite-loading-effect");
+    decreaseBtn2.classList.remove("opposite-loading-effect");
+    increaseBtn.classList.remove("opposite-loading-effect");
+    increaseBtn2.classList.remove("opposite-loading-effect");
+    const dots = document.querySelectorAll(".random-div");
+    dots.forEach((div) => {
+      div.remove();
+    });
+  }
+
+  clearIcon.addEventListener("click", function () {
+    searchInputs.value = "";
+    clearIcon.style.display = "none";
+    clearTimeout(timeoutId);
+    disappear();
     setTimeout(() => {
-      dotSpinner.classList.remove("hidden");
-      if (deleteMe) deleteMe.remove();
-      decreaseBtn.classList.remove("show");
-      decreaseBtn2.classList.remove("show");
-      increaseBtn.classList.remove("show");
-      increaseBtn2.classList.remove("show");
-      decreaseBtn.classList.remove("opposite-loading-effect");
-      decreaseBtn2.classList.remove("opposite-loading-effect");
-      increaseBtn.classList.remove("opposite-loading-effect");
-      increaseBtn2.classList.remove("opposite-loading-effect");
-      dots.forEach((div) => {
-        div.remove();
-      });
+      removeAnimationClasses();
     }, 1000);
     timeoutId = setTimeout(() => {
       setTimeout(() => {
@@ -288,30 +324,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 .querySelector(".remove-filter")
                 .classList.remove("hidden");
             }
-            const deleteMe = document.getElementById("toDelete");
-            if (deleteMe) deleteMe.classList.add("opposite-loading-effect");
-            decreaseBtn.classList.add("opposite-loading-effect");
-            decreaseBtn2.classList.add("opposite-loading-effect");
-            increaseBtn.classList.add("opposite-loading-effect");
-            increaseBtn2.classList.add("opposite-loading-effect");
-            const dots = document.querySelectorAll(".random-div");
-            dots.forEach((div) => {
-              div.classList.add("opposite-loading-effect");
-            });
+            disappear();
             setTimeout(() => {
-              dotSpinner.classList.remove("hidden");
-              if (deleteMe) deleteMe.remove();
-              decreaseBtn.classList.remove("show");
-              decreaseBtn2.classList.remove("show");
-              increaseBtn.classList.remove("show");
-              increaseBtn2.classList.remove("show");
-              decreaseBtn.classList.remove("opposite-loading-effect");
-              decreaseBtn2.classList.remove("opposite-loading-effect");
-              increaseBtn.classList.remove("opposite-loading-effect");
-              increaseBtn2.classList.remove("opposite-loading-effect");
-              dots.forEach((div) => {
-                div.remove();
-              });
+              removeAnimationClasses();
             }, 750);
             timeoutId = setTimeout(() => {
               setTimeout(() => {
@@ -511,33 +526,12 @@ document.addEventListener("DOMContentLoaded", function () {
       option.checked = false;
     });
     clearTimeout(timeoutId);
-    const deleteMe = document.getElementById("toDelete");
     document
       .querySelector(".remove-filter")
       .classList.add("opposite-loading-effect");
-    if (deleteMe) deleteMe.classList.add("opposite-loading-effect");
-    decreaseBtn.classList.add("opposite-loading-effect");
-    decreaseBtn2.classList.add("opposite-loading-effect");
-    increaseBtn.classList.add("opposite-loading-effect");
-    increaseBtn2.classList.add("opposite-loading-effect");
-    const dots = document.querySelectorAll(".random-div");
-    dots.forEach((div) => {
-      div.classList.add("opposite-loading-effect");
-    });
+    disappear();
     setTimeout(() => {
-      dotSpinner.classList.remove("hidden");
-      if (deleteMe) deleteMe.remove();
-      decreaseBtn.classList.remove("show");
-      decreaseBtn2.classList.remove("show");
-      increaseBtn.classList.remove("show");
-      increaseBtn2.classList.remove("show");
-      decreaseBtn.classList.remove("opposite-loading-effect");
-      decreaseBtn2.classList.remove("opposite-loading-effect");
-      increaseBtn.classList.remove("opposite-loading-effect");
-      increaseBtn2.classList.remove("opposite-loading-effect");
-      dots.forEach((div) => {
-        div.remove();
-      });
+      removeAnimationClasses();
     }, 750);
     timeoutId = setTimeout(() => {
       setTimeout(() => {
@@ -667,30 +661,9 @@ document.addEventListener("DOMContentLoaded", function () {
   searchInput.addEventListener("input", function (event) {
     event.preventDefault();
     clearTimeout(timeoutId);
-    const deleteMe = document.getElementById("toDelete");
-    if (deleteMe) deleteMe.classList.add("opposite-loading-effect");
-    decreaseBtn.classList.add("opposite-loading-effect");
-    decreaseBtn2.classList.add("opposite-loading-effect");
-    increaseBtn.classList.add("opposite-loading-effect");
-    increaseBtn2.classList.add("opposite-loading-effect");
-    const dots = document.querySelectorAll(".random-div");
-    dots.forEach((div) => {
-      div.classList.add("opposite-loading-effect");
-    });
+    disappear();
     setTimeout(() => {
-      dotSpinner.classList.remove("hidden");
-      if (deleteMe) deleteMe.remove();
-      decreaseBtn.classList.remove("show");
-      decreaseBtn2.classList.remove("show");
-      increaseBtn.classList.remove("show");
-      increaseBtn2.classList.remove("show");
-      decreaseBtn.classList.remove("opposite-loading-effect");
-      decreaseBtn2.classList.remove("opposite-loading-effect");
-      increaseBtn.classList.remove("opposite-loading-effect");
-      increaseBtn2.classList.remove("opposite-loading-effect");
-      dots.forEach((div) => {
-        div.remove();
-      });
+      removeAnimationClasses();
     }, 750);
     timeoutId = setTimeout(() => {
       setTimeout(() => {
@@ -1081,43 +1054,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // function trackApplyClick(jobTitle, experienceLevels, fields, links) {
-  //   console.log("yo!");
-  //   if (jobTitle !== undefined) {
-  //     gtag("event", "apply_click", {
-  //       apply_job_title: jobTitle,
-  //     });
-  //   }
-
-  //   if (experienceLevels !== undefined && experienceLevels.length) {
-  //     experienceLevels.forEach(function (exp) {
-  //       gtag("event", "apply_click", {
-  //         apply_experience_level: exp,
-  //       });
-  //     });
-  //   }
-
-  //   if (fields !== undefined && fields.length) {
-  //     fields.forEach(function (field) {
-  //       gtag("event", "apply_click", {
-  //         apply_field: field,
-  //       });
-  //     });
-  //   }
-
-  //   if (links !== undefined && links.length) {
-  //     links.forEach(function (l) {
-  //       gtag("event", "apply_click", {
-  //         apply_link: l,
-  //       });
-  //     });
-  //   }
-  // }
-
   function openModal(e) {
     const modal = document.getElementById("myModal");
-    // document.documentElement.classList.add("modal-open");
-    document.body.classList.add("modal-open");
     const modalHeader = modal.querySelector(".modal-header");
     const modalFooter = modal.querySelector(".modal-footer");
     const modalContent = modal.querySelector(".modal-content");
@@ -1305,15 +1243,14 @@ ${e["Type"] ? fieldsModal(e["Type"]) : fieldsModal(["No Type Listed"])}
     </div>
     </div>`;
     modalFooter.innerHTML = `
-    <div class='apply-div'>
     ${buttons(
       e["Link to Apply"],
       e["Job Title"],
       e["Experience Level"],
       e["Field"]
-    )}
-    </div>`;
+    )}`;
     modal.style.display = "flex";
+    document.body.classList.add("modal-open");
     modalContent.scrollTop = 0;
     function onScroll() {
       const children = document.querySelectorAll(".on-scroll");
@@ -1349,37 +1286,15 @@ ${e["Type"] ? fieldsModal(e["Type"]) : fieldsModal(["No Type Listed"])}
       document.getElementById("myModal").style.display = "none";
       document.getElementById("targetElement").style.position = "";
       document.body.classList.remove("modal-open");
-      // document.documentElement.classList.remove("modal-open");
     }
   });
 
   function increase() {
     offset++;
     clearTimeout(timeoutId);
-    const deleteMe = document.getElementById("toDelete");
-    if (deleteMe) deleteMe.classList.add("opposite-loading-effect");
-    decreaseBtn.classList.add("opposite-loading-effect");
-    decreaseBtn2.classList.add("opposite-loading-effect");
-    increaseBtn.classList.add("opposite-loading-effect");
-    increaseBtn2.classList.add("opposite-loading-effect");
-    const dots = document.querySelectorAll(".random-div");
-    dots.forEach((div) => {
-      div.classList.add("opposite-loading-effect");
-    });
+    disappear();
     setTimeout(() => {
-      dotSpinner.classList.remove("hidden");
-      if (deleteMe) deleteMe.remove();
-      decreaseBtn.classList.remove("show");
-      decreaseBtn2.classList.remove("show");
-      increaseBtn.classList.remove("show");
-      increaseBtn2.classList.remove("show");
-      decreaseBtn.classList.remove("opposite-loading-effect");
-      decreaseBtn2.classList.remove("opposite-loading-effect");
-      increaseBtn.classList.remove("opposite-loading-effect");
-      increaseBtn2.classList.remove("opposite-loading-effect");
-      dots.forEach((div) => {
-        div.remove();
-      });
+      removeAnimationClasses();
     }, 1000);
     timeoutId = setTimeout(() => {
       setTimeout(() => {
@@ -1402,30 +1317,9 @@ ${e["Type"] ? fieldsModal(e["Type"]) : fieldsModal(["No Type Listed"])}
   function decrease() {
     if (offset > 0) offset--;
     clearTimeout(timeoutId);
-    const deleteMe = document.getElementById("toDelete");
-    if (deleteMe) deleteMe.classList.add("opposite-loading-effect");
-    decreaseBtn.classList.add("opposite-loading-effect");
-    decreaseBtn2.classList.add("opposite-loading-effect");
-    increaseBtn.classList.add("opposite-loading-effect");
-    increaseBtn2.classList.add("opposite-loading-effect");
-    const dots = document.querySelectorAll(".random-div");
-    dots.forEach((div) => {
-      div.classList.add("opposite-loading-effect");
-    });
+    disappear();
     setTimeout(() => {
-      dotSpinner.classList.remove("hidden");
-      if (deleteMe) deleteMe.remove();
-      decreaseBtn.classList.remove("show");
-      decreaseBtn2.classList.remove("show");
-      increaseBtn.classList.remove("show");
-      increaseBtn2.classList.remove("show");
-      decreaseBtn.classList.remove("opposite-loading-effect");
-      decreaseBtn2.classList.remove("opposite-loading-effect");
-      increaseBtn.classList.remove("opposite-loading-effect");
-      increaseBtn2.classList.remove("opposite-loading-effect");
-      dots.forEach((div) => {
-        div.remove();
-      });
+      removeAnimationClasses();
     }, 1000);
     timeoutId = setTimeout(() => {
       setTimeout(() => {

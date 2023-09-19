@@ -84,7 +84,6 @@ body {
     max-width: 40px;
     height: 40px;
 }
-
 .date-added svg {
     height: 35px;
     width: 35px;
@@ -93,7 +92,6 @@ body {
     height: 35px;
     width: 35px;
 }
-
 .info-div .contract svg {
     min-width: 40px;
 }
@@ -172,14 +170,11 @@ body {
 .apply-div {
     display: flex;
     justify-content: center;
-    margin-top: 10px;
     flex-wrap: wrap;
 }
 .outer-field-div {
     display: flex;
     flex-wrap: wrap;
-   /* margin-left: 10px;
-    */
 }
 .field-div {
     width: fit-content;
@@ -576,49 +571,39 @@ svg {
     .modal-content .field-div p{
         font-size: 15px;
    }
-   .date-added svg {
-    height: 28px;
-    width: 28px;
+    .date-added svg {
+        height: 28px;
+        width: 28px;
    }
-
-   .closing-date svg {
-    height: 28px;
-    width: 28px;
+    .closing-date svg {
+        height: 28px;
+        width: 28px;
    }
-
-   .modal-42 svg {
+    .modal-42 svg {
         width: 42px;
-    }
-
-   .modal-40 svg {
+   }
+    .modal-40 svg {
         width: 40px;
-    }
-
-   .modal-37 svg {
+   }
+    .modal-37 svg {
         width: 37px;
-    }
-
-   .modal-35 svg {
+   }
+    .modal-35 svg {
         width: 35px;
-    }
-    
-   .modal-30 svg {
+   }
+    .modal-30 svg {
         width: 30px;
-    }
-
+   }
     .modal-25 svg {
         width: 25px;
-    }
-
+   }
     .modal-28 svg {
         width: 28px;
-    }
-
+   }
     .modal-18 svg {
         width: 18px;
-    }
+   }
 }
-
 @media screen and (max-width: 600px) {
     .job-spec {
         flex-direction: row;
@@ -648,10 +633,7 @@ svg {
     justify-content: center;
     width: var(--uib-size);
     height: var(--uib-size);
-   /* margin-top: 10vh;
-    */
 }
-
 .newtons-cradle__dot {
     position: relative;
     display: flex;
@@ -869,7 +851,7 @@ svg {
     position:relative;
     overflow: hidden;
     touch-action: none;
-    -ms-touch-action: none; 
+    -ms-touch-action: none;
 }
 .random-div {
     position: absolute;

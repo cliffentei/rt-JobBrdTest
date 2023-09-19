@@ -82,7 +82,18 @@ body {
 }
 .info-div .part svg {
     max-width: 40px;
+    height: 40px;
 }
+
+.date-added svg {
+    height: 35px;
+    width: 35px;
+}
+.closing-date svg {
+    height: 35px;
+    width: 35px;
+}
+
 .info-div .contract svg {
     min-width: 40px;
 }
@@ -539,10 +550,6 @@ svg {
     .search-bar-container {
         max-width: 80vw;
    }
-   /* .modal-content {
-        max-height: 40vh;
-   }
-    */
 }
 @media screen and (max-width: 910px) {
     .job-spec-div {
@@ -569,7 +576,16 @@ svg {
     .modal-content .field-div p{
         font-size: 15px;
    }
+   .date-added svg {
+    height: 30px;
+    width: 30px;
+   }
+
+   .modal-30 svg {
+        width: 30px;
+    }
 }
+
 @media screen and (max-width: 600px) {
     .job-spec {
         flex-direction: row;
@@ -603,9 +619,6 @@ svg {
     */
 }
 
-/* #toDelete {
-    display: none;
-} */
 .newtons-cradle__dot {
     position: relative;
     display: flex;

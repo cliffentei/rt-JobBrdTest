@@ -1125,7 +1125,7 @@ document.addEventListener("DOMContentLoaded", function () {
     <div class='card-header'>
         <p class='card-title'>${e["Job Title"]}</p>
         <div style='display: flex; align-items: center'>
-        <div style='width:40px'>
+        <div style='padding-right:10px' class='date-added' >
         ${icons["clock"]}
         </div>
         <p style="font-size: 20px;">${e["Created"]}</p>
@@ -1161,7 +1161,7 @@ document.addEventListener("DOMContentLoaded", function () {
       <hr class="on-scroll" style='width:90%; margin: auto;'>
       <div class='job-mobile-div'>
       <div class="on-scroll" style='display:flex; align-items:center; flex-wrap:wrap; margin: 10px 0;'>
-      <div style='width: 50px; margin: 0px 20px'>
+      <div class="modal-30" style='width: 50px; margin: 0px 20px'>
         ${icons["company"]}
       </div>
       <p style='font-weight: bold; margin: 0;'>Company/Org</p>
@@ -1206,7 +1206,7 @@ ${e["Type"] ? fieldsModal(e["Type"]) : fieldsModal(["No Type Listed"])}
   <hr class="on-scroll" style='width:90%; margin: auto;'>
       </div>
       <div style='display:flex; align-items:center; flex-wrap:wrap; margin: 10px 0;'>
-      <div class="on-scroll" style='width: 50px; margin: 0px 20px'>
+      <div class="on-scroll modal-30" style='width: 50px; margin: 0px 20px'>
         ${icons["team"]}
       </div>
       <p class="on-scroll" style='font-weight: bold; margin: 0;'>Department/Team</p>
@@ -1294,7 +1294,7 @@ ${e["Type"] ? fieldsModal(e["Type"]) : fieldsModal(["No Type Listed"])}
                 </div>
                   <hr class="on-scroll" style='width:90%; margin: auto;'>
                   <div style='display:flex; align-items:center; flex-wrap:wrap; margin: 10px 0;'>
-    <div class="on-scroll" style='width: 50px; margin: 0px 20px'>
+    <div class="on-scroll closing-date" style='margin: 0px 20px'>
       ${icons["clock2"]}
     </div>
     <p class="on-scroll" style='font-weight: bold; margin: 0;'>Closing Date</p>

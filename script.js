@@ -9,6 +9,17 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+
+  let elements = document.getElementsByClassName("content-wrapper");
+  if (elements.length > 0) {
+    for (const e of elements) {
+      let found = e.querySelector("#scrollToTopBtn");
+      if (found) {
+        e.style.zIndex = "1";
+      }
+    }
+  }
+
   const icons = {
     world:
       '<svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="3 3 18 18"> <g id="SVGRepo_bgCarrier" stroke-width="0"></g> <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g> <g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M6.15407 7.30116C7.52877 5.59304 9.63674 4.5 12 4.5C12.365 4.5 12.7238 4.52607 13.0748 4.57644L13.7126 5.85192L11.2716 8.2929L8.6466 8.6679L7.36009 9.95441L6.15407 7.30116ZM5.2011 8.82954C4.75126 9.79256 4.5 10.8669 4.5 12C4.5 15.6945 7.17133 18.7651 10.6878 19.3856L11.0989 18.7195L8.8147 15.547L10.3741 13.5256L9.63268 13.1549L6.94027 13.6036L6.41366 11.4972L5.2011 8.82954ZM7.95559 11.4802L8.05962 11.8964L9.86722 11.5951L11.3726 12.3478L14.0824 11.9714L18.9544 14.8135C19.3063 13.9447 19.5 12.995 19.5 12C19.5 8.93729 17.6642 6.30336 15.033 5.13856L15.5377 6.1481L11.9787 9.70711L9.35371 10.0821L7.95559 11.4802ZM18.2539 16.1414C16.9774 18.0652 14.8369 19.366 12.3859 19.4902L12.9011 18.6555L10.6853 15.578L12.0853 13.7632L13.7748 13.5286L18.2539 16.1414ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z" fill="#000000"></path> </g> </svg>',
@@ -54,23 +65,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const searchInputs = document.getElementById("search-input");
   const clearIcon = document.querySelector(".clear-icon");
 
-  function formatSalary(salary) {
-    if (typeof salary !== "number") {
-      return "No Salary Listed";
-    }
-    const salaryString = salary.toString();
-    const [integerPart, decimalPart] = salaryString.split(".");
-    const formattedIntegerPart = integerPart.replace(
-      /\B(?=(\d{3})+(?!\d))/g,
-      ","
-    );
-    let formattedSalary = "$" + formattedIntegerPart;
-    if (decimalPart) {
-      formattedSalary += "." + decimalPart;
-    }
-    return formattedSalary;
-  }
-
   searchInputs.addEventListener("keyup", function () {
     const inputValue = this.value.trim();
     if (inputValue.length > 0) {
@@ -80,10 +74,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  clearIcon.addEventListener("click", function () {
-    searchInputs.value = "";
-    clearIcon.style.display = "none";
-    clearTimeout(timeoutId);
+  function disappear() {
     const deleteMe = document.getElementById("toDelete");
     if (deleteMe) deleteMe.classList.add("opposite-loading-effect");
     decreaseBtn.classList.add("opposite-loading-effect");
@@ -94,20 +85,33 @@ document.addEventListener("DOMContentLoaded", function () {
     dots.forEach((div) => {
       div.classList.add("opposite-loading-effect");
     });
+  }
+
+  function removeAnimationClasses() {
+    dotSpinner.classList.remove("hidden");
+    const deleteMe = document.getElementById("toDelete");
+    if (deleteMe) deleteMe.remove();
+    decreaseBtn.classList.remove("show");
+    decreaseBtn2.classList.remove("show");
+    increaseBtn.classList.remove("show");
+    increaseBtn2.classList.remove("show");
+    decreaseBtn.classList.remove("opposite-loading-effect");
+    decreaseBtn2.classList.remove("opposite-loading-effect");
+    increaseBtn.classList.remove("opposite-loading-effect");
+    increaseBtn2.classList.remove("opposite-loading-effect");
+    const dots = document.querySelectorAll(".random-div");
+    dots.forEach((div) => {
+      div.remove();
+    });
+  }
+
+  clearIcon.addEventListener("click", function () {
+    searchInputs.value = "";
+    clearIcon.style.display = "none";
+    clearTimeout(timeoutId);
+    disappear();
     setTimeout(() => {
-      dotSpinner.classList.remove("hidden");
-      if (deleteMe) deleteMe.remove();
-      decreaseBtn.classList.remove("show");
-      decreaseBtn2.classList.remove("show");
-      increaseBtn.classList.remove("show");
-      increaseBtn2.classList.remove("show");
-      decreaseBtn.classList.remove("opposite-loading-effect");
-      decreaseBtn2.classList.remove("opposite-loading-effect");
-      increaseBtn.classList.remove("opposite-loading-effect");
-      increaseBtn2.classList.remove("opposite-loading-effect");
-      dots.forEach((div) => {
-        div.remove();
-      });
+      removeAnimationClasses();
     }, 1000);
     timeoutId = setTimeout(() => {
       setTimeout(() => {
@@ -288,30 +292,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 .querySelector(".remove-filter")
                 .classList.remove("hidden");
             }
-            const deleteMe = document.getElementById("toDelete");
-            if (deleteMe) deleteMe.classList.add("opposite-loading-effect");
-            decreaseBtn.classList.add("opposite-loading-effect");
-            decreaseBtn2.classList.add("opposite-loading-effect");
-            increaseBtn.classList.add("opposite-loading-effect");
-            increaseBtn2.classList.add("opposite-loading-effect");
-            const dots = document.querySelectorAll(".random-div");
-            dots.forEach((div) => {
-              div.classList.add("opposite-loading-effect");
-            });
+            disappear();
             setTimeout(() => {
-              dotSpinner.classList.remove("hidden");
-              if (deleteMe) deleteMe.remove();
-              decreaseBtn.classList.remove("show");
-              decreaseBtn2.classList.remove("show");
-              increaseBtn.classList.remove("show");
-              increaseBtn2.classList.remove("show");
-              decreaseBtn.classList.remove("opposite-loading-effect");
-              decreaseBtn2.classList.remove("opposite-loading-effect");
-              increaseBtn.classList.remove("opposite-loading-effect");
-              increaseBtn2.classList.remove("opposite-loading-effect");
-              dots.forEach((div) => {
-                div.remove();
-              });
+              removeAnimationClasses();
             }, 750);
             timeoutId = setTimeout(() => {
               setTimeout(() => {
@@ -380,7 +363,6 @@ document.addEventListener("DOMContentLoaded", function () {
             }
           });
         });
-
         updateButtonState();
       }
     });
@@ -436,7 +418,6 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!input) return "";
     const regex = /https?:\/\/[^\s/$.?#].[^\s<>)]*/gi;
     const matches = input.match(regex) || [];
-    let b = "";
     if (matches.length === 1) {
       return `<div class="apply-div">
             <a href="${
@@ -452,8 +433,9 @@ document.addEventListener("DOMContentLoaded", function () {
       }']);" style='text-decoration: none;'><div class='apply-btn'><p>Apply</p></div></a>
         </div>`;
     }
+    let res = "";
     for (let i = 0; i < matches.length; i++) {
-      b += `<div class="apply-div">
+      res += `<div class="apply-div">
             <a href="${
               matches[i]
             }" target="_blank" onclick="trackApplyClick('${jobTitle}', ${
@@ -469,25 +451,25 @@ document.addEventListener("DOMContentLoaded", function () {
       })</div></a>
         </div>`;
     }
-    return b;
+    return res;
   }
 
   function fields(input) {
     if (!input) return "";
-    let b = "";
-    for (l of input) {
-      b += `<div class="field-div" > <p>${l}</p></div>`;
+    let res = "";
+    for (field of input) {
+      res += `<div class="field-div" > <p>${field}</p></div>`;
     }
-    return b;
+    return res;
   }
 
   function fieldsModal(input) {
     if (!input) return "";
-    let b = "";
+    let res = "";
     for (l of input) {
-      b += `<div class="field-div on-scroll" > <p>${l}</p></div>`;
+      res += `<div class="field-div on-scroll" > <p>${l}</p></div>`;
     }
-    return b;
+    return res;
   }
 
   const removeFilterButton = document.querySelector(".remove-filter");
@@ -511,33 +493,12 @@ document.addEventListener("DOMContentLoaded", function () {
       option.checked = false;
     });
     clearTimeout(timeoutId);
-    const deleteMe = document.getElementById("toDelete");
     document
       .querySelector(".remove-filter")
       .classList.add("opposite-loading-effect");
-    if (deleteMe) deleteMe.classList.add("opposite-loading-effect");
-    decreaseBtn.classList.add("opposite-loading-effect");
-    decreaseBtn2.classList.add("opposite-loading-effect");
-    increaseBtn.classList.add("opposite-loading-effect");
-    increaseBtn2.classList.add("opposite-loading-effect");
-    const dots = document.querySelectorAll(".random-div");
-    dots.forEach((div) => {
-      div.classList.add("opposite-loading-effect");
-    });
+    disappear();
     setTimeout(() => {
-      dotSpinner.classList.remove("hidden");
-      if (deleteMe) deleteMe.remove();
-      decreaseBtn.classList.remove("show");
-      decreaseBtn2.classList.remove("show");
-      increaseBtn.classList.remove("show");
-      increaseBtn2.classList.remove("show");
-      decreaseBtn.classList.remove("opposite-loading-effect");
-      decreaseBtn2.classList.remove("opposite-loading-effect");
-      increaseBtn.classList.remove("opposite-loading-effect");
-      increaseBtn2.classList.remove("opposite-loading-effect");
-      dots.forEach((div) => {
-        div.remove();
-      });
+      removeAnimationClasses();
     }, 750);
     timeoutId = setTimeout(() => {
       setTimeout(() => {
@@ -633,14 +594,14 @@ document.addEventListener("DOMContentLoaded", function () {
     const waveAmplitude = Math.random() * 1 + 20;
     const waveFrequency = Math.random() * 0.02 + 0.01;
     const wavePhaseShift = Math.random() * 50;
-    let path = `<path fill="${getRandomPastelColor()}" d="M 0 0 `; // Changed the starting point to "M 0 0"
+    let path = `<path fill="${getRandomPastelColor()}" d="M 0 0 `;
     for (let x = 0; x <= width; x += 10) {
       const y =
         waveAmplitude * Math.sin(waveFrequency * x + wavePhaseShift) +
         height / 2;
       path += `L ${x} ${y} `;
     }
-    path += `L ${width} 0 L 0 0" /></svg>`; // Closed the path with "L ${width} 0 L 0 0"
+    path += `L ${width} 0 L 0 0" /></svg>`;
     svg += path;
     return svg;
   }
@@ -667,30 +628,9 @@ document.addEventListener("DOMContentLoaded", function () {
   searchInput.addEventListener("input", function (event) {
     event.preventDefault();
     clearTimeout(timeoutId);
-    const deleteMe = document.getElementById("toDelete");
-    if (deleteMe) deleteMe.classList.add("opposite-loading-effect");
-    decreaseBtn.classList.add("opposite-loading-effect");
-    decreaseBtn2.classList.add("opposite-loading-effect");
-    increaseBtn.classList.add("opposite-loading-effect");
-    increaseBtn2.classList.add("opposite-loading-effect");
-    const dots = document.querySelectorAll(".random-div");
-    dots.forEach((div) => {
-      div.classList.add("opposite-loading-effect");
-    });
+    disappear();
     setTimeout(() => {
-      dotSpinner.classList.remove("hidden");
-      if (deleteMe) deleteMe.remove();
-      decreaseBtn.classList.remove("show");
-      decreaseBtn2.classList.remove("show");
-      increaseBtn.classList.remove("show");
-      increaseBtn2.classList.remove("show");
-      decreaseBtn.classList.remove("opposite-loading-effect");
-      decreaseBtn2.classList.remove("opposite-loading-effect");
-      increaseBtn.classList.remove("opposite-loading-effect");
-      increaseBtn2.classList.remove("opposite-loading-effect");
-      dots.forEach((div) => {
-        div.remove();
-      });
+      removeAnimationClasses();
     }, 750);
     timeoutId = setTimeout(() => {
       setTimeout(() => {
@@ -721,7 +661,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function generateSalaryFilterFormula(options) {
     const formulaParts = [];
-
     options.forEach((option) => {
       let lowerBound = 0;
       let upperBound = 0;
@@ -741,7 +680,6 @@ document.addEventListener("DOMContentLoaded", function () {
         );
       }
     });
-
     return `OR(${formulaParts.join(", ")})`;
   }
   function urlCreator(s) {
@@ -829,6 +767,13 @@ document.addEventListener("DOMContentLoaded", function () {
       offsetKey = newOffset;
     }
 
+    function removeButtons() {
+      decreaseBtn.classList.remove("show");
+      decreaseBtn2.classList.remove("show");
+      increaseBtn.classList.remove("show");
+      increaseBtn2.classList.remove("show");
+    }
+
     async function setCards(newUrl) {
       fetch(newUrl, {
         headers: {
@@ -862,22 +807,14 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
             if (offset === 0 && offsetArray.length > 1) {
-              decreaseBtn.classList.remove("show");
-              decreaseBtn2.classList.remove("show");
-              increaseBtn.classList.remove("show");
-              increaseBtn2.classList.remove("show");
-              decreaseBtn.classList.remove("show");
-              decreaseBtn2.classList.remove("show");
+              removeButtons();
               increaseBtn.classList.add("show");
               increaseBtn2.classList.add("show");
             } else if (
               offsetArray[offset + 1] !== undefined &&
               offsetArray[offset - 1] !== undefined
             ) {
-              decreaseBtn.classList.remove("show");
-              decreaseBtn2.classList.remove("show");
-              increaseBtn.classList.remove("show");
-              increaseBtn2.classList.remove("show");
+              removeButtons();
               decreaseBtn.classList.add("show");
               decreaseBtn2.classList.add("show");
               increaseBtn.classList.add("show");
@@ -886,23 +823,11 @@ document.addEventListener("DOMContentLoaded", function () {
               offsetArray[offset - 1] !== undefined &&
               offsetArray[offset + 1] === undefined
             ) {
-              decreaseBtn.classList.remove("show");
-              decreaseBtn2.classList.remove("show");
-              increaseBtn.classList.remove("show");
-              increaseBtn2.classList.remove("show");
-              increaseBtn.classList.remove("show");
-              increaseBtn2.classList.remove("show");
+              removeButtons();
               decreaseBtn.classList.add("show");
               decreaseBtn2.classList.add("show");
             } else {
-              decreaseBtn.classList.remove("show");
-              decreaseBtn2.classList.remove("show");
-              increaseBtn.classList.remove("show");
-              increaseBtn2.classList.remove("show");
-              decreaseBtn.classList.remove("show");
-              decreaseBtn2.classList.remove("show");
-              increaseBtn.classList.remove("show");
-              increaseBtn2.classList.remove("show");
+              removeButtons();
             }
             let htmlString = "";
             if (data.records.length > 0) {
@@ -1081,43 +1006,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // function trackApplyClick(jobTitle, experienceLevels, fields, links) {
-  //   console.log("yo!");
-  //   if (jobTitle !== undefined) {
-  //     gtag("event", "apply_click", {
-  //       apply_job_title: jobTitle,
-  //     });
-  //   }
-
-  //   if (experienceLevels !== undefined && experienceLevels.length) {
-  //     experienceLevels.forEach(function (exp) {
-  //       gtag("event", "apply_click", {
-  //         apply_experience_level: exp,
-  //       });
-  //     });
-  //   }
-
-  //   if (fields !== undefined && fields.length) {
-  //     fields.forEach(function (field) {
-  //       gtag("event", "apply_click", {
-  //         apply_field: field,
-  //       });
-  //     });
-  //   }
-
-  //   if (links !== undefined && links.length) {
-  //     links.forEach(function (l) {
-  //       gtag("event", "apply_click", {
-  //         apply_link: l,
-  //       });
-  //     });
-  //   }
-  // }
-
   function openModal(e) {
     const modal = document.getElementById("myModal");
-    // document.documentElement.classList.add("modal-open");
-    document.body.classList.add("modal-open");
     const modalHeader = modal.querySelector(".modal-header");
     const modalFooter = modal.querySelector(".modal-footer");
     const modalContent = modal.querySelector(".modal-content");
@@ -1175,7 +1065,7 @@ document.addEventListener("DOMContentLoaded", function () {
     </div>
   <hr class="on-scroll" style='width:90%; margin: auto;'>
   <div style='display:flex; align-items:center; flex-wrap:wrap; margin: 10px 0;'>
-    <div class="on-scroll" style='width: 50px; margin: 0px 20px'>
+    <div class="on-scroll modal-25" style='width: 50px; margin: 0px 20px'>
       ${icons["location"]}
     </div>
     <p class="on-scroll" style='font-weight: bold; margin: 0;'>Location</p>
@@ -1189,15 +1079,13 @@ document.addEventListener("DOMContentLoaded", function () {
   </div>
 <hr style='width:90%; margin: auto;'>
 <div style='display:flex; align-items:center; flex-wrap:wrap; margin: 10px 0;'>
-<div class="on-scroll" style='width: 50px; margin: 0px 20px'>
   ${
     !e["Type"] || e["Type"][0] === "Full-Time" || e["Type"].length > 1
-      ? icons["fullTime"]
+      ? `<div class="on-scroll modal-30" style='width: 50px; margin: 0px 20px'>${icons["fullTime"]}</div>`
       : e["Type"][0] === "Part-Time"
-      ? icons["partTime"]
-      : icons["contract"]
+      ? `<div class="on-scroll modal-40" style='width: 50px; margin: 0px 20px'>${icons["partTime"]}</div>`
+      : `<div class="on-scroll modal-37" style='width: 50px; margin: 0px 20px'>${icons["contract"]}</div>`
   }
-</div>
 <p class="on-scroll" style='font-weight: bold; margin: 0;'>Type</p>
 </div>
 <div style='margin-left: 80px; margin-bottom: 15px; display: flex; flex-wrap: wrap;'>
@@ -1220,7 +1108,7 @@ ${e["Type"] ? fieldsModal(e["Type"]) : fieldsModal(["No Type Listed"])}
     </div>
                   <hr class="on-scroll" style='width:90%; margin: auto;'>
                   <div style='display:flex; align-items:center; flex-wrap:wrap; margin: 10px 0;'>
-    <div class="on-scroll" style='width: 40px; margin: 0px 25px'>
+    <div class="on-scroll modal-18" style='width: 40px; margin: 0px 25px'>
       ${icons["salary"]}
     </div>
     <p class="on-scroll" style='font-weight: bold; margin: 0;'>Salary</p>
@@ -1233,20 +1121,18 @@ ${e["Type"] ? fieldsModal(e["Type"]) : fieldsModal(["No Type Listed"])}
     }
   </div>
       <hr class="on-scroll" style='width:90%; margin: auto;'>
-                        
-              
       ${
         e["VISA sponsorship"]
           ? `<div style='display:flex; align-items:center; flex-wrap:wrap; margin: 10px 0;'>
-              <div class="on-scroll" style='width: 50px; margin: 0px 20px'>
+              
                 ${
                   e["VISA sponsorship"][0] === "Yes"
-                    ? icons["visaCheck"]
+                    ? `<div class="on-scroll modal-42" style='width: 50px; margin: 0px 20px'>${icons["visaCheck"]}</div>`
                     : e["VISA sponsorship"][0] === "No"
-                    ? icons["visaEx"]
-                    : icons["visaQuestion"]
+                    ? `<div class="on-scroll modal-40" style='width: 50px; margin: 0px 20px'>${icons["visaEx"]}</div>`
+                    : `<div class="on-scroll modal-35" style='width: 50px; margin: 0px 20px'>${icons["visaQuestion"]}</div>`
                 }
-              </div>
+              
               <p class="on-scroll" style='font-weight: bold; margin: 0;'>VISA sponsorship</p>
             </div>
             <div style='margin-left: 80px; margin-bottom: 15px; display: flex; flex-wrap: wrap;'>
@@ -1260,7 +1146,7 @@ ${e["Type"] ? fieldsModal(e["Type"]) : fieldsModal(["No Type Listed"])}
           : ""
       }          
                 <div style='display:flex; align-items:center; flex-wrap:wrap; margin: 10px 0;'>
-                <div class="on-scroll" style='width: 50px; margin: 0px 20px'>
+                <div class="on-scroll modal-28" style='width: 50px; margin: 0px 20px'>
                   ${icons["experience"]}
                 </div>
                 <p class="on-scroll" style='font-weight: bold; margin: 0;'>Experience Level</p>
@@ -1276,7 +1162,7 @@ ${e["Type"] ? fieldsModal(e["Type"]) : fieldsModal(["No Type Listed"])}
               </div>
                   <hr class="on-scroll" style='width:90%; margin: auto;'>
                   <div style='display:flex; align-items:center; flex-wrap:wrap; margin: 10px 0;'>
-                  <div class="on-scroll" style='width: 50px; margin: 0px 20px'>
+                  <div class="on-scroll modal-30" style='width: 50px; margin: 0px 20px'>
                     ${
                       e["Region"][0] !== "Remote" || e["Region"].length > 1
                         ? icons["world"]
@@ -1309,15 +1195,14 @@ ${e["Type"] ? fieldsModal(e["Type"]) : fieldsModal(["No Type Listed"])}
     </div>
     </div>`;
     modalFooter.innerHTML = `
-    <div class='apply-div'>
     ${buttons(
       e["Link to Apply"],
       e["Job Title"],
       e["Experience Level"],
       e["Field"]
-    )}
-    </div>`;
+    )}`;
     modal.style.display = "flex";
+    document.body.classList.add("modal-open");
     modalContent.scrollTop = 0;
     function onScroll() {
       const children = document.querySelectorAll(".on-scroll");
@@ -1331,7 +1216,10 @@ ${e["Type"] ? fieldsModal(e["Type"]) : fieldsModal(["No Type Listed"])}
     modalContent.addEventListener("scroll", onScroll);
     window.addEventListener("resize", onScroll);
     const modalDiv = document.querySelector(".svg-background");
-    const svgString = generateRandomWaveSVG(1600, modalDiv.clientHeight);
+    const svgString = generateRandomWaveSVG(
+      modalDiv.clientWidth + 1000,
+      modalDiv.clientHeight
+    );
     const y = modalDiv.clientHeight;
     const x = modalHeader.clientHeight;
     modalDiv.style.backgroundImage = `url('${svgString}')`;
@@ -1353,37 +1241,15 @@ ${e["Type"] ? fieldsModal(e["Type"]) : fieldsModal(["No Type Listed"])}
       document.getElementById("myModal").style.display = "none";
       document.getElementById("targetElement").style.position = "";
       document.body.classList.remove("modal-open");
-      // document.documentElement.classList.remove("modal-open");
     }
   });
 
   function increase() {
     offset++;
     clearTimeout(timeoutId);
-    const deleteMe = document.getElementById("toDelete");
-    if (deleteMe) deleteMe.classList.add("opposite-loading-effect");
-    decreaseBtn.classList.add("opposite-loading-effect");
-    decreaseBtn2.classList.add("opposite-loading-effect");
-    increaseBtn.classList.add("opposite-loading-effect");
-    increaseBtn2.classList.add("opposite-loading-effect");
-    const dots = document.querySelectorAll(".random-div");
-    dots.forEach((div) => {
-      div.classList.add("opposite-loading-effect");
-    });
+    disappear();
     setTimeout(() => {
-      dotSpinner.classList.remove("hidden");
-      if (deleteMe) deleteMe.remove();
-      decreaseBtn.classList.remove("show");
-      decreaseBtn2.classList.remove("show");
-      increaseBtn.classList.remove("show");
-      increaseBtn2.classList.remove("show");
-      decreaseBtn.classList.remove("opposite-loading-effect");
-      decreaseBtn2.classList.remove("opposite-loading-effect");
-      increaseBtn.classList.remove("opposite-loading-effect");
-      increaseBtn2.classList.remove("opposite-loading-effect");
-      dots.forEach((div) => {
-        div.remove();
-      });
+      removeAnimationClasses();
     }, 1000);
     timeoutId = setTimeout(() => {
       setTimeout(() => {
@@ -1398,7 +1264,7 @@ ${e["Type"] ? fieldsModal(e["Type"]) : fieldsModal(["No Type Listed"])}
       const targetDivY = title.getBoundingClientRect().top + window.scrollY;
       window.scrollTo({
         top: targetDivY,
-        behavior: "smooth",
+        behavior: "auto",
       });
     }
   }
@@ -1406,30 +1272,9 @@ ${e["Type"] ? fieldsModal(e["Type"]) : fieldsModal(["No Type Listed"])}
   function decrease() {
     if (offset > 0) offset--;
     clearTimeout(timeoutId);
-    const deleteMe = document.getElementById("toDelete");
-    if (deleteMe) deleteMe.classList.add("opposite-loading-effect");
-    decreaseBtn.classList.add("opposite-loading-effect");
-    decreaseBtn2.classList.add("opposite-loading-effect");
-    increaseBtn.classList.add("opposite-loading-effect");
-    increaseBtn2.classList.add("opposite-loading-effect");
-    const dots = document.querySelectorAll(".random-div");
-    dots.forEach((div) => {
-      div.classList.add("opposite-loading-effect");
-    });
+    disappear();
     setTimeout(() => {
-      dotSpinner.classList.remove("hidden");
-      if (deleteMe) deleteMe.remove();
-      decreaseBtn.classList.remove("show");
-      decreaseBtn2.classList.remove("show");
-      increaseBtn.classList.remove("show");
-      increaseBtn2.classList.remove("show");
-      decreaseBtn.classList.remove("opposite-loading-effect");
-      decreaseBtn2.classList.remove("opposite-loading-effect");
-      increaseBtn.classList.remove("opposite-loading-effect");
-      increaseBtn2.classList.remove("opposite-loading-effect");
-      dots.forEach((div) => {
-        div.remove();
-      });
+      removeAnimationClasses();
     }, 1000);
     timeoutId = setTimeout(() => {
       setTimeout(() => {
@@ -1444,7 +1289,7 @@ ${e["Type"] ? fieldsModal(e["Type"]) : fieldsModal(["No Type Listed"])}
       const targetDivY = title.getBoundingClientRect().top + window.scrollY;
       window.scrollTo({
         top: targetDivY,
-        behavior: "smooth",
+        behavior: "auto",
       });
     }
   }

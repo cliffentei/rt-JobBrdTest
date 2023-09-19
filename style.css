@@ -577,12 +577,45 @@ svg {
         font-size: 15px;
    }
    .date-added svg {
-    height: 30px;
-    width: 30px;
+    height: 28px;
+    width: 28px;
    }
 
+   .closing-date svg {
+    height: 28px;
+    width: 28px;
+   }
+
+   .modal-42 svg {
+        width: 42px;
+    }
+
+   .modal-40 svg {
+        width: 40px;
+    }
+
+   .modal-37 svg {
+        width: 37px;
+    }
+
+   .modal-35 svg {
+        width: 35px;
+    }
+    
    .modal-30 svg {
         width: 30px;
+    }
+
+    .modal-25 svg {
+        width: 25px;
+    }
+
+    .modal-28 svg {
+        width: 28px;
+    }
+
+    .modal-18 svg {
+        width: 18px;
     }
 }
 

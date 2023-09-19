@@ -1175,7 +1175,7 @@ document.addEventListener("DOMContentLoaded", function () {
     </div>
   <hr class="on-scroll" style='width:90%; margin: auto;'>
   <div style='display:flex; align-items:center; flex-wrap:wrap; margin: 10px 0;'>
-    <div class="on-scroll" style='width: 50px; margin: 0px 20px'>
+    <div class="on-scroll modal-25" style='width: 50px; margin: 0px 20px'>
       ${icons["location"]}
     </div>
     <p class="on-scroll" style='font-weight: bold; margin: 0;'>Location</p>
@@ -1189,15 +1189,13 @@ document.addEventListener("DOMContentLoaded", function () {
   </div>
 <hr style='width:90%; margin: auto;'>
 <div style='display:flex; align-items:center; flex-wrap:wrap; margin: 10px 0;'>
-<div class="on-scroll" style='width: 50px; margin: 0px 20px'>
   ${
     e["Type"][0] === "Full-Time" || e["Type"].length > 1
-      ? icons["fullTime"]
+      ? `<div class="on-scroll modal-30" style='width: 50px; margin: 0px 20px'>${icons["fullTime"]}</div>`
       : e["Type"][0] === "Part-Time"
-      ? icons["partTime"]
-      : icons["contract"]
+      ? `<div class="on-scroll modal-40" style='width: 50px; margin: 0px 20px'>${icons["partTime"]}</div>`
+      : `<div class="on-scroll modal-37" style='width: 50px; margin: 0px 20px'>${icons["contract"]}</div>`
   }
-</div>
 <p class="on-scroll" style='font-weight: bold; margin: 0;'>Type</p>
 </div>
 <div style='margin-left: 80px; margin-bottom: 15px; display: flex; flex-wrap: wrap;'>
@@ -1220,7 +1218,7 @@ ${e["Type"] ? fieldsModal(e["Type"]) : fieldsModal(["No Type Listed"])}
     </div>
                   <hr class="on-scroll" style='width:90%; margin: auto;'>
                   <div style='display:flex; align-items:center; flex-wrap:wrap; margin: 10px 0;'>
-    <div class="on-scroll" style='width: 40px; margin: 0px 25px'>
+    <div class="on-scroll modal-18" style='width: 40px; margin: 0px 25px'>
       ${icons["salary"]}
     </div>
     <p class="on-scroll" style='font-weight: bold; margin: 0;'>Salary</p>
@@ -1233,20 +1231,18 @@ ${e["Type"] ? fieldsModal(e["Type"]) : fieldsModal(["No Type Listed"])}
     }
   </div>
       <hr class="on-scroll" style='width:90%; margin: auto;'>
-                        
-              
       ${
         e["VISA sponsorship"]
           ? `<div style='display:flex; align-items:center; flex-wrap:wrap; margin: 10px 0;'>
-              <div class="on-scroll" style='width: 50px; margin: 0px 20px'>
+              
                 ${
                   e["VISA sponsorship"][0] === "Yes"
-                    ? icons["visaCheck"]
+                    ? `<div class="on-scroll modal-42" style='width: 50px; margin: 0px 20px'>${icons["visaCheck"]}</div>`
                     : e["VISA sponsorship"][0] === "No"
-                    ? icons["visaEx"]
-                    : icons["visaQuestion"]
+                    ? `<div class="on-scroll modal-40" style='width: 50px; margin: 0px 20px'>${icons["visaEx"]}</div>`
+                    : `<div class="on-scroll modal-35" style='width: 50px; margin: 0px 20px'>${icons["visaQuestion"]}</div>`
                 }
-              </div>
+              
               <p class="on-scroll" style='font-weight: bold; margin: 0;'>VISA sponsorship</p>
             </div>
             <div style='margin-left: 80px; margin-bottom: 15px; display: flex; flex-wrap: wrap;'>
@@ -1260,7 +1256,7 @@ ${e["Type"] ? fieldsModal(e["Type"]) : fieldsModal(["No Type Listed"])}
           : ""
       }          
                 <div style='display:flex; align-items:center; flex-wrap:wrap; margin: 10px 0;'>
-                <div class="on-scroll" style='width: 50px; margin: 0px 20px'>
+                <div class="on-scroll modal-28" style='width: 50px; margin: 0px 20px'>
                   ${icons["experience"]}
                 </div>
                 <p class="on-scroll" style='font-weight: bold; margin: 0;'>Experience Level</p>
@@ -1276,7 +1272,7 @@ ${e["Type"] ? fieldsModal(e["Type"]) : fieldsModal(["No Type Listed"])}
               </div>
                   <hr class="on-scroll" style='width:90%; margin: auto;'>
                   <div style='display:flex; align-items:center; flex-wrap:wrap; margin: 10px 0;'>
-                  <div class="on-scroll" style='width: 50px; margin: 0px 20px'>
+                  <div class="on-scroll modal-30" style='width: 50px; margin: 0px 20px'>
                     ${
                       e["Region"][0] !== "Remote" || e["Region"].length > 1
                         ? icons["world"]

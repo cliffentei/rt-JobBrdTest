@@ -9,6 +9,17 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+
+  let elements = document.getElementsByClassName("content-wrapper");
+  if (elements.length > 0) {
+    for (const e of elements) {
+      let found = e.querySelector("#scrollToTopBtn");
+      if (found) {
+        e.style.zIndex = "1";
+      }
+    }
+  }
+
   const icons = {
     world:
       '<svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="3 3 18 18"> <g id="SVGRepo_bgCarrier" stroke-width="0"></g> <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g> <g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M6.15407 7.30116C7.52877 5.59304 9.63674 4.5 12 4.5C12.365 4.5 12.7238 4.52607 13.0748 4.57644L13.7126 5.85192L11.2716 8.2929L8.6466 8.6679L7.36009 9.95441L6.15407 7.30116ZM5.2011 8.82954C4.75126 9.79256 4.5 10.8669 4.5 12C4.5 15.6945 7.17133 18.7651 10.6878 19.3856L11.0989 18.7195L8.8147 15.547L10.3741 13.5256L9.63268 13.1549L6.94027 13.6036L6.41366 11.4972L5.2011 8.82954ZM7.95559 11.4802L8.05962 11.8964L9.86722 11.5951L11.3726 12.3478L14.0824 11.9714L18.9544 14.8135C19.3063 13.9447 19.5 12.995 19.5 12C19.5 8.93729 17.6642 6.30336 15.033 5.13856L15.5377 6.1481L11.9787 9.70711L9.35371 10.0821L7.95559 11.4802ZM18.2539 16.1414C16.9774 18.0652 14.8369 19.366 12.3859 19.4902L12.9011 18.6555L10.6853 15.578L12.0853 13.7632L13.7748 13.5286L18.2539 16.1414ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z" fill="#000000"></path> </g> </svg>',
@@ -30,9 +41,10 @@ document.addEventListener("DOMContentLoaded", function () {
     clock: `<svg xmlns="http://www.w3.org/2000/svg" fill="#000000" id="date-alt-add" data-name="Flat Line" class="icon flat-line" viewBox="2 2 20 20">      <g id="SVGRepo_bgCarrier" stroke-width="0"></g>      <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>      <g id="SVGRepo_iconCarrier">          <circle id="secondary" cx="12" cy="15" r="6" style="fill: none; stroke-width: 2;"></circle>          <path id="primary" d="M7.54,19H4a1,1,0,0,1-1-1V5A1,1,0,0,1,4,4H20a1,1,0,0,1,1,1V18a1,1,0,0,1-1,1H16.46" style="fill: none; stroke: #000000; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></path>          <path id="primary-2" data-name="primary" d="M12,9a6,6,0,1,0,6,6A6,6,0,0,0,12,9ZM3,9H21M16,3V6M8,3V6m4,11V13m-2,2h4" style="fill: none; stroke: #000000; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></path>      </g>  </svg>`,
     clock2: `<svg fill="#000000" id="date-alt-remove-alt" data-name="Flat Line" xmlns="http://www.w3.org/2000/svg" class="icon flat-line" viewBox="2 2 20 20"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><circle id="secondary" cx="12" cy="15" r="6" style="fill: none; stroke-width: 2;"></circle><path id="primary" d="M7.54,19H4a1,1,0,0,1-1-1V5A1,1,0,0,1,4,4H20a1,1,0,0,1,1,1V18a1,1,0,0,1-1,1H16.46" style="fill: none; stroke: #000000; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></path><path id="primary-2" data-name="primary" d="M16,3V6M8,3V6m8.24,4.76L8,19M12,9a6,6,0,1,0,6,6A6,6,0,0,0,12,9ZM3,9H21" style="fill: none; stroke: #000000; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></path></g></svg>`,
   };
+
   window.addEventListener("scroll", () => {
     if (
-      // document.body.scrollTop > 1500 ||
+      document.body.scrollTop > 1500 ||
       document.documentElement.scrollTop > 1500
     ) {
       scrollToTopBtn.style.display = "flex";
@@ -40,32 +52,6 @@ document.addEventListener("DOMContentLoaded", function () {
       scrollToTopBtn.style.display = "none";
     }
   });
-
-  // let prevScrollPos = targetElement.offsetTop;
-
-  // window.addEventListener("scroll", () => {
-  //   const currentScrollPos = T.scrollTop;
-  //   // if (
-  //   //   scrollToTopBtn.style.display === "none" &&
-  //   //   currentScrollPos > prevScrollPos &&
-  //   //   (document.body.scrollTop > 1500 ||
-  //   //     document.documentElement.scrollTop > 1500)
-  //   // ) {
-  //   //   scrollToTopBtn.style.display = "flex";
-  //   // } else if (
-  //   //   scrollToTopBtn.style.display === "flex" &&
-  //   //   currentScrollPos < prevScrollPos &&
-  //   //   (document.body.scrollTop < 1500 ||
-  //   //     document.documentElement.scrollTop < 1500)
-  //   // ) {
-  //   //   scrollToTopBtn.classList.add("opposite-loading-effect");
-  //   //   setTimeout(() => {
-  //   //     scrollToTopBtn.classList.remove("opposite-loading-effect");
-  //   //     scrollToTopBtn.style.display = "none";
-  //   //   }, 1000);
-  //   // }
-  //   // prevScrollPos = currentScrollPos;
-  // });
 
   scrollToTopBtn.addEventListener("click", () => {
     const title = document.querySelector(".title");
@@ -78,24 +64,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const searchInputs = document.getElementById("search-input");
   const clearIcon = document.querySelector(".clear-icon");
-  ////////////////////////////////////////////////////////////////
-  function formatSalary(salary) {
-    if (typeof salary !== "number") {
-      return "No Salary Listed";
-    }
-    const salaryString = salary.toString();
-    const [integerPart, decimalPart] = salaryString.split(".");
-    const formattedIntegerPart = integerPart.replace(
-      /\B(?=(\d{3})+(?!\d))/g,
-      ","
-    );
-    let formattedSalary = "$" + formattedIntegerPart;
-    if (decimalPart) {
-      formattedSalary += "." + decimalPart;
-    }
-    return formattedSalary;
-  }
-  ////////////////////////////////////////////////////////////////
 
   searchInputs.addEventListener("keyup", function () {
     const inputValue = this.value.trim();
@@ -395,7 +363,6 @@ document.addEventListener("DOMContentLoaded", function () {
             }
           });
         });
-
         updateButtonState();
       }
     });
@@ -451,7 +418,6 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!input) return "";
     const regex = /https?:\/\/[^\s/$.?#].[^\s<>)]*/gi;
     const matches = input.match(regex) || [];
-    let b = "";
     if (matches.length === 1) {
       return `<div class="apply-div">
             <a href="${
@@ -467,8 +433,9 @@ document.addEventListener("DOMContentLoaded", function () {
       }']);" style='text-decoration: none;'><div class='apply-btn'><p>Apply</p></div></a>
         </div>`;
     }
+    let res = "";
     for (let i = 0; i < matches.length; i++) {
-      b += `<div class="apply-div">
+      res += `<div class="apply-div">
             <a href="${
               matches[i]
             }" target="_blank" onclick="trackApplyClick('${jobTitle}', ${
@@ -484,25 +451,25 @@ document.addEventListener("DOMContentLoaded", function () {
       })</div></a>
         </div>`;
     }
-    return b;
+    return res;
   }
 
   function fields(input) {
     if (!input) return "";
-    let b = "";
-    for (l of input) {
-      b += `<div class="field-div" > <p>${l}</p></div>`;
+    let res = "";
+    for (field of input) {
+      res += `<div class="field-div" > <p>${field}</p></div>`;
     }
-    return b;
+    return res;
   }
 
   function fieldsModal(input) {
     if (!input) return "";
-    let b = "";
+    let res = "";
     for (l of input) {
-      b += `<div class="field-div on-scroll" > <p>${l}</p></div>`;
+      res += `<div class="field-div on-scroll" > <p>${l}</p></div>`;
     }
-    return b;
+    return res;
   }
 
   const removeFilterButton = document.querySelector(".remove-filter");
@@ -627,14 +594,14 @@ document.addEventListener("DOMContentLoaded", function () {
     const waveAmplitude = Math.random() * 1 + 20;
     const waveFrequency = Math.random() * 0.02 + 0.01;
     const wavePhaseShift = Math.random() * 50;
-    let path = `<path fill="${getRandomPastelColor()}" d="M 0 0 `; // Changed the starting point to "M 0 0"
+    let path = `<path fill="${getRandomPastelColor()}" d="M 0 0 `;
     for (let x = 0; x <= width; x += 10) {
       const y =
         waveAmplitude * Math.sin(waveFrequency * x + wavePhaseShift) +
         height / 2;
       path += `L ${x} ${y} `;
     }
-    path += `L ${width} 0 L 0 0" /></svg>`; // Closed the path with "L ${width} 0 L 0 0"
+    path += `L ${width} 0 L 0 0" /></svg>`;
     svg += path;
     return svg;
   }
@@ -694,7 +661,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function generateSalaryFilterFormula(options) {
     const formulaParts = [];
-
     options.forEach((option) => {
       let lowerBound = 0;
       let upperBound = 0;
@@ -714,7 +680,6 @@ document.addEventListener("DOMContentLoaded", function () {
         );
       }
     });
-
     return `OR(${formulaParts.join(", ")})`;
   }
   function urlCreator(s) {
@@ -802,6 +767,13 @@ document.addEventListener("DOMContentLoaded", function () {
       offsetKey = newOffset;
     }
 
+    function removeButtons() {
+      decreaseBtn.classList.remove("show");
+      decreaseBtn2.classList.remove("show");
+      increaseBtn.classList.remove("show");
+      increaseBtn2.classList.remove("show");
+    }
+
     async function setCards(newUrl) {
       fetch(newUrl, {
         headers: {
@@ -835,22 +807,14 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
             if (offset === 0 && offsetArray.length > 1) {
-              decreaseBtn.classList.remove("show");
-              decreaseBtn2.classList.remove("show");
-              increaseBtn.classList.remove("show");
-              increaseBtn2.classList.remove("show");
-              decreaseBtn.classList.remove("show");
-              decreaseBtn2.classList.remove("show");
+              removeButtons();
               increaseBtn.classList.add("show");
               increaseBtn2.classList.add("show");
             } else if (
               offsetArray[offset + 1] !== undefined &&
               offsetArray[offset - 1] !== undefined
             ) {
-              decreaseBtn.classList.remove("show");
-              decreaseBtn2.classList.remove("show");
-              increaseBtn.classList.remove("show");
-              increaseBtn2.classList.remove("show");
+              removeButtons();
               decreaseBtn.classList.add("show");
               decreaseBtn2.classList.add("show");
               increaseBtn.classList.add("show");
@@ -859,23 +823,11 @@ document.addEventListener("DOMContentLoaded", function () {
               offsetArray[offset - 1] !== undefined &&
               offsetArray[offset + 1] === undefined
             ) {
-              decreaseBtn.classList.remove("show");
-              decreaseBtn2.classList.remove("show");
-              increaseBtn.classList.remove("show");
-              increaseBtn2.classList.remove("show");
-              increaseBtn.classList.remove("show");
-              increaseBtn2.classList.remove("show");
+              removeButtons();
               decreaseBtn.classList.add("show");
               decreaseBtn2.classList.add("show");
             } else {
-              decreaseBtn.classList.remove("show");
-              decreaseBtn2.classList.remove("show");
-              increaseBtn.classList.remove("show");
-              increaseBtn2.classList.remove("show");
-              decreaseBtn.classList.remove("show");
-              decreaseBtn2.classList.remove("show");
-              increaseBtn.classList.remove("show");
-              increaseBtn2.classList.remove("show");
+              removeButtons();
             }
             let htmlString = "";
             if (data.records.length > 0) {
@@ -1264,7 +1216,10 @@ ${e["Type"] ? fieldsModal(e["Type"]) : fieldsModal(["No Type Listed"])}
     modalContent.addEventListener("scroll", onScroll);
     window.addEventListener("resize", onScroll);
     const modalDiv = document.querySelector(".svg-background");
-    const svgString = generateRandomWaveSVG(1600, modalDiv.clientHeight);
+    const svgString = generateRandomWaveSVG(
+      modalDiv.clientWidth + 1000,
+      modalDiv.clientHeight
+    );
     const y = modalDiv.clientHeight;
     const x = modalHeader.clientHeight;
     modalDiv.style.backgroundImage = `url('${svgString}')`;
@@ -1309,7 +1264,7 @@ ${e["Type"] ? fieldsModal(e["Type"]) : fieldsModal(["No Type Listed"])}
       const targetDivY = title.getBoundingClientRect().top + window.scrollY;
       window.scrollTo({
         top: targetDivY,
-        behavior: "smooth",
+        behavior: "auto",
       });
     }
   }
@@ -1334,7 +1289,7 @@ ${e["Type"] ? fieldsModal(e["Type"]) : fieldsModal(["No Type Listed"])}
       const targetDivY = title.getBoundingClientRect().top + window.scrollY;
       window.scrollTo({
         top: targetDivY,
-        behavior: "smooth",
+        behavior: "auto",
       });
     }
   }

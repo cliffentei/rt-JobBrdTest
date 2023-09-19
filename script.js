@@ -321,67 +321,68 @@ document.addEventListener("DOMContentLoaded", function () {
           });
         });
       }
-      console.log(dropdownButton);
-      dropdownButton.addEventListener("click", function () {
-        dropdownMenu.classList.toggle("active");
-      });
-      const dropdownButtons = document.querySelectorAll(".dropdown-button");
+      if (dropdownButton) {
+        dropdownButton.addEventListener("click", function () {
+          dropdownMenu.classList.toggle("active");
+        });
+        const dropdownButtons = document.querySelectorAll(".dropdown-button");
 
-      dropdownButtons.forEach((button) => {
-        button.addEventListener("click", function () {
+        dropdownButtons.forEach((button) => {
+          button.addEventListener("click", function () {
+            const dropdownMenus = document.querySelectorAll(".dropdown-menu");
+            const clickedMenu = button.nextElementSibling;
+            dropdownMenus.forEach((menu) => {
+              if (menu !== clickedMenu) {
+                menu.classList.remove("active");
+              }
+            });
+            clickedMenu.classList.toggle("active");
+          });
+        });
+
+        document.addEventListener("click", function (event) {
           const dropdownMenus = document.querySelectorAll(".dropdown-menu");
-          const clickedMenu = button.nextElementSibling;
-          dropdownMenus.forEach((menu) => {
-            if (menu !== clickedMenu) {
-              menu.classList.remove("active");
+          const dropdownButtons = document.querySelectorAll(".dropdown-button");
+          let isInsideDropdown = false;
+          dropdownMenus.forEach((dropdownMenu) => {
+            if (dropdownMenu.contains(event.target)) {
+              isInsideDropdown = true;
             }
           });
-          clickedMenu.classList.toggle("active");
-        });
-      });
-
-      document.addEventListener("click", function (event) {
-        const dropdownMenus = document.querySelectorAll(".dropdown-menu");
-        const dropdownButtons = document.querySelectorAll(".dropdown-button");
-        let isInsideDropdown = false;
-        dropdownMenus.forEach((dropdownMenu) => {
-          if (dropdownMenu.contains(event.target)) {
-            isInsideDropdown = true;
-          }
-        });
-        dropdownButtons.forEach((dropdownButton) => {
-          if (dropdownButton.contains(event.target)) {
-            isInsideDropdown = true;
-          }
-        });
-        if (!isInsideDropdown) {
-          dropdownMenus.forEach((dropdownMenu) => {
-            dropdownMenu.classList.remove("active");
+          dropdownButtons.forEach((dropdownButton) => {
+            if (dropdownButton.contains(event.target)) {
+              isInsideDropdown = true;
+            }
           });
-        }
-      });
-
-      const dropSearch = document.querySelector(
-        `#${dropdownId} .dropdown-search`
-      );
-      const dropSearchOptions = document.querySelectorAll(
-        `#${dropdownId} .dropdown-option`
-      );
-      dropSearch.addEventListener("input", function () {
-        const searchTerm = this.value.toLowerCase();
-        dropSearchOptions.forEach(function (option) {
-          const optionText = option
-            .querySelector("span")
-            .textContent.toLowerCase();
-          if (optionText.includes(searchTerm)) {
-            option.style.display = "block";
-          } else {
-            option.style.display = "none";
+          if (!isInsideDropdown) {
+            dropdownMenus.forEach((dropdownMenu) => {
+              dropdownMenu.classList.remove("active");
+            });
           }
         });
-      });
 
-      updateButtonState();
+        const dropSearch = document.querySelector(
+          `#${dropdownId} .dropdown-search`
+        );
+        const dropSearchOptions = document.querySelectorAll(
+          `#${dropdownId} .dropdown-option`
+        );
+        dropSearch.addEventListener("input", function () {
+          const searchTerm = this.value.toLowerCase();
+          dropSearchOptions.forEach(function (option) {
+            const optionText = option
+              .querySelector("span")
+              .textContent.toLowerCase();
+            if (optionText.includes(searchTerm)) {
+              option.style.display = "block";
+            } else {
+              option.style.display = "none";
+            }
+          });
+        });
+
+        updateButtonState();
+      }
     });
   }
 
@@ -601,7 +602,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const maxY = targetRect.height - div.offsetHeight;
     const left = Math.floor(Math.random() * maxX);
     const top = Math.floor(Math.random() * maxY);
-    div.style.left = `${left}px`;
+    div.style.left = `${left - 100}px`;
     div.style.top = `${top}px`;
   }
 
@@ -933,7 +934,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     e.fields["Location"]
                       ? `<div>
                       ${icons["location"]}
-                      <div class="field-div" > <p>${e.fields["Location"]}</p></div>
+                      ${fields(e.fields["Location"].split(";")) || ""}
                   </div>`
                       : ""
                   }
@@ -1048,7 +1049,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 openModal(data.records[index].fields);
                 document.getElementById("targetElement").style.position =
                   "fixed";
-                console.log(data.records[index]);
               });
             });
           }, 500);
@@ -1067,7 +1067,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (experienceLevels !== undefined && experienceLevels.length) {
       experienceLevels.forEach(function (exp) {
         gtag("event", "job_click", {
-          experience_level: exp,
+          experience_levels: exp,
         });
       });
     }
@@ -1075,47 +1075,48 @@ document.addEventListener("DOMContentLoaded", function () {
     if (fields !== undefined && fields.length) {
       fields.forEach(function (field) {
         gtag("event", "job_click", {
-          field: field,
+          fields: field,
         });
       });
     }
   }
 
-  function trackApplyClick(jobTitle, experienceLevels, fields, links) {
-    console.log("yo!");
-    if (jobTitle !== undefined) {
-      gtag("event", "apply_click", {
-        apply_job_title: jobTitle,
-      });
-    }
+  // function trackApplyClick(jobTitle, experienceLevels, fields, links) {
+  //   console.log("yo!");
+  //   if (jobTitle !== undefined) {
+  //     gtag("event", "apply_click", {
+  //       apply_job_title: jobTitle,
+  //     });
+  //   }
 
-    if (experienceLevels !== undefined && experienceLevels.length) {
-      experienceLevels.forEach(function (exp) {
-        gtag("event", "apply_click", {
-          apply_experience_level: exp,
-        });
-      });
-    }
+  //   if (experienceLevels !== undefined && experienceLevels.length) {
+  //     experienceLevels.forEach(function (exp) {
+  //       gtag("event", "apply_click", {
+  //         apply_experience_level: exp,
+  //       });
+  //     });
+  //   }
 
-    if (fields !== undefined && fields.length) {
-      fields.forEach(function (field) {
-        gtag("event", "apply_click", {
-          apply_field: field,
-        });
-      });
-    }
+  //   if (fields !== undefined && fields.length) {
+  //     fields.forEach(function (field) {
+  //       gtag("event", "apply_click", {
+  //         apply_field: field,
+  //       });
+  //     });
+  //   }
 
-    if (links !== undefined && links.length) {
-      links.forEach(function (l) {
-        gtag("event", "apply_click", {
-          apply_link: l,
-        });
-      });
-    }
-  }
+  //   if (links !== undefined && links.length) {
+  //     links.forEach(function (l) {
+  //       gtag("event", "apply_click", {
+  //         apply_link: l,
+  //       });
+  //     });
+  //   }
+  // }
 
   function openModal(e) {
     const modal = document.getElementById("myModal");
+    // document.documentElement.classList.add("modal-open");
     document.body.classList.add("modal-open");
     const modalHeader = modal.querySelector(".modal-header");
     const modalFooter = modal.querySelector(".modal-footer");
@@ -1182,7 +1183,7 @@ document.addEventListener("DOMContentLoaded", function () {
   <div style='margin-left: 80px; margin-bottom: 15px; display: flex; flex-wrap: wrap;'>
     ${
       e["Location"]
-        ? fieldsModal([e["Location"]])
+        ? fieldsModal(e["Location"].split(";")) || ""
         : fieldsModal(["No Location Listed"])
     }
   </div>
@@ -1352,6 +1353,7 @@ ${e["Type"] ? fieldsModal(e["Type"]) : fieldsModal(["No Type Listed"])}
       document.getElementById("myModal").style.display = "none";
       document.getElementById("targetElement").style.position = "";
       document.body.classList.remove("modal-open");
+      // document.documentElement.classList.remove("modal-open");
     }
   });
 
@@ -1388,17 +1390,17 @@ ${e["Type"] ? fieldsModal(e["Type"]) : fieldsModal(["No Type Listed"])}
         fetchAllData();
       }, 500);
     }, 1000);
-    // if (
-    //   document.body.scrollTop > 1500 ||
-    //   document.documentElement.scrollTop > 1500
-    // ) {
-    //   const title = document.querySelector(".title");
-    //   const targetDivY = title.getBoundingClientRect().top + window.scrollY;
-    //   window.scrollTo({
-    //     top: targetDivY,
-    //     behavior: "smooth",
-    //   });
-    // }
+    if (
+      document.body.scrollTop > 1500 ||
+      document.documentElement.scrollTop > 1500
+    ) {
+      const title = document.querySelector(".title");
+      const targetDivY = title.getBoundingClientRect().top + window.scrollY;
+      window.scrollTo({
+        top: targetDivY,
+        behavior: "smooth",
+      });
+    }
   }
 
   function decrease() {
@@ -1434,17 +1436,17 @@ ${e["Type"] ? fieldsModal(e["Type"]) : fieldsModal(["No Type Listed"])}
         fetchAllData();
       }, 500);
     }, 1000);
-    // if (
-    //   document.body.scrollTop > 1500 ||
-    //   document.documentElement.scrollTop > 1500
-    // ) {
-    //   const title = document.querySelector(".title");
-    //   const targetDivY = title.getBoundingClientRect().top + window.scrollY;
-    //   window.scrollTo({
-    //     top: targetDivY,
-    //     behavior: "smooth",
-    //   });
-    // }
+    if (
+      document.body.scrollTop > 1500 ||
+      document.documentElement.scrollTop > 1500
+    ) {
+      const title = document.querySelector(".title");
+      const targetDivY = title.getBoundingClientRect().top + window.scrollY;
+      window.scrollTo({
+        top: targetDivY,
+        behavior: "smooth",
+      });
+    }
   }
 
   increaseBtn.addEventListener("click", increase);

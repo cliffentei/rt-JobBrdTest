@@ -602,6 +602,10 @@ svg {
    /* margin-top: 10vh;
     */
 }
+
+/* #toDelete {
+    display: none;
+} */
 .newtons-cradle__dot {
     position: relative;
     display: flex;
@@ -816,7 +820,10 @@ svg {
     box-shadow: 2px 1px 0 #50565a;
 }
 .modal-open {
+    position:relative;
     overflow: hidden;
+    touch-action: none;
+    -ms-touch-action: none; 
 }
 .random-div {
     position: absolute;

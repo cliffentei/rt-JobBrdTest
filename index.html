@@ -6,14 +6,15 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Caprasimo&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-JYLG22Q8SJ"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JYLG22Q8SJ"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
 
         gtag('config', 'G-JYLG22Q8SJ');
-    </script> -->
+    </script>
+
 </head>
 
 <body>
@@ -62,8 +63,6 @@
 
                     </div>
                 </div>
-
-
                 <div class="dropdown" id="dropdown2">
                     <div class="dropdown-button">
                         <span>Region</span>
@@ -196,6 +195,36 @@
             </div>
         </div>
         <br>
+        <script>
+            function trackApplyClick(jobTitle, experienceLevels, fields, links) {
+                if (jobTitle !== undefined) {
+                    gtag("event", "apply_click", {
+                        apply_job_title: jobTitle,
+                    });
+                }
+                if (experienceLevels !== undefined && experienceLevels.length) {
+                    experienceLevels.forEach(function (exp) {
+                        gtag("event", "apply_click", {
+                            apply_experience_level: exp,
+                        });
+                    });
+                }
+                if (fields !== undefined && fields.length) {
+                    fields.forEach(function (field) {
+                        gtag("event", "apply_click", {
+                            apply_field: field,
+                        });
+                    });
+                }
+                if (links !== undefined && links.length) {
+                    links.forEach(function (l) {
+                        gtag("event", "apply_click", {
+                            apply_link: l,
+                        });
+                    });
+                }
+            }
+        </script>
         <div id="myModal" class="modal">
             <div class="modal-div svg-background">
                 <div class="modal-header"></div>
@@ -293,7 +322,6 @@
         </div>
     </div>
     <button id="scrollToTopBtn" class="loading-effect"">↑</button>
-
     <script src=" script.js" defer></script>
 </body>
 

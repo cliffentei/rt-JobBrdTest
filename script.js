@@ -251,70 +251,77 @@ document.addEventListener("DOMContentLoaded", function () {
       searchOption.innerHTML = `
       <input type="text" class="dropdown-search" placeholder="Search...">
         `;
-      dropdownMenu.appendChild(searchOption);
-      dropdownData[dropdownId].forEach((optionText) => {
-        const optionElement = document.createElement("div");
-        optionElement.classList.add("dropdown-option");
-        optionElement.classList.add("checkbox-rect2");
-        optionElement.innerHTML = `
+      if (dropdownMenu) dropdownMenu.appendChild(searchOption);
+      if (dropdownData[dropdownId]) {
+        dropdownData[dropdownId].forEach((optionText) => {
+          const optionElement = document.createElement("div");
+          optionElement.classList.add("dropdown-option");
+          optionElement.classList.add("checkbox-rect2");
+          optionElement.innerHTML = `
           <input type="checkbox" class="dropdown-option-checkbox" id="checkbox-rect2" name="check">
           <span>${optionText}</span>
         `;
-        dropdownMenu.appendChild(optionElement);
-        const checkbox = optionElement.querySelector(
-          ".dropdown-option-checkbox"
-        );
-        checkbox.addEventListener("click", function (event) {
-          event.stopPropagation();
-          updateButtonState();
-        });
-        optionElement.addEventListener("click", function (event) {
-          event.preventDefault();
-          clearTimeout(timeoutId);
-          checkbox.checked = !checkbox.checked;
-          optionElement.classList.toggle("selected");
-          updateButtonState();
-          const selectedOptions = document.querySelectorAll(
-            ".dropdown-option.selected"
+          dropdownMenu.appendChild(optionElement);
+          const checkbox = optionElement.querySelector(
+            ".dropdown-option-checkbox"
           );
-          if (selectedOptions.length === 0) {
-            document.querySelector(".remove-filter").classList.remove("hidden");
-            document.querySelector(".remove-filter").classList.add("hidden");
-          } else {
-            document.querySelector(".remove-filter").classList.remove("hidden");
-          }
-          const deleteMe = document.getElementById("toDelete");
-          if (deleteMe) deleteMe.classList.add("opposite-loading-effect");
-          decreaseBtn.classList.add("opposite-loading-effect");
-          decreaseBtn2.classList.add("opposite-loading-effect");
-          increaseBtn.classList.add("opposite-loading-effect");
-          increaseBtn2.classList.add("opposite-loading-effect");
-          const dots = document.querySelectorAll(".random-div");
-          dots.forEach((div) => {
-            div.classList.add("opposite-loading-effect");
+          checkbox.addEventListener("click", function (event) {
+            event.stopPropagation();
+            updateButtonState();
           });
-          setTimeout(() => {
-            dotSpinner.classList.remove("hidden");
-            if (deleteMe) deleteMe.remove();
-            decreaseBtn.classList.remove("show");
-            decreaseBtn2.classList.remove("show");
-            increaseBtn.classList.remove("show");
-            increaseBtn2.classList.remove("show");
-            decreaseBtn.classList.remove("opposite-loading-effect");
-            decreaseBtn2.classList.remove("opposite-loading-effect");
-            increaseBtn.classList.remove("opposite-loading-effect");
-            increaseBtn2.classList.remove("opposite-loading-effect");
+          optionElement.addEventListener("click", function (event) {
+            event.preventDefault();
+            clearTimeout(timeoutId);
+            checkbox.checked = !checkbox.checked;
+            optionElement.classList.toggle("selected");
+            updateButtonState();
+            const selectedOptions = document.querySelectorAll(
+              ".dropdown-option.selected"
+            );
+            if (selectedOptions.length === 0) {
+              document
+                .querySelector(".remove-filter")
+                .classList.remove("hidden");
+              document.querySelector(".remove-filter").classList.add("hidden");
+            } else {
+              document
+                .querySelector(".remove-filter")
+                .classList.remove("hidden");
+            }
+            const deleteMe = document.getElementById("toDelete");
+            if (deleteMe) deleteMe.classList.add("opposite-loading-effect");
+            decreaseBtn.classList.add("opposite-loading-effect");
+            decreaseBtn2.classList.add("opposite-loading-effect");
+            increaseBtn.classList.add("opposite-loading-effect");
+            increaseBtn2.classList.add("opposite-loading-effect");
+            const dots = document.querySelectorAll(".random-div");
             dots.forEach((div) => {
-              div.remove();
+              div.classList.add("opposite-loading-effect");
             });
-          }, 750);
-          timeoutId = setTimeout(() => {
             setTimeout(() => {
-              fetchAllData();
-            }, 500);
-          }, 1000);
+              dotSpinner.classList.remove("hidden");
+              if (deleteMe) deleteMe.remove();
+              decreaseBtn.classList.remove("show");
+              decreaseBtn2.classList.remove("show");
+              increaseBtn.classList.remove("show");
+              increaseBtn2.classList.remove("show");
+              decreaseBtn.classList.remove("opposite-loading-effect");
+              decreaseBtn2.classList.remove("opposite-loading-effect");
+              increaseBtn.classList.remove("opposite-loading-effect");
+              increaseBtn2.classList.remove("opposite-loading-effect");
+              dots.forEach((div) => {
+                div.remove();
+              });
+            }, 750);
+            timeoutId = setTimeout(() => {
+              setTimeout(() => {
+                fetchAllData();
+              }, 500);
+            }, 1000);
+          });
         });
-      });
+      }
+      console.log(dropdownButton);
       dropdownButton.addEventListener("click", function () {
         dropdownMenu.classList.toggle("active");
       });
@@ -424,24 +431,42 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  function buttons(input) {
+  function buttons(input, jobTitle, experienceLevels, fields) {
     if (!input) return "";
-    const regex = /\bhttps?:\/\/\S+/gi;
-    const matches = [];
-    let match;
-    while ((match = regex.exec(input)) !== null) {
-      matches.push(match[0]);
-    }
+    const regex = /https?:\/\/[^\s/$.?#].[^\s<>)]*/gi;
+    const matches = input.match(regex) || [];
     let b = "";
     if (matches.length === 1) {
-      return `<a href="${matches[0]}" target="_blank" style='text-decoration: none;'><div class='apply-btn'><p>Apply<p></div></a>`;
+      return `<div class="apply-div">
+            <a href="${
+              matches[0]
+            }" target="_blank" onclick="trackApplyClick('${jobTitle}', ${
+        experienceLevels
+          ? "[" + experienceLevels.map((e) => `'${e}'`).join(", ") + "]"
+          : undefined
+      }, ${
+        fields ? "[" + fields.map((e) => `'${e}'`).join(", ") + "]" : undefined
+      }, ['${
+        matches[0]
+      }']);" style='text-decoration: none;'><div class='apply-btn'><p>Apply</p></div></a>
+        </div>`;
     }
     for (let i = 0; i < matches.length; i++) {
-      b += `<a href="${
+      b += `<div class="apply-div">
+            <a href="${
+              matches[i]
+            }" target="_blank" onclick="trackApplyClick('${jobTitle}', ${
+        experienceLevels
+          ? "[" + experienceLevels.map((e) => `'${e}'`).join(", ") + "]"
+          : undefined
+      }, ${
+        fields ? "[" + fields.map((e) => `'${e}'`).join(", ") + "]" : undefined
+      }, ['${
         matches[i]
-      }" target="_blank" style='text-decoration: none;'><div class='apply-btn'>Apply (${
+      }']);" style='text-decoration: none;'><div class='apply-btn'>Apply (${
         i + 1
-      })</div></a>`;
+      })</div></a>
+        </div>`;
     }
     return b;
   }
@@ -1032,29 +1057,62 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // function trackJobClick(jobTitle, experienceLevels, fields) {
-  //   if (jobTitle !== undefined) {
-  //     gtag("event", "job_click", {
-  //       job_title: jobTitle,
-  //     });
-  //   }
+  function trackJobClick(jobTitle, experienceLevels, fields) {
+    if (jobTitle !== undefined) {
+      gtag("event", "job_click", {
+        job_title: jobTitle,
+      });
+    }
 
-  //   if (experienceLevels !== undefined && experienceLevels.length) {
-  //     experienceLevels.forEach(function (exp) {
-  //       gtag("event", "job_click", {
-  //         experience_level: exp,
-  //       });
-  //     });
-  //   }
+    if (experienceLevels !== undefined && experienceLevels.length) {
+      experienceLevels.forEach(function (exp) {
+        gtag("event", "job_click", {
+          experience_level: exp,
+        });
+      });
+    }
 
-  //   if (fields !== undefined && fields.length) {
-  //     fields.forEach(function (field) {
-  //       gtag("event", "job_click", {
-  //         field: field,
-  //       });
-  //     });
-  //   }
-  // }
+    if (fields !== undefined && fields.length) {
+      fields.forEach(function (field) {
+        gtag("event", "job_click", {
+          field: field,
+        });
+      });
+    }
+  }
+
+  function trackApplyClick(jobTitle, experienceLevels, fields, links) {
+    console.log("yo!");
+    if (jobTitle !== undefined) {
+      gtag("event", "apply_click", {
+        apply_job_title: jobTitle,
+      });
+    }
+
+    if (experienceLevels !== undefined && experienceLevels.length) {
+      experienceLevels.forEach(function (exp) {
+        gtag("event", "apply_click", {
+          apply_experience_level: exp,
+        });
+      });
+    }
+
+    if (fields !== undefined && fields.length) {
+      fields.forEach(function (field) {
+        gtag("event", "apply_click", {
+          apply_field: field,
+        });
+      });
+    }
+
+    if (links !== undefined && links.length) {
+      links.forEach(function (l) {
+        gtag("event", "apply_click", {
+          apply_link: l,
+        });
+      });
+    }
+  }
 
   function openModal(e) {
     const modal = document.getElementById("myModal");
@@ -1251,7 +1309,12 @@ ${e["Type"] ? fieldsModal(e["Type"]) : fieldsModal(["No Type Listed"])}
     </div>`;
     modalFooter.innerHTML = `
     <div class='apply-div'>
-    ${buttons(e["Link to Apply"]) || ""}
+    ${buttons(
+      e["Link to Apply"],
+      e["Job Title"],
+      e["Experience Level"],
+      e["Field"]
+    )}
     </div>`;
     modal.style.display = "flex";
     modalContent.scrollTop = 0;
@@ -1273,7 +1336,7 @@ ${e["Type"] ? fieldsModal(e["Type"]) : fieldsModal(["No Type Listed"])}
     modalDiv.style.backgroundImage = `url('${svgString}')`;
     modalDiv.style.backgroundPosition = `center -${y / 2 - x - 20}px`;
     const pagebuttons = document.querySelectorAll(".pagin");
-    // trackJobClick(e["Job Title"], e["Experience Level"], e["Field"]);
+    trackJobClick(e["Job Title"], e["Experience Level"], e["Field"]);
     if (pagebuttons) {
       pagebuttons.style.display = "none";
     }

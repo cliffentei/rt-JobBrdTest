@@ -1191,7 +1191,7 @@ document.addEventListener("DOMContentLoaded", function () {
 <div style='display:flex; align-items:center; flex-wrap:wrap; margin: 10px 0;'>
 <div class="on-scroll" style='width: 50px; margin: 0px 20px'>
   ${
-    e["Type"][0] === "Full-Time" || e["Type"].length > 1
+    !e["Type"] || e["Type"][0] === "Full-Time" || e["Type"].length > 1
       ? icons["fullTime"]
       : e["Type"][0] === "Part-Time"
       ? icons["partTime"]
